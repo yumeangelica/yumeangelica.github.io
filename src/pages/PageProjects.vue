@@ -24,7 +24,7 @@
           <div class="card-text">Vue.js & CSS</div>
           <div class="card-text">Showing my website design skills & Vue.js skills</div>
           <div class="card-text">Hosted On: GitHub pages</div>
-          <a href="#" class="btn btn-primary" target="_blank">Source Code (coming soon)</a>
+          <a href="https://github.com/yumeangelica/yumeangelica.github.io/" class="btn btn-primary" target="_blank">Source Code</a>
         </div>
       </div>
     </div>
