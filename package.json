@@ -1,6 +1,6 @@
 {
   "name": "yumeangelica.github.io",
-  "version": "1.1.2",
+  "version": "1.1.3",
   "private": true,
   "author": "yumeangelica",
   "license": "MIT",
@@ -8,7 +8,7 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "version-update": "npm --no-git-tag-version version $V && git add package.json && git commit -m 'version update'",
+    "version-update": "npm --no-git-tag-version version $V && git add package*.json && git commit -m 'version update'",
     "push": "npm run version-update && git push --set-upstream origin $(git rev-parse --abbrev-ref HEAD)",
     "deploy": "npm run build && console.log('app built') && ./deploy.sh && console.log('app deployed to github pages')"
   },
