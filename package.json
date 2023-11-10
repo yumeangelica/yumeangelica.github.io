@@ -7,7 +7,9 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "push": "npm --no-git-tag-version version patch && git push --set-upstream origin git branch --show-current",
+    "deploy": "npm run build && console.log('app built') && ./deploy.sh && console.log('app deployed to github pages')"
   },
   "dependencies": {
     "@popperjs/core": "^2.11.8",
