@@ -57,6 +57,6 @@
     color: var(--kawaii-purple);
     background-color: var(--kawaii-dark-pink);
     border-color: var(--kawaii-light-blue);
-    ;
+    transition-duration: var(--kawaii-transition-duration);
   }
 </style>
