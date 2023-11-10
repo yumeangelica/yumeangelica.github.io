@@ -8,7 +8,7 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "push": "npm --no-git-tag-version version -- && git push --set-upstream origin git branch --show-current",
+    "push": "npm --no-git-tag-version version -- && git push --set-upstream origin $(git rev-parse --abbrev-ref HEAD)",
     "deploy": "npm run build && console.log('app built') && ./deploy.sh && console.log('app deployed to github pages')"
   },
   "dependencies": {
