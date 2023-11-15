@@ -1,10 +1,10 @@
 <template>
-  <div class="headerpic"></div>
+  <div class="header-pic" role="img" aria-label="Sakura banner for header"></div>
 </template>
 
 
 <style>
-  .headerpic {
+  .header-pic {
     background-image: url(assets/img/sakurabanner.jpeg);
     background-position: center;
     padding: 25px 20px 5px 20px;
