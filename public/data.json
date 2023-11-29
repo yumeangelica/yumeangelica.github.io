@@ -3,7 +3,7 @@
     {
       "id": 1,
       "title": "Fullstack phonebook app",
-      "imageURL": "../src/assets/img/fullstack-phonebook-application-project.webp",
+      "imageURL": "fullstack-phonebook-application-project.webp",
       "technologyTitles": [
         "MongoDB",
         "Express.js",
@@ -31,7 +31,7 @@
     {
       "id": 2,
       "title": "Personal portfolio",
-      "imageURL": "../src/assets/img/portfolio-project.webp",
+      "imageURL": "./src/assets/img/portfolio-project.webp",
       "technologyTitles": [
         "Vue.js",
         "CSS3",
@@ -52,7 +52,7 @@
     {
       "id": 3,
       "title": "Taitovarasto for Virittämö as a client",
-      "imageURL": "../src/assets/img/taitovarasto-project.webp",
+      "imageURL": "./src/assets/img/taitovarasto-project.webp",
       "technologyTitles": [
         "MongoDB",
         "Express.js",
