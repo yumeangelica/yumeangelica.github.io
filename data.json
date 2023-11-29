@@ -1,0 +1,112 @@
+{
+  "projects": [
+    {
+      "id": 1,
+      "title": "Fullstack phonebook app",
+      "imageURL": "./src/assets/img/fullstack-phonebook-application-project.webp",
+      "technologyTitles": [
+        "MongoDB",
+        "Express.js",
+        "React",
+        "Node.js",
+        "CSS3",
+        "HTML5",
+        "Bootstrap"
+      ],
+      "additionalInfo": [
+        "Tests, CI/CD, Docker",
+        "Full-stack, CRUD functionality"
+      ],
+      "links": [
+        {
+          "text": "Learn More",
+          "url": "https://fullstack-phonebook-application.fly.dev/"
+        },
+        {
+          "text": "Source Code",
+          "url": "https://github.com/yumeangelica/fullstack-phonebook-application"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "title": "Personal portfolio",
+      "imageURL": "./src/assets/img/portfolio-project.webp",
+      "technologyTitles": [
+        "Vue.js",
+        "CSS3",
+        "HTML5",
+        "Bootstrap"
+      ],
+      "additionalInfo": [
+        "Showcasing my Vue.js & website design skills",
+        "Front-end, design, accessibility"
+      ],
+      "links": [
+        {
+          "text": "Source Code",
+          "url": "https://github.com/yumeangelica/yumeangelica.github.io"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "title": "Taitovarasto for Virittämö as a client",
+      "imageURL": "./src/assets/img/taitovarasto-project.webp",
+      "technologyTitles": [
+        "MongoDB",
+        "Express.js",
+        "React",
+        "Node.js",
+        "CSS3",
+        "HTML5"
+      ],
+      "additionalInfo": [
+        "Recruitment and skills showcase app. My role focused on back-end-centric full-stack development, including testing and CI/CD processes",
+        "Full-stack, CRUD functionality, authentication"
+      ]
+    }
+  ],
+  "technologies": [
+    {
+      "id": 1,
+      "title": "MongoDB",
+      "url": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original-wordmark.svg"
+    },
+    {
+      "id": 2,
+      "title": "Express.js",
+      "url": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original-wordmark.svg"
+    },
+    {
+      "id": 3,
+      "title": "React",
+      "url": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original-wordmark.svg"
+    },
+    {
+      "id": 4,
+      "title": "Node.js",
+      "url": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original-wordmark.svg"
+    },
+    {
+      "id": 5,
+      "title": "CSS3",
+      "url": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original-wordmark.svg"
+    },
+    {
+      "id": 6,
+      "title": "HTML5",
+      "url": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original-wordmark.svg"
+    },
+    {
+      "id": 7,
+      "title": "Bootstrap",
+      "url": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bootstrap/bootstrap-original-wordmark.svg"
+    },
+    {
+      "id": 8,
+      "title": "Vue.js",
+      "url": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vuejs/vuejs-original-wordmark.svg"
+    }
+  ]
+}
