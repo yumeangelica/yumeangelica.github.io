@@ -22,6 +22,11 @@
 
 
 <script>
+  
+  import taito from '../assets/img/taitovarasto-project.webp';
+  import fullstack from '../assets/img/fullstack-phonebook-application-project.webp';
+  import portfolio from '../assets/img/portfolio-project.webp';
+  
   export default {
     props: { // props are passed from parent component
       project: Object,
@@ -29,11 +34,23 @@
     },
     data() {
       return { // data is local to this component and can be used in the template
-        imageURL: this.project.imageURL,
+        imageURL: "",
         projectTitle: this.project.title,
         additionalInfo: this.project.additionalInfo,
         links: this.project.links,
-        technologyTitles: this.project.technologyTitles
+        technologyTitles: this.project.technologyTitles,
+      }
+    },
+    created() {
+      switch (this.project.title) {
+        case 'Taitovarasto for Virittämö as a client':
+          this.imageURL = taito;
+        case 'Fullstack phonebook app':
+          this.imageURL = fullstack;
+        case '"Personal portfolio':
+          this.imageURL = portfolio;
+        default:
+          return '';
       }
     },
 
