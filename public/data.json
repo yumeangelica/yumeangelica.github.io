@@ -3,7 +3,7 @@
     {
       "id": 1,
       "title": "Fullstack phonebook app",
-      "imageURL": "fullstack-phonebook-application-project.webp",
+      "imageURL": "./src/assets/img/fullstack-phonebook-application-project.webp",
       "technologyTitles": [
         "MongoDB",
         "Express.js",
