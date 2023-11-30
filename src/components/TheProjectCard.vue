@@ -1,7 +1,9 @@
 <template>
   <div class="project-card">
     <div class="project-image-container">
-      <img :src="imageURL" :alt="projectTitle" />
+      <img :src="
+        getProjectImageURL()
+      " :alt="projectTitle" />
     </div>
     <div class="project-details">
       <h5>{{ projectTitle }}</h5>
@@ -41,26 +43,24 @@
         technologyTitles: this.project.technologyTitles,
       }
     },
-    created() {
-      switch (this.project.title) {
-        case 'Taitovarasto for Virittämö as a client':
-          this.imageURL = taito;
-        case 'Fullstack phonebook app':
-          this.imageURL = fullstack;
-        case '"Personal portfolio':
-          this.imageURL = portfolio;
-        default:
-          return '';
-      }
-    },
-
     methods: {
       getTechIconUrl(techName) { // finds the technology object from the technologies array and returns the url of the icon so it can be displayed in the template
         const tech = this.technologies.find(t => t.title === techName);
         return tech ? tech.url : '';
-      }
+      },
+      getProjectImageURL() {
+        switch (this.projectTitle) {
+          case "Taitovarasto for Virittämö as a client":
+            return taito;
+          case "Fullstack phonebook app":
+            return fullstack;
+          case "Personal portfolio":
+            return portfolio;
+        }
     }
   }
+}
+
 </script>
 
 
