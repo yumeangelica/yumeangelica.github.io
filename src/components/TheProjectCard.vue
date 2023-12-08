@@ -22,7 +22,6 @@
   </div>
 </template>
 
-
 <script>
   
   import taito from '../assets/img/taitovarasto-project.webp';
