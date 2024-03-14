@@ -11,7 +11,7 @@
     bottom: 0;
     left: 0;
     width: 100%;
-    color: var(--kawaii-font-color);
+    color: var(--kawaii-font-gray);
     text-align: center;
     padding: 15px;
     margin-top: 20px;
