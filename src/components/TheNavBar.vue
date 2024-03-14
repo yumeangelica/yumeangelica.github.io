@@ -95,14 +95,15 @@
 
   nav {
     margin-bottom: 30px;
-    background: var(--kawaii-purple);
+    background: var(--kawaii-pastel-lilac);
     padding: 10px 0;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   }
 
 
   .nav-link {
-    color: var(--kawaii-dark-pink) !important;
+    color: var(--kawaii-dark-purple) !important;
+    font-weight: 700 !important;
   }
 
 
@@ -116,8 +117,8 @@
   .navtext:hover,
   .navtext:active,
   .navtext:focus {
-    color: var(--kawaii-hover-color) !important;
-    transition: color var(--kawaii-transition-duration) ease;
+    color: var(--kawaii-purple) !important;
+    transition: color var(--link-transition-duration) ease;
     text-decoration: none;
   }
 
