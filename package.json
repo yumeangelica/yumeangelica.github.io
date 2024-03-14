@@ -9,8 +9,9 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "version-update": "npm --no-git-tag-version version $V && git add package*.json && git commit -m 'version update'",
-    "push": "npm run version-update && git push --set-upstream origin $(git rev-parse --abbrev-ref HEAD)",
+    "patch-push": "npm --no-git-tag-version version patch && git add package*.json && git commit -m 'patch update' && git push --set-upstream origin $(git rev-parse --abbrev-ref HEAD)",
+    "minor-push": "npm --no-git-tag-version version minor && git add package*.json && git commit -m 'minor update' && git push --set-upstream origin $(git rev-parse --abbrev-ref HEAD)",
+    "major-push": "npm --no-git-tag-version version major && git add package*.json && git commit -m 'major update' && git push --set-upstream origin $(git rev-parse --abbrev-ref HEAD)",
     "deploy": "npm run build && echo 'app built' && ./deploy.sh && echo 'app deployed to github pages'"
   },
   "dependencies": {
