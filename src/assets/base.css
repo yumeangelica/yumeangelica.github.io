@@ -1,20 +1,21 @@
 /* Root pseudo class for variables - changing site color theme here, easy to maintain */
 :root {
   /* -------- Main colors --------- */
+  --white: rgb(255, 255, 255);
   --kawaii-dark-pink: rgb(252, 122, 191);
   --kawaii-pink: rgb(252, 202, 224);
   --kawaii-light-pink: rgb(255, 221, 248);
   --kawaii-yellow: rgb(249, 230, 169);
   --kawaii-light-blue: rgb(229, 246, 255);
-  --kawaii-purple: rgb(223, 225, 255);
-  --white: rgb(255, 255, 255);
+  --kawaii-lilac: rgb(223, 225, 255);
+  --kawaii-pastel-lilac: rgb(235, 239, 255);
+  --kawaii-purple: rgb(227, 135, 235);
+  --kawaii-dark-purple: rgb(193, 87, 170);
+
 
   --kawaii-background-pink: rgb(255, 236, 255);
-  --kawaii-font-color: rgb(105, 97, 100);
-  --kawaii-hover-color: rgb(227, 135, 235);
-
-  --kawaii-transition-duration: 0.5s;
-
+  --kawaii-font-gray: rgb(105, 97, 100);
+  --link-transition-duration: 0.5s;
 }
 
 
