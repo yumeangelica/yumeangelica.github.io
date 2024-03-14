@@ -19,10 +19,6 @@
       ],
       "links": [
         {
-          "text": "Learn More",
-          "url": "https://fullstack-phonebook-application.fly.dev/"
-        },
-        {
           "text": "Source Code",
           "url": "https://github.com/yumeangelica/fullstack-phonebook-application"
         }
