@@ -2,6 +2,29 @@
   "projects": [
     {
       "id": 1,
+      "type": "webDevelopment",
+      "title": "Personal portfolio",
+      "imageURL": "./src/assets/img/portfolio-project.webp",
+      "technologyTitles": [
+        "Vue.js",
+        "CSS3",
+        "HTML5",
+        "Bootstrap"
+      ],
+      "additionalInfo": [
+        "Showcasing my Vue.js & website design skills",
+        "Front-end, design, accessibility, CI/CD"
+      ],
+      "links": [
+        {
+          "text": "Source Code",
+          "url": "https://github.com/yumeangelica/yumeangelica.github.io"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "type": "webDevelopment",
       "title": "Fullstack phonebook app",
       "imageURL": "./src/assets/img/fullstack-phonebook-application-project.webp",
       "technologyTitles": [
@@ -25,28 +48,8 @@
       ]
     },
     {
-      "id": 2,
-      "title": "Personal portfolio",
-      "imageURL": "./src/assets/img/portfolio-project.webp",
-      "technologyTitles": [
-        "Vue.js",
-        "CSS3",
-        "HTML5",
-        "Bootstrap"
-      ],
-      "additionalInfo": [
-        "Showcasing my Vue.js & website design skills",
-        "Front-end, design, accessibility"
-      ],
-      "links": [
-        {
-          "text": "Source Code",
-          "url": "https://github.com/yumeangelica/yumeangelica.github.io"
-        }
-      ]
-    },
-    {
       "id": 3,
+      "type": "webDevelopment",
       "title": "Taitovarasto for Virittämö as a client",
       "imageURL": "./src/assets/img/taitovarasto-project.webp",
       "technologyTitles": [
@@ -58,8 +61,46 @@
         "HTML5"
       ],
       "additionalInfo": [
-        "Recruitment and skills showcase app. My role focused on back-end-centric full-stack development, including testing and CI/CD processes",
-        "Full-stack, CRUD functionality, authentication"
+        "Recruitment and skills showcase app. My role focused on back-end development, including testing and CI/CD processes",
+        "Full-stack, CRUD functionality, authentication, nodemailer"
+      ]
+    },
+    {
+      "id": 4,
+      "type": "commandLine",
+      "title": "Job finder",
+      "imageURL": "./src/assets/img/job-finder-project.webp",
+      "technologyTitles": [
+        "Python"
+      ],
+      "additionalInfo": [
+        "A command-line tool for finding jobs from the internet",
+        "Requests, BeautifulSoup, web data extraction, automation"
+      ],
+      "links": [
+        {
+          "text": "Source Code",
+          "url": "https://github.com/yumeangelica/job_finder"
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "type": "commandLine",
+      "title": "Weather view",
+      "imageURL": "./src/assets/img/weather-view-project.webp",
+      "technologyTitles": [
+        "Python"
+      ],
+      "additionalInfo": [
+        "A command-line tool for fetching weather data from the internet",
+        "Requests, API usage"
+      ],
+      "links": [
+        {
+          "text": "Source Code",
+          "url": "https://github.com/yumeangelica/weather_view"
+        }
       ]
     }
   ],
@@ -103,6 +144,11 @@
       "id": 8,
       "title": "Vue.js",
       "url": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vuejs/vuejs-original-wordmark.svg"
+    },
+    {
+      "id": 9,
+      "title": "Python",
+      "url": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original-wordmark.svg"
     }
   ]
 }

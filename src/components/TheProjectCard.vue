@@ -26,6 +26,8 @@
 import taito from '../assets/img/taitovarasto-project.webp';
 import fullstack from '../assets/img/fullstack-phonebook-application-project.webp';
 import portfolio from '../assets/img/portfolio-project.webp';
+import jobfinder from '../assets/img/job-finder-project.webp';
+import weatherview from '../assets/img/weather-view-project.webp';
 
 export default {
   props: { // props are passed from parent component
@@ -54,6 +56,10 @@ export default {
           return fullstack;
         case "Personal portfolio":
           return portfolio;
+        case "Job finder":
+          return jobfinder;
+        case "Weather view":
+          return weatherview;
       }
     }
   }
@@ -97,7 +103,7 @@ export default {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease-in-out, box-shadow 0.3s ease;
   overflow-y: auto;
-  /* add scrollbar if content is too long */
+  border: 1px solid rgba(0, 0, 0, 0.05); /* Lisätty erittäin hienovarainen reuna */
 }
 
 .project-card:hover {
@@ -125,13 +131,12 @@ export default {
 .project-details h5 {
   color: var(--kawaii-dark-pink);
   margin-bottom: 5px;
-  font-size: 1.1em;
-  /* Suurempi otsikko */
+  font-size: 1.2em;
 }
 
 .project-details p {
   color: var(--kawaii-font-gray);
-  font-size: 0.9em;
+  font-size: 0.90em;
   margin-bottom: 10px;
 }
 
