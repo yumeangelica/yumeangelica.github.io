@@ -1,8 +1,14 @@
 <template>
   <h1>Elegant Web Development Creations</h1>
   <div class="projects-container">
-    <TheProjectCard v-for="project in projects" :key="project.id" :project="project" :technologies="technologies" />
+    <TheProjectCard v-for="project in webDevelopmentProjects" :key="project.id" :project="project" :technologies="technologies" />
   </div>
+
+  <h1>Command-line Projects</h1>
+  <div class="projects-container">
+    <TheProjectCard v-for="project in commandLineProjects" :key="project.id" :project="project" :technologies="technologies" />
+  </div>
+
 </template>
 
 
@@ -13,7 +19,8 @@
   export default {
     data() {
       return {
-        projects: ref([]),
+        webDevelopmentProjects: ref([]),
+        commandLineProjects: ref([]),
         technologies: ref([]),
         dataURL: '../data.json',
         dataHandleError: ref(false)
@@ -27,8 +34,9 @@
         const response = await fetch(this.dataURL);
         const data = await response.json();
         if (data) { // if data is fetched successfully, assign it to projects and technologies
-          this.projects = data.projects;
           this.technologies = data.technologies;
+          this.webDevelopmentProjects = data.projects.filter(p => p.type === 'webDevelopment');
+          this.commandLineProjects = data.projects.filter(p => p.type === 'commandLine');
         }
       } catch (error) {
         this.dataHandleError = true;
