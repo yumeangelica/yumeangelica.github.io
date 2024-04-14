@@ -10,7 +10,7 @@
       <div class="collapse navbar-collapse" :class="{ 'show': showNav, 'show-animate': showNav }" id="navbarNav">
         <ul class="navbar-nav ms-auto me-auto">
           <li class="nav-item">
-            <router-link :to="{ name: 'home' }" class="nav-link active navtext" aria-current="page" @click="closeNav">Home</router-link>
+            <router-link :to="{ name: 'home' }" class="nav-link navtext" aria-current="page" @click="closeNav">Home</router-link>
           </li>
           <li class="nav-item">
             <router-link :to="{ name: 'projects' }" class="nav-link navtext" @click="closeNav">Projects</router-link>
@@ -29,111 +29,136 @@
 
 
 <script setup>
-  import { ref } from 'vue';
-  import { RouterLink } from 'vue-router';
-  import { onMounted, onUnmounted } from 'vue'; // close navbar dropdown when window is resized
+import { ref } from 'vue';
+import { RouterLink } from 'vue-router';
+import { onMounted, onUnmounted } from 'vue'; // close navbar dropdown when window is resized
 
-  const showNav = ref(false); // ref, toggle navbar dropdown on mobile, starts as false
+const showNav = ref(false); // ref, toggle navbar dropdown on mobile, starts as false
 
-  const toggleNav = () => {
-    showNav.value = !showNav.value;
-  };
+const toggleNav = () => {
+  showNav.value = !showNav.value;
+};
 
-  const closeNav = () => { // close navbar dropdown when link is clicked
-    if (window.innerWidth < 992) { // bootstrap's lg breakpoint
-      showNav.value = false;
-    }
-  };
+const closeNav = () => { // close navbar dropdown when link is clicked
+  if (window.innerWidth < 992) { // bootstrap's lg breakpoint
+    showNav.value = false;
+  }
+};
 
 
-  // close navbar dropdown when window is resized
-  const handleResize = () => {
-    if (window.innerWidth >= 992 && showNav.value) {
-      showNav.value = false;
-    }
-  };
+// close navbar dropdown when window is resized
+const handleResize = () => {
+  if (window.innerWidth >= 992 && showNav.value) {
+    showNav.value = false;
+  }
+};
 
-  onMounted(() => {
-    window.addEventListener('resize', handleResize);
-  });
+onMounted(() => {
+  window.addEventListener('resize', handleResize);
+});
 
-  onUnmounted(() => {
-    window.removeEventListener('resize', handleResize);
-  });
+onUnmounted(() => {
+  window.removeEventListener('resize', handleResize);
+});
 
 </script>
 
 
-<style>
-  /* for hamburger model dropdown opening */
-  @keyframes expandHeight {
-    from {
-      opacity: 0;
-      height: 0;
-    }
 
-    to {
-      opacity: 1;
-      height: var(--expanded-height, 200px);
-      /* 200px is the default height */
-    }
+<style scoped>
+/* Navbar overall styling */
+nav {
+  margin-bottom: 40px;
+  background: var(--kawaii-pastel-lilac);
+  padding: 10px 0;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Navbar link styling */
+.nav-link {
+  color: var(--kawaii-dark-purple) !important;
+  transition: color 0.3s ease-in-out;
+}
+
+.nav-link.router-link-active {
+  color: var(--kawaii-purple) !important;
+  font-weight: bold;
+}
+
+/* Navbar item styling */
+.nav-item {
+  font-size: 1.3rem;
+}
+
+/* Hover and focus effects for nav items */
+.nav-item:hover,
+.nav-item:focus {
+  background-color: var(--kawaii-light-pink);
+  /* Light pink for hover state */
+  border-radius: 5px;
+}
+
+/* Active link styling */
+.nav-link.active {
+  color: var(--kawaii-purple) !important;
+  font-weight: bold;
+}
+
+/* Navbar toggler icon customization */
+.navbar-light .navbar-toggler-icon {
+  background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'><path stroke='rgb(252, 122, 191)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/></svg>");
+}
+
+/* Toggler button styling */
+.navbar-light .navbar-toggler {
+  border-color: transparent;
+}
+
+/* Toggler button hover and focus effects */
+.navbar-light .navbar-toggler:hover,
+.navbar-light .navbar-toggler:focus {
+  box-shadow: 0 0 0 2px rgba(252, 122, 191, .5);
+}
+
+/* Smooth transition for navbar collapse */
+.collapse:not(.show) {
+  display: none;
+}
+
+.collapse.show {
+  display: block;
+  transition: all 0.35s ease;
+}
+
+/* Media query for larger screens */
+@media (min-width: 992px) {
+  .navbar-nav {
+    justify-content: center;
+    /* Center navbar items */
+    width: 100%;
+    /* Full width */
   }
-
-  /* for smooth opening animation for hamburger model dropdown */
-  .show-animate {
-    animation: expandHeight 0.5s ease-out;
-  }
-
-
-  /* navbar formatting to center links */
-  @media (min-width: 992px) {
-    .navbar-nav {
-      justify-content: center;
-      width: 100%;
-    }
-  }
-
-  nav {
-    margin-bottom: 30px;
-    background: var(--kawaii-pastel-lilac);
-    padding: 10px 0;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  }
-
-
-  .nav-link {
-    color: var(--kawaii-dark-purple) !important;
-    font-weight: 700 !important;
-  }
-
 
   .nav-item {
-    font-size: 120%;
-    font-weight: 600;
-    padding: 3px 5px 3px 5px;
+    margin: 0 10px;
+    /* Spacing between nav items */
+  }
+}
+
+/* Mobile styles */
+@media (max-width: 991px) {
+  .nav-item {
+    width: 100%;
+    /* Full width for mobile nav items */
+    text-align: center;
+    /* Center text for mobile nav items */
+    font-size: 1.2rem;
+    /* Slightly smaller font size for mobile nav items */
   }
 
-
-  .navtext:hover,
-  .navtext:active,
-  .navtext:focus {
-    color: var(--kawaii-purple) !important;
-    transition: color var(--link-transition-duration) ease;
-    text-decoration: none;
+  .navbar-collapse.collapsing {
+    transition: height 0.35s ease;
+    height: auto !important;
   }
-
-  .navbar-light .navbar-toggler-icon {
-    /* hamburger icon */
-    background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'><path stroke='rgb(252, 122, 191)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/></svg>");
-  }
-
-  .navbar-light .navbar-toggler {
-    border-color: transparent;
-    color: transparent;
-    outline: none;
-  }
-
-  .navbar-light .navbar-toggler:hover {
-    box-shadow: 0 0 0 2px rgba(252, 122, 191, .5);
-  }
+}
 </style>

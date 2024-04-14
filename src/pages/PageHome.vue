@@ -4,69 +4,86 @@
   <div class="row">
     <div class="col-lg-7">
 
-      <p>I'm a passionate full-stack developer with a flair for creative problem-solving. My background in Business Administration, specializing in
-        Marketing and Communications, complements my technical skills. Starting my programming journey in 2020, I have since been dedicated to mastering
-        web development through various academic and self-directed studies.</p>
+      <p>I'm a passionate full-stack developer with a deep interest in cybersecurity. My background in Business Administration, enhanced by skills in
+        digital marketing and SEO, kickstarted my programming journey in 2020. With a foundation in agile practices, I concentrate on crafting
+        accessible & optimized web solutions, and address complex challenges effectively.</p>
 
-      <h2>Main languages and frameworks:</h2>
+      <h2>Main Languages & Frameworks</h2>
+      <div class="tech-category">
+        <h3>Web backend technologies & databases</h3>
+        <p class="introduction-highlights-paragraph">
+          <img class="devicon" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original-wordmark.svg" alt="Node.js Logo" />
+          <img class="devicon" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original-wordmark.svg" alt="Express.js Logo" />
+          <img class="devicon" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original-wordmark.svg" alt="MongoDB Logo" />
+          <img class="devicon" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/firebase/firebase-plain-wordmark.svg" alt="Firebase Logo" />
+          <img class="devicon" src="../assets/img/rest-api-logo.svg" alt="Rest Api Logo" />
+        </p>
+        <h3>Web frontend technologies & intuitive store</h3>
+        <p class="introduction-highlights-paragraph">
+          <img class="devicon" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original-wordmark.svg" alt="React Logo" />
+          <img class="devicon" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vuejs/vuejs-original-wordmark.svg" alt="Vue.js Logo" />
+          <img class="devicon" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/ionic/ionic-original-wordmark.svg" alt="Ionic Logo" />
+          <img class="devicon" src="../assets/img/pinia-for-vue-logo.png" alt="Pinia Logo" />
+        </p>
+        <h3>Additional web technologies</h3>
+        <p class="introduction-highlights-paragraph">
+          <img class="devicon" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript Logo" />
+          <img class="devicon" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" alt="TypeScript Logo" />
+          <img class="devicon" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original-wordmark.svg" alt="CSS3 Logo" />
+          <img class="devicon" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original-wordmark.svg" alt="HTML5 Logo" />
+          <img class="devicon" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bootstrap/bootstrap-original-wordmark.svg"
+            alt="Bootstrap Logo" />
+        </p>
 
-      <p class="introduction-highlights-paragraph">
-        <img class="devicon" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original-wordmark.svg" alt="MongoDB Logo" />
-        <img class="devicon" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original-wordmark.svg" alt="Express.js Logo" />
-        <img class="devicon" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original-wordmark.svg" alt="React Logo" />
-        <img class="devicon" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original-wordmark.svg" alt="Node.js Logo" />
-        <img class="devicon" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vuejs/vuejs-original-wordmark.svg" alt="Vue.js Logo" />
-      </p>
+        <h3>Web design</h3>
+        <p class="introduction-highlights-paragraph">
+          <img class="devicon" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg" alt="Figma Logo" />
+        </p>
+      </div>
 
-      <p class="introduction-highlights-paragraph">
-        <img class="devicon" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript Logo" />
-        <img class="devicon" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original-wordmark.svg" alt="CSS3 Logo" />
-        <img class="devicon" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original-wordmark.svg" alt="HTML5 Logo" />
-        <img class="devicon" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bootstrap/bootstrap-original-wordmark.svg" alt="Bootstrap Logo" />
-      </p>
+      <div class="tech-category">
+        <h3>Testing tools</h3>
+        <p class="introduction-highlights-paragraph">
+          <img class="devicon" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jest/jest-plain.svg" alt="Jest Logo" />
+          <img class="devicon" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cypressio/cypressio-original-wordmark.svg"
+            alt="Cypress Logo" />
+        </p>
+      </div>
 
-      <p class="introduction-highlights-paragraph">
-        <img class="devicon" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original-wordmark.svg" alt="Git Logo" />
-        <img class="devicon" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original-wordmark.svg" alt="GitHub Logo" />
-        <img class="devicon" src="../assets/img/github-actions-logo.svg" alt="GitHub Actions Logo" />
-        <img class="devicon" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original-wordmark.svg" alt="Docker Logo" />
-      </p>
+      <div class="tech-category">
+        <h3>Version control, CI/CD, and cloud services</h3>
+        <p class="introduction-highlights-paragraph">
+          <img class="devicon" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original-wordmark.svg" alt="Git Logo" />
+          <img class="devicon" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original-wordmark.svg" alt="GitHub Logo" />
+          <img class="devicon" src="../assets/img/github-actions-logo.svg" alt="GitHub Actions Logo" />
+          <img class="devicon" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original-wordmark.svg" alt="Docker Logo" />
+          <img class="devicon" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/azure/azure-original-wordmark.svg" alt="Azure Logo" />
+        </p>
+      </div>
 
-      <p class="introduction-highlights-paragraph">
-        <img class="devicon" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original-wordmark.svg" alt="Python Logo" />
-        <img class="devicon" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/sqlite/sqlite-original-wordmark.svg" alt="SQLite Logo" />
-        <img class="devicon" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original-wordmark.svg"
-          alt="PostgreSQL Logo" />
-      </p>
-
-      <h2>Other developer skills:</h2>
-      <p class="introduction-highlights-paragraph other-dev-skills">
-        <span class="heartbefore col">CI/CD</span>
-        <span class="heartbefore col">REST-apis</span>
-        <span class="heartbefore col">Testing (Jest, Cypress, SuperTest)</span>
-        <span class="heartbefore col">Design with Figma</span>
-        <span class="heartbefore col">Agile methodologies</span>
-        <span class="heartbefore col">Communication</span>
-        <span class="heartbefore col">Cybersecurity</span>
-        <span class="heartbefore col">Digital marketing</span>
-        <span class="heartbefore col">Web accessibility</span>
-        <span class="heartbefore col">Usability</span>
-        <span class="heartbefore col">SEO</span>
-        <span class="heartbefore col">AI prompt engineering</span>
-      </p>
+      <div class="tech-category">
+        <h3>Programming languages & databases</h3>
+        <p class="introduction-highlights-paragraph">
+          <img class="devicon" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original-wordmark.svg" alt="Python Logo" />
+          <img class="devicon" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/sqlite/sqlite-original-wordmark.svg" alt="SQLite Logo" />
+          <img class="devicon" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original-wordmark.svg"
+            alt="PostgreSQL Logo" />
+        </p>
+      </div>
 
       <section class="education">
-        <div class="heartlist-small">
+        <div class="heartlist">
           <h2>My developer journey</h2>
           <ul role="presentation">
-            <li>Full-time role as a dedicated full-stack developer at Virittämö Helsinki.</li>
+            <li>Full-time role as a dedicated software developer at Helsinki City, Virittämö.</li>
             <li>Bachelor of Science in Business Administration from the University of Vaasa.</li>
             <li>Pursued computer science as part of Helsinki University's DEFA project courses.</li>
             <li>Successfully completed the Full-stack Open course series, gaining valuable skills for a full-stack development career.</li>
-            <li>Currently pursuing further programming studies while working as a full-stack developer at Virittämö.</li>
+            <li>Currently pursuing further programming studies while working as a software developer.</li>
           </ul>
         </div>
       </section>
+
     </div>
 
     <div class="col-md-auto">
@@ -75,14 +92,15 @@
   </div>
 
   <section class="interesting-fact">
-    <h2>A bit about me</h2>
-    <p>When not immersed in coding, I indulge in my love for producing music and exploring Japanese fashion and culture, which fuels my creativity and
+    <h2>A bit about my <span class="tooltip-container">yume<span class="tooltip-text">"dream"</span></span></h2>
+    <p>When not immersed in coding, I indulge in my love for producing music and exploring Japanese culture, which fuels my creativity and
       brings a unique perspective to my work in tech.</p>
   </section>
 
   <section class="commitment">
     <h2>My Commitment</h2>
-    <p>With a deep-rooted passion for programming, I'm committed to continual learning and skill enhancement. My creativity not only manifests in coding
+    <p>With a deep-rooted passion for programming, I'm committed to continual learning and skill enhancement. My creativity not only manifests in
+      coding
       but also in my hobbies. I'm currently available for new opportunities in the IT field.</p>
   </section>
 
@@ -93,12 +111,13 @@
     <p class="introduction-highlights-paragraph">
 
       <a href="https://www.linkedin.com/in/yumeangelica/" target="_blank" aria-label="Visit my LinkedIn profile">
-        <img class="devicon" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linkedin/linkedin-original-wordmark.svg"
+        <img class="contact-icon" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linkedin/linkedin-original-wordmark.svg"
           alt="LinkedIn logo and link" />
       </a>
 
       <a href="https://github.com/yumeangelica" target="_blank" aria-label="Visit my GitHub profile">
-        <img class="devicon" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original-wordmark.svg" alt="GitHub logo and link" />
+        <img class="contact-icon" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original-wordmark.svg"
+          alt="GitHub logo and link" />
       </a>
 
     </p>
@@ -110,81 +129,145 @@
 
 </script>
 
-<style>
-  .devicon {
-    max-width: 80px;
-    margin-right: 25px;
-    margin-bottom: 25px;
-  }
+<style scoped>
+.tech-category h3 {
+  font-size: 1.5em;
+  margin-top: 20px;
+}
 
-  .profilepic {
-    width: 100%;
-    max-width: 300px;
-    margin: 10px 0px 20px 35px;
-  }
+.devicon,
+.contact-icon {
+  max-width: 70px;
+  margin-right: 15px;
+  margin-bottom: 15px;
+  padding: 2px;
+  border-radius: 10px;
+}
 
-  /* Unordered heartlist */
-  .heartlist ul {
-    list-style: none;
-  }
+.profilepic {
+  width: 100%;
+  max-width: 300px;
+  margin: 10px 0px 20px 35px;
+}
 
-  /* Unordered heartlist - Position absolute and negative margin to stop heart bullet from interrupting the flow of the text */
-  .heartlist ul li:before {
-    content: "\2661";
-    color: var(--kawaii-dark-pink);
-    font-size: 24px;
-    position: absolute;
-    margin-left: -1em;
-  }
 
-  /* Unordered heartlist - Position relative, so heartlist is aligned properly */
-  .heartlist li {
-    font-size: 24px;
-    position: relative;
-    margin-top: 6px;
-  }
+/* Unordered heartlist */
+.heartlist ul {
+  list-style: none;
+}
 
-  /* Unordered heartlist - smaller version */
-  .heartlist-small ul {
-    list-style: none;
-  }
+.heartlist ul li:before {
+  content: "\2661";
+  color: var(--kawaii-dark-pink);
+  font-size: 1.1rem;
+  position: absolute;
+  margin-left: -1.1em;
+}
 
-  .heartlist-small ul li:before {
-    content: "\2661";
-    color: var(--kawaii-dark-pink);
-    font-size: 18px;
-    position: absolute;
-    margin-left: -1.1em;
-  }
+.heartlist li {
+  font-size: 1.1rem;
+  position: relative;
+  padding: 1px 0px 1px 0px;
+}
 
-  .heartlist-small li {
-    font-size: 18px;
-    position: relative;
-    padding: 1px 0px 1px 0px;
-  }
+.introduction-highlights-paragraph {
+  margin-bottom: 25px;
+}
 
-  .introduction-highlights-paragraph {
-    margin-bottom: 25px;
-  }
 
-  .other-dev-skills>span {
-    display: inline-block;
-    line-height: 1.5;
-    font-size: 20px;
-  }
 
-  /* mobile mode rules */
+.tooltip-container {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  /* Creates a dashed underline */
+  border-bottom: 1px dashed rgba(255, 105, 180, 0.5);
+  padding-bottom: 2px;
+}
+
+
+.tooltip-text {
+  font-size: 22px;
+  visibility: hidden;
+  opacity: 0;
+  width: auto;
+  background-color: rgba(255, 255, 255, 0.4);
+  color: #ff69b4;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  transition: opacity 0.4s ease, visibility 0.4s ease;
+
+  /* Position the tooltip */
+  position: absolute;
+  z-index: 1;
+  bottom: 0;
+  left: 110%;
+  /* Positions the tooltip to the right of the text */
+  transform: translateY(-50%);
+  white-space: nowrap;
+}
+
+.tooltip-container:hover .tooltip-text {
+  visibility: visible;
+  opacity: 1;
+}
+
+
+
+/* mobile mode rules */
+@media (max-width: 600px) {
   @media (max-width: 600px) {
-    .devicon {
-      max-width: 50px;
+
+    h1 {
+      font-size: 1.7em;
     }
 
-    .other-dev-skills>span {
-      font-size: 18px;
+    h2 {
+      font-size: 1.4rem !important;
+    }
+
+    .tech-category h3 {
+      font-size: 1.2rem;
+      margin-top: 10px;
+    }
+
+    .devicon {
+      max-width: 40px;
+      margin-right: 10px;
+    }
+
+    .heartlist li,
+    p {
+      font-size: 0.9rem;
     }
 
     .profilepic {
       max-width: 200px;
+      margin: 10px auto;
+      display: block;
+    }
+
+    .tooltip-container {
+      border-bottom: 1px dashed rgba(255, 105, 180, 0.5);
+    }
+
+    .tooltip-text {
+      font-size: 12px;
+      visibility: hidden;
+      opacity: 0;
+      position: absolute;
+      left: auto;
+      right: auto;
+      bottom: 27px;
+      transform: translateX(0%);
+    }
+
+    .tooltip-container:hover .tooltip-text {
+      visibility: visible;
+      opacity: 1;
     }
   }
+}
 </style>

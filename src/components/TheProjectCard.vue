@@ -28,6 +28,7 @@ import fullstack from '../assets/img/fullstack-phonebook-application-project.web
 import portfolio from '../assets/img/portfolio-project.webp';
 import jobfinder from '../assets/img/job-finder-project.webp';
 import weatherview from '../assets/img/weather-view-project.webp';
+import needypet from '../assets/img/needypet-project.webp';
 
 export default {
   props: { // props are passed from parent component
@@ -60,6 +61,8 @@ export default {
           return jobfinder;
         case "Weather view":
           return weatherview;
+        case "NeedyPet":
+          return needypet;
       }
     }
   }
@@ -70,19 +73,20 @@ export default {
 
 
 
-<style>
+<style scoped>
 .small-devicon {
   max-width: 40px;
   max-height: 40px;
   margin-right: 10px;
   margin-bottom: 10px;
+  border-radius: 5px;
 }
 
 .used-technologies {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  margin-bottom: 15px;
+  margin-bottom: 10px;
 }
 
 .additional-info {
@@ -92,19 +96,23 @@ export default {
 
 
 .project-card {
+  font-size: 1rem;
   display: flex;
   flex-direction: column;
-  width: 380px;
+  width: 500px;
   margin: 10px;
   background-color: var(--kawaii-lilac);
   border-radius: 10px;
-  max-height: 700px;
   overflow: hidden;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease-in-out, box-shadow 0.3s ease;
   overflow-y: auto;
-  border: 1px solid rgba(0, 0, 0, 0.05); /* Lisätty erittäin hienovarainen reuna */
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  flex: 1 1 calc(50% - 20px);
+  max-height: 650px;
+  max-width: 500px;
 }
+
 
 .project-card:hover {
   transform: translateY(-5px);
@@ -159,6 +167,7 @@ export default {
   border-radius: 5px;
   transition: background-color var(--link-transition-duration), color var(--link-transition-duration);
   margin-right: 10px;
+  font-size: 0.9rem;
 }
 
 .project-button:hover {
@@ -170,13 +179,12 @@ export default {
 }
 
 
-
-
 /* mobile mode rules */
 @media (max-width: 600px) {
 
   .project-details p {
     font-size: 0.8em;
+    line-height: 1.65;
   }
 
   .project-details {
@@ -191,6 +199,7 @@ export default {
   .project-card {
     width: 100%;
     margin: 10px 0;
+    font-size: 0.9rem;
   }
 
 

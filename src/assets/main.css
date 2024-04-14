@@ -3,7 +3,7 @@
 body {
   background-color: var(--kawaii-background-pink) !important;
   min-height: 100vh;
-  line-height: 1.8;
+  line-height: 1.9 !important;
   font-family:
     Inter,
     -apple-system,
@@ -17,7 +17,7 @@ body {
     'Droid Sans',
     'Helvetica Neue',
     sans-serif;
-  font-size: 15px;
+  font-size: 1rem;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -69,8 +69,7 @@ img {
 p {
   color: var(--kawaii-font-gray);
   margin-bottom: 25px;
-  font-size: 16px;
-  line-height: 32px;
+  font-size: 1.1rem;
 }
 
 /* lists */
