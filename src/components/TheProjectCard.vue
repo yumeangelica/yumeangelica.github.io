@@ -7,7 +7,7 @@
     <div class="project-details">
       <h5>{{ projectTitle }}</h5>
       <p class="used-technologies">
-        <img v-for="techName in technologyTitles" :key="techName" class="small-devicon" :src="techName === 'Pinia' ? './src/assets/img/pinia-for-vue-logo.png' : getTechIconUrl(techName)" :alt="`${techName} Logo`" />
+        <img v-for="techName in technologyTitles" :key="techName" class="small-devicon" :src="getTechIconUrl(techName)" :alt="techName" />
       </p>
       <p v-for="info in additionalInfo" :key="info" class="heartbefore additional-info">
         {{ info }}
@@ -28,6 +28,7 @@ import portfolio from '../assets/img/portfolio-project.webp';
 import jobfinder from '../assets/img/job-finder-project.webp';
 import weatherview from '../assets/img/weather-view-project.webp';
 import needypet from '../assets/img/needypet-project.webp';
+import pinia from '../assets/img/pinia-for-vue-logo.webp';
 
 export default {
   props: {
@@ -45,6 +46,9 @@ export default {
   },
   methods: {
     getTechIconUrl(techName) {
+      if (techName === 'Pinia') {
+        return pinia;
+      }
       const tech = this.technologies.find(t => t.title === techName);
       return tech ? tech.url : '';
     },
