@@ -21,9 +21,7 @@
   </div>
 </template>
 
-
 <script>
-
 import taito from '../assets/img/taitovarasto-project.webp';
 import fullstack from '../assets/img/fullstack-phonebook-application-project.webp';
 import portfolio from '../assets/img/portfolio-project.webp';
@@ -31,27 +29,32 @@ import jobfinder from '../assets/img/job-finder-project.webp';
 import weatherview from '../assets/img/weather-view-project.webp';
 import needypet from '../assets/img/needypet-project.webp';
 
-// custom pinia dev icon
-import pinia from '../assets/img/pinia-for-vue-logo.png';
-
 export default {
-  props: { // props are passed from parent component
+  props: {
     project: Object,
     technologies: Array
   },
   data() {
-    return { // data is local to this component and can be used in the template
+    return {
       imageURL: "",
       projectTitle: this.project.title,
       additionalInfo: this.project.additionalInfo,
       links: this.project.links,
       technologyTitles: this.project.technologyTitles,
+      piniaIconUrl: null, // for storing the dynamically loaded Pinia icon URL
     }
   },
+  created() {
+    this.loadPiniaIcon();
+  },
   methods: {
-    getTechIconUrl(techName) { // finds the technology object from the technologies array and returns the url of the icon so it can be displayed in the template
+    async loadPiniaIcon() {
+      const module = await import('../assets/img/pinia-for-vue-logo.png');
+      this.piniaIconUrl = module.default;
+    },
+    getTechIconUrl(techName) {
       if (techName === 'Pinia') {
-        return pinia;
+        return this.piniaIconUrl;
       }
       const tech = this.technologies.find(t => t.title === techName);
       return tech ? tech.url : '';
@@ -70,15 +73,13 @@ export default {
           return weatherview;
         case "NeedyPet":
           return needypet;
+        default:
+          return '';
       }
     }
   }
 }
-
 </script>
-
-
-
 
 <style scoped>
 .small-devicon {
@@ -101,7 +102,6 @@ export default {
   padding-bottom: 0px !important;
 }
 
-
 .project-card {
   font-size: 1rem;
   display: flex;
@@ -120,7 +120,6 @@ export default {
   max-width: 500px;
 }
 
-
 .project-card:hover {
   transform: translateY(-5px);
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
@@ -129,14 +128,11 @@ export default {
 .project-image-container img {
   width: 100%;
   height: auto;
-  /* display: block; */
   object-fit: cover;
-  /* ensures that the image covers the entire container */
 }
 
 .project-details {
   flex: 1;
-  /* ensures that the project details take up all the available space */
   padding: 15px;
   display: flex;
   flex-direction: column;
@@ -155,15 +151,10 @@ export default {
   margin-bottom: 10px;
 }
 
-.technology {
-  font-weight: bold;
-}
-
 .buttons {
   margin-top: 15px;
   display: flex;
   justify-content: flex-start;
-  /* aligns buttons to the left */
 }
 
 .project-button {
@@ -185,10 +176,7 @@ export default {
   margin-right: 0;
 }
 
-
-/* mobile mode rules */
 @media (max-width: 600px) {
-
   .project-details p {
     font-size: 0.8em;
     line-height: 1.65;
@@ -209,26 +197,14 @@ export default {
     font-size: 0.9rem;
   }
 
-
   .buttons {
-    display: flex;
-    justify-content: flex-start;
-    /* aligns buttons to the left */
     flex-wrap: wrap;
-    /* allows buttons to wrap */
   }
 
   .project-button {
     padding: 5px;
-    text-align: center;
     font-size: 0.85em !important;
-    flex: none;
     margin-right: 5px;
-    text-align: center;
-  }
-
-  .project-button:last-child {
-    margin-bottom: 0;
   }
 }
 </style>
