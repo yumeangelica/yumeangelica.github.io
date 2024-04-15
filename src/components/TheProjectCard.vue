@@ -7,7 +7,7 @@
     <div class="project-details">
       <h5>{{ projectTitle }}</h5>
       <p class="used-technologies">
-        <img v-for="techName in technologyTitles" :key="techName" class="small-devicon" :src="getTechIconUrl(techName)" :alt="`${techName} Logo`" />
+        <img v-for="techName in technologyTitles" :key="techName" class="small-devicon" :src="techName === 'Pinia' ? './src/assets/img/pinia-for-vue-logo.png' : getTechIconUrl(techName)" :alt="`${techName} Logo`" />
       </p>
       <p v-for="info in additionalInfo" :key="info" class="heartbefore additional-info">
         {{ info }}
@@ -46,10 +46,7 @@ export default {
   methods: {
     getTechIconUrl(techName) {
       const tech = this.technologies.find(t => t.title === techName);
-      if (tech === 'Pinia') {
-        return '../assets/img/pinia-for-vue-logo.png';
-      }
-      return tech.url;
+      return tech ? tech.url : '';
     },
     getProjectImageURL() {
       switch (this.projectTitle) {
