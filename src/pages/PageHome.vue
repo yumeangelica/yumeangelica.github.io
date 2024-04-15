@@ -23,7 +23,7 @@
           <img class="devicon" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original-wordmark.svg" alt="React Logo" />
           <img class="devicon" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vuejs/vuejs-original-wordmark.svg" alt="Vue.js Logo" />
           <img class="devicon" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/ionic/ionic-original-wordmark.svg" alt="Ionic Logo" />
-          <img class="devicon" src="../assets/img/pinia-for-vue-logo.png" alt="Pinia Logo" />
+          <img class="devicon" src="../assets/img/pinia-for-vue-logo.webp" alt="Pinia Logo" />
         </p>
         <h3>Additional web technologies</h3>
         <p class="introduction-highlights-paragraph">
