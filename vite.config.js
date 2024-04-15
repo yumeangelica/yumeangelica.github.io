@@ -4,7 +4,7 @@ import vue from '@vitejs/plugin-vue'
 import path from 'path'
 
 export default defineConfig({
-  base: process.env.NODE_ENV === 'production' ? '/<repository-name>/' : './',  // Set the base URL for production
+  publicpath: process.env.PUBLIC_URL || '/',
   plugins: [
     vue(),
   ],

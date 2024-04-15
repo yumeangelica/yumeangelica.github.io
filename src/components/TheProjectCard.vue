@@ -41,23 +41,15 @@ export default {
       additionalInfo: this.project.additionalInfo,
       links: this.project.links,
       technologyTitles: this.project.technologyTitles,
-      piniaIconUrl: null, // for storing the dynamically loaded Pinia icon URL
     }
   },
-  created() {
-    this.loadPiniaIcon();
-  },
   methods: {
-    async loadPiniaIcon() {
-      const module = await import('../assets/img/pinia-for-vue-logo.png');
-      this.piniaIconUrl = module.default;
-    },
     getTechIconUrl(techName) {
-      if (techName === 'Pinia') {
-        return this.piniaIconUrl;
-      }
       const tech = this.technologies.find(t => t.title === techName);
-      return tech ? tech.url : '';
+      if (tech === 'Pinia') {
+        return '../assets/img/pinia-for-vue-logo.png';
+      }
+      return tech.url;
     },
     getProjectImageURL() {
       switch (this.projectTitle) {
