@@ -211,26 +211,21 @@
     },
     {
       "id": 13,
-      "title": "Pinia",
-      "url": "./src/assets/img/pinia-for-vue-logo.png"
-    },
-    {
-      "id": 14,
       "title": "Jest",
       "url": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jest/jest-plain.svg"
     },
     {
-      "id": 15,
+      "id": 14,
       "title": "Docker",
       "url": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original-wordmark.svg"
     },
     {
-      "id": 16,
+      "id": 15,
       "title": "Azure",
       "url": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/azure/azure-original-wordmark.svg"
     },
     {
-      "id": 17,
+      "id": 16,
       "title": "GitHub",
       "url": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original-wordmark.svg"
     }

@@ -3,6 +3,7 @@
     <div class="project-image-container">
       <img :src="getProjectImageURL()" :alt="projectTitle" />
     </div>
+
     <div class="project-details">
       <h5>{{ projectTitle }}</h5>
       <p class="used-technologies">
@@ -30,6 +31,9 @@ import jobfinder from '../assets/img/job-finder-project.webp';
 import weatherview from '../assets/img/weather-view-project.webp';
 import needypet from '../assets/img/needypet-project.webp';
 
+// custom pinia dev icon
+import pinia from '../assets/img/pinia-for-vue-logo.png';
+
 export default {
   props: { // props are passed from parent component
     project: Object,
@@ -46,6 +50,9 @@ export default {
   },
   methods: {
     getTechIconUrl(techName) { // finds the technology object from the technologies array and returns the url of the icon so it can be displayed in the template
+      if (techName === 'Pinia') {
+        return pinia;
+      }
       const tech = this.technologies.find(t => t.title === techName);
       return tech ? tech.url : '';
     },
