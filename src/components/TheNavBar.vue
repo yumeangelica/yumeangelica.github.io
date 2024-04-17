@@ -69,39 +69,35 @@ onUnmounted(() => {
 /* Navbar overall styling */
 nav {
   margin-bottom: 40px;
-  background: var(--kawaii-pastel-lilac);
-  padding: 10px 0;
+  background: var(--color-pastel-lilac);
+  padding: 5px 0;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 /* Navbar link styling */
 .nav-link {
-  color: var(--kawaii-dark-purple) !important;
+  color: var(--color-dark-lilac) !important;
   transition: color 0.3s ease-in-out;
 }
 
 .nav-link.router-link-active {
-  color: var(--kawaii-purple) !important;
+  color: var(--color-highlighted-lilac) !important;
   font-weight: bold;
 }
 
 /* Navbar item styling */
 .nav-item {
-  font-size: 1.3rem;
+  font-size: 1.35rem;
+  font-weight: 500;
+  padding: 0px 2px;
 }
 
 /* Hover and focus effects for nav items */
 .nav-item:hover,
 .nav-item:focus {
   background-color: var(--kawaii-light-pink);
-  /* Light pink for hover state */
+  color: var(--color-highlighted-lilac);
   border-radius: 5px;
-}
-
-/* Active link styling */
-.nav-link.active {
-  color: var(--kawaii-purple) !important;
-  font-weight: bold;
 }
 
 /* Navbar toggler icon customization */
@@ -117,31 +113,19 @@ nav {
 /* Toggler button hover and focus effects */
 .navbar-light .navbar-toggler:hover,
 .navbar-light .navbar-toggler:focus {
-  box-shadow: 0 0 0 2px rgba(252, 122, 191, .5);
+  box-shadow: none;
 }
 
-/* Smooth transition for navbar collapse */
-.collapse:not(.show) {
-  display: none;
-}
-
-.collapse.show {
-  display: block;
-  transition: all 0.35s ease;
-}
 
 /* Media query for larger screens */
 @media (min-width: 992px) {
   .navbar-nav {
     justify-content: center;
-    /* Center navbar items */
     width: 100%;
-    /* Full width */
   }
 
   .nav-item {
     margin: 0 10px;
-    /* Spacing between nav items */
   }
 }
 
@@ -149,16 +133,9 @@ nav {
 @media (max-width: 991px) {
   .nav-item {
     width: 100%;
-    /* Full width for mobile nav items */
     text-align: center;
-    /* Center text for mobile nav items */
     font-size: 1.2rem;
-    /* Slightly smaller font size for mobile nav items */
-  }
-
-  .navbar-collapse.collapsing {
-    transition: height 0.35s ease;
-    height: auto !important;
+    padding: 0px 5px;
   }
 }
 </style>
