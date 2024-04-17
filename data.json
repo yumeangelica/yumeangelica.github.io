@@ -65,6 +65,26 @@
     {
       "id": 3,
       "type": "webDevelopment",
+      "title": "Taitovarasto for Virittämö as a client",
+      "imageURL": "./src/assets/img/taitovarasto-project.webp",
+      "technologyTitles": [
+        "MongoDB",
+        "Express.js",
+        "React",
+        "Node.js",
+        "JavaScript",
+        "CSS3",
+        "HTML5",
+        "GitHub"
+      ],
+      "additionalInfo": [
+        "Recruitment and skills showcase app, built with a team. My role was focused on back-end development, database design, and API implementation",
+        "Full-stack, CRUD functionality, authentication, cybersecurity, nodemailer, tests"
+      ]
+    },
+    {
+      "id": 4,
+      "type": "webDevelopment",
       "title": "Fullstack phonebook app",
       "imageURL": "./src/assets/img/fullstack-phonebook-application-project.webp",
       "technologyTitles": [
@@ -87,26 +107,6 @@
           "text": "Source Code",
           "url": "https://github.com/yumeangelica/fullstack-phonebook-application"
         }
-      ]
-    },
-    {
-      "id": 4,
-      "type": "webDevelopment",
-      "title": "Taitovarasto for Virittämö as a client",
-      "imageURL": "./src/assets/img/taitovarasto-project.webp",
-      "technologyTitles": [
-        "MongoDB",
-        "Express.js",
-        "React",
-        "Node.js",
-        "JavaScript",
-        "CSS3",
-        "HTML5",
-        "GitHub"
-      ],
-      "additionalInfo": [
-        "Recruitment and skills showcase app, built with a team. My role was focused on back-end development, database design, and API implementation",
-        "Full-stack, CRUD functionality, authentication, cybersecurity, nodemailer, tests"
       ]
     },
     {
@@ -206,26 +206,21 @@
     },
     {
       "id": 12,
-      "title": "Ionic",
-      "url": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/ionic/ionic-original-wordmark.svg"
-    },
-    {
-      "id": 13,
       "title": "Jest",
       "url": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jest/jest-plain.svg"
     },
     {
-      "id": 14,
+      "id": 13,
       "title": "Docker",
       "url": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original-wordmark.svg"
     },
     {
-      "id": 15,
+      "id": 14,
       "title": "Azure",
       "url": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/azure/azure-original-wordmark.svg"
     },
     {
-      "id": 16,
+      "id": 15,
       "title": "GitHub",
       "url": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original-wordmark.svg"
     }
