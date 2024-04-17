@@ -4,9 +4,13 @@
   <div class="row">
     <div class="col-lg-7">
 
-      <p>I'm a passionate full-stack developer with a deep interest in cybersecurity. My background in Business Administration, enhanced by skills in
-        digital marketing and SEO, kickstarted my programming journey in 2020. With a foundation in agile practices, I concentrate on crafting
-        accessible & optimized web solutions, and address complex challenges effectively.</p>
+      <p>I'm a passionate <span class="text-highlight">full-stack developer</span> with a deep interest in <span
+          class="text-highlight">cybersecurity</span>. My background in Business Administration, enhanced by skills in
+        <span class="text-highlight">digital marketing</span> and <span class="text-highlight">SEO</span>, kickstarted my programming journey in 2020.
+        With a foundation in <span class="text-highlight">agile practices</span>, I concentrate on crafting
+        <span class="text-highlight">accessible</span> & <span class="text-highlight">optimized</span> web solutions, and address complex challenges
+        effectively.
+      </p>
 
       <h2>Main Languages & Frameworks</h2>
       <div class="tech-category">
@@ -18,13 +22,15 @@
           <img class="devicon" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/firebase/firebase-plain-wordmark.svg" alt="Firebase Logo" />
           <img class="devicon" src="../assets/img/rest-api-logo.svg" alt="Rest Api Logo" />
         </p>
+
         <h3>Web frontend technologies & intuitive store</h3>
         <p class="introduction-highlights-paragraph">
           <img class="devicon" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original-wordmark.svg" alt="React Logo" />
           <img class="devicon" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vuejs/vuejs-original-wordmark.svg" alt="Vue.js Logo" />
-          <img class="devicon" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/ionic/ionic-original-wordmark.svg" alt="Ionic Logo" />
+          <img class="devicon" src="../assets/img/ionic-logo.svg" alt="Ionic Logo" />
           <img class="devicon" src="../assets/img/pinia-for-vue-logo.webp" alt="Pinia Logo" />
         </p>
+
         <h3>Additional web technologies</h3>
         <p class="introduction-highlights-paragraph">
           <img class="devicon" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript Logo" />
@@ -78,7 +84,8 @@
             <li>Full-time role as a dedicated software developer at Helsinki City, Virittämö.</li>
             <li>Bachelor of Science in Business Administration from the University of Vaasa.</li>
             <li>Pursued computer science as part of Helsinki University's DEFA project courses.</li>
-            <li>Successfully completed the Full-stack Open course series, gaining valuable skills for a full-stack development career.</li>
+            <li>Successfully completed the Full Stack Open course series, gaining valuable skills for a full-stack development career.</li>
+            <li>Earned a degree in Information and Communications Technology from Business College Helsinki.</li>
             <li>Currently pursuing further programming studies while working as a software developer.</li>
           </ul>
         </div>
@@ -87,7 +94,7 @@
     </div>
 
     <div class="col-md-auto">
-      <img src="../assets/img/angelica_profilepic.jpeg" class="img-responsive profilepic" alt="Angelica's Profile Picture">
+      <img src="../assets/img/angelica-profilepic.webp" class="img-responsive profilepic" alt="Angelica's Profile Picture">
     </div>
   </div>
 
@@ -130,18 +137,34 @@
 </script>
 
 <style scoped>
+.text-highlight {
+  color: var(--color-extra-dark-bold-lilac);
+  font-weight: bold;
+}
+
 .tech-category h3 {
   font-size: 1.5em;
   margin-top: 20px;
 }
 
-.devicon,
-.contact-icon {
+.devicon {
   max-width: 70px;
   margin-right: 15px;
   margin-bottom: 15px;
   padding: 2px;
-  border-radius: 10px;
+  border-radius: 5px;
+}
+
+.contact-icon {
+  max-width: 90px;
+  margin-right: 25px;
+  margin-bottom: 15px;
+  border-radius: 5px;
+}
+
+.contact-icon:hover {
+  transform: scale(1.05);
+  cursor: pointer;
 }
 
 .profilepic {
@@ -158,7 +181,7 @@
 
 .heartlist ul li:before {
   content: "\2661";
-  color: var(--kawaii-dark-pink);
+  color: var(--color-semi-dark-lilac);
   font-size: 1.1rem;
   position: absolute;
   margin-left: -1.1em;
@@ -175,13 +198,12 @@
 }
 
 
-
 .tooltip-container {
   position: relative;
   display: inline-block;
   cursor: pointer;
   /* Creates a dashed underline */
-  border-bottom: 1px dashed rgba(255, 105, 180, 0.5);
+  border-bottom: 1px dashed var(--color-semi-dark-lilac);
   padding-bottom: 2px;
 }
 
@@ -191,8 +213,7 @@
   visibility: hidden;
   opacity: 0;
   width: auto;
-  background-color: rgba(255, 255, 255, 0.4);
-  color: #ff69b4;
+  color: var(--color-semi-dark-lilac);
   text-align: center;
   border-radius: 6px;
   padding: 5px 10px;
@@ -217,57 +238,56 @@
 
 
 /* mobile mode rules */
-@media (max-width: 600px) {
-  @media (max-width: 600px) {
 
-    h1 {
-      font-size: 1.7em;
-    }
+@media (max-width: 568px) {
 
-    h2 {
-      font-size: 1.4rem !important;
-    }
+  h1 {
+    font-size: 1.7em;
+  }
 
-    .tech-category h3 {
-      font-size: 1.2rem;
-      margin-top: 10px;
-    }
+  h2 {
+    font-size: 1.4rem !important;
+  }
 
-    .devicon {
-      max-width: 40px;
-      margin-right: 10px;
-    }
+  .tech-category h3 {
+    font-size: 1.2rem;
+    margin-top: 10px;
+  }
 
-    .heartlist li,
-    p {
-      font-size: 0.9rem;
-    }
+  .devicon {
+    max-width: 40px;
+    margin-right: 10px;
+  }
 
-    .profilepic {
-      max-width: 200px;
-      margin: 10px auto;
-      display: block;
-    }
+  .contact-icon {
+    max-width: 70px;
+  }
 
-    .tooltip-container {
-      border-bottom: 1px dashed rgba(255, 105, 180, 0.5);
-    }
+  .heartlist li,
+  p {
+    font-size: 0.9rem;
+  }
 
-    .tooltip-text {
-      font-size: 12px;
-      visibility: hidden;
-      opacity: 0;
-      position: absolute;
-      left: auto;
-      right: auto;
-      bottom: 27px;
-      transform: translateX(0%);
-    }
+  .profilepic {
+    max-width: 200px;
+    margin: 10px auto;
+    display: block;
+  }
 
-    .tooltip-container:hover .tooltip-text {
-      visibility: visible;
-      opacity: 1;
-    }
+  .tooltip-text {
+    font-size: 12px;
+    visibility: hidden;
+    opacity: 0;
+    position: absolute;
+    left: auto;
+    right: auto;
+    bottom: 27px;
+    transform: translateX(0%);
+  }
+
+  .tooltip-container:hover .tooltip-text {
+    visibility: visible;
+    opacity: 1;
   }
 }
 </style>

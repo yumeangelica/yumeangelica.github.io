@@ -36,7 +36,6 @@ export default {
 .custom-container {
   max-width: 1400px;
   margin: 0 auto;
-  /* Centering the container */
   padding: 0 15px;
 }
 

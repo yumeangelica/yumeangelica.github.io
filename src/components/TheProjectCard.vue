@@ -29,6 +29,7 @@ import jobfinder from '../assets/img/job-finder-project.webp';
 import weatherview from '../assets/img/weather-view-project.webp';
 import needypet from '../assets/img/needypet-project.webp';
 import pinia from '../assets/img/pinia-for-vue-logo.webp';
+import ionic from '../assets/img/ionic-logo.svg';
 
 export default {
   props: {
@@ -46,6 +47,9 @@ export default {
   },
   methods: {
     getTechIconUrl(techName) {
+      if (techName === 'Ionic') {
+        return ionic;
+      }
       if (techName === 'Pinia') {
         return pinia;
       }
@@ -101,7 +105,7 @@ export default {
   flex-direction: column;
   width: 500px;
   margin: 10px;
-  background-color: var(--kawaii-lilac);
+  background-color: var(--color-card-bg);
   border-radius: 10px;
   overflow: hidden;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -109,7 +113,6 @@ export default {
   overflow-y: auto;
   border: 1px solid rgba(0, 0, 0, 0.05);
   flex: 1 1 calc(50% - 20px);
-  max-height: 650px;
   max-width: 500px;
 }
 
@@ -125,51 +128,51 @@ export default {
 }
 
 .project-details {
-  flex: 1;
-  padding: 15px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  height: 100%;
+  padding: 15px;
 }
 
 .project-details h5 {
-  color: var(--kawaii-dark-pink);
-  margin-bottom: 5px;
-  font-size: 1.2em;
+  margin-bottom: 10px;
 }
 
 .project-details p {
-  color: var(--kawaii-font-gray);
+  color: var(--color-font-gray);
   font-size: 0.90em;
   margin-bottom: 10px;
 }
 
 .buttons {
-  margin-top: 15px;
+  margin-top: auto;
   display: flex;
   justify-content: flex-start;
+  padding-top: 10px;
 }
 
 .project-button {
   text-decoration: none;
   color: var(--white);
-  background-color: var(--kawaii-dark-pink);
-  padding: 8px 15px;
-  border-radius: 5px;
+  background-color: var(--color-btn-lilac);
+  padding: 5px 10px;
+  border-radius: 15px;
   transition: background-color var(--link-transition-duration), color var(--link-transition-duration);
   margin-right: 10px;
   font-size: 0.9rem;
 }
 
 .project-button:hover {
-  background-color: var(--kawaii-dark-purple);
+  background-color: var(--color-semi-dark-lilac);
 }
 
 .project-button:last-child {
   margin-right: 0;
 }
 
-@media (max-width: 600px) {
+
+@media (max-width: 568px) {
   .project-details p {
     font-size: 0.8em;
     line-height: 1.65;
@@ -180,8 +183,8 @@ export default {
   }
 
   .small-devicon {
-    max-width: 25px;
-    max-height: 25px;
+    max-width: 20px;
+    max-height: 20px;
   }
 
   .project-card {

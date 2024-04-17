@@ -1,7 +1,7 @@
 @import './base.css';
 
 body {
-  background-color: var(--kawaii-background-pink) !important;
+  background-color: var(--color-background-light-pink) !important;
   min-height: 100vh;
   line-height: 1.9 !important;
   font-family:
@@ -27,11 +27,15 @@ body {
   max-width: 100%;
   margin: 0 auto;
   font-weight: normal;
-  background-color: var(--kawaii-background-pink) !important;
+  background-color: var(--color-background-light-pink) !important;
 }
 
 h1, h2, h3, h4, h5 {
-  color: var(--kawaii-dark-pink) !important;
+  color: var(--color-dark-lilac) !important;
+}
+
+h2, h3, h4, h5 {
+  color: var(--color-semi-dark-lilac) !important;
 }
 
 /* Header styling */
@@ -67,14 +71,14 @@ img {
 }
 
 p {
-  color: var(--kawaii-font-gray);
+  color: var(--color-font-gray);
   margin-bottom: 25px;
   font-size: 1.1rem;
 }
 
 /* lists */
 li {
-  color: var(--kawaii-font-gray);
+  color: var(--color-font-gray);
 }
 
 /* heart element before words */
@@ -84,5 +88,5 @@ li {
 
 .heartbefore:before {
   content: "\2661";
-  color: var(--kawaii-dark-pink);
+  color: var(--color-semi-dark-lilac);
 }

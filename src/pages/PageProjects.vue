@@ -63,7 +63,7 @@ export default {
 
 
 /* mobile mode rules */
-@media (max-width: 600px) {
+@media (max-width: 568px) {
   .projects-container {
     flex-direction: column;
     align-items: center;
