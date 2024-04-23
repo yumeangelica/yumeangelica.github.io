@@ -12,3 +12,10 @@ const app = createApp(App)
 app.use(router)
 
 app.mount('#app')
+
+// GitHub Pages redirect hack for crawler-friendly SPAs
+const { redirect } = window.sessionStorage;
+delete window.sessionStorage.redirect;
+if (redirect && redirect !== window.location.pathname) {
+  router.replace(redirect);
+}
