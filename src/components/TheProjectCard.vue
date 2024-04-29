@@ -28,6 +28,7 @@ import portfolio from '../assets/img/portfolio-project.webp';
 import jobfinder from '../assets/img/job-finder-project.webp';
 import weatherview from '../assets/img/weather-view-project.webp';
 import needypet from '../assets/img/needypet-project.webp';
+import bookboutique from '../assets/img/book-boutique-project.webp';
 import pinia from '../assets/img/pinia-for-vue-logo.webp';
 import ionic from '../assets/img/ionic-logo.svg';
 
@@ -70,6 +71,8 @@ export default {
           return weatherview;
         case "NeedyPet":
           return needypet;
+        case "BookBoutique":
+          return bookboutique;
         default:
           return '';
       }
@@ -80,8 +83,8 @@ export default {
 
 <style scoped>
 .small-devicon {
-  max-width: 40px;
-  max-height: 40px;
+  max-width: 45px;
+  max-height: 45px;
   margin-right: 10px;
   margin-bottom: 10px;
   border-radius: 5px;
@@ -183,8 +186,8 @@ export default {
   }
 
   .small-devicon {
-    max-width: 20px;
-    max-height: 20px;
+    max-width: 30px;
+    max-height: 30px;
   }
 
   .project-card {
