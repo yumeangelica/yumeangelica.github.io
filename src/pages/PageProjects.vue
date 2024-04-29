@@ -1,5 +1,5 @@
 <template>
-  <h1 class="text-center">Elegant web development creations</h1>
+  <h1 class="text-center">Web development projects</h1>
   <div class="projects-container">
     <TheProjectCard v-for="project in webDevelopmentProjects" :key="project.id" :project="project" :technologies="technologies" />
   </div>

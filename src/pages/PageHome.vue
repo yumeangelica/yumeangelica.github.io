@@ -35,6 +35,7 @@
         <p class="introduction-highlights-paragraph">
           <img class="devicon" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript Logo" />
           <img class="devicon" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" alt="TypeScript Logo" />
+          <img class="devicon" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg" alt="PHP Logo" />
           <img class="devicon" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original-wordmark.svg" alt="CSS3 Logo" />
           <img class="devicon" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original-wordmark.svg" alt="HTML5 Logo" />
           <img class="devicon" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bootstrap/bootstrap-original-wordmark.svg"
@@ -51,8 +52,7 @@
         <h3>Testing tools</h3>
         <p class="introduction-highlights-paragraph">
           <img class="devicon" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jest/jest-plain.svg" alt="Jest Logo" />
-          <img class="devicon" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cypressio/cypressio-original-wordmark.svg"
-            alt="Cypress Logo" />
+          <img class="devicon" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cypressio/cypressio-original-wordmark.svg" alt="Cypress Logo" />
         </p>
       </div>
 
@@ -72,6 +72,7 @@
         <p class="introduction-highlights-paragraph">
           <img class="devicon" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original-wordmark.svg" alt="Python Logo" />
           <img class="devicon" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/sqlite/sqlite-original-wordmark.svg" alt="SQLite Logo" />
+          <img class="devicon" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original-wordmark.svg" alt="MySQL Logo" />
           <img class="devicon" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original-wordmark.svg"
             alt="PostgreSQL Logo" />
         </p>
@@ -137,157 +138,157 @@
 </script>
 
 <style scoped>
-.text-highlight {
-  color: var(--color-extra-dark-bold-lilac);
-  font-weight: bold;
-}
-
-.tech-category h3 {
-  font-size: 1.5em;
-  margin-top: 20px;
-}
-
-.devicon {
-  max-width: 70px;
-  margin-right: 15px;
-  margin-bottom: 15px;
-  padding: 2px;
-  border-radius: 5px;
-}
-
-.contact-icon {
-  max-width: 90px;
-  margin-right: 25px;
-  margin-bottom: 15px;
-  border-radius: 5px;
-}
-
-.contact-icon:hover {
-  transform: scale(1.05);
-  cursor: pointer;
-}
-
-.profilepic {
-  width: 100%;
-  max-width: 300px;
-  margin: 10px 0px 20px 35px;
-}
-
-
-/* Unordered heartlist */
-.heartlist ul {
-  list-style: none;
-}
-
-.heartlist ul li:before {
-  content: "\2661";
-  color: var(--color-semi-dark-lilac);
-  font-size: 1.1rem;
-  position: absolute;
-  margin-left: -1.1em;
-}
-
-.heartlist li {
-  font-size: 1.1rem;
-  position: relative;
-  padding: 1px 0px 1px 0px;
-}
-
-.introduction-highlights-paragraph {
-  margin-bottom: 25px;
-}
-
-
-.tooltip-container {
-  position: relative;
-  display: inline-block;
-  cursor: pointer;
-  /* Creates a dashed underline */
-  border-bottom: 1px dashed var(--color-semi-dark-lilac);
-  padding-bottom: 2px;
-}
-
-
-.tooltip-text {
-  font-size: 22px;
-  visibility: hidden;
-  opacity: 0;
-  width: auto;
-  color: var(--color-semi-dark-lilac);
-  text-align: center;
-  border-radius: 6px;
-  padding: 5px 10px;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-  transition: opacity 0.4s ease, visibility 0.4s ease;
-
-  /* Position the tooltip */
-  position: absolute;
-  z-index: 1;
-  bottom: 0;
-  left: 110%;
-  /* Positions the tooltip to the right of the text */
-  transform: translateY(-50%);
-  white-space: nowrap;
-}
-
-.tooltip-container:hover .tooltip-text {
-  visibility: visible;
-  opacity: 1;
-}
-
-
-
-/* mobile mode rules */
-
-@media (max-width: 568px) {
-
-  h1 {
-    font-size: 1.7em;
-  }
-
-  h2 {
-    font-size: 1.4rem !important;
+  .text-highlight {
+    color: var(--color-extra-dark-bold-lilac);
+    font-weight: bold;
   }
 
   .tech-category h3 {
-    font-size: 1.2rem;
-    margin-top: 10px;
+    font-size: 1.5em;
+    margin-top: 20px;
   }
 
   .devicon {
-    max-width: 40px;
-    margin-right: 10px;
+    max-width: 70px;
+    margin-right: 15px;
+    margin-bottom: 15px;
+    padding: 2px;
+    border-radius: 5px;
   }
 
   .contact-icon {
-    max-width: 70px;
+    max-width: 80px;
+    margin-right: 25px;
+    margin-bottom: 15px;
+    border-radius: 5px;
   }
 
-  .heartlist li,
-  p {
-    font-size: 0.9rem;
+  .contact-icon:hover {
+    transform: scale(1.05);
+    cursor: pointer;
   }
 
   .profilepic {
-    max-width: 200px;
-    margin: 10px auto;
-    display: block;
+    width: 100%;
+    max-width: 300px;
+    margin: 10px 0px 20px 35px;
   }
 
+
+  /* Unordered heartlist */
+  .heartlist ul {
+    list-style: none;
+  }
+
+  .heartlist ul li:before {
+    content: "\2661";
+    color: var(--color-semi-dark-lilac);
+    font-size: 1.1rem;
+    position: absolute;
+    margin-left: -1.1em;
+  }
+
+  .heartlist li {
+    font-size: 1.1rem;
+    position: relative;
+    padding: 1px 0px 1px 0px;
+  }
+
+  .introduction-highlights-paragraph {
+    margin-bottom: 25px;
+  }
+
+
+  .tooltip-container {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+    /* Creates a dashed underline */
+    border-bottom: 1px dashed var(--color-semi-dark-lilac);
+    padding-bottom: 2px;
+  }
+
+
   .tooltip-text {
-    font-size: 12px;
+    font-size: 22px;
     visibility: hidden;
     opacity: 0;
+    width: auto;
+    color: var(--color-semi-dark-lilac);
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    transition: opacity 0.4s ease, visibility 0.4s ease;
+
+    /* Position the tooltip */
     position: absolute;
-    left: auto;
-    right: auto;
-    bottom: 27px;
-    transform: translateX(0%);
+    z-index: 1;
+    bottom: 0;
+    left: 110%;
+    /* Positions the tooltip to the right of the text */
+    transform: translateY(-50%);
+    white-space: nowrap;
   }
 
   .tooltip-container:hover .tooltip-text {
     visibility: visible;
     opacity: 1;
   }
-}
+
+
+
+  /* mobile mode rules */
+
+  @media (max-width: 568px) {
+
+    h1 {
+      font-size: 1.7em;
+    }
+
+    h2 {
+      font-size: 1.4rem !important;
+    }
+
+    .tech-category h3 {
+      font-size: 1.2rem;
+      margin-top: 10px;
+    }
+
+    .devicon {
+      max-width: 45px;
+      margin-right: 10px;
+    }
+
+    .contact-icon {
+      max-width: 55px;
+    }
+
+    .heartlist li,
+    p {
+      font-size: 0.9rem;
+    }
+
+    .profilepic {
+      max-width: 200px;
+      margin: 10px auto;
+      display: block;
+    }
+
+    .tooltip-text {
+      font-size: 12px;
+      visibility: hidden;
+      opacity: 0;
+      position: absolute;
+      left: auto;
+      right: auto;
+      bottom: 27px;
+      transform: translateX(0%);
+    }
+
+    .tooltip-container:hover .tooltip-text {
+      visibility: visible;
+      opacity: 1;
+    }
+  }
 </style>
