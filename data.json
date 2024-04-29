@@ -65,21 +65,25 @@
     {
       "id": 3,
       "type": "webDevelopment",
-      "title": "Taitovarasto for Virittämö as a client",
-      "imageURL": "./src/assets/img/taitovarasto-project.webp",
+      "title": "BookBoutique",
+      "imageURL": "./src/assets/img/book-boutique-project.webp",
       "technologyTitles": [
-        "MongoDB",
-        "Express.js",
-        "React",
-        "Node.js",
-        "JavaScript",
+        "PHP",
+        "MySQL",
         "CSS3",
         "HTML5",
+        "Bootstrap",
         "GitHub"
       ],
       "additionalInfo": [
-        "Recruitment and skills showcase app, built with a team. My role was focused on back-end development, database design, and API implementation",
-        "Full-stack, CRUD functionality, authentication, cybersecurity, nodemailer, tests"
+        "Full-stack application where user can save books they have read",
+        "Authentication, CRUD functionality"
+      ],
+      "links": [
+        {
+          "text": "Source Code",
+          "url": "https://github.com/yumeangelica/book-boutique"
+        }
       ]
     },
     {
@@ -99,8 +103,8 @@
         "GitHub"
       ],
       "additionalInfo": [
-        "Tests, CI/CD, Docker",
-        "Full-stack, CRUD functionality"
+        "Full-stack application for managing phone numbers",
+        "CRUD functionality, Tests, CI/CD, Docker"
       ],
       "links": [
         {
@@ -111,6 +115,26 @@
     },
     {
       "id": 5,
+      "type": "webDevelopment",
+      "title": "Taitovarasto for Virittämö as a client",
+      "imageURL": "./src/assets/img/taitovarasto-project.webp",
+      "technologyTitles": [
+        "MongoDB",
+        "Express.js",
+        "React",
+        "Node.js",
+        "JavaScript",
+        "CSS3",
+        "HTML5",
+        "GitHub"
+      ],
+      "additionalInfo": [
+        "Recruitment and skills showcase app, built with a team. My role was focused on back-end development, database design, and API implementation",
+        "Full-stack, CRUD functionality, authentication, cybersecurity, nodemailer, tests"
+      ]
+    },
+    {
+      "id": 6,
       "type": "commandLine",
       "title": "Job finder",
       "imageURL": "./src/assets/img/job-finder-project.webp",
@@ -129,7 +153,7 @@
       ]
     },
     {
-      "id": 6,
+      "id": 7,
       "type": "commandLine",
       "title": "Weather view",
       "imageURL": "./src/assets/img/weather-view-project.webp",
@@ -223,6 +247,16 @@
       "id": 15,
       "title": "GitHub",
       "url": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original-wordmark.svg"
+    },
+    {
+      "id": 16,
+      "title": "PHP",
+      "url": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg"
+    },
+    {
+      "id": 17,
+      "title": "MySQL",
+      "url": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original-wordmark.svg"
     }
   ]
 }
