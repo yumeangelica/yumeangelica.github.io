@@ -5,12 +5,11 @@
     <div class="col-lg-7">
 
       <p>I'm a passionate <span class="text-highlight">full-stack developer</span> with a deep interest in <span
-          class="text-highlight">cybersecurity</span>. My background in Business Administration, enhanced by skills in
-        <span class="text-highlight">digital marketing</span> and <span class="text-highlight">SEO</span>, kickstarted my programming journey in 2020.
-        With a foundation in <span class="text-highlight">agile practices</span>, I concentrate on crafting
-        <span class="text-highlight">accessible</span> & <span class="text-highlight">optimized</span> web solutions, and address complex challenges
-        effectively.
-      </p>
+          class="text-highlight">cybersecurity</span>. My background in Business Administration, along with skills in <span
+          class="text-highlight">digital marketing</span> and <span class="text-highlight">SEO</span>, provided a strong foundation for my programming
+        journey, which I began independently in 2020. With a foundation in <span class="text-highlight">agile practices</span>, I concentrate on
+        crafting <span class="text-highlight">accessible</span> & <span class="text-highlight">optimized</span> web solutions, and address complex
+        challenges effectively. I also hold <span class="text-highlight">a degree in Information and Communications Technology</span>.</p>
 
       <h2>Main Languages & Frameworks</h2>
       <div class="tech-category">
@@ -78,26 +77,26 @@
         </p>
       </div>
 
-      <section class="education">
-        <div class="heartlist">
-          <h2>My developer journey</h2>
-          <ul role="presentation">
-            <li>Full-time role as a dedicated software developer at Helsinki City, Virittämö.</li>
-            <li>Bachelor of Science in Business Administration from the University of Vaasa.</li>
-            <li>Pursued computer science as part of Helsinki University's DEFA project courses.</li>
-            <li>Successfully completed the Full Stack Open course series, gaining valuable skills for a full-stack development career.</li>
-            <li>Earned a degree in Information and Communications Technology from Business College Helsinki.</li>
-            <li>Currently pursuing further programming studies while working as a software developer.</li>
-          </ul>
-        </div>
-      </section>
-
     </div>
 
     <div class="col-md-auto">
       <img src="../assets/img/angelica-profilepic.webp" class="img-responsive profilepic" alt="Angelica's Profile Picture">
     </div>
   </div>
+
+  <section class="education">
+    <div class="heartlist">
+      <h2>My developer journey</h2>
+      <ul role="presentation">
+        <li>Gained work experience as a software developer at Helsinki City, Virittämö.</li>
+        <li>Bachelor of Science in Business Administration from the University of Vaasa.</li>
+        <li>Studied computer science as part of the DEFA project courses at the University of Helsinki.</li>
+        <li>Successfully completed the Full Stack Open course series, acquiring valuable skills for a full-stack development career.</li>
+        <li>Earned a degree in Information and Communications Technology from Business College Helsinki.</li>
+        <li>Continuously enhancing my programming skills and aiming to secure a position where I can contribute and grow as a developer.</li>
+      </ul>
+    </div>
+  </section>
 
   <section class="interesting-fact">
     <h2>A bit about my <span class="tooltip-container">yume<span class="tooltip-text">"dream"</span></span></h2>
@@ -114,10 +113,17 @@
 
   <section class="contact">
     <h2>Get in Touch</h2>
-    <p>Feel welcome to reach out to me via my LinkedIn or GitHub profiles, simply by clicking the icons below.</p>
+    <p>Feel welcome to reach out to me via mail</p>
 
     <p class="introduction-highlights-paragraph">
+      <img class="contact-image" src="../assets/img/angelica-contact.webp" alt="Angelica's Contact Information" />
+    </p>
 
+    <p>
+      or my LinkedIn or GitHub profiles, simply by clicking the icons below:
+    </p>
+
+    <p class="introduction-highlights-paragraph">
       <a href="https://www.linkedin.com/in/yumeangelica/" target="_blank" aria-label="Visit my LinkedIn profile">
         <img class="contact-icon" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linkedin/linkedin-original-wordmark.svg"
           alt="LinkedIn logo and link" />
@@ -127,7 +133,6 @@
         <img class="contact-icon" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original-wordmark.svg"
           alt="GitHub logo and link" />
       </a>
-
     </p>
 
   </section>
@@ -141,11 +146,6 @@
   .text-highlight {
     color: var(--color-extra-dark-bold-lilac);
     font-weight: bold;
-  }
-
-  .tech-category h3 {
-    font-size: 1.5em;
-    margin-top: 20px;
   }
 
   .devicon {
@@ -163,6 +163,11 @@
     border-radius: 5px;
   }
 
+  .contact-image {
+    max-width: 90%;
+    width: 320px;
+  }
+
   .contact-icon:hover {
     transform: scale(1.05);
     cursor: pointer;
@@ -173,7 +178,6 @@
     max-width: 300px;
     margin: 10px 0px 20px 35px;
   }
-
 
   /* Unordered heartlist */
   .heartlist ul {
@@ -195,9 +199,8 @@
   }
 
   .introduction-highlights-paragraph {
-    margin-bottom: 25px;
+    margin-bottom: 20px;
   }
-
 
   .tooltip-container {
     position: relative;
@@ -207,7 +210,6 @@
     border-bottom: 1px dashed var(--color-semi-dark-lilac);
     padding-bottom: 2px;
   }
-
 
   .tooltip-text {
     font-size: 22px;
@@ -236,24 +238,8 @@
     opacity: 1;
   }
 
-
-
   /* mobile mode rules */
-
   @media (max-width: 568px) {
-
-    h1 {
-      font-size: 1.7em;
-    }
-
-    h2 {
-      font-size: 1.4rem !important;
-    }
-
-    .tech-category h3 {
-      font-size: 1.2rem;
-      margin-top: 10px;
-    }
 
     .devicon {
       max-width: 45px;
@@ -269,6 +255,10 @@
       font-size: 0.9rem;
     }
 
+    .heartlist ul li:before {
+      font-size: 0.9rem;
+    }
+
     .profilepic {
       max-width: 200px;
       margin: 10px auto;
@@ -276,13 +266,13 @@
     }
 
     .tooltip-text {
-      font-size: 12px;
+      font-size: 16px;
       visibility: hidden;
       opacity: 0;
       position: absolute;
       left: auto;
-      right: auto;
-      bottom: 27px;
+      right: -45px;
+      bottom: 25px;
       transform: translateX(0%);
     }
 
