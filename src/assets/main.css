@@ -30,46 +30,37 @@ body {
   background-color: var(--color-background-light-pink) !important;
 }
 
+/* headers */
 h1, h2, h3, h4, h5 {
   color: var(--color-dark-lilac) !important;
+  margin-bottom: 1.5rem;
 }
 
-h2, h3, h4, h5 {
-  color: var(--color-semi-dark-lilac) !important;
-}
-
-/* Header styling */
 h1 {
   text-align: center;
-  padding-bottom: 25px;
-  margin: 30px 0px 10px 0px;
+  padding: 10px 0px 25px 0px;
 }
 
 h2 {
   text-align: left;
-  padding: 15px 0px 15px 0px;
-  margin: 40px 0px 10px 0px;
+  padding: 20px 0px 15px 0px;
 }
 
 h3 {
-  padding: 15px 0px 10px 0px;
-  margin: 30px 0px 10px 0px;
-}
-
-h4 {
+  font-size: 1.5rem;
   padding: 10px 0px 10px 0px;
-  margin: 10px 0px 10px 0px;
 }
 
-h5 {
+h4, h5 {
   padding: 10px 0px 10px 0px;
-  margin: 10px 0px 10px 0px;
 }
 
+/* images */
 img {
   border-radius: 10px;
 }
 
+/* paragraphs */
 p {
   color: var(--color-font-gray);
   margin-bottom: 25px;
@@ -89,4 +80,29 @@ li {
 .heartbefore:before {
   content: "\2661";
   color: var(--color-semi-dark-lilac);
+}
+
+/* mobile styles */
+@media (max-width: 578px) {
+  h1 {
+    font-size: 1.6rem !important;
+    padding: 10px 0px 15px 0px;
+  }
+
+  h2 {
+    font-size: 1.4rem !important;
+    padding: 15px 0px 10px 0px;
+  }
+
+  h3 {
+    font-size: 1.2rem !important;
+  }
+
+  h4 {
+    font-size: 1.1rem !important;
+  }
+
+  h5 {
+    font-size: 1rem !important;
+  }
 }
