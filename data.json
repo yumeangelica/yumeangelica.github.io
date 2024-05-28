@@ -32,7 +32,7 @@
           "url": "https://github.com/yumeangelica/needypet"
         },
         {
-          "text": "Project running on",
+          "text": "View Application",
           "url": "https://needypet.azurewebsites.net/"
         }
       ]
@@ -168,6 +168,60 @@
         {
           "text": "Source Code",
           "url": "https://github.com/yumeangelica/weather_view"
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "type": "otherProject",
+      "title": "Roleplay Dice Roller",
+      "additionalInfo": [
+        "Vanilla JS dice roller for roleplaying games"
+      ],
+      "links": [
+        {
+          "text": "Source Code",
+          "url": "https://github.com/yumeangelica/roleplay-dice-roller"
+        },
+        {
+          "text": "View Application",
+          "url": "https://yumeangelica.github.io/roleplay-dice-roller/"
+        }
+      ]
+    },
+    {
+      "id": 9,
+      "type": "otherProject",
+      "title": "Global Population Charts",
+      "additionalInfo": [
+        "Vanilla JS app for visualizing global population data"
+      ],
+      "links": [
+        {
+          "text": "Source Code",
+          "url": "https://github.com/yumeangelica/global-population-charts"
+        },
+        {
+          "text": "View Application",
+          "url": "https://yumeangelica.github.io/global-population-charts/"
+        }
+      ]
+    },
+    {
+      "id": 10,
+      "type": "otherProject",
+      "title": "RPSLS Game",
+      "additionalInfo": [
+        "Vanilla JS Rock-Paper-Scissors-Lizard-Spock game"
+      ],
+      "links": [
+        {
+          "text": "Source Code",
+          "url": "https://github.com/yumeangelica/rpsls-game"
+        },
+        {
+          "text": "View Application",
+          "url": "https://yumeangelica.github.io/rpsls-game/"
         }
       ]
     }
