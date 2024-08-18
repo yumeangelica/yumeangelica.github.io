@@ -23,7 +23,7 @@
       ],
       "additionalInfo": [
         "Mobile & desktop friendly full-stack pet care management app",
-        "Algorithm in daily need management, timezone handling, authentication, nodemailer (coming soon)",
+        "Algorithm in daily need management, timezone handling, authentication, nodemailer, versioning, automated deployment",
         "Design, accessibility, cybersecurity, optimization"
       ],
       "links": [
