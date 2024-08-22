@@ -30,25 +30,20 @@
 
 <script setup>
   import { ref } from 'vue';
-  import { RouterLink } from 'vue-router';
-  import { onMounted, onUnmounted } from 'vue'; // close navbar dropdown when window is resized
+  import { onMounted, onUnmounted } from 'vue';
 
-  const showNav = ref(false); // ref, toggle navbar dropdown on mobile, starts as false
+  const showNav = ref(false);
 
   const toggleNav = () => {
     showNav.value = !showNav.value;
   };
 
-  const closeNav = () => { // close navbar dropdown when link is clicked
-    if (window.innerWidth < 992) { // bootstrap's lg breakpoint
-      showNav.value = false;
-    }
+  const closeNav = () => {
+    showNav.value = false;
   };
 
-
-  // close navbar dropdown when window is resized
   const handleResize = () => {
-    if (window.innerWidth >= 992 && showNav.value) {
+    if (window.innerWidth >= 425 && showNav.value) {
       showNav.value = false;
     }
   };
@@ -60,9 +55,7 @@
   onUnmounted(() => {
     window.removeEventListener('resize', handleResize);
   });
-
 </script>
-
 
 
 <style scoped>
@@ -87,9 +80,9 @@
 
   /* Navbar item styling */
   .nav-item {
-    font-size: 1.35rem;
+    font-size: 1.3rem;
     font-weight: 500;
-    padding: 0px 6px;
+    padding: 0 6px;
   }
 
   /* Hover and focus effects for nav items */
@@ -110,14 +103,12 @@
     border-color: transparent;
   }
 
-  /* Toggler button hover and focus effects */
   .navbar-light .navbar-toggler:hover,
   .navbar-light .navbar-toggler:focus {
     box-shadow: none;
   }
 
-
-  /* Media query for larger screens */
+  /* Styles for large screens (992px and up) */
   @media (min-width: 992px) {
     .navbar-nav {
       justify-content: center;
@@ -125,20 +116,54 @@
     }
 
     .nav-item {
-      margin: 0 8px;
+      margin: 0 7px;
+      font-size: 1.25rem;
     }
   }
 
-  /* Mobile styles */
+  /* Styles for medium screens (425.1px to 991.9px) */
+  @media (min-width: 425.1px) and (max-width: 991.9px) {
+    .navbar-nav {
+      flex-direction: row;
+      justify-content: center;
+      width: 100%;
+    }
+
+    .collapse:not(.show) {
+      display: flex !important;
+    }
+
+    .collapse {
+      position: static;
+      display: flex !important;
+      max-height: none;
+      width: 100%;
+      background: transparent;
+      box-shadow: none;
+      margin-left: 0;
+      padding-right: 0;
+      justify-content: center;
+    }
+
+    .navbar-nav .nav-item {
+      padding: 0 8px;
+      margin: 0 4px;
+      font-size: 1.15rem;
+    }
+
+    .navbar-toggler {
+      display: none;
+      /* Hide the toggler */
+    }
+  }
+
+  /* Mobile styles for small screens (max-width: 425px) */
   @media (max-width: 425px) {
     .navbar-collapse {
       position: absolute;
       top: 125%;
-      /* Adds more space between navbar and dropdown */
       left: 80%;
-      /* Move dropdown to the right */
       transform: translateX(-70%);
-      /* Fix centering */
       max-width: 85%;
       background-color: var(--color-pastel-lilac);
       border-radius: 15px;
@@ -152,13 +177,11 @@
       text-align: center;
       font-size: 1rem;
       padding: 5px 10px;
-      /* Lisää mukavuutta väleihin */
     }
 
-    /* Removes the default focus and hover effects */
     .nav-item:focus,
     .nav-item:hover {
-      background-color: var(---color-pastel-lilac);
+      background-color: var(--color-pastel-lilac);
     }
 
     .navbar-nav {
