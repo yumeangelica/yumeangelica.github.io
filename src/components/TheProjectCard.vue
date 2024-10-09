@@ -26,6 +26,7 @@ import taito from '../assets/img/taitovarasto-project.webp';
 import fullstack from '../assets/img/fullstack-phonebook-application-project.webp';
 import portfolio from '../assets/img/portfolio-project.webp';
 import jobfinder from '../assets/img/job-finder-project.webp';
+import onlineweatherview from '../assets/img/online-weather-view-project.webp';
 import weatherview from '../assets/img/weather-view-project.webp';
 import needypet from '../assets/img/needypet-project.webp';
 import bookboutique from '../assets/img/book-boutique-project.webp';
@@ -67,6 +68,8 @@ export default {
           return portfolio;
         case "Job finder":
           return jobfinder;
+        case "Online weather view":
+          return onlineweatherview;
         case "Weather view":
           return weatherview;
         case "NeedyPet":

@@ -20,6 +20,7 @@
           <img class="devicon" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original-wordmark.svg" alt="MongoDB Logo" />
           <img class="devicon" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/firebase/firebase-plain-wordmark.svg" alt="Firebase Logo" />
           <img class="devicon" src="../assets/img/rest-api-logo.svg" alt="Rest Api Logo" />
+          <img class="devicon" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/django/django-plain-wordmark.svg" alt="Django Logo" />
         </p>
 
         <h3>Web frontend technologies & intuitive store</h3>
