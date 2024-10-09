@@ -65,6 +65,24 @@
     {
       "id": 3,
       "type": "webDevelopment",
+      "title": "Online weather view",
+      "imageURL": "./src/assets/img/online-weather-view.webp",
+      "technologyTitles": [
+        "Python", "Django", "CSS3", "HTML5", "Docker", "Azure", "GitHub"
+      ],
+      "additionalInfo": [
+        "Weather Forecast App - A Django-based application that provides current weather and 3-day forecast data for cities. Uses OpenWeatherMap and weather api APIs to display temperature, humidity, wind speed, UV index, and more in a clean, user-friendly interface"
+      ],
+      "links": [
+        {
+          "text": "Source Code",
+          "url": "https://github.com/yumeangelica/online-weather-view"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "type": "webDevelopment",
       "title": "BookBoutique",
       "imageURL": "./src/assets/img/book-boutique-project.webp",
       "technologyTitles": [
@@ -87,7 +105,7 @@
       ]
     },
     {
-      "id": 4,
+      "id": 5,
       "type": "webDevelopment",
       "title": "Fullstack phonebook app",
       "imageURL": "./src/assets/img/fullstack-phonebook-application-project.webp",
@@ -114,7 +132,7 @@
       ]
     },
     {
-      "id": 5,
+      "id": 6,
       "type": "webDevelopment",
       "title": "Taitovarasto for Virittämö as a client",
       "imageURL": "./src/assets/img/taitovarasto-project.webp",
@@ -134,7 +152,7 @@
       ]
     },
     {
-      "id": 6,
+      "id": 7,
       "type": "commandLine",
       "title": "Job finder",
       "imageURL": "./src/assets/img/job-finder-project.webp",
@@ -153,7 +171,7 @@
       ]
     },
     {
-      "id": 7,
+      "id": 8,
       "type": "commandLine",
       "title": "Weather view",
       "imageURL": "./src/assets/img/weather-view-project.webp",
@@ -172,7 +190,7 @@
       ]
     },
     {
-      "id": 8,
+      "id": 9,
       "type": "otherProject",
       "title": "Roleplay Dice Roller",
       "additionalInfo": [
@@ -190,7 +208,7 @@
       ]
     },
     {
-      "id": 9,
+      "id": 10,
       "type": "otherProject",
       "title": "Global Population Charts",
       "additionalInfo": [
@@ -208,7 +226,7 @@
       ]
     },
     {
-      "id": 10,
+      "id": 11,
       "type": "otherProject",
       "title": "RPSLS Game",
       "additionalInfo": [
@@ -311,6 +329,11 @@
       "id": 17,
       "title": "MySQL",
       "url": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original-wordmark.svg"
+    },
+    {
+      "id": 18,
+      "title": "Django",
+      "url": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/django/django-plain-wordmark.svg"
     }
   ]
 }
