@@ -242,6 +242,24 @@
           "url": "https://yumeangelica.github.io/rpsls-game/"
         }
       ]
+    },
+    {
+      "id": 11,
+      "type": "otherProject",
+      "title": "Multifunctional Clock",
+      "additionalInfo": [
+        "Vanilla JS app that features a clock, timer, and stopwatch"
+      ],
+      "links": [
+        {
+          "text": "Source Code",
+          "url": "https://github.com/yumeangelica/multifunctional-clock"
+        },
+        {
+          "text": "View Application",
+          "url": "https://yumeangelica.github.io/multifunctional-clock/"
+        }
+      ]
     }
   ],
   "technologies": [
