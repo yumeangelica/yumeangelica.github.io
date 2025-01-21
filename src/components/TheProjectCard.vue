@@ -22,16 +22,20 @@
 </template>
 
 <script>
-import taito from '../assets/img/taitovarasto-project.webp';
-import fullstack from '../assets/img/fullstack-phonebook-application-project.webp';
-import portfolio from '../assets/img/portfolio-project.webp';
-import jobfinder from '../assets/img/job-finder-project.webp';
-import onlineweatherview from '../assets/img/online-weather-view-project.webp';
-import weatherview from '../assets/img/weather-view-project.webp';
-import needypet from '../assets/img/needypet-project.webp';
-import bookboutique from '../assets/img/book-boutique-project.webp';
-import pinia from '../assets/img/pinia-for-vue-logo.webp';
-import ionic from '../assets/img/ionic-logo.svg';
+// Project image imports
+import taitoVarasto from '../assets/img/taitovarasto-project.webp';
+import fullstackPhoneBook from '../assets/img/fullstack-phonebook-application-project.webp';
+import portfolioSite from '../assets/img/portfolio-project.webp';
+import jobFinder from '../assets/img/job-finder-project.webp';
+import onlineWeatherView from '../assets/img/online-weather-view-project.webp';
+import weatherView from '../assets/img/weather-view-project.webp';
+import needyPet from '../assets/img/needypet-project.webp';
+import jiraiSweetiesDiscordBot from '../assets/img/jirai-sweeties-discord-bot-project.webp';
+import bookBoutique from '../assets/img/book-boutique-project.webp';
+
+// Tech icon imports
+import piniaIcon from '../assets/img/pinia-for-vue-logo.webp';
+import ionicIcon from '../assets/img/ionic-logo.svg';
 
 export default {
   props: {
@@ -50,32 +54,34 @@ export default {
   methods: {
     getTechIconUrl(techName) {
       if (techName === 'Ionic') {
-        return ionic;
+        return ionicIcon;
       }
       if (techName === 'Pinia') {
-        return pinia;
+        return piniaIcon;
       }
       const tech = this.technologies.find(t => t.title === techName);
       return tech ? tech.url : '';
     },
     getProjectImageURL() {
       switch (this.projectTitle) {
-        case "Taitovarasto for Virittämö as a client":
-          return taito;
-        case "Fullstack phonebook app":
-          return fullstack;
-        case "Personal portfolio":
-          return portfolio;
-        case "Job finder":
-          return jobfinder;
-        case "Online weather view":
-          return onlineweatherview;
-        case "Weather view":
-          return weatherview;
+        case "Discord bot for Jirai Sweeties server":
+          return jiraiSweetiesDiscordBot;
         case "NeedyPet":
-          return needypet;
+          return needyPet;
+        case "Personal portfolio":
+          return portfolioSite;
+        case "Taitovarasto for Virittämö as a client":
+          return taitoVarasto;
+        case "Fullstack phonebook app":
+          return fullstackPhoneBook;
+        case "Job finder":
+          return jobFinder;
+        case "Online weather view":
+          return onlineWeatherView;
+        case "Weather view":
+          return weatherView;
         case "BookBoutique":
-          return bookboutique;
+          return bookBoutique;
         default:
           return '';
       }
