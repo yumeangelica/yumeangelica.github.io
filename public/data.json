@@ -2,7 +2,29 @@
   "projects": [
     {
       "id": 1,
-      "type": "webDevelopment",
+      "type": "mainProject",
+      "title": "Discord bot for Jirai Sweeties server",
+      "imageURL": "./src/assets/img/jirai-sweeties-discord-bot.webp",
+      "technologyTitles": ["Python", "SQLite", "GitHub", "Azure"],
+      "additionalInfo": [
+        "Interactive Discord bot with custom chat commands",
+        "Automated store monitoring with instant product alerts",
+        "Historical tracking and price monitoring via SQLite",
+        "Efficient web data extraction using aiohttp and Beautiful Soup",
+        "Rotating user agents for secure and reliable data extraction",
+        "Deployed on Azure for scalability and reliability",
+        "Supports multi-store configurations and flexible scheduling"
+      ],
+      "links": [
+        {
+          "text": "Source Code",
+          "url": "https://github.com/yumeangelica/jirai_sweeties"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "type": "mainProject",
       "title": "NeedyPet",
       "imageURL": "./src/assets/img/needypet-project.webp",
       "technologyTitles": [
@@ -24,7 +46,7 @@
       "additionalInfo": [
         "Mobile & desktop friendly full-stack pet care management app",
         "Algorithm in daily need management, timezone handling, authentication, nodemailer, versioning, automated deployment",
-        "Design, accessibility, cybersecurity, optimization"
+        "Design, accessibility, secure development, optimization"
       ],
       "links": [
         {
@@ -38,8 +60,8 @@
       ]
     },
     {
-      "id": 2,
-      "type": "webDevelopment",
+      "id": 3,
+      "type": "mainProject",
       "title": "Personal portfolio",
       "imageURL": "./src/assets/img/portfolio-project.webp",
       "technologyTitles": [
@@ -63,12 +85,18 @@
       ]
     },
     {
-      "id": 3,
+      "id": 4,
       "type": "webDevelopment",
       "title": "Online weather view",
       "imageURL": "./src/assets/img/online-weather-view.webp",
       "technologyTitles": [
-        "Python", "Django", "CSS3", "HTML5", "Docker", "Azure", "GitHub"
+        "Python",
+        "Django",
+        "CSS3",
+        "HTML5",
+        "Docker",
+        "Azure",
+        "GitHub"
       ],
       "additionalInfo": [
         "Weather Forecast App - A Django-based application that provides current weather and 3-day forecast data for cities. Uses OpenWeatherMap and weather api APIs to display temperature, humidity, wind speed, UV index, and more in a clean, user-friendly interface"
@@ -81,7 +109,7 @@
       ]
     },
     {
-      "id": 4,
+      "id": 5,
       "type": "webDevelopment",
       "title": "BookBoutique",
       "imageURL": "./src/assets/img/book-boutique-project.webp",
@@ -105,7 +133,7 @@
       ]
     },
     {
-      "id": 5,
+      "id": 6,
       "type": "webDevelopment",
       "title": "Fullstack phonebook app",
       "imageURL": "./src/assets/img/fullstack-phonebook-application-project.webp",
@@ -132,7 +160,7 @@
       ]
     },
     {
-      "id": 6,
+      "id": 7,
       "type": "webDevelopment",
       "title": "Taitovarasto for Virittämö as a client",
       "imageURL": "./src/assets/img/taitovarasto-project.webp",
@@ -152,13 +180,11 @@
       ]
     },
     {
-      "id": 7,
+      "id": 8,
       "type": "commandLine",
       "title": "Job finder",
       "imageURL": "./src/assets/img/job-finder-project.webp",
-      "technologyTitles": [
-        "Python"
-      ],
+      "technologyTitles": ["Python"],
       "additionalInfo": [
         "A command-line tool for finding jobs from the internet",
         "Requests, BeautifulSoup, web data extraction, automation"
@@ -175,9 +201,7 @@
       "type": "commandLine",
       "title": "Weather view",
       "imageURL": "./src/assets/img/weather-view-project.webp",
-      "technologyTitles": [
-        "Python"
-      ],
+      "technologyTitles": ["Python"],
       "additionalInfo": [
         "A command-line tool for fetching weather data from the internet",
         "Requests, API usage"
@@ -190,12 +214,10 @@
       ]
     },
     {
-      "id": 9,
-      "type": "otherProject",
+      "id": 10,
+      "type": "vanillajsProject",
       "title": "Roleplay Dice Roller",
-      "additionalInfo": [
-        "Vanilla JS dice roller for roleplaying games"
-      ],
+      "additionalInfo": ["Vanilla JS dice roller for roleplaying games"],
       "links": [
         {
           "text": "Source Code",
@@ -208,8 +230,8 @@
       ]
     },
     {
-      "id": 10,
-      "type": "otherProject",
+      "id": 11,
+      "type": "vanillajsProject",
       "title": "Global Population Charts",
       "additionalInfo": [
         "Vanilla JS app for visualizing global population data"
@@ -226,12 +248,10 @@
       ]
     },
     {
-      "id": 11,
-      "type": "otherProject",
+      "id": 12,
+      "type": "vanillajsProject",
       "title": "RPSLS Game",
-      "additionalInfo": [
-        "Vanilla JS Rock-Paper-Scissors-Lizard-Spock game"
-      ],
+      "additionalInfo": ["Vanilla JS Rock-Paper-Scissors-Lizard-Spock game"],
       "links": [
         {
           "text": "Source Code",
@@ -244,8 +264,8 @@
       ]
     },
     {
-      "id": 11,
-      "type": "otherProject",
+      "id": 13,
+      "type": "vanillajsProject",
       "title": "Multifunctional Clock",
       "additionalInfo": [
         "Vanilla JS app that features a clock, timer, and stopwatch"
@@ -266,52 +286,52 @@
     {
       "id": 1,
       "title": "MongoDB",
-      "url": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original-wordmark.svg"
+      "url": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mongodb/mongodb-original-wordmark.svg"
     },
     {
       "id": 2,
       "title": "Express.js",
-      "url": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original-wordmark.svg"
+      "url": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/express/express-original-wordmark.svg"
     },
     {
       "id": 3,
       "title": "React",
-      "url": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original-wordmark.svg"
+      "url": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original-wordmark.svg"
     },
     {
       "id": 4,
       "title": "Node.js",
-      "url": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original-wordmark.svg"
+      "url": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nodejs/nodejs-original-wordmark.svg"
     },
     {
       "id": 5,
       "title": "CSS3",
-      "url": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original-wordmark.svg"
+      "url": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-original-wordmark.svg"
     },
     {
       "id": 6,
       "title": "HTML5",
-      "url": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original-wordmark.svg"
+      "url": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original-wordmark.svg"
     },
     {
       "id": 7,
       "title": "Bootstrap",
-      "url": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bootstrap/bootstrap-original-wordmark.svg"
+      "url": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/bootstrap/bootstrap-original-wordmark.svg"
     },
     {
       "id": 8,
       "title": "Vue.js",
-      "url": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vuejs/vuejs-original-wordmark.svg"
+      "url": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vuejs/vuejs-original-wordmark.svg"
     },
     {
       "id": 9,
       "title": "Python",
-      "url": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original-wordmark.svg"
+      "url": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original-wordmark.svg"
     },
     {
       "id": 10,
       "title": "JavaScript",
-      "url": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg"
+      "url": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg"
     },
     {
       "id": 11,
@@ -321,37 +341,42 @@
     {
       "id": 12,
       "title": "Jest",
-      "url": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jest/jest-plain.svg"
+      "url": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/jest/jest-plain.svg"
     },
     {
       "id": 13,
       "title": "Docker",
-      "url": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original-wordmark.svg"
+      "url": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/docker/docker-original-wordmark.svg"
     },
     {
       "id": 14,
       "title": "Azure",
-      "url": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/azure/azure-original-wordmark.svg"
+      "url": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/azure/azure-original-wordmark.svg"
     },
     {
       "id": 15,
       "title": "GitHub",
-      "url": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original-wordmark.svg"
+      "url": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/github/github-original-wordmark.svg"
     },
     {
       "id": 16,
       "title": "PHP",
-      "url": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg"
+      "url": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/php/php-original.svg"
     },
     {
       "id": 17,
       "title": "MySQL",
-      "url": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original-wordmark.svg"
+      "url": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mysql/mysql-original-wordmark.svg"
     },
     {
       "id": 18,
       "title": "Django",
       "url": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/django/django-plain-wordmark.svg"
+    },
+    {
+      "id": 19,
+      "title": "SQLite",
+      "url": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/sqlite/sqlite-original-wordmark.svg"
     }
   ]
 }
