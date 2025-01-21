@@ -1,18 +1,24 @@
 <template>
-  <h1 class="text-center">Web development projects</h1>
+  <h1 class="text-center">Main projects</h1>
+
+  <div class="projects-container">
+    <TheProjectCard v-for="project in mainProjects" :key="project.id" :project="project" :technologies="technologies" />
+  </div>
+
+  <h2 class="text-center">Other web development projects</h2>
   <div class="projects-container">
     <TheProjectCard v-for="project in webDevelopmentProjects" :key="project.id" :project="project" :technologies="technologies" />
   </div>
 
-  <h2 class="text-center">Command-line Projects</h2>
+  <h2 class="text-center">Other command-line projects</h2>
   <div class="projects-container">
     <TheProjectCard v-for="project in commandLineProjects" :key="project.id" :project="project" :technologies="technologies" />
   </div>
 
   <!-- Not important projects -->
-  <h3 class="text-center">Other Projects</h3>
+  <h3 class="text-center">VanillaJS projects</h3>
   <div class="other-projects-container">
-    <TheSmallerProjectCard v-for="project in otherProjects" :key="project.id" :project="project" />
+    <TheSmallerProjectCard v-for="project in vanillajsProjects" :key="project.id" :project="project" />
   </div>
 </template>
 
@@ -25,9 +31,10 @@
   export default {
     data() {
       return {
+        mainProjects: ref([]),
         webDevelopmentProjects: ref([]),
         commandLineProjects: ref([]),
-        otherProjects: ref([]),
+        vanillajsProjects: ref([]),
         technologies: ref([]),
         dataURL: '../data.json',
         dataHandleError: ref(false)
@@ -43,9 +50,10 @@
         const data = await response.json();
         if (data) { // if data is fetched successfully, assign it to projects and technologies
           this.technologies = data.technologies;
+          this.mainProjects = data.projects.filter(p => p.type === 'mainProject');
           this.webDevelopmentProjects = data.projects.filter(p => p.type === 'webDevelopment');
           this.commandLineProjects = data.projects.filter(p => p.type === 'commandLine');
-          this.otherProjects = data.projects.filter(p => p.type === 'otherProject');
+          this.vanillajsProjects = data.projects.filter(p => p.type === 'vanillajsProject');
         }
       } catch (error) {
         this.dataHandleError = true;
