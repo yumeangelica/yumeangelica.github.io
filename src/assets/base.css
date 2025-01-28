@@ -1,34 +1,27 @@
-/* Root pseudo class for variables - changing site color theme here, easy to maintain */
+/* Root pseudo class for variables */
 :root {
-  /* -------- Main colors --------- */
-  --white: rgb(255, 255, 255);
-  --kawaii-dark-pink: rgb(252, 122, 191);
-  --kawaii-pink: rgb(252, 202, 224);
-  --kawaii-light-pink: rgb(255, 221, 248);
-  --kawaii-yellow: rgb(249, 230, 169);
-  --kawaii-light-blue: rgb(229, 246, 255);
-  --kawaii-lilac: rgb(223, 225, 255);
-  --kawaii-pastel-lilac: rgb(235, 239, 255);
-  --kawaii-purple: rgb(227, 135, 235);
-  --kawaii-dark-purple: rgb(193, 87, 170);
+  /* Base colors */
+  --color-white: rgb(255, 255, 255);
 
+  /* Theme colors */
+  --color-primary: rgb(178, 77, 137);
+  --color-primary-light: rgb(241, 199, 232);
+  --color-primary-dark: rgb(95, 41, 74);
 
-  --kawaii-background-pink: rgb(255, 236, 255);
-  --kawaii-font-gray: rgb(105, 97, 100);
-  --link-transition-duration: 0.5s;
+  /* UI Component colors */
+  --color-background: rgb(255, 250, 253);
+  --color-text: rgb(33, 33, 33);
+  --color-heading: var(--color-primary);
+  --color-accent: rgb(165, 79, 144);
 
+  /* Component specific */
+  --color-nav-bg: var(--color-primary-light);
+  --color-card-bg: rgb(254, 239, 249);
+  --color-button: rgb(178, 110, 150);
+  --color-button-hover: rgb(165, 95, 135);
 
-  /* New lilac styling */
-  --color-background-light-pink: rgb(255, 243, 249);
-  --color-pastel-lilac: rgb(238, 204, 254);
-  --color-dark-lilac: rgb(184, 107, 198);
-  --color-semi-dark-lilac: rgb(202, 114, 205);
-  --color-font-gray: rgb(72, 64, 67);
-  --color-highlighted-lilac: rgb(201, 89, 214);
-
-  --color-card-bg: rgb(235, 222, 255);
-  --color-btn-lilac: rgb(237, 145, 238);
-  --color-extra-dark-bold-lilac: #682c69;
+  /* Other */
+  --transition-duration: 0.5s;
 }
 
 
