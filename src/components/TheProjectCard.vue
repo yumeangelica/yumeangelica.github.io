@@ -109,9 +109,11 @@ export default {
 .additional-info {
   margin-bottom: 0px !important;
   padding-bottom: 0px !important;
+  color: var(--color-text) !important;
 }
 
 .project-card {
+  background-color: var(--color-card-bg);
   font-size: 1rem;
   display: flex;
   flex-direction: column;
@@ -121,7 +123,7 @@ export default {
   border-radius: 10px;
   overflow: hidden;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease;
+  transition: transform var(--transition-duration), box-shadow var(--transition-duration);
   overflow-y: auto;
   border: 1px solid rgba(0, 0, 0, 0.05);
   flex: 1 1 calc(50% - 20px);
@@ -148,13 +150,16 @@ export default {
 }
 
 .project-details h5 {
+  color: var(--color-heading);
   margin-bottom: 10px;
+  color: var(--color-heading);
 }
 
 .project-details p {
-  color: var(--color-font-gray);
+  color: var(--color-text);
   font-size: 0.90em;
   margin-bottom: 10px;
+  color: var(--color-text);
 }
 
 .buttons {
@@ -165,18 +170,22 @@ export default {
 }
 
 .project-button {
+  color: var(--color-white);
+  background-color: var(--color-button);
   text-decoration: none;
-  color: var(--white);
-  background-color: var(--color-btn-lilac);
+  color: var(--color-white);
+  background-color: var(--color-button);
   padding: 5px 10px;
   border-radius: 15px;
-  transition: background-color var(--link-transition-duration), color var(--link-transition-duration);
+  transition: background-color var(--transition-duration), color var(--transition-duration), box-shadow var(--transition-duration);
   margin-right: 10px;
   font-size: 0.9rem;
 }
 
 .project-button:hover {
-  background-color: var(--color-semi-dark-lilac);
+  background-color: var(--color-button-hover);
+  color: var(--color-white);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .project-button:last-child {
