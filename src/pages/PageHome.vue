@@ -149,7 +149,7 @@
 
 <style scoped>
 .text-highlight {
-  color: var(--color-extra-dark-bold-lilac);
+  color: var(--color-primary-dark);
   font-weight: bold;
 }
 
@@ -191,7 +191,7 @@
 
 .heartlist ul li:before {
   content: "\2661";
-  color: var(--color-semi-dark-lilac);
+  color: var(--color-primary);
   font-size: 1.1rem;
   position: absolute;
   margin-left: -1.1em;
@@ -211,8 +211,7 @@
   position: relative;
   display: inline-block;
   cursor: pointer;
-  /* Creates a dashed underline */
-  border-bottom: 1px dashed var(--color-semi-dark-lilac);
+  border-bottom: 1px dashed var(--color-primary);
   padding-bottom: 2px;
 }
 
@@ -221,7 +220,7 @@
   visibility: hidden;
   opacity: 0;
   width: auto;
-  color: var(--color-semi-dark-lilac);
+  color: var(--color-primary);
   text-align: center;
   border-radius: 6px;
   padding: 5px 10px;
@@ -233,7 +232,6 @@
   z-index: 1;
   bottom: 0;
   left: 110%;
-  /* Positions the tooltip to the right of the text */
   transform: translateY(-50%);
   white-space: nowrap;
 }
@@ -243,9 +241,8 @@
   opacity: 1;
 }
 
-/* mobile mode rules */
+/* Mobile mode rules */
 @media (max-width: 568px) {
-
   .devicon {
     max-width: 45px;
     margin-right: 10px;

@@ -1,7 +1,7 @@
 <template>
   <nav class="navbar navbar-expand-md navbar-light">
     <div class="container-fluid">
-      <!-- toggler -->
+      <!-- Toggler -->
       <button class="navbar-toggler ms-auto" type="button" @click="toggleNav" aria-controls="navbarNav" :aria-expanded="showNav ? 'true' : 'false'"
         aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -61,20 +61,20 @@
 <style scoped>
   /* Navbar overall styling */
   nav {
+    background: var(--color-nav-bg);
     margin-bottom: 40px;
-    background: var(--color-pastel-lilac);
     padding: 5px 0;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   }
 
   /* Navbar link styling */
   .nav-link {
-    color: var(--color-dark-lilac) !important;
+    color: var(--color-primary) !important;
     transition: color 0.3s ease-in-out;
   }
 
   .nav-link.router-link-active {
-    color: var(--color-highlighted-lilac) !important;
+    color: var(--color-accent) !important;
     font-weight: bold;
   }
 
@@ -88,8 +88,8 @@
   /* Hover and focus effects for nav items */
   .nav-item:hover,
   .nav-item:focus {
-    background-color: var(--kawaii-light-pink);
-    color: var(--color-highlighted-lilac);
+    background-color: var(--color-primary-light);
+    color: var(--color-primary);
     border-radius: 5px;
   }
 
@@ -165,7 +165,7 @@
       left: 80%;
       transform: translateX(-70%);
       max-width: 85%;
-      background-color: var(--color-pastel-lilac);
+      background-color: var(--color-nav-bg);
       border-radius: 15px;
       box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
       padding: 20px 25px;
@@ -181,7 +181,7 @@
 
     .nav-item:focus,
     .nav-item:hover {
-      background-color: var(--color-pastel-lilac);
+      background-color: var(--color-primary-light);
     }
 
     .navbar-nav {

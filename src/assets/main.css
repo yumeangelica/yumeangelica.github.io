@@ -1,7 +1,7 @@
 @import './base.css';
 
 body {
-  background-color: var(--color-background-light-pink) !important;
+  background-color: var(--color-background) !important;
   min-height: 100vh;
   line-height: 1.9 !important;
   font-family:
@@ -27,12 +27,12 @@ body {
   max-width: 100%;
   margin: 0 auto;
   font-weight: normal;
-  background-color: var(--color-background-light-pink) !important;
+  background-color: var(--color-background) !important;
 }
 
-/* headers */
+/* Headers */
 h1, h2, h3, h4, h5 {
-  color: var(--color-dark-lilac) !important;
+  color: var(--color-heading) !important;
   margin-bottom: 1.5rem;
 }
 
@@ -55,34 +55,34 @@ h4, h5 {
   padding: 10px 0px 10px 0px;
 }
 
-/* images */
+/* Images */
 img {
   border-radius: 10px;
 }
 
-/* paragraphs */
+/* Paragraphs */
 p {
-  color: var(--color-font-gray);
+  color: var(--color-text);
   margin-bottom: 25px;
   font-size: 1.1rem;
 }
 
-/* lists */
+/* Lists */
 li {
-  color: var(--color-font-gray);
+  color: var(--color-text);
 }
 
-/* heart element before words */
+/* Heart element before words */
 .heartbefore {
   margin-right: 25px;
 }
 
 .heartbefore:before {
   content: "\2661";
-  color: var(--color-semi-dark-lilac);
+  color: var(--color-primary);
 }
 
-/* mobile styles */
+/* Mobile styles */
 @media (max-width: 578px) {
   h1 {
     font-size: 1.6rem !important;

@@ -28,7 +28,7 @@ export default {
 <style scoped>
 .simple-project-card {
   background-color: var(--color-card-bg);
-  color: var(--color-font-gray);
+  color: var(--color-text);
   padding: 15px;
   border-radius: 8px;
   width: 280px;
@@ -48,7 +48,7 @@ export default {
 .simple-project-card h5 {
   margin-bottom: 10px;
   font-size: 1.1em;
-  color: var(--color-primary);
+  color: var(--color-heading);
 }
 
 .additional-info-container {
@@ -57,7 +57,7 @@ export default {
 
 .additional-info {
   font-size: 0.9em;
-  color: var(--color-secondary);
+  color: var(--color-text);
 }
 
 .project-links {
@@ -69,18 +69,18 @@ export default {
 
 .project-button {
   text-decoration: none;
-  color: var(--white);
-  background-color: var(--color-btn-lilac);
+  color: var(--color-white);
+  background-color: var(--color-button);
   padding: 4px 8px;
   border-radius: 12px;
-  transition: background-color var(--link-transition-duration), color var(--link-transition-duration);
+  transition: background-color var(--transition-duration), color var(--transition-duration);
   font-size: 0.85rem;
   flex: 1 1 auto;
   text-align: center;
 }
 
 .project-button:hover {
-  background-color: var(--color-semi-dark-lilac);
+  background-color: var(--color-button-hover);
 }
 
 @media (max-width: 568px) {
