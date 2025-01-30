@@ -14,11 +14,9 @@
 </template>
 
 <script>
-
 import TheNavBar from 'components/TheNavBar.vue'
 import TheFooter from 'components/TheFooter.vue'
 import TheHeaderPic from 'components/TheHeaderPic.vue'
-
 
 export default {
   name: 'App',
@@ -28,9 +26,7 @@ export default {
     TheHeaderPic
   }
 }
-
 </script>
-
 
 <style>
 .custom-container {
