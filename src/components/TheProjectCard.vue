@@ -1,7 +1,7 @@
 <template>
   <div class="project-card">
     <div class="project-image-container">
-      <img :src="getProjectImageURL()" :alt="projectTitle" />
+      <img :src="project.imageURL" :alt="projectTitle" />
     </div>
 
     <div class="project-details">
@@ -21,22 +21,8 @@
   </div>
 </template>
 
+
 <script>
-// Project image imports
-import taitoVarasto from '../assets/img/taitovarasto-project.webp';
-import fullstackPhoneBook from '../assets/img/fullstack-phonebook-application-project.webp';
-import portfolioSite from '../assets/img/portfolio-project.webp';
-import jobFinder from '../assets/img/job-finder-project.webp';
-import onlineWeatherView from '../assets/img/online-weather-view-project.webp';
-import weatherView from '../assets/img/weather-view-project.webp';
-import needyPet from '../assets/img/needypet-project.webp';
-import jiraiSweetiesDiscordBot from '../assets/img/jirai-sweeties-discord-bot-project.webp';
-import bookBoutique from '../assets/img/book-boutique-project.webp';
-
-// Tech icon imports
-import piniaIcon from '../assets/img/pinia-for-vue-logo.webp';
-import ionicIcon from '../assets/img/ionic-logo.svg';
-
 export default {
   props: {
     project: Object,
@@ -44,51 +30,21 @@ export default {
   },
   data() {
     return {
-      imageURL: "",
       projectTitle: this.project.title,
       additionalInfo: this.project.additionalInfo,
       links: this.project.links,
-      technologyTitles: this.project.technologyTitles,
-    }
+      technologyTitles: this.project.technologyTitles
+    };
   },
   methods: {
     getTechIconUrl(techName) {
-      if (techName === 'Ionic') {
-        return ionicIcon;
-      }
-      if (techName === 'Pinia') {
-        return piniaIcon;
-      }
       const tech = this.technologies.find(t => t.title === techName);
-      return tech ? tech.url : '';
-    },
-    getProjectImageURL() {
-      switch (this.projectTitle) {
-        case "Discord bot for Jirai Sweeties server":
-          return jiraiSweetiesDiscordBot;
-        case "NeedyPet":
-          return needyPet;
-        case "Personal portfolio":
-          return portfolioSite;
-        case "Taitovarasto for Virittämö as a client":
-          return taitoVarasto;
-        case "Fullstack phonebook app":
-          return fullstackPhoneBook;
-        case "Job finder":
-          return jobFinder;
-        case "Online weather view":
-          return onlineWeatherView;
-        case "Weather view":
-          return weatherView;
-        case "BookBoutique":
-          return bookBoutique;
-        default:
-          return '';
-      }
+      return tech ? tech.url : "";
     }
   }
-}
+};
 </script>
+
 
 <style scoped>
 .small-devicon {
