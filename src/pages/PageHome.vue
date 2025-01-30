@@ -3,7 +3,6 @@
 
   <div class="row">
     <div class="col-lg-7">
-
       <p>I'm a passionate <span class="text-highlight">full-stack developer</span> with a deep interest in <span
           class="text-highlight">cybersecurity</span>. My background in Business Administration, along with skills in <span
           class="text-highlight">digital marketing</span> and <span class="text-highlight">SEO</span>, provided a strong foundation for my programming
@@ -12,73 +11,11 @@
         challenges effectively. I also hold <span class="text-highlight">a degree in Information and Communications Technology</span>.</p>
 
       <h2>Main Languages & Frameworks</h2>
-      <div class="tech-category">
-        <h3>Web backend technologies & databases</h3>
+      <!-- Display technologies in categories -->
+      <div class="tech-category" v-for="category in categorizedTechnologies" :key="category.name">
+        <h3>{{ category.name }}</h3>
         <p class="introduction-highlights-paragraph">
-          <img class="devicon" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original-wordmark.svg" alt="Node.js Logo" />
-          <img class="devicon" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original-wordmark.svg" alt="Express.js Logo" />
-          <img class="devicon" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original-wordmark.svg" alt="MongoDB Logo" />
-          <img class="devicon" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/firebase/firebase-plain-wordmark.svg" alt="Firebase Logo" />
-          <img class="devicon" src="../assets/img/rest-api-logo.svg" alt="Rest Api Logo" />
-          <img class="devicon" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/django/django-plain-wordmark.svg" alt="Django Logo" />
-        </p>
-
-        <h3>Web frontend technologies & intuitive store</h3>
-        <p class="introduction-highlights-paragraph">
-          <img class="devicon" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original-wordmark.svg" alt="React Logo" />
-          <img class="devicon" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/redux/redux-original.svg" alt="Redux Logo" />
-          <img class="devicon" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vuejs/vuejs-original-wordmark.svg" alt="Vue.js Logo" />
-          <img class="devicon" src="../assets/img/ionic-logo.svg" alt="Ionic Logo" />
-          <img class="devicon" src="../assets/img/pinia-for-vue-logo.webp" alt="Pinia Logo" />
-        </p>
-
-        <h3>Additional web technologies</h3>
-        <p class="introduction-highlights-paragraph">
-          <img class="devicon" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript Logo" />
-          <img class="devicon" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" alt="TypeScript Logo" />
-          <img class="devicon" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg" alt="PHP Logo" />
-          <img class="devicon" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original-wordmark.svg" alt="CSS3 Logo" />
-          <img class="devicon" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original-wordmark.svg" alt="HTML5 Logo" />
-          <img class="devicon" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bootstrap/bootstrap-original-wordmark.svg"
-            alt="Bootstrap Logo" />
-        </p>
-
-        <h3>Web design</h3>
-        <p class="introduction-highlights-paragraph">
-          <img class="devicon" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg" alt="Figma Logo" />
-        </p>
-      </div>
-
-      <div class="tech-category">
-        <h3>Testing tools</h3>
-        <p class="introduction-highlights-paragraph">
-          <img class="devicon" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jest/jest-plain.svg" alt="Jest Logo" />
-          <img class="devicon" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cypressio/cypressio-original-wordmark.svg"
-            alt="Cypress Logo" />
-          <img class="devicon" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/playwright/playwright-original.svg"
-            alt="Playwright Logo" />
-        </p>
-      </div>
-
-      <div class="tech-category">
-        <h3>Version control, CI/CD, and cloud services</h3>
-        <p class="introduction-highlights-paragraph">
-          <img class="devicon" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original-wordmark.svg" alt="Git Logo" />
-          <img class="devicon" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original-wordmark.svg" alt="GitHub Logo" />
-          <img class="devicon" src="../assets/img/github-actions-logo.svg" alt="GitHub Actions Logo" />
-          <img class="devicon" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original-wordmark.svg" alt="Docker Logo" />
-          <img class="devicon" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/azure/azure-original-wordmark.svg" alt="Azure Logo" />
-        </p>
-      </div>
-
-      <div class="tech-category">
-        <h3>Programming languages & databases</h3>
-        <p class="introduction-highlights-paragraph">
-          <img class="devicon" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original-wordmark.svg" alt="Python Logo" />
-          <img class="devicon" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/sqlite/sqlite-original-wordmark.svg" alt="SQLite Logo" />
-          <img class="devicon" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original-wordmark.svg" alt="MySQL Logo" />
-          <img class="devicon" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original-wordmark.svg"
-            alt="PostgreSQL Logo" />
+          <img v-for="tech in category.techs" :key="tech.id" class="devicon" :src="tech.url" :alt="tech.title" />
         </p>
       </div>
 
@@ -144,6 +81,33 @@
 </template>
 
 <script>
+import { ref, onMounted } from 'vue';
+
+export default {
+  setup() {
+    const technologies = ref([]);
+    const categories = ref([]);
+    const categorizedTechnologies = ref([]);
+    const dataURL = '../data.json';
+
+    onMounted(async () => {
+      try {
+        const response = await fetch(dataURL);
+        const data = await response.json();
+        technologies.value = data.technologies; // Assign fetched data to variables
+        categories.value = data.techCategories;
+        categorizedTechnologies.value = categories.value.map(category => ({ // Map through categories and assign technologies to each category
+          name: category.name,
+          techs: technologies.value.filter(tech => category.technologies.includes(tech.title))
+        }));
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    });
+
+    return { categorizedTechnologies };
+  }
+};
 
 </script>
 
