@@ -4,7 +4,7 @@
       "id": 1,
       "type": "mainProject",
       "title": "Discord bot for Jirai Sweeties server",
-      "imageURL": "../src/assets/img/jirai-sweeties-discord-bot-project.webp",
+      "imageURL": "/assets/img/jirai-sweeties-discord-bot-project.webp",
       "technologyTitles": ["Python", "SQLite", "GitHub", "Azure", "Docker"],
       "additionalInfo": [
         "Interactive Discord bot with custom chat commands",
@@ -26,7 +26,7 @@
       "id": 2,
       "type": "mainProject",
       "title": "NeedyPet",
-      "imageURL": "../src/assets/img/needypet-project.webp",
+      "imageURL": "/assets/img/needypet-project.webp",
       "technologyTitles": [
         "Vue.js",
         "Ionic",
@@ -63,7 +63,7 @@
       "id": 3,
       "type": "mainProject",
       "title": "Personal portfolio",
-      "imageURL": "../src/assets/img/portfolio-project.webp",
+      "imageURL": "/assets/img/portfolio-project.webp",
       "technologyTitles": [
         "Vue.js",
         "JavaScript",
@@ -88,7 +88,7 @@
       "id": 4,
       "type": "webDevelopment",
       "title": "Online weather view",
-      "imageURL": "../src/assets/img/online-weather-view-project.webp",
+      "imageURL": "/assets/img/online-weather-view-project.webp",
       "technologyTitles": [
         "Python",
         "Django",
@@ -112,7 +112,7 @@
       "id": 5,
       "type": "webDevelopment",
       "title": "BookBoutique",
-      "imageURL": "../src/assets/img/book-boutique-project.webp",
+      "imageURL": "/assets/img/book-boutique-project.webp",
       "technologyTitles": [
         "PHP",
         "MySQL",
@@ -136,7 +136,7 @@
       "id": 6,
       "type": "webDevelopment",
       "title": "Fullstack phonebook app",
-      "imageURL": "../src/assets/img/fullstack-phonebook-application-project.webp",
+      "imageURL": "/assets/img/fullstack-phonebook-application-project.webp",
       "technologyTitles": [
         "MongoDB",
         "Express.js",
@@ -163,7 +163,7 @@
       "id": 7,
       "type": "webDevelopment",
       "title": "Taitovarasto for Virittämö as a client",
-      "imageURL": "../src/assets/img/taitovarasto-project.webp",
+      "imageURL": "/assets/img/taitovarasto-project.webp",
       "technologyTitles": [
         "MongoDB",
         "Express.js",
@@ -183,7 +183,7 @@
       "id": 8,
       "type": "commandLine",
       "title": "Job finder",
-      "imageURL": "../src/assets/img/job-finder-project.webp",
+      "imageURL": "/assets/img/job-finder-project.webp",
       "technologyTitles": ["Python"],
       "additionalInfo": [
         "A command-line tool for finding jobs from the internet",
@@ -200,7 +200,7 @@
       "id": 9,
       "type": "commandLine",
       "title": "Weather view",
-      "imageURL": "../src/assets/img/weather-view-project.webp",
+      "imageURL": "/assets/img/weather-view-project.webp",
       "technologyTitles": ["Python"],
       "additionalInfo": [
         "A command-line tool for fetching weather data from the internet",
@@ -306,7 +306,7 @@
     {
       "id": 5,
       "title": "REST API",
-      "url": "../src/assets/img/rest-api-logo.svg"
+      "url": "/assets/img/rest-api-logo.svg"
     },
     {
       "id": 6,
@@ -331,12 +331,12 @@
     {
       "id": 10,
       "title": "Ionic",
-      "url": "../src/assets/img/ionic-logo.svg"
+      "url": "/assets/img/ionic-logo.svg"
     },
     {
       "id": 11,
       "title": "Pinia",
-      "url": "../src/assets/img/pinia-for-vue-logo.webp"
+      "url": "/assets/img/pinia-for-vue-logo.webp"
     },
     {
       "id": 12,
@@ -401,7 +401,7 @@
     {
       "id": 24,
       "title": "GitHub Actions",
-      "url": "../src/assets/img/github-actions-logo.svg"
+      "url": "/assets/img/github-actions-logo.svg"
     },
     {
       "id": 25,
