@@ -4,8 +4,8 @@
       "id": 1,
       "type": "mainProject",
       "title": "Discord bot for Jirai Sweeties server",
-      "imageURL": "./src/assets/img/jirai-sweeties-discord-bot.webp",
-      "technologyTitles": ["Python", "SQLite", "GitHub", "Azure"],
+      "imageURL": "../src/assets/img/jirai-sweeties-discord-bot-project.webp",
+      "technologyTitles": ["Python", "SQLite", "GitHub", "Azure", "Docker"],
       "additionalInfo": [
         "Interactive Discord bot with custom chat commands",
         "Automated store monitoring with instant product alerts",
@@ -26,7 +26,7 @@
       "id": 2,
       "type": "mainProject",
       "title": "NeedyPet",
-      "imageURL": "./src/assets/img/needypet-project.webp",
+      "imageURL": "../src/assets/img/needypet-project.webp",
       "technologyTitles": [
         "Vue.js",
         "Ionic",
@@ -63,7 +63,7 @@
       "id": 3,
       "type": "mainProject",
       "title": "Personal portfolio",
-      "imageURL": "./src/assets/img/portfolio-project.webp",
+      "imageURL": "../src/assets/img/portfolio-project.webp",
       "technologyTitles": [
         "Vue.js",
         "JavaScript",
@@ -88,7 +88,7 @@
       "id": 4,
       "type": "webDevelopment",
       "title": "Online weather view",
-      "imageURL": "./src/assets/img/online-weather-view.webp",
+      "imageURL": "../src/assets/img/online-weather-view-project.webp",
       "technologyTitles": [
         "Python",
         "Django",
@@ -112,7 +112,7 @@
       "id": 5,
       "type": "webDevelopment",
       "title": "BookBoutique",
-      "imageURL": "./src/assets/img/book-boutique-project.webp",
+      "imageURL": "../src/assets/img/book-boutique-project.webp",
       "technologyTitles": [
         "PHP",
         "MySQL",
@@ -136,7 +136,7 @@
       "id": 6,
       "type": "webDevelopment",
       "title": "Fullstack phonebook app",
-      "imageURL": "./src/assets/img/fullstack-phonebook-application-project.webp",
+      "imageURL": "../src/assets/img/fullstack-phonebook-application-project.webp",
       "technologyTitles": [
         "MongoDB",
         "Express.js",
@@ -163,7 +163,7 @@
       "id": 7,
       "type": "webDevelopment",
       "title": "Taitovarasto for Virittämö as a client",
-      "imageURL": "./src/assets/img/taitovarasto-project.webp",
+      "imageURL": "../src/assets/img/taitovarasto-project.webp",
       "technologyTitles": [
         "MongoDB",
         "Express.js",
@@ -183,7 +183,7 @@
       "id": 8,
       "type": "commandLine",
       "title": "Job finder",
-      "imageURL": "./src/assets/img/job-finder-project.webp",
+      "imageURL": "../src/assets/img/job-finder-project.webp",
       "technologyTitles": ["Python"],
       "additionalInfo": [
         "A command-line tool for finding jobs from the internet",
@@ -197,10 +197,10 @@
       ]
     },
     {
-      "id": 8,
+      "id": 9,
       "type": "commandLine",
       "title": "Weather view",
-      "imageURL": "./src/assets/img/weather-view-project.webp",
+      "imageURL": "../src/assets/img/weather-view-project.webp",
       "technologyTitles": ["Python"],
       "additionalInfo": [
         "A command-line tool for fetching weather data from the internet",
@@ -285,8 +285,8 @@
   "technologies": [
     {
       "id": 1,
-      "title": "MongoDB",
-      "url": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mongodb/mongodb-original-wordmark.svg"
+      "title": "Node.js",
+      "url": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nodejs/nodejs-original-wordmark.svg"
     },
     {
       "id": 2,
@@ -295,88 +295,173 @@
     },
     {
       "id": 3,
-      "title": "React",
-      "url": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original-wordmark.svg"
+      "title": "MongoDB",
+      "url": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mongodb/mongodb-original-wordmark.svg"
     },
     {
       "id": 4,
-      "title": "Node.js",
-      "url": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nodejs/nodejs-original-wordmark.svg"
+      "title": "Firebase",
+      "url": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/firebase/firebase-plain-wordmark.svg"
     },
     {
       "id": 5,
-      "title": "CSS3",
-      "url": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-original-wordmark.svg"
+      "title": "REST API",
+      "url": "../src/assets/img/rest-api-logo.svg"
     },
     {
       "id": 6,
-      "title": "HTML5",
-      "url": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original-wordmark.svg"
-    },
-    {
-      "id": 7,
-      "title": "Bootstrap",
-      "url": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/bootstrap/bootstrap-original-wordmark.svg"
-    },
-    {
-      "id": 8,
-      "title": "Vue.js",
-      "url": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vuejs/vuejs-original-wordmark.svg"
-    },
-    {
-      "id": 9,
-      "title": "Python",
-      "url": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original-wordmark.svg"
-    },
-    {
-      "id": 10,
-      "title": "JavaScript",
-      "url": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg"
-    },
-    {
-      "id": 11,
-      "title": "TypeScript",
-      "url": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/typescript/typescript-original.svg"
-    },
-    {
-      "id": 12,
-      "title": "Jest",
-      "url": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/jest/jest-plain.svg"
-    },
-    {
-      "id": 13,
-      "title": "Docker",
-      "url": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/docker/docker-original-wordmark.svg"
-    },
-    {
-      "id": 14,
-      "title": "Azure",
-      "url": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/azure/azure-original-wordmark.svg"
-    },
-    {
-      "id": 15,
-      "title": "GitHub",
-      "url": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/github/github-original-wordmark.svg"
-    },
-    {
-      "id": 16,
-      "title": "PHP",
-      "url": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/php/php-original.svg"
-    },
-    {
-      "id": 17,
-      "title": "MySQL",
-      "url": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mysql/mysql-original-wordmark.svg"
-    },
-    {
-      "id": 18,
       "title": "Django",
       "url": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/django/django-plain-wordmark.svg"
     },
     {
+      "id": 7,
+      "title": "React",
+      "url": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original-wordmark.svg"
+    },
+    {
+      "id": 8,
+      "title": "Redux",
+      "url": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/redux/redux-original.svg"
+    },
+    {
+      "id": 9,
+      "title": "Vue.js",
+      "url": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vuejs/vuejs-original-wordmark.svg"
+    },
+    {
+      "id": 10,
+      "title": "Ionic",
+      "url": "../src/assets/img/ionic-logo.svg"
+    },
+    {
+      "id": 11,
+      "title": "Pinia",
+      "url": "../src/assets/img/pinia-for-vue-logo.webp"
+    },
+    {
+      "id": 12,
+      "title": "JavaScript",
+      "url": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg"
+    },
+    {
+      "id": 13,
+      "title": "TypeScript",
+      "url": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/typescript/typescript-original.svg"
+    },
+    {
+      "id": 14,
+      "title": "PHP",
+      "url": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/php/php-original.svg"
+    },
+    {
+      "id": 15,
+      "title": "CSS3",
+      "url": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-original-wordmark.svg"
+    },
+    {
+      "id": 16,
+      "title": "HTML5",
+      "url": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original-wordmark.svg"
+    },
+    {
+      "id": 17,
+      "title": "Bootstrap",
+      "url": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/bootstrap/bootstrap-original-wordmark.svg"
+    },
+    {
+      "id": 18,
+      "title": "Figma",
+      "url": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/figma/figma-original.svg"
+    },
+    {
       "id": 19,
+      "title": "Jest",
+      "url": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/jest/jest-plain.svg"
+    },
+    {
+      "id": 20,
+      "title": "Cypress",
+      "url": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/cypressio/cypressio-original.svg"
+    },
+    {
+      "id": 21,
+      "title": "Playwright",
+      "url": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/playwright/playwright-original.svg"
+    },
+    {
+      "id": 22,
+      "title": "Git",
+      "url": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/git/git-original-wordmark.svg"
+    },
+    {
+      "id": 23,
+      "title": "GitHub",
+      "url": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/github/github-original-wordmark.svg"
+    },
+    {
+      "id": 24,
+      "title": "GitHub Actions",
+      "url": "../src/assets/img/github-actions-logo.svg"
+    },
+    {
+      "id": 25,
+      "title": "Docker",
+      "url": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/docker/docker-original-wordmark.svg"
+    },
+    {
+      "id": 26,
+      "title": "Azure",
+      "url": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/azure/azure-original-wordmark.svg"
+    },
+    {
+      "id": 27,
+      "title": "Python",
+      "url": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original-wordmark.svg"
+    },
+    {
+      "id": 28,
       "title": "SQLite",
       "url": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/sqlite/sqlite-original-wordmark.svg"
+    },
+    {
+      "id": 29,
+      "title": "MySQL",
+      "url": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mysql/mysql-original-wordmark.svg"
+    },
+    {
+      "id": 30,
+      "title": "PostgreSQL",
+      "url": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postgresql/postgresql-original-wordmark.svg"
+    }
+  ],
+  "techCategories": [
+    {
+      "name": "Web backend technologies & databases",
+      "technologies": ["Node.js", "Express.js", "MongoDB", "Firebase", "Django", "REST API"]
+    },
+    {
+      "name": "Web frontend technologies & intuitive store",
+      "technologies": ["React", "Redux", "Vue.js", "Ionic", "Pinia"]
+    },
+    {
+      "name": "Additional web technologies",
+      "technologies": ["JavaScript", "TypeScript", "PHP", "CSS3", "HTML5", "Bootstrap"]
+    },
+    {
+      "name": "Web design",
+      "technologies": ["Figma"]
+    },
+    {
+      "name": "Testing tools",
+      "technologies": ["Jest", "Cypress", "Playwright"]
+    },
+    {
+      "name": "Version control, CI/CD, and cloud services",
+      "technologies": ["Git", "GitHub", "GitHub Actions", "Docker", "Azure"]
+    },
+    {
+      "name": "Programming languages & databases",
+      "technologies": ["Python", "SQLite", "MySQL", "PostgreSQL"]
     }
   ]
 }
