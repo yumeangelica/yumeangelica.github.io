@@ -5,7 +5,7 @@
 
 <style>
   .header-pic {
-    background-image: url(assets/img/sakurabanner.jpeg);
+    background-image: url(/assets/img/sakurabanner.jpeg);
     background-position: center;
     padding: 25px 20px 5px 20px;
     text-align: center;

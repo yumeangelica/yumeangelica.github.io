@@ -22,7 +22,7 @@
     </div>
 
     <div class="col-md-auto">
-      <img src="../assets/img/angelica-profilepic.webp" class="img-responsive profilepic" alt="Angelica's Profile Picture">
+      <img src="/assets/img/angelica-profilepic.webp" class="img-responsive profilepic" alt="Angelica's Profile Picture">
     </div>
   </div>
 
@@ -58,7 +58,7 @@
     <p>Feel welcome to reach out to me via mail</p>
 
     <p class="introduction-highlights-paragraph">
-      <img class="contact-image" src="../assets/img/angelica-contact.webp" alt="Angelica's Contact Information" />
+      <img class="contact-image" src="/assets/img/angelica-contact.webp" alt="Angelica's Contact Information" />
     </p>
 
     <p>
