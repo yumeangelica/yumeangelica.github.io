@@ -31,12 +31,18 @@ export default {
 <style>
 .custom-container {
   max-width: 1400px;
-  margin: 0 auto;
-  padding: 0 15px;
+  margin: 0px 90px;
+  padding: 0px 15px;
 }
 
 main {
   flex-grow: 1;
   min-height: calc(90vh - 50px);
+}
+
+@media (max-width: 768px) {
+  .custom-container {
+    margin: 0px 5px;
+  }
 }
 </style>

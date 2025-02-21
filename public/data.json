@@ -8,12 +8,13 @@
       "technologyTitles": ["Python", "SQLite", "GitHub", "Azure", "Docker"],
       "additionalInfo": [
         "Interactive Discord bot with custom chat commands",
-        "Automated store monitoring with instant product alerts",
+        "Automated store monitoring with instant product alerts to Discord server",
         "Historical tracking and price monitoring via SQLite",
-        "Efficient web data extraction using aiohttp and Beautiful Soup",
+        "Efficient web data extraction using aiohttp and lxml",
         "Rotating user agents for secure and reliable data extraction",
         "Deployed on Azure for scalability and reliability",
-        "Supports multi-store configurations and flexible scheduling"
+        "Supports multi-store configurations and flexible scheduling",
+        "Type safety"
       ],
       "links": [
         {
@@ -62,6 +63,28 @@
     {
       "id": 3,
       "type": "mainProject",
+      "title": "Store data extractor & monitor",
+      "imageURL": "/assets/img/store-data-extractor-project.webp",
+      "technologyTitles": ["Python", "SQLite", "GitHub", "Docker"],
+      "additionalInfo": [
+        "Developed as a standalone module but is also part of the larger Discord bot project for Jirai Sweeties server",
+        "Automated store monitoring with instant product alerts",
+        "Historical tracking and price monitoring via SQLite",
+        "Efficient web data extraction using aiohttp and lxml",
+        "Rotating user agents for secure and reliable data extraction",
+        "Supports multi-store configurations and flexible scheduling",
+        "Type safety"
+      ],
+      "links": [
+        {
+          "text": "Source Code",
+          "url": "https://github.com/yumeangelica/store_data_extractor"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "type": "mainProject",
       "title": "Personal portfolio",
       "imageURL": "/assets/img/portfolio-project.webp",
       "technologyTitles": [
@@ -85,7 +108,7 @@
       ]
     },
     {
-      "id": 4,
+      "id": 5,
       "type": "webDevelopment",
       "title": "Online weather view",
       "imageURL": "/assets/img/online-weather-view-project.webp",
@@ -109,7 +132,7 @@
       ]
     },
     {
-      "id": 5,
+      "id": 6,
       "type": "webDevelopment",
       "title": "BookBoutique",
       "imageURL": "/assets/img/book-boutique-project.webp",
@@ -133,7 +156,7 @@
       ]
     },
     {
-      "id": 6,
+      "id": 7,
       "type": "webDevelopment",
       "title": "Fullstack phonebook app",
       "imageURL": "/assets/img/fullstack-phonebook-application-project.webp",
@@ -160,7 +183,7 @@
       ]
     },
     {
-      "id": 7,
+      "id": 8,
       "type": "webDevelopment",
       "title": "Taitovarasto for Virittämö as a client",
       "imageURL": "/assets/img/taitovarasto-project.webp",
@@ -180,7 +203,7 @@
       ]
     },
     {
-      "id": 8,
+      "id": 9,
       "type": "commandLine",
       "title": "Job finder",
       "imageURL": "/assets/img/job-finder-project.webp",
@@ -197,7 +220,7 @@
       ]
     },
     {
-      "id": 9,
+      "id": 10,
       "type": "commandLine",
       "title": "Weather view",
       "imageURL": "/assets/img/weather-view-project.webp",
@@ -214,7 +237,7 @@
       ]
     },
     {
-      "id": 10,
+      "id": 11,
       "type": "vanillajsProject",
       "title": "Roleplay Dice Roller",
       "additionalInfo": ["Vanilla JS dice roller for roleplaying games"],
@@ -230,7 +253,7 @@
       ]
     },
     {
-      "id": 11,
+      "id": 12,
       "type": "vanillajsProject",
       "title": "Global Population Charts",
       "additionalInfo": [
@@ -248,7 +271,7 @@
       ]
     },
     {
-      "id": 12,
+      "id": 13,
       "type": "vanillajsProject",
       "title": "RPSLS Game",
       "additionalInfo": ["Vanilla JS Rock-Paper-Scissors-Lizard-Spock game"],
@@ -264,7 +287,7 @@
       ]
     },
     {
-      "id": 13,
+      "id": 14,
       "type": "vanillajsProject",
       "title": "Multifunctional Clock",
       "additionalInfo": [
