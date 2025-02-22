@@ -3,14 +3,16 @@
 
   <div class="row">
     <div class="col-lg-7">
-      <p>I'm a passionate <span class="text-highlight">full-stack developer</span> with a deep interest in <span
-          class="text-highlight">cybersecurity</span>. My background in Business Administration, along with skills in <span
-          class="text-highlight">digital marketing</span> and <span class="text-highlight">SEO</span>, provided a strong foundation for my programming
-        journey, which I began independently in 2020. With a foundation in <span class="text-highlight">agile practices</span>, I concentrate on
-        crafting <span class="text-highlight">accessible</span> & <span class="text-highlight">optimized</span> web solutions, and address complex
-        challenges effectively. I also hold <span class="text-highlight">a degree in Information and Communications Technology</span>.</p>
 
-      <h2>Main Languages & Frameworks</h2>
+      <p>I'm a passionate <span class="text-highlight">full-stack developer</span> with a strong interest in <span
+          class="text-highlight">cybersecurity</span>. My background in Business Administration, combined with expertise in <span
+          class="text-highlight">digital marketing</span>, has given me a solid foundation for software development. Since 2020, I've been building
+        <span class="text-highlight">accessible</span> and <span class="text-highlight">optimized</span> web solutions while solving complex
+        challenges, often working in <span class="text-highlight">agile environments</span>. I also hold <span class="text-highlight">a degree in
+          Information and Communications Technology</span>.
+      </p>
+
+      <h2>Main Tech Stack & Tools</h2>
       <!-- Display technologies in categories -->
       <div class="tech-category" v-for="category in categorizedTechnologies" :key="category.name">
         <h3>{{ category.name }}</h3>
@@ -28,41 +30,43 @@
 
   <section class="education">
     <div class="heartlist">
-      <h2>My developer journey</h2>
+      <h2>My Developer Journey</h2>
       <ul role="presentation">
-        <li>Gained work experience as a software developer at Helsinki City, Virittämö.</li>
-        <li>Bachelor of Science in Business Administration from the University of Vaasa.</li>
-        <li>Studied computer science as part of the DEFA project courses at the University of Helsinki.</li>
-        <li>Successfully completed the Full Stack Open course series, acquiring valuable skills for a full-stack development career.</li>
-        <li>Earned a degree in Information and Communications Technology from Business College Helsinki.</li>
-        <li>Continuously enhancing my programming skills and aiming to secure a position where I can contribute and grow as a developer.</li>
+        <li>Software Developer at OP Group, focusing on React and TypeScript front-end development.</li>
+        <li>Previously worked as a backend-focused full-stack developer at the City of Helsinki, Virittämö.</li>
+        <li>BSc in Business Administration, University of Vaasa (Graduated with excellence).</li>
+        <li>Completed 180+ ECTS credits in IT at Metropolia University of Applied Sciences and other higher education institutions.</li>
+        <li>Full Stack Open course series at the University of Helsinki (Excellent grades, DEFA project participant).</li>
+        <li>ICT degree from Business College Helsinki (GPA: 4.95/5, April 2024).</li>
+        <li>Strong foundation in technical, social, and business skills.</li>
       </ul>
     </div>
   </section>
 
+
   <section class="interesting-fact">
     <h2>A bit about my <span class="tooltip-container">yume<span class="tooltip-text">"dream"</span></span></h2>
-    <p>When not immersed in coding, I indulge in my love for producing music and exploring Japanese culture, which fuels my creativity and
-      brings a unique perspective to my work in tech.</p>
+    <p>When not immersed in coding, I enjoy producing music and exploring Japanese culture—both of which inspire my creativity and bring a unique
+      perspective to my work in tech.</p>
   </section>
+
 
   <section class="commitment">
     <h2>My Commitment</h2>
-    <p>With a deep-rooted passion for programming, I'm committed to continual learning and skill enhancement. My creativity not only manifests in
-      coding
-      but also in my hobbies. I'm currently available for new opportunities in the IT field.</p>
+    <p>Driven by a deep passion for programming, I'm dedicated to continuous learning and growth. My creativity extends beyond coding into my hobbies,
+      enriching my problem-solving approach. I'm currently available for new opportunities in the IT field.</p>
   </section>
 
   <section class="contact">
     <h2>Get in Touch</h2>
-    <p>Feel welcome to reach out to me via mail</p>
+    <p>Feel free to reach out to me via email.</p>
 
     <p class="introduction-highlights-paragraph">
       <img class="contact-image" src="/assets/img/angelica-contact.webp" alt="Angelica's Contact Information" />
     </p>
 
     <p>
-      or my LinkedIn or GitHub profiles, simply by clicking the icons below:
+      You can also connect with me on LinkedIn or GitHub by clicking the icons below.
     </p>
 
     <p class="introduction-highlights-paragraph">
@@ -118,7 +122,7 @@ export default {
 }
 
 .devicon {
-  max-width: 70px;
+  max-width: 65px;
   margin-right: 15px;
   margin-bottom: 15px;
   padding: 2px;
