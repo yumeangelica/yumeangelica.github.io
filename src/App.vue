@@ -32,7 +32,6 @@ export default {
 .custom-container {
   max-width: 1400px;
   margin: 0 auto;
-  padding: 0px 15px;
 }
 
 main {
@@ -41,7 +40,7 @@ main {
 }
 
 /* Tablet and small screen */
-@media (max-width: 1024px) {
+@media (max-width: 1440px) {
   .custom-container {
     margin: 0px 45px;
   }
