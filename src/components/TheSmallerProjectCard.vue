@@ -7,7 +7,8 @@
       </p>
     </div>
     <div class="project-links">
-      <a v-for="(link, index) in project.links" :key="index" :href="link.url" target="_blank" class="project-button">
+      <a v-for="(link, index) in project.links" :key="index" :href="link.url" target="_blank" class="project-button"
+        :aria-label="`Visit ${link.text}`">
         {{ link.text }}
       </a>
     </div>
