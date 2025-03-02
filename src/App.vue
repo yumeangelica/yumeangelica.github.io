@@ -3,7 +3,7 @@
     <TheHeaderPic />
     <TheNavBar />
   </header>
-  <main>
+  <main id="main-content" role="main" aria-label="Main site content">
     <div class="container-fluid">
       <div class="custom-container">
         <RouterView />

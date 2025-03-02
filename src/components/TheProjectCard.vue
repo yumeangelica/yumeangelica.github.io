@@ -13,7 +13,7 @@
         {{ info }}
       </p>
       <div class="buttons">
-        <a v-for="link in links" :key="link.text" :href="link.url" class="project-button" target="_blank">
+        <a v-for="link in links" :key="link.text" :href="link.url" class="project-button" target="_blank" :aria-label="`Visit ${link.text}`">
           {{ link.text }}
         </a>
       </div>
