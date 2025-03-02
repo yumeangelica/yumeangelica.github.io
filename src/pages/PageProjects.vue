@@ -1,25 +1,25 @@
 <template>
   <!-- Main projects section -->
   <h1 class="text-center">Main projects</h1>
-  <div class="projects-container">
+  <div class="projects-container" aria-live="polite" :aria-busy="loading">
     <TheProjectCard v-for="project in mainProjects" :key="project.id" :project="project" :technologies="technologies" />
   </div>
 
   <!-- Other web development projects section -->
   <h2 class="text-center">Other web development projects</h2>
-  <div class="projects-container">
+  <div class="projects-container" aria-live="polite" :aria-busy="loading">
     <TheProjectCard v-for="project in webDevelopmentProjects" :key="project.id" :project="project" :technologies="technologies" />
   </div>
 
   <!-- Other command-line projects section -->
   <h2 class="text-center">Other command-line projects</h2>
-  <div class="projects-container">
+  <div class="projects-container" aria-live="polite" :aria-busy="loading">
     <TheProjectCard v-for="project in commandLineProjects" :key="project.id" :project="project" :technologies="technologies" />
   </div>
 
   <!-- VanillaJS projects section -->
   <h3 class="text-center">VanillaJS projects</h3>
-  <div class="other-projects-container">
+  <div class="other-projects-container" aria-live="polite" :aria-busy="loading">
     <TheSmallerProjectCard v-for="project in vanillajsProjects" :key="project.id" :project="project" />
   </div>
 </template>
@@ -38,7 +38,8 @@ export default {
       vanillajsProjects: ref([]),
       technologies: ref([]),
       dataURL: '../data.json',
-      dataHandleError: ref(false)
+      dataHandleError: ref(false), // If data fetching fails, show error message
+      loading: ref(true) // For accessibility, show loading message while fetching data
     }
   },
   components: {
@@ -56,8 +57,10 @@ export default {
         this.commandLineProjects = data.projects.filter(p => p.type === 'commandLine');
         this.vanillajsProjects = data.projects.filter(p => p.type === 'vanillajsProject');
       }
+      this.loading = false; // When data is fetched, set loading to false
     } catch (error) {
       this.dataHandleError = true;
+      this.loading = false; // When data fetching fails, set loading to false
       console.log(error.message);
     }
   }
