@@ -3,7 +3,6 @@
 
   <div class="row">
     <div class="col-lg-7">
-
       <p>I'm a passionate <span class="text-highlight">full-stack developer</span> with a strong interest in <span
           class="text-highlight">cybersecurity</span>. My background in Business Administration, combined with expertise in <span
           class="text-highlight">digital marketing</span>, has given me a solid foundation for software development. Since 2020, I've been building
@@ -17,10 +16,9 @@
       <div class="tech-category" v-for="category in categorizedTechnologies" :key="category.name">
         <h3>{{ category.name }}</h3>
         <p class="introduction-highlights-paragraph">
-          <img v-for="tech in category.techs" :key="tech.id" class="devicon" :src="tech.url" :alt="tech.title" />
+          <img v-for="tech in category.techs" :key="tech.id" class="devicon" :src="tech.url" :alt="tech.title" :title="tech.title" />
         </p>
       </div>
-
     </div>
 
     <div class="col-md-auto">
@@ -43,13 +41,11 @@
     </div>
   </section>
 
-
   <section class="interesting-fact">
     <h2>A bit about my <span class="tooltip-container">yume<span class="tooltip-text">"dream"</span></span></h2>
     <p>When not immersed in coding, I enjoy producing music and exploring Japanese culture—both of which inspire my creativity and bring a unique
       perspective to my work in tech.</p>
   </section>
-
 
   <section class="commitment">
     <h2>My Commitment</h2>
@@ -80,7 +76,6 @@
           alt="GitHub logo and link" />
       </a>
     </p>
-
   </section>
 </template>
 
