@@ -30,7 +30,7 @@
     <div class="heartlist">
       <h2>My Developer Journey</h2>
       <ul role="presentation">
-        <li>Software Developer at OP Group, focusing on React and TypeScript front-end development.</li>
+        <li>Software Developer at OP Financial Group, specializing in frontend development with React and TypeScript.</li>
         <li>Previously worked as a backend-focused full-stack developer at the City of Helsinki, Virittämö.</li>
         <li>BSc in Business Administration, University of Vaasa (Graduated with excellence).</li>
         <li>Completed 180+ ECTS credits in IT at Metropolia University of Applied Sciences and other higher education institutions.</li>

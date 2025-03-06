@@ -1,6 +1,6 @@
 {
   "name": "yumeangelica.github.io",
-  "version": "1.19.0",
+  "version": "1.19.1",
   "private": true,
   "type": "module",
   "author": "yumeangelica",
@@ -22,6 +22,6 @@
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^5.2.1",
-    "vite": "^6.1.1"
+    "vite": "^6.2.0"
   }
 }
