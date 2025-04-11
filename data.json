@@ -42,7 +42,8 @@
         "Jest",
         "Docker",
         "Azure",
-        "GitHub"
+        "GitHub",
+        "Vite"
       ],
       "additionalInfo": [
         "Mobile & desktop friendly full-stack pet care management app",
@@ -93,7 +94,8 @@
         "CSS3",
         "HTML5",
         "Bootstrap",
-        "GitHub"
+        "GitHub",
+        "Vite"
       ],
       "additionalInfo": [
         "Showcasing my Vue.js frontend & website design skills",
@@ -169,7 +171,8 @@
         "CSS3",
         "HTML5",
         "Bootstrap",
-        "GitHub"
+        "GitHub",
+        "Vite"
       ],
       "additionalInfo": [
         "Full-stack application for managing phone numbers",
@@ -195,7 +198,9 @@
         "JavaScript",
         "CSS3",
         "HTML5",
-        "GitHub"
+        "GitHub",
+        "Vite",
+        "Docker"
       ],
       "additionalInfo": [
         "Recruitment and skills showcase app, built with a team. My role was focused on back-end development, database design, and API implementation",
@@ -383,92 +388,132 @@
     },
     {
       "id": 16,
+      "title": "Sass",
+      "url": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/sass/sass-original.svg"
+    },
+    {
+      "id": 17,
       "title": "HTML5",
       "url": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original-wordmark.svg"
     },
     {
-      "id": 17,
+      "id": 18,
       "title": "Bootstrap",
       "url": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/bootstrap/bootstrap-original-wordmark.svg"
     },
     {
-      "id": 18,
+      "id": 19,
       "title": "Figma",
       "url": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/figma/figma-original.svg"
     },
     {
-      "id": 19,
+      "id": 20,
+      "title": "Vitest",
+      "url": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vitest/vitest-original.svg"
+    },
+    {
+      "id": 21,
       "title": "Jest",
       "url": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/jest/jest-plain.svg"
     },
     {
-      "id": 20,
+      "id": 22,
       "title": "Cypress",
       "url": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/cypressio/cypressio-original.svg"
     },
     {
-      "id": 21,
+      "id": 23,
       "title": "Playwright",
       "url": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/playwright/playwright-original.svg"
     },
     {
-      "id": 22,
+      "id": 24,
       "title": "Git",
       "url": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/git/git-original-wordmark.svg"
     },
     {
-      "id": 23,
+      "id": 25,
       "title": "GitHub",
       "url": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/github/github-original-wordmark.svg"
     },
     {
-      "id": 24,
+      "id": 26,
+      "title": "Bitbucket",
+      "url": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/bitbucket/bitbucket-original-wordmark.svg"
+    },
+    {
+      "id": 27,
       "title": "GitHub Actions",
       "url": "/assets/img/github-actions-logo.svg"
     },
     {
-      "id": 25,
+      "id": 28,
       "title": "Docker",
       "url": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/docker/docker-original-wordmark.svg"
     },
     {
-      "id": 26,
+      "id": 29,
       "title": "Azure",
       "url": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/azure/azure-original-wordmark.svg"
     },
     {
-      "id": 27,
+      "id": 30,
       "title": "Python",
       "url": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original-wordmark.svg"
     },
     {
-      "id": 28,
+      "id": 31,
+      "title": "Java",
+      "url": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/java/java-original-wordmark.svg"
+    },
+    {
+      "id": 32,
       "title": "SQLite",
       "url": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/sqlite/sqlite-original-wordmark.svg"
     },
     {
-      "id": 29,
+      "id": 33,
       "title": "MySQL",
       "url": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mysql/mysql-original-wordmark.svg"
     },
     {
-      "id": 30,
+      "id": 34,
       "title": "PostgreSQL",
       "url": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postgresql/postgresql-original-wordmark.svg"
+    },
+    {
+      "id": 35,
+      "title": "Vite",
+      "url": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vitejs/vitejs-original.svg"
     }
   ],
-"techCategories": [
+  "techCategories": [
     {
       "name": "Backend Technologies & Databases",
-      "technologies": ["Node.js", "Express.js", "MongoDB", "Firebase", "Django", "REST API"]
+      "technologies": [
+        "Node.js",
+        "Express.js",
+        "MongoDB",
+        "Firebase",
+        "Django",
+        "REST API"
+      ]
     },
     {
       "name": "Frontend Technologies & State Management",
-      "technologies": ["React", "Redux", "Vue.js", "Ionic", "Pinia"]
+      "technologies": ["React", "Redux", "Vue.js", "Ionic", "Pinia", "Vite"]
     },
     {
       "name": "Web Development Fundamentals",
-      "technologies": ["JavaScript", "TypeScript", "PHP", "CSS3", "HTML5", "Bootstrap"]
+      "technologies": [
+        "JavaScript",
+        "TypeScript",
+        "PHP",
+        "CSS3",
+        "Sass",
+        "HTML5",
+        "Bootstrap"
+      ]
     },
     {
       "name": "UI/UX Design",
@@ -476,15 +521,22 @@
     },
     {
       "name": "Testing & Automation",
-      "technologies": ["Jest", "Cypress", "Playwright"]
+      "technologies": ["Vitest", "Jest", "Cypress", "Playwright"]
     },
     {
       "name": "Version Control, CI/CD & Cloud Services",
-      "technologies": ["Git", "GitHub", "GitHub Actions", "Docker", "Azure"]
+      "technologies": [
+        "Git",
+        "GitHub",
+        "Bitbucket",
+        "GitHub Actions",
+        "Docker",
+        "Azure"
+      ]
     },
     {
       "name": "Programming Languages & Relational Databases",
-      "technologies": ["Python", "SQLite", "MySQL", "PostgreSQL"]
+      "technologies": ["Python", "Java", "SQLite", "MySQL", "PostgreSQL"]
     }
   ]
 }
