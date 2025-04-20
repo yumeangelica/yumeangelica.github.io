@@ -3,13 +3,15 @@
 
   <div class="row">
     <div class="col-lg-7">
+
       <p>I'm a passionate <span class="text-highlight">full-stack developer</span> with a strong interest in <span
-          class="text-highlight">cybersecurity</span>. My background in Business Administration, combined with expertise in <span
-          class="text-highlight">digital marketing</span>, has given me a solid foundation for software development. Since 2020, I've been building
-        <span class="text-highlight">accessible</span> and <span class="text-highlight">optimized</span> web solutions while solving complex
-        challenges, often working in <span class="text-highlight">agile environments</span>. I also hold <span class="text-highlight">a degree in
-          Information and Communications Technology</span>.
+          class="text-highlight">cybersecurity</span>. My background in Business Administration and <span class="text-highlight">digital
+          marketing</span> provides a solid foundation for software development. Since 2020, I've been building <span
+          class="text-highlight">accessible</span> and <span class="text-highlight">optimized</span> web solutions, solving complex challenges in
+        <span class="text-highlight">agile environments</span>. I also hold <span class="text-highlight">a degree in Information and Communications
+          Technology</span>.
       </p>
+
 
       <h2>Main Tech Stack & Tools</h2>
       <!-- Display technologies in categories -->
@@ -30,21 +32,25 @@
     <div class="heartlist">
       <h2>My Developer Journey</h2>
       <ul role="presentation">
-        <li>Software Developer at OP Financial Group, specializing in frontend development with React and TypeScript.</li>
-        <li>Previously worked as a backend-focused full-stack developer at the City of Helsinki, Virittämö.</li>
-        <li>BSc in Business Administration, University of Vaasa (Graduated with excellence).</li>
+        <li>Software Developer at OP Financial Group — accessible frontend solutions with React, TypeScript, SCSS, and design systems in a highly
+          regulated international environment.</li>
+        <li>Previously worked as a full-stack developer at the City of Helsinki (Virittämö), with a focus on backend development using the MERN stack.
+        </li>
+        <li>Years of building own projects — coding driven by curiosity and a passion for learning.</li>
+        <li>BSc in Business Administration, University of Vaasa (graduated with excellence).</li>
         <li>Completed 180+ ECTS credits in IT at Metropolia University of Applied Sciences and other higher education institutions.</li>
-        <li>Full Stack Open course series at the University of Helsinki (Excellent grades, DEFA project participant).</li>
+        <li>Full Stack Open course series at the University of Helsinki (excellent grades, DEFA project participant).</li>
+        <li>Additional coursework in DevOps with Docker, Cyber Security, and Python Programming at the University of Helsinki.</li>
         <li>ICT degree from Business College Helsinki (GPA: 4.95/5, April 2024).</li>
-        <li>Strong foundation in technical, social, and business skills.</li>
+        <li>Well-rounded skill set across technical, social, and business domains.</li>
       </ul>
     </div>
   </section>
 
   <section class="interesting-fact">
     <h2>A bit about my <span class="tooltip-container">yume<span class="tooltip-text">"dream"</span></span></h2>
-    <p>When not immersed in coding, I enjoy producing music and exploring Japanese culture—both of which inspire my creativity and bring a unique
-      perspective to my work in tech.</p>
+    <p>Beyond coding, I enjoy producing music and exploring Japanese culture — both of which inspire my creativity and bring a unique perspective to
+      my work in tech.</p>
   </section>
 
   <section class="commitment">
