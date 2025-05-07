@@ -1,5 +1,5 @@
 <template>
-  <footer role="contentinfo">&copy; 2020 - {{ year }} yumeangelica.github.io. All Rights Reserved.</footer>
+  <footer role="contentinfo" aria-label="Site footer">&copy; 2020 - {{ year }} yumeangelica.github.io. All Rights Reserved.</footer>
 </template>
 
 <script setup>

@@ -5,14 +5,14 @@
       "type": "mainProject",
       "title": "Discord bot for Jirai Sweeties server",
       "imageURL": "/assets/img/jirai-sweeties-discord-bot-project.webp",
-      "technologyTitles": ["Python", "SQLite", "GitHub", "Azure", "Docker"],
+      "technologyTitles": ["Python", "SQLite", "GitHub", "Docker", "Raspberry Pi", "Linux"],
       "additionalInfo": [
         "Interactive Discord bot with custom chat commands",
         "Automated store monitoring with instant product alerts to Discord server",
         "Historical tracking and price monitoring via SQLite",
         "Efficient web data extraction using aiohttp and lxml",
         "Rotating user agents for secure and reliable data extraction",
-        "Deployed on Azure for scalability and reliability",
+        "Deployed on a Raspberry Pi to ensure 24/7 availability and maximize cost efficiency.",
         "Supports multi-store configurations and flexible scheduling",
         "Type safety"
       ],
@@ -54,10 +54,6 @@
         {
           "text": "Source Code",
           "url": "https://github.com/yumeangelica/needypet"
-        },
-        {
-          "text": "View Application",
-          "url": "https://needypetapp.azurewebsites.net/"
         }
       ]
     },
@@ -100,7 +96,8 @@
       "additionalInfo": [
         "Showcasing my Vue.js frontend & website design skills",
         "Front-end, design, accessibility",
-        "Versioning, automated deployment"
+        "Versioning, automated deployment",
+        "Hosted on GitHub Pages"
       ],
       "links": [
         {
@@ -485,6 +482,16 @@
       "id": 35,
       "title": "Vite",
       "url": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vitejs/vitejs-original.svg"
+    },
+    {
+      "id": 36,
+      "title": "Raspberry Pi",
+      "url": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/raspberrypi/raspberrypi-original-wordmark.svg"
+    },
+    {
+      "id": 37,
+      "title": "Linux",
+      "url": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/linux/linux-original.svg"
     }
   ],
   "techCategories": [
@@ -524,6 +531,10 @@
       "technologies": ["Vitest", "Jest", "Cypress", "Playwright"]
     },
     {
+      "name": "Programming Languages & Relational Databases",
+      "technologies": ["Python", "Java", "SQLite", "MySQL", "PostgreSQL"]
+    },
+    {
       "name": "Version Control, CI/CD & Cloud Services",
       "technologies": [
         "Git",
@@ -535,8 +546,8 @@
       ]
     },
     {
-      "name": "Programming Languages & Relational Databases",
-      "technologies": ["Python", "Java", "SQLite", "MySQL", "PostgreSQL"]
+      "name": "Deployment & Platform Skills",
+      "technologies": ["Linux", "Raspberry Pi"]
     }
   ]
 }

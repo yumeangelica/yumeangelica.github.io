@@ -1,5 +1,5 @@
 <template>
-  <div class="header-pic" role="img" aria-label="Sakura banner for header" aria-hidden="true"></div>
+  <div class="header-pic" role="img" aria-label="Sakura banner for header"></div>
 </template>
 
 
@@ -7,6 +7,7 @@
 .header-pic {
   background-image: url(/assets/img/sakurabanner.jpeg);
   background-position: center;
+  background-size: cover;
   padding: 25px 20px 5px 20px;
   text-align: center;
   height: 100px;

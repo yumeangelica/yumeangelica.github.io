@@ -1,5 +1,5 @@
 <template>
-  <div class="simple-project-card">
+  <article class="simple-project-card">
     <h5>{{ project.title }}</h5>
     <div v-if="project.additionalInfo && project.additionalInfo.length" class="additional-info-container">
       <p v-for="info in project.additionalInfo" :key="info" class="additional-info">
@@ -7,12 +7,12 @@
       </p>
     </div>
     <div class="project-links">
-      <a v-for="(link, index) in project.links" :key="index" :href="link.url" target="_blank" class="project-button"
-        :aria-label="`Visit ${link.text}`">
+      <a v-for="(link, index) in project.links" :key="index" :href="link.url" target="_blank" rel="noopener" class="project-button"
+        :aria-label="`Visit ${link.text} for ${project.title}`">
         {{ link.text }}
       </a>
     </div>
-  </div>
+  </article>
 </template>
 
 <script>
@@ -81,6 +81,12 @@ export default {
 }
 
 .project-button:hover {
+  background-color: var(--color-button-hover);
+}
+
+.project-button:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
   background-color: var(--color-button-hover);
 }
 
