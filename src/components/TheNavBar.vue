@@ -17,10 +17,12 @@
             <router-link :to="{ name: 'projects' }" class="nav-link navtext" @click="closeNav">Projects</router-link>
           </li>
           <li class="nav-item">
-            <a href="https://github.com/yumeangelica" class="nav-link navtext" target="_blank" @click="closeNav">GitHub</a>
+            <a href="https://github.com/yumeangelica" class="nav-link navtext" target="_blank" rel="noopener" @click="closeNav"
+              aria-label="GitHub (opens in new tab)">GitHub</a>
           </li>
           <li class="nav-item">
-            <a href="https://www.linkedin.com/in/yumeangelica/" class="nav-link navtext" target="_blank" @click="closeNav">LinkedIn</a>
+            <a href="https://www.linkedin.com/in/yumeangelica/" class="nav-link navtext" target="_blank" rel="noopener" @click="closeNav"
+              aria-label="LinkedIn (opens in new tab)">LinkedIn</a>
           </li>
         </ul>
       </div>
@@ -69,9 +71,17 @@ onUnmounted(() => {
 
 .visually-hidden-focusable:focus,
 .visually-hidden-focusable:active {
-  outline: none;
-  border: none;
-  color: var(--color-primary);
+  outline: 2px solid var(--color-primary);
+  position: absolute;
+  width: auto;
+  height: auto;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
+  z-index: 1050;
+  background: var(--color-nav-bg);
+  padding: 5px 10px;
+  border-radius: 4px;
 }
 
 /* Navbar overall styling */
@@ -121,6 +131,14 @@ nav {
 .navbar-light .navbar-toggler:hover,
 .navbar-light .navbar-toggler:focus {
   box-shadow: none;
+}
+
+/* Add better focus styles for all interactive elements */
+.nav-link:focus-visible,
+.navbar-toggler:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+  border-radius: 4px;
 }
 
 /* Styles for large screens (992px and up) */
