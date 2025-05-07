@@ -12,14 +12,14 @@
           Technology</span>.
       </p>
 
-
-      <h2>Main Tech Stack & Tools</h2>
+      <h2 id="tech-stack">Main Tech Stack & Tools</h2>
       <!-- Display technologies in categories -->
-      <div class="tech-category" v-for="category in categorizedTechnologies" :key="category.name">
-        <h3>{{ category.name }}</h3>
-        <p class="introduction-highlights-paragraph">
+      <div class="tech-category" v-for="category in categorizedTechnologies" :key="category.name"
+        :aria-labelledby="'category-' + category.name.toLowerCase().replace(/\s+/g, '-')">
+        <h3 :id="'category-' + category.name.toLowerCase().replace(/\s+/g, '-')">{{ category.name }}</h3>
+        <div class="introduction-highlights-paragraph" role="group">
           <img v-for="tech in category.techs" :key="tech.id" class="devicon" :src="tech.url" :alt="tech.title" :title="tech.title" />
-        </p>
+        </div>
       </div>
     </div>
 
@@ -48,9 +48,20 @@
   </section>
 
   <section class="interesting-fact">
-    <h2>A bit about my <span class="tooltip-container">yume<span class="tooltip-text">"dream"</span></span></h2>
-    <p>Beyond coding, I enjoy producing music and exploring Japanese culture — both of which inspire my creativity and bring a unique perspective to
-      my work in tech.</p>
+    <h2>
+      A bit about my
+      <span class="tooltip-container" tabindex="0" role="tooltip" aria-label='yume, meaning "dream"' @focus="isTooltipVisible = true"
+        @blur="isTooltipVisible = false">
+        yume
+        <span class="tooltip-text" aria-hidden="true" :class="{ 'visible': isTooltipVisible }">
+          "dream"
+        </span>
+      </span>
+    </h2>
+    <p>
+      Beyond coding, I enjoy producing music and exploring Japanese culture — both of which inspire my creativity and bring a unique perspective to
+      my work in tech.
+    </p>
   </section>
 
   <section class="commitment">
@@ -60,7 +71,7 @@
   </section>
 
   <section class="contact">
-    <h2>Get in Touch</h2>
+    <h2 id="contact">Get in Touch</h2>
     <p>Feel free to reach out to me via email.</p>
 
     <p class="introduction-highlights-paragraph">
@@ -72,12 +83,12 @@
     </p>
 
     <p class="introduction-highlights-paragraph">
-      <a href="https://www.linkedin.com/in/yumeangelica/" target="_blank" aria-label="Visit my LinkedIn profile">
+      <a href="https://www.linkedin.com/in/yumeangelica/" target="_blank" aria-label="Visit my LinkedIn profile" rel="noopener">
         <img class="contact-icon" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linkedin/linkedin-original-wordmark.svg"
           alt="LinkedIn logo and link" />
       </a>
 
-      <a href="https://github.com/yumeangelica" target="_blank" aria-label="Visit my GitHub profile">
+      <a href="https://github.com/yumeangelica" target="_blank" aria-label="Visit my GitHub profile" rel="noopener">
         <img class="contact-icon" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original-wordmark.svg"
           alt="GitHub logo and link" />
       </a>
@@ -93,15 +104,16 @@ export default {
     const technologies = ref([]);
     const categories = ref([]);
     const categorizedTechnologies = ref([]);
+    const isTooltipVisible = ref(false);
     const dataURL = '../data.json';
 
     onMounted(async () => {
       try {
         const response = await fetch(dataURL);
         const data = await response.json();
-        technologies.value = data.technologies; // Assign fetched data to variables
+        technologies.value = data.technologies;
         categories.value = data.techCategories;
-        categorizedTechnologies.value = categories.value.map(category => ({ // Map through categories and assign technologies to each category
+        categorizedTechnologies.value = categories.value.map(category => ({
           name: category.name,
           techs: technologies.value.filter(tech => category.technologies.includes(tech.title))
         }));
@@ -110,10 +122,12 @@ export default {
       }
     });
 
-    return { categorizedTechnologies };
+    return {
+      categorizedTechnologies,
+      isTooltipVisible
+    };
   }
 };
-
 </script>
 
 <style scoped>
@@ -205,6 +219,11 @@ export default {
   white-space: nowrap;
 }
 
+.tooltip-text.visible {
+  visibility: visible;
+  opacity: 1;
+}
+
 .tooltip-container:hover .tooltip-text {
   visibility: visible;
   opacity: 1;
@@ -251,5 +270,18 @@ export default {
     visibility: visible;
     opacity: 1;
   }
+}
+
+/* Improve focus visibility for links */
+a:focus-visible {
+  outline: 3px solid var(--color-primary);
+  outline-offset: 2px;
+  transform: scale(1.05);
+}
+
+/* Ensure tooltip is visible when focused via keyboard */
+.tooltip-container:focus-visible .tooltip-text {
+  visibility: visible;
+  opacity: 1;
 }
 </style>
