@@ -1,16 +1,18 @@
 <template>
-  <header>
-    <TheHeaderPic />
-    <TheNavBar />
-  </header>
-  <main id="main-content" role="main" aria-label="Main site content">
-    <div class="container-fluid">
-      <div class="custom-container">
-        <RouterView />
+  <div id="app">
+    <header>
+      <TheHeaderPic />
+      <TheNavBar />
+    </header>
+    <main id="main-content" role="main" aria-label="Main site content">
+      <div class="container-fluid">
+        <div class="custom-container">
+          <RouterView />
+        </div>
       </div>
-    </div>
-  </main>
-  <TheFooter />
+    </main>
+    <TheFooter />
+  </div>
 </template>
 
 <script>
@@ -50,6 +52,22 @@ main {
 @media (max-width: 768px) {
   .custom-container {
     margin: 0px 5px;
+  }
+}
+
+/* Add global focus styles for keyboard navigation */
+*:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+/* Respect user preferences for reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
 }
 </style>
