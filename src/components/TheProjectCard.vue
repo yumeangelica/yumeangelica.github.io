@@ -1,24 +1,25 @@
 <template>
-  <div class="project-card">
+  <article class="project-card">
     <div class="project-image-container">
       <img :src="project.imageURL" :alt="projectTitle" />
     </div>
 
     <div class="project-details">
       <h5>{{ projectTitle }}</h5>
-      <p class="used-technologies">
+      <div class="used-technologies" aria-label="Technologies used">
         <img v-for="techName in technologyTitles" :key="techName" class="small-devicon" :src="getTechIconUrl(techName)" :alt="techName" />
-      </p>
+      </div>
       <p v-for="info in additionalInfo" :key="info" class="heartbefore additional-info">
         {{ info }}
       </p>
       <div class="buttons">
-        <a v-for="link in links" :key="link.text" :href="link.url" class="project-button" target="_blank" :aria-label="`Visit ${link.text}`">
+        <a v-for="link in links" :key="link.text" :href="link.url" class="project-button" target="_blank" rel="noopener"
+          :aria-label="`Visit ${link.text} for ${projectTitle}`">
           {{ link.text }}
         </a>
       </div>
     </div>
-  </div>
+  </article>
 </template>
 
 
@@ -148,6 +149,18 @@ export default {
   margin-right: 0;
 }
 
+/* Add focus styles for better keyboard accessibility */
+.project-button:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+  background-color: var(--color-button-hover);
+}
+
+/* Make sure card image has good focus indication when navigated to with keyboard */
+.project-image-container img:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
 
 @media (max-width: 568px) {
   .project-details p {
