@@ -1,27 +1,47 @@
 <template>
-  <!-- Main projects section -->
-  <h1 class="text-center">Main projects</h1>
-  <div class="projects-container" aria-live="polite" :aria-busy="loading">
-    <TheProjectCard v-for="project in mainProjects" :key="project.id" :project="project" :technologies="technologies" />
+  <!-- Page title -->
+  <h1 id="projects-overview" class="text-center">My Project Portfolio</h1>
+
+  <!-- Loading and error indicators -->
+  <div v-if="loading" class="text-center" role="status" aria-live="polite">
+    <p>Loading projects...</p>
   </div>
+
+  <div v-if="dataHandleError" role="alert" class="error-message">
+    <p>Sorry, there was an error loading projects. Please try again later.</p>
+  </div>
+
+  <!-- Main projects section -->
+  <section aria-labelledby="main-projects">
+    <h2 id="main-projects" class="text-center">Main projects</h2>
+    <div class="projects-container" aria-live="polite" :aria-busy="loading">
+      <TheProjectCard v-for="project in mainProjects" :key="project.id" :project="project" :technologies="technologies" />
+    </div>
+  </section>
 
   <!-- Other web development projects section -->
-  <h2 class="text-center">Other web development projects</h2>
-  <div class="projects-container" aria-live="polite" :aria-busy="loading">
-    <TheProjectCard v-for="project in webDevelopmentProjects" :key="project.id" :project="project" :technologies="technologies" />
-  </div>
+  <section aria-labelledby="web-dev-projects">
+    <h2 id="web-dev-projects" class="text-center">Other web development projects</h2>
+    <div class="projects-container" aria-live="polite" :aria-busy="loading">
+      <TheProjectCard v-for="project in webDevelopmentProjects" :key="project.id" :project="project" :technologies="technologies" />
+    </div>
+  </section>
 
   <!-- Other command-line projects section -->
-  <h2 class="text-center">Other command-line projects</h2>
-  <div class="projects-container" aria-live="polite" :aria-busy="loading">
-    <TheProjectCard v-for="project in commandLineProjects" :key="project.id" :project="project" :technologies="technologies" />
-  </div>
+  <section aria-labelledby="cli-projects">
+    <h2 id="cli-projects" class="text-center">Other command-line projects</h2>
+    <div class="projects-container" aria-live="polite" :aria-busy="loading">
+      <TheProjectCard v-for="project in commandLineProjects" :key="project.id" :project="project" :technologies="technologies" />
+    </div>
+  </section>
 
   <!-- VanillaJS projects section -->
-  <h3 class="text-center">VanillaJS projects</h3>
-  <div class="other-projects-container" aria-live="polite" :aria-busy="loading">
-    <TheSmallerProjectCard v-for="project in vanillajsProjects" :key="project.id" :project="project" />
-  </div>
+  <section aria-labelledby="js-projects">
+    <h2 id="js-projects" class="text-center">VanillaJS projects</h2>
+    <div class="other-projects-container" aria-live="polite" :aria-busy="loading">
+      <TheSmallerProjectCard v-for="project in vanillajsProjects" :key="project.id" :project="project" />
+    </div>
+  </section>
 </template>
 
 <script>
@@ -98,5 +118,21 @@ export default {
     align-items: center;
     padding: 0px;
   }
+}
+
+/* Add styling for error message */
+.error-message {
+  color: #d32f2f;
+  background-color: #ffebee;
+  padding: 15px;
+  border-radius: 4px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+/* Add focus styles for better keyboard navigation */
+:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
 }
 </style>
