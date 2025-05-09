@@ -91,13 +91,14 @@
         "HTML5",
         "Bootstrap",
         "GitHub",
-        "Vite"
+        "Vite",
+        "Vitest"
       ],
       "additionalInfo": [
-        "Showcasing my Vue.js frontend & website design skills",
-        "Front-end, design, accessibility",
-        "Versioning, automated deployment",
-        "Hosted on GitHub Pages"
+        "A personal site to showcase my Vue.js frontend and UI design skills",
+        "Focus on front-end structure, accessibility and responsiveness",
+        "Includes component testing with Vitest and Testing Library",
+        "Version control and automated deployment via GitHub Pages"
       ],
       "links": [
         {
