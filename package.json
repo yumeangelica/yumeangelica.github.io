@@ -9,6 +9,7 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
+    "test": "vitest",
     "patch-push": "npm --no-git-tag-version version patch && git add package*.json && git commit -m 'patch update' && git push --set-upstream origin $(git rev-parse --abbrev-ref HEAD)",
     "minor-push": "npm --no-git-tag-version version minor && git add package*.json && git commit -m 'minor update' && git push --set-upstream origin $(git rev-parse --abbrev-ref HEAD)",
     "major-push": "npm --no-git-tag-version version major && git add package*.json && git commit -m 'major update' && git push --set-upstream origin $(git rev-parse --abbrev-ref HEAD)",
@@ -21,7 +22,11 @@
     "vue-router": "^4.5.1"
   },
   "devDependencies": {
+    "@testing-library/vue": "^8.1.0",
     "@vitejs/plugin-vue": "^5.2.3",
-    "vite": "^6.3.5"
+    "@vue/test-utils": "^2.4.6",
+    "jsdom": "^26.1.0",
+    "vite": "^6.3.5",
+    "vitest": "^3.1.3"
   }
 }
