@@ -47,6 +47,20 @@
     </div>
   </section>
 
+  <section class="certifications">
+    <div class="heartlist">
+      <h2>Certifications</h2>
+      <ul role="presentation">
+        <li>
+          <a class="styled-link" href="https://learn.microsoft.com/api/credentials/share/en-us/yumeangelica/5AC06C18FC8D561A?sharingId=34D975BF021B8BDF" target="_blank"
+            rel="noopener noreferrer">
+            Microsoft Certified: Security, Compliance, and Identity Fundamentals (SC-900)
+          </a>
+        </li>
+      </ul>
+    </div>
+  </section>
+
   <section class="interesting-fact">
     <h2>
       A bit about my
@@ -227,6 +241,20 @@ export default {
 .tooltip-container:hover .tooltip-text {
   visibility: visible;
   opacity: 1;
+}
+
+/* Special link decoration and animation */
+.styled-link {
+  color: var(--color-primary);
+  text-decoration: none;
+  border-bottom: 1px solid var(--color-primary);
+  transition: color var(--transition-duration) ease,
+              border-bottom-color var(--transition-duration) ease;
+}
+
+.styled-link:hover {
+  color: var(--color-primary-dark);
+  border-bottom-color: transparent;
 }
 
 /* Mobile mode rules */
