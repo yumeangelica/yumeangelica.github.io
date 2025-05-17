@@ -67,6 +67,12 @@ p {
   font-size: 1.1rem;
 }
 
+/* Links */
+
+a {
+  color: var(--color-primary);
+}
+
 /* Lists */
 li {
   color: var(--color-text);
