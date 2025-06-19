@@ -33,7 +33,7 @@
       <h2>My Developer Journey</h2>
       <ul role="presentation">
         <li>Software Developer at OP Financial Group — accessible frontend solutions with React, TypeScript, SCSS, and design systems in a highly
-          regulated international environment.</li>
+          regulated international environment, with occasional backend (Java Spring Boot) and cloud development.</li>
         <li>Previously worked as a full-stack developer at the City of Helsinki (Virittämö), with a focus on backend development using the MERN stack.
         </li>
         <li>Years of building own projects — coding driven by curiosity and a passion for learning.</li>
@@ -52,7 +52,8 @@
       <h2>Certifications</h2>
       <ul role="presentation">
         <li>
-          <a class="styled-link" href="https://learn.microsoft.com/api/credentials/share/en-us/yumeangelica/5AC06C18FC8D561A?sharingId=34D975BF021B8BDF" target="_blank"
+          <a class="styled-link"
+            href="https://learn.microsoft.com/api/credentials/share/en-us/yumeangelica/5AC06C18FC8D561A?sharingId=34D975BF021B8BDF" target="_blank"
             rel="noopener noreferrer">
             Microsoft Certified: Security, Compliance, and Identity Fundamentals (SC-900)
           </a>
@@ -249,7 +250,7 @@ export default {
   text-decoration: none;
   border-bottom: 1px solid var(--color-primary);
   transition: color var(--transition-duration) ease,
-              border-bottom-color var(--transition-duration) ease;
+    border-bottom-color var(--transition-duration) ease;
 }
 
 .styled-link:hover {
