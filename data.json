@@ -10,8 +10,7 @@
         "SQLite",
         "GitHub",
         "Docker",
-        "Raspberry Pi",
-        "Linux"
+        "Raspberry Pi"
       ],
       "additionalInfo": [
         "Interactive Discord bot with custom chat commands",
@@ -138,6 +137,39 @@
     {
       "id": 6,
       "type": "webDevelopment",
+      "title": "Fullstack phonebook app",
+      "imageURL": "/assets/img/fullstack-phonebook-project.webp",
+      "technologyTitles": [
+        "MongoDB",
+        "Express.js",
+        "React",
+        "Node.js",
+        "JavaScript",
+        "CSS3",
+        "HTML5",
+        "Bootstrap",
+        "GitHub",
+        "Webpack",
+        "Jest"
+      ],
+      "additionalInfo": [
+        "Modern fullstack application with international phone number validation",
+        "Real-time form validation with country code selection and automatic formatting",
+        "Comprehensive testing suite with CI/CD pipeline and automated deployment",
+        "Responsive design optimized for mobile, tablet, and desktop devices",
+        "Production-ready with security headers, rate limiting, and error handling",
+        "MongoDB integration with robust connection handling and data normalization"
+      ],
+      "links": [
+        {
+          "text": "Source Code",
+          "url": "https://github.com/yumeangelica/fullstack-phonebook-application"
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "type": "webDevelopment",
       "title": "Online weather view",
       "imageURL": "/assets/img/online-weather-view-project.webp",
       "technologyTitles": [
@@ -160,7 +192,7 @@
       ]
     },
     {
-      "id": 7,
+      "id": 8,
       "type": "webDevelopment",
       "title": "BookBoutique",
       "imageURL": "/assets/img/book-boutique-project.webp",
@@ -180,34 +212,6 @@
         {
           "text": "Source Code",
           "url": "https://github.com/yumeangelica/book-boutique"
-        }
-      ]
-    },
-    {
-      "id": 8,
-      "type": "webDevelopment",
-      "title": "Fullstack phonebook app",
-      "imageURL": "/assets/img/fullstack-phonebook-application-project.webp",
-      "technologyTitles": [
-        "MongoDB",
-        "Express.js",
-        "React",
-        "Node.js",
-        "JavaScript",
-        "CSS3",
-        "HTML5",
-        "Bootstrap",
-        "GitHub",
-        "Vite"
-      ],
-      "additionalInfo": [
-        "Full-stack application for managing phone numbers",
-        "CRUD functionality, Tests, CI/CD, Docker"
-      ],
-      "links": [
-        {
-          "text": "Source Code",
-          "url": "https://github.com/yumeangelica/fullstack-phonebook-application"
         }
       ]
     },
@@ -519,8 +523,8 @@
     },
     {
       "id": 37,
-      "title": "Linux",
-      "url": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/linux/linux-original.svg"
+      "title": "Webpack",
+      "url": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/webpack/webpack-original-wordmark.svg"
     }
   ],
   "techCategories": [
@@ -576,7 +580,7 @@
     },
     {
       "name": "Deployment & Platform Skills",
-      "technologies": ["Linux", "Raspberry Pi"]
+      "technologies": ["Raspberry Pi"]
     }
   ]
 }
