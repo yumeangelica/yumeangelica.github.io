@@ -12,6 +12,7 @@
       </div>
     </main>
     <TheFooter />
+    <TheBackToTop />
   </div>
 </template>
 
@@ -19,13 +20,15 @@
 import TheNavBar from 'components/TheNavBar.vue'
 import TheFooter from 'components/TheFooter.vue'
 import TheHeaderPic from 'components/TheHeaderPic.vue'
+import TheBackToTop from 'components/TheBackToTop.vue'
 
 export default {
   name: 'App',
   components: {
     TheNavBar,
     TheFooter,
-    TheHeaderPic
+    TheHeaderPic,
+    TheBackToTop
   }
 }
 </script>
