@@ -18,13 +18,13 @@
         :aria-labelledby="'category-' + category.name.toLowerCase().replace(/\s+/g, '-')">
         <h3 :id="'category-' + category.name.toLowerCase().replace(/\s+/g, '-')">{{ category.name }}</h3>
         <div class="introduction-highlights-paragraph" role="group">
-          <img v-for="tech in category.techs" :key="tech.id" class="devicon" :src="tech.url" :alt="tech.title" :title="tech.title" />
+          <img v-for="tech in category.techs" :key="tech.id" class="devicon" :src="tech.url" :alt="tech.title" :title="tech.title" loading="lazy" />
         </div>
       </div>
     </div>
 
     <div class="col-md-auto">
-      <img src="/assets/img/angelica-profilepic.webp" class="img-responsive profilepic" alt="Angelica's Profile Picture">
+      <img src="/assets/img/angelica-profilepic.webp" class="img-responsive profilepic" alt="Angelica's Profile Picture" loading="lazy">
     </div>
   </div>
 
@@ -90,7 +90,7 @@
     <p>Feel free to reach out to me via email.</p>
 
     <p class="introduction-highlights-paragraph">
-      <img class="contact-image" src="/assets/img/angelica-contact.webp" alt="Angelica's Contact Information" />
+      <img class="contact-image" src="/assets/img/angelica-contact.webp" alt="Angelica's Contact Information" loading="lazy" />
     </p>
 
     <p>
@@ -100,12 +100,12 @@
     <p class="introduction-highlights-paragraph">
       <a href="https://www.linkedin.com/in/yumeangelica/" target="_blank" aria-label="Visit my LinkedIn profile" rel="noopener">
         <img class="contact-icon" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linkedin/linkedin-original-wordmark.svg"
-          alt="LinkedIn logo and link" />
+          alt="LinkedIn logo and link" loading="lazy" />
       </a>
 
       <a href="https://github.com/yumeangelica" target="_blank" aria-label="Visit my GitHub profile" rel="noopener">
         <img class="contact-icon" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original-wordmark.svg"
-          alt="GitHub logo and link" />
+          alt="GitHub logo and link" loading="lazy" />
       </a>
     </p>
   </section>
