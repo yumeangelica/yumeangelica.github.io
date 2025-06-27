@@ -170,6 +170,33 @@
     {
       "id": 7,
       "type": "webDevelopment",
+      "title": "BookBoutique",
+      "imageURL": "/assets/img/book-boutique-project.webp",
+      "technologyTitles": [
+        "PHP",
+        "MySQL",
+        "Apache",
+        "Docker",
+        "JavaScript",
+        "CSS3",
+        "HTML5",
+        "Bootstrap",
+        "GitHub"
+      ],
+      "additionalInfo": [
+        "Modern full-stack web application for personal book collection management",
+        "User authentication with secure password requirements and account management",
+        "Responsive glassmorphism UI design with real-time form validation",
+        "ISBN validation with check digit verification for ISBN-10 and ISBN-13",
+        "Comprehensive security with prepared statements and password hashing",
+        "Docker containerization with environment variable configuration",
+        "Professional MVC architecture with reusable components",
+        "Production-ready with deployment guidelines and security best practices"
+      ]
+    },
+    {
+      "id": 8,
+      "type": "webDevelopment",
       "title": "Online weather view",
       "imageURL": "/assets/img/online-weather-view-project.webp",
       "technologyTitles": [
@@ -188,30 +215,6 @@
         {
           "text": "Source Code",
           "url": "https://github.com/yumeangelica/online-weather-view"
-        }
-      ]
-    },
-    {
-      "id": 8,
-      "type": "webDevelopment",
-      "title": "BookBoutique",
-      "imageURL": "/assets/img/book-boutique-project.webp",
-      "technologyTitles": [
-        "PHP",
-        "MySQL",
-        "CSS3",
-        "HTML5",
-        "Bootstrap",
-        "GitHub"
-      ],
-      "additionalInfo": [
-        "Full-stack application where user can save books they have read",
-        "Authentication, CRUD functionality"
-      ],
-      "links": [
-        {
-          "text": "Source Code",
-          "url": "https://github.com/yumeangelica/book-boutique"
         }
       ]
     },
@@ -525,6 +528,11 @@
       "id": 37,
       "title": "Webpack",
       "url": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/webpack/webpack-original-wordmark.svg"
+    },
+    {
+      "id": 38,
+      "title": "Apache",
+      "url": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/apache/apache-original-wordmark.svg"
     }
   ],
   "techCategories": [
@@ -580,7 +588,7 @@
     },
     {
       "name": "Deployment & Platform Skills",
-      "technologies": ["Raspberry Pi"]
+      "technologies": ["Raspberry Pi", "Apache"]
     }
   ]
 }
