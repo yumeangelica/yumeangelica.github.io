@@ -1,5 +1,9 @@
 @import './base.css';
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   background-color: var(--color-background) !important;
   min-height: 100vh;
