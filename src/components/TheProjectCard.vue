@@ -8,7 +8,7 @@
       <h5>{{ projectTitle }}</h5>
       <div class="used-technologies" aria-label="Technologies used">
         <img v-for="techName in technologyTitles" :key="techName" class="small-devicon" :src="getTechIconUrl(techName)" :alt="techName"
-          loading="lazy" />
+          :title="techName" loading="lazy" />
       </div>
       <p v-for="info in additionalInfo" :key="info" class="heartbefore additional-info">
         {{ info }}
