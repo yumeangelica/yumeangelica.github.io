@@ -34,27 +34,43 @@ export default {
 </script>
 
 <style>
+body {
+  overflow-x: hidden;
+  /* Prevent horizontal scrolling */
+}
+
 .custom-container {
   max-width: 1400px;
   margin: 0 auto;
+  overflow-x: hidden;
+  /* Prevent horizontal overflow */
 }
 
 main {
   flex-grow: 1;
   min-height: calc(90vh - 50px);
+  overflow-x: hidden;
+  /* Prevent horizontal overflow */
 }
 
 /* Tablet and small screen */
 @media (max-width: 1440px) {
   .custom-container {
-    margin: 0px 45px;
+    margin: 0px 25px;
   }
 }
 
 /* Mobile */
 @media (max-width: 768px) {
   .custom-container {
-    margin: 0px 5px;
+    margin: 0px 15px;
+  }
+}
+
+/* Very small mobile */
+@media (max-width: 568px) {
+  .custom-container {
+    margin: 0px 10px;
   }
 }
 

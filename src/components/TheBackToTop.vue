@@ -1,12 +1,6 @@
 <template>
   <Transition name="fade">
-    <button
-      v-if="isVisible"
-      @click="scrollToTop"
-      class="back-to-top"
-      aria-label="Scroll back to top"
-      title="Back to top"
-    >
+    <button v-if="isVisible" @click="scrollToTop" class="back-to-top" aria-label="Scroll back to top" title="Back to top">
       ↑
     </button>
   </Transition>
@@ -108,11 +102,11 @@ export default {
   }
 }
 
-/* Darker shadow on hover for mobile-sized screens */
+/* Small mobile screens */
 @media (max-width: 568px) {
   .back-to-top {
     bottom: 15px;
-    right: 15px;
+    right: 10px;
     width: 40px;
     height: 40px;
     font-size: 16px;
