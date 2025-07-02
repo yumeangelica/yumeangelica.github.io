@@ -197,8 +197,8 @@
     {
       "id": 8,
       "type": "webDevelopment",
-      "title": "Online weather view",
-      "imageURL": "/assets/img/online-weather-view-project.webp",
+      "title": "Django Weather App",
+      "imageURL": "/assets/img/django-weather-app-project.webp",
       "technologyTitles": [
         "Python",
         "Django",
@@ -209,12 +209,12 @@
         "GitHub"
       ],
       "additionalInfo": [
-        "Weather Forecast App - A Django-based application that provides current weather and 3-day forecast data for cities. Uses OpenWeatherMap and weather api APIs to display temperature, humidity, wind speed, UV index, and more in a clean, user-friendly interface"
+        "Weather Forecast App - A Django-based application that provides current weather and 3-day forecast data for cities. Uses OpenWeatherMap API to display temperature, humidity, wind speed, UV index, and more in a clean, user-friendly interface"
       ],
       "links": [
         {
           "text": "Source Code",
-          "url": "https://github.com/yumeangelica/online-weather-view"
+          "url": "https://github.com/yumeangelica/django-weather-app"
         }
       ]
     },
