@@ -2,7 +2,8 @@
   "projects": [
     {
       "id": 1,
-      "type": "mainProject",
+      "type": "backend",
+      "isMain": true,
       "title": "Discord bot for Jirai Sweeties server",
       "imageURL": "/assets/img/jirai-sweeties-discord-bot-project.webp",
       "technologyTitles": [
@@ -31,7 +32,8 @@
     },
     {
       "id": 2,
-      "type": "mainProject",
+      "type": "fullstack",
+      "isMain": true,
       "title": "NeedyPet",
       "imageURL": "/assets/img/needypet-project.webp",
       "technologyTitles": [
@@ -65,7 +67,8 @@
     },
     {
       "id": 3,
-      "type": "mainProject",
+      "type": "backend",
+      "isMain": true,
       "title": "Store data extractor & monitor",
       "imageURL": "/assets/img/store-data-extractor-project.webp",
       "technologyTitles": ["Python", "SQLite", "GitHub", "Docker"],
@@ -87,7 +90,8 @@
     },
     {
       "id": 4,
-      "type": "mainProject",
+      "type": "frontend",
+      "isMain": true,
       "title": "Personal portfolio",
       "imageURL": "/assets/img/portfolio-project.webp",
       "technologyTitles": [
@@ -115,7 +119,8 @@
     },
     {
       "id": 5,
-      "type": "mainProject",
+      "type": "cli",
+      "isMain": true,
       "title": "User agent extractor",
       "imageURL": "/assets/img/user-agent-extractor-project.webp",
       "technologyTitles": ["Python", "Playwright", "GitHub"],
@@ -136,7 +141,8 @@
     },
     {
       "id": 6,
-      "type": "webDevelopment",
+      "type": "fullstack",
+      "isMain": false,
       "title": "Fullstack phonebook app",
       "imageURL": "/assets/img/fullstack-phonebook-project.webp",
       "technologyTitles": [
@@ -169,7 +175,8 @@
     },
     {
       "id": 7,
-      "type": "webDevelopment",
+      "type": "fullstack",
+      "isMain": false,
       "title": "BookBoutique",
       "imageURL": "/assets/img/book-boutique-project.webp",
       "technologyTitles": [
@@ -196,7 +203,8 @@
     },
     {
       "id": 8,
-      "type": "webDevelopment",
+      "type": "backend",
+      "isMain": false,
       "title": "Django Weather App",
       "imageURL": "/assets/img/django-weather-app-project.webp",
       "technologyTitles": [
@@ -220,7 +228,8 @@
     },
     {
       "id": 9,
-      "type": "webDevelopment",
+      "type": "fullstack",
+      "isMain": false,
       "title": "Taitovarasto for Virittämö as a client",
       "imageURL": "/assets/img/taitovarasto-project.webp",
       "technologyTitles": [
@@ -242,7 +251,8 @@
     },
     {
       "id": 10,
-      "type": "commandLine",
+      "type": "cli",
+      "isMain": false,
       "title": "Job finder",
       "imageURL": "/assets/img/job-finder-project.webp",
       "technologyTitles": ["Python"],
@@ -259,7 +269,8 @@
     },
     {
       "id": 11,
-      "type": "commandLine",
+      "type": "cli",
+      "isMain": false,
       "title": "Weather view",
       "imageURL": "/assets/img/weather-view-project.webp",
       "technologyTitles": ["Python"],
@@ -276,9 +287,21 @@
     },
     {
       "id": 12,
-      "type": "vanillajsProject",
+      "type": "frontend",
+      "isMain": false,
       "title": "Roleplay Dice Roller",
-      "additionalInfo": ["Vanilla JS dice roller for roleplaying games"],
+      "imageURL": "/assets/img/roleplay-dice-roller-project.webp",
+      "technologyTitles": [
+        "JavaScript",
+        "HTML5",
+        "CSS3",
+        "Bootstrap",
+        "GitHub"
+      ],
+      "additionalInfo": [
+        "Vanilla JS dice roller for roleplaying games",
+        "Designed to be responsive and accessible"
+      ],
       "links": [
         {
           "text": "Source Code",
@@ -292,10 +315,20 @@
     },
     {
       "id": 13,
-      "type": "vanillajsProject",
+      "type": "frontend",
+      "isMain": false,
       "title": "Global Population Charts",
+      "imageURL": "/assets/img/global-population-charts-project.webp",
+      "technologyTitles": [
+        "JavaScript",
+        "HTML5",
+        "CSS3",
+        "Bootstrap",
+        "GitHub"
+      ],
       "additionalInfo": [
-        "Vanilla JS app for visualizing global population data"
+        "Vanilla JS app for visualizing global population data",
+        "Designed to be responsive and accessible"
       ],
       "links": [
         {
@@ -310,9 +343,21 @@
     },
     {
       "id": 14,
-      "type": "vanillajsProject",
+      "type": "frontend",
+      "isMain": false,
       "title": "RPSLS Game",
-      "additionalInfo": ["Vanilla JS Rock-Paper-Scissors-Lizard-Spock game"],
+      "imageURL": "/assets/img/rpsls-game-project.webp",
+      "technologyTitles": [
+        "JavaScript",
+        "HTML5",
+        "CSS3",
+        "Bootstrap",
+        "GitHub"
+      ],
+      "additionalInfo": [
+        "Vanilla JS Rock-Paper-Scissors-Lizard-Spock game. Designed to be responsive and accessible",
+        "Designed to be responsive and accessible"
+      ],
       "links": [
         {
           "text": "Source Code",
@@ -326,10 +371,14 @@
     },
     {
       "id": 15,
-      "type": "vanillajsProject",
+      "type": "frontend",
+      "isMain": false,
       "title": "Multifunctional Clock",
+      "imageURL": "/assets/img/multifunctional-clock-project.webp",
+      "technologyTitles": ["JavaScript", "HTML5", "CSS3", "GitHub"],
       "additionalInfo": [
-        "Vanilla JS app that features a clock, timer, and stopwatch"
+        "Vanilla JS app that features a clock, timer, and stopwatch. Designed to be responsive and accessible",
+        "Designed to be responsive and accessible"
       ],
       "links": [
         {
