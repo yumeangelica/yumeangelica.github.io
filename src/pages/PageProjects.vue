@@ -7,40 +7,45 @@
     <div class="filter-container">
       <!-- Mobile toggle buttons -->
       <div class="mobile-toggles">
-        <button @click="toggleMobileNavigation" class="mobile-toggle-btn" :aria-expanded="showMobileNavigation">
-          <span>📋</span>
-          <span>Jump to</span>
-          <span class="toggle-arrow" :class="{ rotated: showMobileNavigation }">▼</span>
-        </button>
         <button @click="toggleMobileFilters" class="mobile-toggle-btn" :aria-expanded="showMobileFilters">
           <span>🔍</span>
-          <span>Filter by tech</span>
+          <span>Filter</span>
           <span class="toggle-arrow" :class="{ rotated: showMobileFilters }">▼</span>
         </button>
       </div>
 
-      <!-- Quick navigation -->
-      <div class="navigation-section" :class="{ 'mobile-hidden': !showMobileNavigation }">
-        <h3>Jump to:</h3>
-        <div class="nav-buttons">
-          <button @click="scrollToSection('main-projects')" class="nav-button main-highlight">⭐ Main Projects</button>
-          <button @click="scrollToSection('web-dev-projects')" class="nav-button secondary">🌐 Web Fullstack</button>
-          <button @click="scrollToSection('cli-projects')" class="nav-button secondary">⚡ CLI Tools</button>
-          <button @click="scrollToSection('js-projects')" class="nav-button secondary">✨ VanillaJS</button>
-        </div>
-      </div>
-
-      <!-- Technology filters -->
-      <div class="technology-section" :class="{ 'mobile-hidden': !showMobileFilters }">
-        <h3>Filter by technology:</h3>
-        <div class="tech-filters">
-          <button @click="toggleTechFilter(null)" :class="['tech-filter-btn', { active: selectedTech === null }]" aria-label="Show all projects">
+      <!-- Unified filter row: two centered rows, no headings -->
+      <div class="filters-row" :class="{ 'mobile-hidden': !showMobileFilters }">
+        <div class="filter-row-inner">
+          <button @click="toggleTypeFilter(null)" class="filter-btn filter-type" :class="{ active: selectedTypes.length === 0 }"
+            aria-label="Show all types">
             All
           </button>
-          <button v-for="tech in popularTechnologies" :key="tech.title" @click="toggleTechFilter(tech.title)"
-            :class="['tech-filter-btn', { active: selectedTech === tech.title }]" :aria-label="`Filter by ${tech.title}`">
+          <button @click="toggleTypeFilter('frontend')" class="filter-btn filter-type" :class="{ active: selectedTypes.includes('frontend') }"
+            aria-label="Frontend projects">
+            FE
+          </button>
+          <button @click="toggleTypeFilter('backend')" class="filter-btn filter-type" :class="{ active: selectedTypes.includes('backend') }"
+            aria-label="Backend projects">
+            BE
+          </button>
+          <button @click="toggleTypeFilter('fullstack')" class="filter-btn filter-type" :class="{ active: selectedTypes.includes('fullstack') }"
+            aria-label="Fullstack projects">
+            FS
+          </button>
+          <button @click="toggleTypeFilter('cli')" class="filter-btn filter-type" :class="{ active: selectedTypes.includes('cli') }"
+            aria-label="CLI projects">
+            CLI
+          </button>
+        </div>
+        <div class="filter-row-inner">
+          <button @click="toggleTechFilter(null)" class="filter-btn tech-filter-btn" :class="{ active: selectedTech.length === 0 }"
+            aria-label="Show all technologies">
+            <span>All</span>
+          </button>
+          <button v-for="tech in popularTechnologies" :key="tech.title" @click="toggleTechFilter(tech.title)" class="filter-btn tech-filter-btn"
+            :class="{ active: selectedTech.includes(tech.title) }" :aria-label="`Filter by ${tech.title}`">
             <img :src="tech.url" :alt="tech.title" :title="tech.title" class="tech-icon" />
-            <span>{{ tech.title }}</span>
           </button>
         </div>
       </div>
@@ -57,33 +62,43 @@
 
     <!-- Main projects section -->
     <section v-if="filteredMainProjects.length > 0" aria-labelledby="main-projects">
-      <h2 id="main-projects" class="text-center">Main projects</h2>
+      <h2 id="main-projects" class="text-center">Main Projects</h2>
       <div class="projects-container" aria-live="polite" :aria-busy="loading">
         <TheProjectCard v-for="project in filteredMainProjects" :key="project.id" :project="project" :technologies="technologies" />
       </div>
     </section>
 
-    <!-- Other web fullstack projects section -->
-    <section v-if="filteredWebDevelopmentProjects.length > 0" aria-labelledby="web-dev-projects">
-      <h2 id="web-dev-projects" class="text-center">Other web fullstack projects</h2>
+    <!-- Fullstack projects section -->
+    <section v-if="filteredFullstackProjects.length > 0" aria-labelledby="fullstack-projects">
+      <h2 id="fullstack-projects" class="text-center">Fullstack Projects</h2>
       <div class="projects-container" aria-live="polite" :aria-busy="loading">
-        <TheProjectCard v-for="project in filteredWebDevelopmentProjects" :key="project.id" :project="project" :technologies="technologies" />
+        <TheProjectCard v-for="project in filteredFullstackProjects" :key="project.id" :project="project" :technologies="technologies" />
       </div>
     </section>
 
-    <!-- Other command-line projects section -->
-    <section v-if="filteredCommandLineProjects.length > 0" aria-labelledby="cli-projects">
-      <h2 id="cli-projects" class="text-center">Other command-line projects</h2>
+
+    <!-- Frontend projects section -->
+    <section v-if="filteredFrontendProjects.length > 0" aria-labelledby="frontend-projects">
+      <h2 id="frontend-projects" class="text-center">Frontend Projects</h2>
       <div class="projects-container" aria-live="polite" :aria-busy="loading">
-        <TheProjectCard v-for="project in filteredCommandLineProjects" :key="project.id" :project="project" :technologies="technologies" />
+        <TheProjectCard v-for="project in filteredFrontendProjects" :key="project.id" :project="project" :technologies="technologies" />
       </div>
     </section>
 
-    <!-- VanillaJS projects section -->
-    <section v-if="filteredVanillajsProjects.length > 0" aria-labelledby="js-projects">
-      <h2 id="js-projects" class="text-center">VanillaJS projects</h2>
-      <div class="other-projects-container" aria-live="polite" :aria-busy="loading">
-        <TheSmallerProjectCard v-for="project in filteredVanillajsProjects" :key="project.id" :project="project" />
+    <!-- Backend projects section -->
+    <section v-if="filteredBackendProjects.length > 0" aria-labelledby="backend-projects">
+      <h2 id="backend-projects" class="text-center">Backend Projects</h2>
+      <div class="projects-container" aria-live="polite" :aria-busy="loading">
+        <TheProjectCard v-for="project in filteredBackendProjects" :key="project.id" :project="project" :technologies="technologies" />
+      </div>
+    </section>
+
+
+    <!-- CLI projects section -->
+    <section v-if="filteredCliProjects.length > 0" aria-labelledby="cli-projects">
+      <h2 id="cli-projects" class="text-center">CLI Projects</h2>
+      <div class="projects-container" aria-live="polite" :aria-busy="loading">
+        <TheProjectCard v-for="project in filteredCliProjects" :key="project.id" :project="project" :technologies="technologies" />
       </div>
     </section>
 
@@ -99,17 +114,17 @@
             <button @click="scrollToSection('back-to-top')" class="floating-nav-button" role="menuitem">
               ⬆ Back to Top
             </button>
-            <button @click="scrollToSection('main-projects')" class="floating-nav-button" role="menuitem">
-              ⭐ Main Projects
+            <button @click="scrollToSection('frontend-projects')" class="floating-nav-button" role="menuitem">
+              🎨 Frontend
             </button>
-            <button @click="scrollToSection('web-dev-projects')" class="floating-nav-button" role="menuitem">
-              🌐 Web Fullstack
+            <button @click="scrollToSection('backend-projects')" class="floating-nav-button" role="menuitem">
+              🛠 Backend
+            </button>
+            <button @click="scrollToSection('fullstack-projects')" class="floating-nav-button" role="menuitem">
+              🌐 Fullstack
             </button>
             <button @click="scrollToSection('cli-projects')" class="floating-nav-button" role="menuitem">
-              ⚡ CLI Tools
-            </button>
-            <button @click="scrollToSection('js-projects')" class="floating-nav-button" role="menuitem">
-              ✨ VanillaJS
+              ⚡ CLI
             </button>
           </div>
         </Transition>
@@ -120,30 +135,30 @@
 
 <script>
 import TheProjectCard from '../components/TheProjectCard.vue';
-import TheSmallerProjectCard from '../components/TheSmallerProjectCard.vue';
 import { ref, computed } from 'vue';
 
 export default {
   data() {
     return {
+      allProjects: ref([]),
+      frontendProjects: ref([]),
+      backendProjects: ref([]),
+      fullstackProjects: ref([]),
+      cliProjects: ref([]),
       mainProjects: ref([]),
-      webDevelopmentProjects: ref([]),
-      commandLineProjects: ref([]),
-      vanillajsProjects: ref([]),
       technologies: ref([]),
-      selectedTech: null, // For technology filtering
+      selectedTech: [], // For technology filtering, multi-select, all by default
+      selectedTypes: [], // For type filtering, single-select, all by default
       dataURL: '../data.json',
       dataHandleError: ref(false), // If data fetching fails, show error message
       loading: ref(true), // For accessibility, show loading message while fetching data
       showFloatingNav: false, // Show floating nav when scrolled
       isFloatingMenuOpen: false, // Toggle for floating menu
       showMobileFilters: false, // Toggle for mobile filter visibility
-      showMobileNavigation: false // Toggle for mobile navigation visibility
     }
   },
   components: {
     TheProjectCard,
-    TheSmallerProjectCard
   },
   computed: {
     popularTechnologies() {
@@ -160,33 +175,71 @@ export default {
         'MongoDB',     // Database #1
         'SQLite',      // Database #2
         'Docker',      // DevOps/Deployment
-        'PHP'          // Backend language #2
+        'PHP',          // Backend language #2
+        'Azure',        // Cloud platform
+        'Raspberry Pi', // Hardware projects
       ];
       return this.technologies.filter(tech => techNames.includes(tech.title));
     },
     filteredMainProjects() {
+      // Only main projects, filtered by type/tech
       return this.filterProjects(this.mainProjects);
     },
-    filteredWebDevelopmentProjects() {
-      return this.filterProjects(this.webDevelopmentProjects);
+    filteredFrontendProjects() {
+      // Only non-main frontend projects
+      return this.filterProjects(this.frontendProjects);
     },
-    filteredCommandLineProjects() {
-      return this.filterProjects(this.commandLineProjects);
+    filteredBackendProjects() {
+      return this.filterProjects(this.backendProjects);
     },
-    filteredVanillajsProjects() {
-      return this.filterProjects(this.vanillajsProjects);
+    filteredFullstackProjects() {
+      return this.filterProjects(this.fullstackProjects);
+    },
+    filteredCliProjects() {
+      return this.filterProjects(this.cliProjects);
     }
   },
   methods: {
     filterProjects(projects) {
-      if (!this.selectedTech) return projects;
-
-      return projects.filter(project => {
-        return project.technologyTitles && project.technologyTitles.includes(this.selectedTech);
+      // Filter by type first
+      let filtered = projects;
+      if (this.selectedTypes && this.selectedTypes.length > 0) {
+        filtered = filtered.filter(project => this.selectedTypes.includes(project.type));
+      }
+      // Then filter by tech
+      if (!this.selectedTech || this.selectedTech.length === 0) return filtered;
+      return filtered.filter(project => {
+        if (!project.technologyTitles) return false;
+        return this.selectedTech.every(tech => project.technologyTitles.includes(tech));
       });
     },
     toggleTechFilter(techName) {
-      this.selectedTech = this.selectedTech === techName ? null : techName;
+      if (techName === null) {
+        this.selectedTech = [];
+        return;
+      }
+      if (this.selectedTech.includes(techName)) {
+        // If only one tech is selected and it's this one, deselect to All
+        if (this.selectedTech.length === 1) {
+          this.selectedTech = [];
+        } else {
+          this.selectedTech = this.selectedTech.filter(t => t !== techName);
+        }
+      } else {
+        this.selectedTech = [...this.selectedTech, techName];
+      }
+    },
+    toggleTypeFilter(typeName) {
+      if (typeName === null) {
+        this.selectedTypes = [];
+        return;
+      }
+      if (this.selectedTypes.length === 1 && this.selectedTypes[0] === typeName) {
+        // If only one type is selected and it's this one, deselect to All
+        this.selectedTypes = [];
+        return;
+      }
+      this.selectedTypes = [typeName];
     },
     scrollToSection(sectionId) {
       // Special case for back to top - scroll to very top of page
@@ -212,9 +265,6 @@ export default {
     toggleMobileFilters() {
       this.showMobileFilters = !this.showMobileFilters;
     },
-    toggleMobileNavigation() {
-      this.showMobileNavigation = !this.showMobileNavigation;
-    },
     handleScroll() {
       // Show floating nav when scrolled down 200px
       this.showFloatingNav = window.scrollY > 200;
@@ -229,17 +279,19 @@ export default {
     try {
       const response = await fetch(this.dataURL);
       const data = await response.json();
-      if (data) { // If data is fetched successfully, assign it to projects and technologies
+      if (data) {
         this.technologies = data.technologies;
-        this.mainProjects = data.projects.filter(p => p.type === 'mainProject');
-        this.webDevelopmentProjects = data.projects.filter(p => p.type === 'webDevelopment');
-        this.commandLineProjects = data.projects.filter(p => p.type === 'commandLine');
-        this.vanillajsProjects = data.projects.filter(p => p.type === 'vanillajsProject');
+        this.allProjects = data.projects;
+        this.mainProjects = data.projects.filter(p => p.isMain === true);
+        this.frontendProjects = data.projects.filter(p => p.type === 'frontend' && !p.isMain);
+        this.backendProjects = data.projects.filter(p => p.type === 'backend' && !p.isMain);
+        this.fullstackProjects = data.projects.filter(p => p.type === 'fullstack' && !p.isMain);
+        this.cliProjects = data.projects.filter(p => p.type === 'cli' && !p.isMain);
       }
-      this.loading = false; // When data is fetched, set loading to false
+      this.loading = false;
     } catch (error) {
       this.dataHandleError = true;
-      this.loading = false; // When data fetching fails, set loading to false
+      this.loading = false;
       console.log(error.message);
     }
   },
@@ -276,123 +328,61 @@ export default {
   }
 }
 
-/* Filter functionality styles */
-.filter-container {
-  margin-bottom: 40px;
-  max-width: 800px;
-  margin-left: auto;
-  margin-right: auto;
-}
 
-/* Mobile toggle buttons - hidden by default, shown only on mobile */
-.mobile-toggles {
-  display: none;
-  flex-direction: row;
-  gap: 10px;
-  justify-content: center;
-  margin-bottom: 20px;
-}
 
-.mobile-toggle-btn {
+/* Compact unified filter row */
+
+.filters-row {
   display: flex;
+  flex-direction: column;
   align-items: center;
+  justify-content: center;
   gap: 8px;
-  padding: 10px 15px;
-  background-color: var(--color-primary-light);
-  color: var(--color-primary-dark);
-  border: 2px solid var(--color-primary);
-  border-radius: 25px;
-  font-size: 0.9rem;
-  cursor: pointer;
-  transition: all var(--transition-duration) ease;
-  font-weight: 600;
-  min-width: 120px;
-  justify-content: space-between;
+  margin-bottom: 18px;
+  padding: 0 4px;
 }
 
-.mobile-toggle-btn:hover {
-  background-color: var(--color-primary);
-  color: var(--color-white);
-  transform: translateY(-1px);
-}
-
-.mobile-toggle-btn:focus-visible {
-  outline: 2px solid var(--color-primary);
-  outline-offset: 2px;
-}
-
-.toggle-arrow {
-  transition: transform var(--transition-duration) ease;
-  font-size: 0.8rem;
-}
-
-.toggle-arrow.rotated {
-  transform: rotate(180deg);
-}
-
-/* Hide sections on mobile when collapsed */
-.mobile-hidden {
-  display: none;
-}
-
-/* Navigation section */
-.navigation-section {
-  margin-bottom: 25px;
-  text-align: center;
-}
-
-.navigation-section h3 {
-  font-size: 1.1rem;
-  color: var(--color-primary-dark);
-  margin-bottom: 10px;
-  font-weight: 600;
-}
-
-.nav-buttons {
+.filter-row-inner {
   display: flex;
   flex-wrap: wrap;
+  align-items: center;
   justify-content: center;
-  gap: 10px;
+  gap: 8px;
 }
 
-.nav-button {
-  padding: 8px 16px;
-  background-color: var(--color-primary-light);
-  color: var(--color-primary-dark);
-  border: none;
-  border-radius: 20px;
-  font-size: 0.9rem;
+/* Yhdistetty filter-btn kaikille filter-napeille */
+.filter-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 500;
+  font-size: 0.85rem;
+  border-radius: 16px;
+  padding: 4px 10px;
+  min-width: 0;
   cursor: pointer;
   transition: all var(--transition-duration) ease;
-  font-weight: 500;
+  background-color: var(--color-card-bg);
+  color: var(--color-text);
+  border: 1.5px solid var(--color-primary-light);
+  opacity: 0.95;
 }
 
-.nav-button:hover {
+.filter-btn.active {
   background-color: var(--color-primary);
   color: var(--color-white);
-  transform: translateY(-1px);
+  border-color: var(--color-primary);
+  font-weight: 600;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  opacity: 1;
 }
 
-.nav-button:focus-visible {
+.filter-btn:focus-visible {
   outline: 2px solid var(--color-primary);
   outline-offset: 2px;
 }
 
-/* Highlight main projects button */
-.nav-button.main-highlight {
-  background-color: var(--color-primary);
-  color: var(--color-white);
-  font-weight: 600;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-}
-
-.nav-button.main-highlight:hover {
-  background-color: var(--color-primary-dark);
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-}
-
-/* Secondary navigation buttons */
+/* Nav-button erikoistapaukset */
 .nav-button.secondary {
   background-color: var(--color-card-bg);
   color: var(--color-text);
@@ -400,67 +390,62 @@ export default {
   opacity: 0.9;
 }
 
-.nav-button.secondary:hover {
-  background-color: var(--color-primary-light);
-  color: var(--color-primary-dark);
-  opacity: 1;
-}
-
-/* Technology section */
-.technology-section {
-  text-align: center;
-}
-
-.technology-section h3 {
-  font-size: 1.1rem;
-  color: var(--color-primary-dark);
-  margin-bottom: 15px;
-  font-weight: 600;
-}
-
-.tech-filters {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 12px;
-}
-
 .tech-filter-btn {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  padding: 8px 12px;
-  background-color: var(--color-card-bg);
-  color: var(--color-text);
-  border: 2px solid var(--color-primary-light);
-  border-radius: 25px;
-  font-size: 0.9rem;
-  cursor: pointer;
-  transition: all var(--transition-duration) ease;
-  font-weight: 500;
+  gap: 0;
+  min-height: 28px;
+  line-height: 1.1;
+  padding: 4px 7px;
 }
 
-.tech-filter-btn:hover {
-  border-color: var(--color-primary);
-  background-color: var(--color-primary-light);
-  transform: translateY(-1px);
-}
-
-.tech-filter-btn.active {
-  background-color: var(--color-primary);
-  color: var(--color-white);
-  border-color: var(--color-primary);
-}
-
-.tech-filter-btn:focus-visible {
-  outline: 2px solid var(--color-primary);
-  outline-offset: 2px;
+.tech-filter-btn span {
+  display: inline;
+  font-size: 0.85rem;
+  margin-left: 2px;
 }
 
 .tech-icon {
-  width: 20px;
-  height: 20px;
+  width: 22px;
+  height: 22px;
   border-radius: 3px;
+  transition: box-shadow 0.2s;
+}
+
+@media (max-width: 768px) {
+  .filters-row {
+    gap: 4px;
+    margin-bottom: 12px;
+  }
+
+  .filter-row-inner {
+    gap: 4px;
+  }
+
+  .tech-icon {
+    width: 18px;
+    height: 18px;
+  }
+}
+
+@media (max-width: 568px) {
+  .filters-row {
+    gap: 2px;
+    margin-bottom: 8px;
+  }
+
+  .filter-row-inner {
+    gap: 2px;
+  }
+
+  .filter-btn {
+    padding: 3px 6px;
+    font-size: 0.75rem;
+    border-radius: 12px;
+  }
+
+  .tech-icon {
+    width: 14px;
+    height: 14px;
+  }
 }
 
 /* Project containers */
@@ -475,15 +460,8 @@ export default {
   margin-bottom: 30px;
 }
 
-.other-projects-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 20px;
-  padding: 10px;
-}
 
-/* Mobile and small tablet mode rules */
+/* Mobile and small tablet mode */
 @media (max-width: 768px) {
   .projects-container {
     flex-direction: column;
@@ -501,24 +479,150 @@ export default {
     display: flex;
   }
 
-  /* Always show sections (they're controlled by mobile-hidden class) */
-  .navigation-section,
-  .technology-section {
-    display: block;
+  /* Nicer dropdown for filters on mobile */
+  .filters-row {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin-bottom: 12px;
+    padding: 16px 10px 12px 10px;
+    background: var(--color-card-bg, #fff);
+    border-radius: 18px;
+    box-shadow: 0 4px 18px 0 rgba(0, 0, 0, 0.10);
+    border: 1.5px solid var(--color-primary-light, #e0e0e0);
+    max-width: 98vw;
+    width: 100%;
+    transition: box-shadow 0.2s;
+    z-index: 20;
   }
 
-  /* Override mobile-hidden for small screens */
-  .mobile-hidden {
+  .filters-row.mobile-hidden {
     display: none !important;
+  }
+
+  .filter-row-inner {
+    gap: 8px;
+    width: 100%;
+    justify-content: center;
+  }
+
+  .filter-btn {
+    min-width: 44px;
+    min-height: 32px;
+    font-size: 0.92rem;
+    border-radius: 14px;
+    box-shadow: none;
+  }
+
+  .filter-btn {
+    background: var(--color-white, #fff);
+    border: 1.5px solid var(--color-primary-light, #e0e0e0);
+  }
+
+  .filter-btn.active {
+    background: var(--color-primary, #6c63ff);
+    color: var(--color-white, #fff);
+    border-color: var(--color-primary, #6c63ff);
+  }
+
+  .filter-btn:focus-visible {
+    outline: 2px solid var(--color-primary, #6c63ff);
+    outline-offset: 2px;
+  }
+
+  .tech-icon {
+    width: 20px;
+    height: 20px;
+  }
+
+  .mobile-toggle-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    margin-bottom: 8px;
+    padding: 7px 14px;
+    background: var(--color-card-bg, #fff);
+    color: var(--color-primary-dark, #4b2a3a);
+    border: 1.5px solid var(--color-primary-light, #e0e0e0);
+    border-radius: 18px;
+    font-size: 0.98rem;
+    font-weight: 600;
+    box-shadow: 0 2px 8px 0 rgba(108, 99, 255, 0.07);
+    transition: background 0.18s, box-shadow 0.18s, transform 0.13s, color 0.18s;
+    cursor: pointer;
+    min-width: 72px;
+    min-height: 32px;
+    letter-spacing: 0.01em;
+    position: relative;
+    z-index: 30;
+  }
+
+  .mobile-toggle-btn span:first-child {
+    font-size: 1.08em;
+    margin-right: 4px;
+    display: flex;
+    align-items: center;
+    filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.10));
+  }
+
+  .mobile-toggle-btn span.toggle-arrow {
+    margin-left: 6px;
+    font-size: 1em;
+    transition: transform 0.25s cubic-bezier(.4, 2, .6, 1), color 0.2s;
+    display: inline-block;
+    color: var(--color-primary-dark, #4b2a3a);
+  }
+
+  .mobile-toggle-btn .toggle-arrow.rotated {
+    transform: rotate(180deg) scale(1.08);
+    color: var(--color-accent-dark, #b05a7a);
+  }
+
+  .mobile-toggle-btn:active {
+    transform: scale(0.97);
+    box-shadow: 0 1px 4px 0 rgba(108, 99, 255, 0.07);
+  }
+
+  .mobile-toggle-btn:hover,
+  .mobile-toggle-btn:focus-visible {
+    background: var(--color-primary-light, #f5f2f7);
+    color: var(--color-primary-dark, #4b2a3a);
+    box-shadow: 0 3px 10px 0 rgba(108, 99, 255, 0.10);
+    transform: translateY(-1px) scale(1.01);
+    outline: 2px solid var(--color-accent-dark, #b05a7a);
+    outline-offset: 2px;
+  }
+
+  @media (max-width: 568px) {
+    .mobile-toggle-btn {
+      padding: 6px 8px;
+      font-size: 0.92rem;
+      min-width: 60px;
+      min-height: 28px;
+      border-radius: 12px;
+    }
+
+    .mobile-toggle-btn span:first-child {
+      font-size: 1em;
+    }
+
+    .mobile-toggle-btn span.toggle-arrow {
+      font-size: 0.92em;
+    }
   }
 }
 
 /* Very small mobile specific adjustments */
-@media (max-width: 568px) {
+@media (max-width: 400px) {
   .mobile-toggle-btn {
-    padding: 8px 12px;
-    font-size: 0.8rem;
-    min-width: 100px;
+    padding: 8px 10px;
+    font-size: 0.92rem;
+    min-width: 80px;
+    min-height: 36px;
+    border-radius: 14px;
   }
 
   .navigation-section h3,
@@ -557,13 +661,14 @@ export default {
     display: none;
   }
 
-  .navigation-section,
-  .technology-section {
-    display: block !important;
-  }
-
-  .mobile-hidden {
-    display: block !important;
+  .filters-row {
+    display: flex !important;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin-bottom: 18px;
+    padding: 0 4px;
   }
 }
 
