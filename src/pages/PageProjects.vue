@@ -5,17 +5,8 @@
 
     <!-- Filter functionality -->
     <div class="filter-container">
-      <!-- Mobile toggle buttons -->
-      <div class="mobile-toggles">
-        <button @click="toggleMobileFilters" class="mobile-toggle-btn" :aria-expanded="showMobileFilters">
-          <span>🔍</span>
-          <span>Filter</span>
-          <span class="toggle-arrow" :class="{ rotated: showMobileFilters }">▼</span>
-        </button>
-      </div>
-
-      <!-- Unified filter row: two centered rows, no headings -->
-      <div class="filters-row" :class="{ 'mobile-hidden': !showMobileFilters }">
+      <!-- Unified filter row: two centered rows, always visible on all devices -->
+      <div class="filters-row">
         <div class="filter-row-inner">
           <button @click="toggleTypeFilter(null)" class="filter-btn filter-type" :class="{ active: selectedTypes.length === 0 }"
             aria-label="Show all types">
@@ -135,7 +126,7 @@
 
 <script>
 import TheProjectCard from '../components/TheProjectCard.vue';
-import { ref, computed } from 'vue';
+import { ref } from 'vue';
 
 export default {
   data() {
@@ -154,7 +145,6 @@ export default {
       loading: ref(true), // For accessibility, show loading message while fetching data
       showFloatingNav: false, // Show floating nav when scrolled
       isFloatingMenuOpen: false, // Toggle for floating menu
-      showMobileFilters: false, // Toggle for mobile filter visibility
     }
   },
   components: {
@@ -262,9 +252,7 @@ export default {
     toggleFloatingMenu() {
       this.isFloatingMenuOpen = !this.isFloatingMenuOpen;
     },
-    toggleMobileFilters() {
-      this.showMobileFilters = !this.showMobileFilters;
-    },
+    // toggleMobileFilters removed: filters always visible on mobile
     handleScroll() {
       // Show floating nav when scrolled down 200px
       this.showFloatingNav = window.scrollY > 200;
@@ -328,10 +316,7 @@ export default {
   }
 }
 
-
-
 /* Compact unified filter row */
-
 .filters-row {
   display: flex;
   flex-direction: column;
@@ -350,7 +335,7 @@ export default {
   gap: 8px;
 }
 
-/* Yhdistetty filter-btn kaikille filter-napeille */
+/* Filter-btn for all filter buttons */
 .filter-btn {
   display: flex;
   align-items: center;
@@ -474,12 +459,12 @@ export default {
     padding: 0 10px;
   }
 
-  /* Show mobile toggles on mobile and small tablets */
+  /* Remove mobile toggles: filters always visible */
   .mobile-toggles {
-    display: flex;
+    display: none !important;
   }
 
-  /* Nicer dropdown for filters on mobile */
+  /* Unified filter row style for mobile: no background, border, or shadow */
   .filters-row {
     display: flex;
     flex-direction: column;
@@ -487,19 +472,20 @@ export default {
     justify-content: center;
     gap: 8px;
     margin-bottom: 12px;
-    padding: 16px 10px 12px 10px;
-    background: var(--color-card-bg, #fff);
-    border-radius: 18px;
-    box-shadow: 0 4px 18px 0 rgba(0, 0, 0, 0.10);
-    border: 1.5px solid var(--color-primary-light, #e0e0e0);
+    padding: 0 4px;
+    background: none;
+    border-radius: 0;
+    box-shadow: none;
+    border: none;
     max-width: 98vw;
     width: 100%;
-    transition: box-shadow 0.2s;
+    transition: none;
     z-index: 20;
   }
 
+  /* Remove mobile-hidden class, filters always visible */
   .filters-row.mobile-hidden {
-    display: none !important;
+    display: flex !important;
   }
 
   .filter-row-inner {
@@ -537,118 +523,15 @@ export default {
     height: 20px;
   }
 
-  .mobile-toggle-btn {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 6px;
-    margin-bottom: 8px;
-    padding: 7px 14px;
-    background: var(--color-card-bg, #fff);
-    color: var(--color-primary-dark, #4b2a3a);
-    border: 1.5px solid var(--color-primary-light, #e0e0e0);
-    border-radius: 18px;
-    font-size: 0.98rem;
-    font-weight: 600;
-    box-shadow: 0 2px 8px 0 rgba(108, 99, 255, 0.07);
-    transition: background 0.18s, box-shadow 0.18s, transform 0.13s, color 0.18s;
-    cursor: pointer;
-    min-width: 72px;
-    min-height: 32px;
-    letter-spacing: 0.01em;
-    position: relative;
-    z-index: 30;
-  }
-
-  .mobile-toggle-btn span:first-child {
-    font-size: 1.08em;
-    margin-right: 4px;
-    display: flex;
-    align-items: center;
-    filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.10));
-  }
-
-  .mobile-toggle-btn span.toggle-arrow {
-    margin-left: 6px;
-    font-size: 1em;
-    transition: transform 0.25s cubic-bezier(.4, 2, .6, 1), color 0.2s;
-    display: inline-block;
-    color: var(--color-primary-dark, #4b2a3a);
-  }
-
-  .mobile-toggle-btn .toggle-arrow.rotated {
-    transform: rotate(180deg) scale(1.08);
-    color: var(--color-accent-dark, #b05a7a);
-  }
-
-  .mobile-toggle-btn:active {
-    transform: scale(0.97);
-    box-shadow: 0 1px 4px 0 rgba(108, 99, 255, 0.07);
-  }
-
-  .mobile-toggle-btn:hover,
-  .mobile-toggle-btn:focus-visible {
-    background: var(--color-primary-light, #f5f2f7);
-    color: var(--color-primary-dark, #4b2a3a);
-    box-shadow: 0 3px 10px 0 rgba(108, 99, 255, 0.10);
-    transform: translateY(-1px) scale(1.01);
-    outline: 2px solid var(--color-accent-dark, #b05a7a);
-    outline-offset: 2px;
-  }
-
-  @media (max-width: 568px) {
-    .mobile-toggle-btn {
-      padding: 6px 8px;
-      font-size: 0.92rem;
-      min-width: 60px;
-      min-height: 28px;
-      border-radius: 12px;
-    }
-
-    .mobile-toggle-btn span:first-child {
-      font-size: 1em;
-    }
-
-    .mobile-toggle-btn span.toggle-arrow {
-      font-size: 0.92em;
-    }
+  /* Remove all mobile-toggle-btn styles: button deleted */
+  .mobile-toggle-btn,
+  .toggle-arrow {
+    display: none !important;
   }
 }
 
 /* Very small mobile specific adjustments */
 @media (max-width: 400px) {
-  .mobile-toggle-btn {
-    padding: 8px 10px;
-    font-size: 0.92rem;
-    min-width: 80px;
-    min-height: 36px;
-    border-radius: 14px;
-  }
-
-  .navigation-section h3,
-  .technology-section h3 {
-    font-size: 1rem;
-    margin-bottom: 8px;
-  }
-
-  .nav-buttons {
-    gap: 8px;
-  }
-
-  .nav-button {
-    padding: 6px 12px;
-    font-size: 0.8rem;
-  }
-
-  .tech-filters {
-    gap: 8px;
-  }
-
-  .tech-filter-btn {
-    padding: 6px 10px;
-    font-size: 0.8rem;
-  }
-
   .tech-icon {
     width: 16px;
     height: 16px;
