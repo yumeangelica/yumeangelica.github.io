@@ -255,10 +255,13 @@
       "isMain": false,
       "title": "Job finder",
       "imageURL": "/assets/img/job-finder-project.webp",
-      "technologyTitles": ["Python"],
+      "technologyTitles": ["Python", "GitHub"],
       "additionalInfo": [
-        "A command-line tool for finding jobs from the internet",
-        "Requests, BeautifulSoup, web data extraction, automation"
+        "Automates job searches on Duunitori and exports CSV reports",
+        "Filter by keyword, area, and job type via CLI",
+        "Date-stamped search term based files saved to src/csv_files/",
+        "Requests and BeautifulSoup web data extraction",
+        "User agent rotation for security and reliability"
       ],
       "links": [
         {
@@ -273,10 +276,15 @@
       "isMain": false,
       "title": "Weather view",
       "imageURL": "/assets/img/weather-view-project.webp",
-      "technologyTitles": ["Python"],
+      "technologyTitles": ["Python", "GitHub"],
       "additionalInfo": [
-        "A command-line tool for fetching weather data from the internet",
-        "Requests, API usage"
+        "Command line interface for real time weather data",
+        "Current conditions and 3-day forecast with UV index",
+        "Uses OpenWeatherMap API for accurate data",
+        "Solar position calculations via Pysolar for UV index",
+        "Robust input validation and error handling",
+        "Automatic timezone detection for local times",
+        "Secure API key management with python-dotenv"
       ],
       "links": [
         {

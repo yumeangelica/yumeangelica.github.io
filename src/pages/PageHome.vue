@@ -1,18 +1,18 @@
 <template>
-  <h1>Dive into My World of Code and Creativity</h1>
+  <h1>Step into My World of Code & Creativity</h1>
 
   <div class="row">
     <div class="col-lg-7">
 
-      <p>I'm a passionate <span class="text-highlight">full-stack developer</span> with a strong interest in <span
-          class="text-highlight">cybersecurity</span>. My background in Business Administration and <span class="text-highlight">digital
-          marketing</span> provides a solid foundation for software development. Since 2020, I've been building <span
-          class="text-highlight">accessible</span> and <span class="text-highlight">optimized</span> web solutions, solving complex challenges in
-        <span class="text-highlight">agile environments</span>. I also hold <span class="text-highlight">a degree in Information and Communications
-          Technology</span>.
-      </p>
+      <p> I'm a <span class="text-highlight">full-stack developer</span> who loves building things that are both beautiful and secure. With a
+        background in Business Administration and <span class="text-highlight">digital marketing</span>, I approach software development creatively
+        and strategically. Since 2020, I've specialized in creating <span class="text-highlight">accessible</span> and <span
+          class="text-highlight">optimized</span> web solutions, solving real-world challenges in dynamic <span class="text-highlight">agile
+          environments</span>. I hold a degree in <span class="text-highlight">Information and Communications Technology</span> and thrive in bridging
+        technology with user-friendly experiences. </p>
 
-      <h2 id="tech-stack">Main Tech Stack & Tools</h2>
+
+      <h2 id="tech-stack">Favorite Tech Stack & Tools</h2>
       <!-- Display technologies in categories -->
       <div class="tech-category" v-for="category in categorizedTechnologies" :key="category.name"
         :aria-labelledby="'category-' + category.name.toLowerCase().replace(/\s+/g, '-')">
@@ -32,24 +32,26 @@
     <div class="heartlist">
       <h2>My Developer Journey</h2>
       <ul role="presentation">
-        <li>Software Developer at OP Financial Group — accessible frontend solutions with React, TypeScript, SCSS, and design systems in a highly
-          regulated international environment, with occasional backend (Java Spring Boot) and cloud development.</li>
-        <li>Previously worked as a full-stack developer at the City of Helsinki (Virittämö), with a focus on backend development using the MERN stack.
+        <li>Currently working as a Software Developer at OP Financial Group, focusing on creating accessible frontend solutions using React,
+          TypeScript, SCSS, and design systems in an international, highly regulated environment. Occasionally, I also dive into backend (Java Spring
+          Boot) and cloud development.</li>
+        <li>Previously, I was a full-stack developer at the City of Helsinki (Virittämö), primarily working on backend solutions with the MERN stack.
         </li>
-        <li>Years of building own projects — coding driven by curiosity and a passion for learning.</li>
-        <li>BSc in Business Administration, University of Vaasa (graduated with excellence).</li>
-        <li>Completed 180+ ECTS credits in IT at Metropolia University of Applied Sciences and other higher education institutions.</li>
-        <li>Full Stack Open course series at the University of Helsinki (excellent grades, DEFA project participant).</li>
-        <li>Additional coursework in DevOps with Docker, Cyber Security, and Python Programming at the University of Helsinki.</li>
-        <li>ICT degree from Business College Helsinki (GPA: 4.95/5, April 2024).</li>
-        <li>Well-rounded skill set across technical, social, and business domains.</li>
+        <li>Years of building personal projects driven by curiosity and a never-ending passion for learning.</li>
+        <li>Bachelor's degree in Business Administration from the University of Vaasa (graduated with excellence).</li>
+        <li>Completed over 180 ECTS credits in Information Technology at Metropolia University of Applied Sciences and other higher education
+          institutions.</li>
+        <li>Finished the Full Stack Open course series at the University of Helsinki with excellent grades and participated in the DEFA project.</li>
+        <li>Additional studies in DevOps with Docker, Cyber Security, and Python Programming at the University of Helsinki.</li>
+        <li>ICT degree from Business College Helsinki, graduating in April 2024 with a GPA of 4.95/5.</li>
+        <li>A versatile skill set blending technical expertise with strong social and business skills.</li>
       </ul>
     </div>
   </section>
 
   <section class="certifications">
     <div class="heartlist">
-      <h2>Certifications</h2>
+      <h2>Professional Certifications</h2>
       <ul role="presentation">
         <li>
           <a class="styled-link"
@@ -73,28 +75,26 @@
         </span>
       </span>
     </h2>
-    <p>
-      Beyond coding, I enjoy producing music and exploring Japanese culture — both of which inspire my creativity and bring a unique perspective to
-      my work in tech.
-    </p>
+    <p> Outside of coding, I'm passionate about producing music and exploring Japanese culture, both of which inspire my creativity and bring a unique
+      perspective to my work in tech. </p>
   </section>
 
   <section class="commitment">
-    <h2>My Commitment</h2>
-    <p>Driven by a deep passion for programming, I'm dedicated to continuous learning and growth. My creativity extends beyond coding into my hobbies,
-      enriching my problem-solving approach. I'm currently available for new opportunities in the IT field.</p>
+    <h2>Code with Passion</h2>
+    <p> I'm deeply passionate about programming and constantly strive to learn and grow. My creativity isn't just limited to coding, it’s enhanced by
+      my hobbies, making me a more innovative problem solver. Right now, I'm open to new opportunities in the tech field, so let’s connect! </p>
   </section>
 
   <section class="contact">
     <h2 id="contact">Get in Touch</h2>
-    <p>Feel free to reach out to me via email.</p>
+    <p>I'd love to hear from you — feel free to drop me an email.</p>
 
     <p class="introduction-highlights-paragraph">
       <img class="contact-image" src="/assets/img/angelica-contact.webp" alt="Angelica's Contact Information" loading="lazy" />
     </p>
 
     <p>
-      You can also connect with me on LinkedIn or GitHub by clicking the icons below.
+      You can also find me on LinkedIn or GitHub by clicking the icons below.
     </p>
 
     <p class="introduction-highlights-paragraph">
