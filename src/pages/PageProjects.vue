@@ -13,19 +13,19 @@
             All
           </button>
           <button @click="toggleTypeFilter('frontend')" class="filter-btn filter-type" :class="{ active: selectedTypes.includes('frontend') }"
-            aria-label="Frontend projects">
+            :disabled="!isTypeTechComboAvailable('frontend', selectedTech)" aria-label="Frontend projects">
             FE
           </button>
           <button @click="toggleTypeFilter('backend')" class="filter-btn filter-type" :class="{ active: selectedTypes.includes('backend') }"
-            aria-label="Backend projects">
+            :disabled="!isTypeTechComboAvailable('backend', selectedTech)" aria-label="Backend projects">
             BE
           </button>
           <button @click="toggleTypeFilter('fullstack')" class="filter-btn filter-type" :class="{ active: selectedTypes.includes('fullstack') }"
-            aria-label="Fullstack projects">
+            :disabled="!isTypeTechComboAvailable('fullstack', selectedTech)" aria-label="Fullstack projects">
             FS
           </button>
           <button @click="toggleTypeFilter('cli')" class="filter-btn filter-type" :class="{ active: selectedTypes.includes('cli') }"
-            aria-label="CLI projects">
+            :disabled="!isTypeTechComboAvailable('cli', selectedTech)" aria-label="CLI projects">
             CLI
           </button>
         </div>
@@ -35,7 +35,8 @@
             <span>All</span>
           </button>
           <button v-for="tech in popularTechnologies" :key="tech.title" @click="toggleTechFilter(tech.title)" class="filter-btn tech-filter-btn"
-            :class="{ active: selectedTech.includes(tech.title) }" :aria-label="`Filter by ${tech.title}`">
+            :class="{ active: selectedTech.includes(tech.title) }" :disabled="!isTechTypeComboAvailable(tech.title, selectedTypes)"
+            :aria-label="`Filter by ${tech.title}`">
             <img :src="tech.url" :alt="tech.title" :title="tech.title" class="tech-icon" />
           </button>
         </div>
@@ -105,16 +106,24 @@
             <button @click="scrollToSection('back-to-top')" class="floating-nav-button" role="menuitem">
               ⬆ Back to Top
             </button>
-            <button @click="scrollToSection('frontend-projects')" class="floating-nav-button" role="menuitem">
+            <button @click="scrollToSection('main-projects')" class="floating-nav-button" :class="{ disabled: !isMainVisible }"
+              :disabled="!isMainVisible" role="menuitem">
+              ⭐ Main Projects
+            </button>
+            <button @click="scrollToSection('frontend-projects')" class="floating-nav-button" :class="{ disabled: !isFrontendVisible }"
+              :disabled="!isFrontendVisible" role="menuitem">
               🎨 Frontend
             </button>
-            <button @click="scrollToSection('backend-projects')" class="floating-nav-button" role="menuitem">
+            <button @click="scrollToSection('backend-projects')" class="floating-nav-button" :class="{ disabled: !isBackendVisible }"
+              :disabled="!isBackendVisible" role="menuitem">
               🛠 Backend
             </button>
-            <button @click="scrollToSection('fullstack-projects')" class="floating-nav-button" role="menuitem">
+            <button @click="scrollToSection('fullstack-projects')" class="floating-nav-button" :class="{ disabled: !isFullstackVisible }"
+              :disabled="!isFullstackVisible" role="menuitem">
               🌐 Fullstack
             </button>
-            <button @click="scrollToSection('cli-projects')" class="floating-nav-button" role="menuitem">
+            <button @click="scrollToSection('cli-projects')" class="floating-nav-button" :class="{ disabled: !isCliVisible }"
+              :disabled="!isCliVisible" role="menuitem">
               ⚡ CLI
             </button>
           </div>
@@ -187,9 +196,48 @@ export default {
     },
     filteredCliProjects() {
       return this.filterProjects(this.cliProjects);
-    }
+    },
+    isMainVisible() {
+      return this.filteredMainProjects.length > 0;
+    },
+    isFrontendVisible() {
+      return this.filteredFrontendProjects.length > 0;
+    },
+    isBackendVisible() {
+      return this.filteredBackendProjects.length > 0;
+    },
+    isFullstackVisible() {
+      return this.filteredFullstackProjects.length > 0;
+    },
+    isCliVisible() {
+      return this.filteredCliProjects.length > 0;
+    },
   },
   methods: {
+    // Check if any project exists for the given type and selected techs
+    isTypeTechComboAvailable(type, techArr) {
+      // If no tech selected, just check for type
+      if (!techArr || techArr.length === 0) {
+        return this.allProjects.some(p => p.type === type);
+      }
+      // If techArr contains more than one tech, only allow if a project has ALL those techs
+      // But if no project has all selected techs, disable
+      return this.allProjects.some(p => p.type === type && techArr.length > 0 && techArr.every(t => p.technologyTitles && p.technologyTitles.includes(t)));
+    },
+    // Check if any project exists for the given tech and selected type
+    isTechTypeComboAvailable(tech, typeArr) {
+      // If tech is already selected, always allow to deselect
+      if (this.selectedTech.includes(tech)) return true;
+
+      // If no type selected, check if any project has all selected techs + this tech
+      if (!typeArr || typeArr.length === 0) {
+        const nextTechs = [...this.selectedTech, tech];
+        return this.allProjects.some(p => nextTechs.every(t => p.technologyTitles && p.technologyTitles.includes(t)));
+      }
+      // If type selected, check if any project matches type and all selected techs + this tech
+      const nextTechs = [...this.selectedTech, tech];
+      return this.allProjects.some(p => typeArr.includes(p.type) && nextTechs.every(t => p.technologyTitles && p.technologyTitles.includes(t)));
+    },
     filterProjects(projects) {
       // Filter by type first
       let filtered = projects;
@@ -351,6 +399,17 @@ export default {
   color: var(--color-text);
   border: 1.5px solid var(--color-primary-light);
   opacity: 0.95;
+}
+
+.filter-btn.disabled,
+.filter-btn:disabled {
+  opacity: 0.35 !important;
+  color: var(--color-text) !important;
+  background-color: var(--color-card-bg) !important;
+  border-color: var(--color-primary-light) !important;
+  cursor: not-allowed !important;
+  box-shadow: none !important;
+  filter: grayscale(1) brightness(1.2);
 }
 
 .filter-btn.active {
@@ -725,5 +784,15 @@ export default {
 .slide-up-leave-from {
   opacity: 1;
   transform: translateY(0) scale(1);
+}
+
+.floating-nav-button.disabled,
+.floating-nav-button:disabled {
+  opacity: 0.35 !important;
+  color: var(--color-text) !important;
+  background-color: var(--color-card-bg) !important;
+  cursor: not-allowed !important;
+  box-shadow: none !important;
+  filter: grayscale(1) brightness(1.2);
 }
 </style>
