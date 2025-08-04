@@ -30,13 +30,19 @@ export default {
     project: Object,
     technologies: Array
   },
-  data() {
-    return {
-      projectTitle: this.project.title,
-      additionalInfo: this.project.additionalInfo,
-      links: this.project.links,
-      technologyTitles: this.project.technologyTitles
-    };
+  computed: {
+    projectTitle() {
+      return this.project.title;
+    },
+    additionalInfo() {
+      return this.project.additionalInfo;
+    },
+    links() {
+      return this.project.links;
+    },
+    technologyTitles() {
+      return this.project.technologyTitles;
+    }
   },
   methods: {
     getTechIconUrl(techName) {
