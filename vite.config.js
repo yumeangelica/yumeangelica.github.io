@@ -32,7 +32,20 @@ export default defineConfig({
             return 'images/[name]-[hash][extname]'
           }
           return 'assets/[name]-[hash][extname]'
+        },
+        // Manual chunks for better code splitting
+        manualChunks: {
+          vendor: ['vue', 'vue-router'],
+          utils: ['@/router/index.js']
         }
+      }
+    },
+    // Enable more optimizations
+    minify: 'terser',
+    terserOptions: {
+      compress: {
+        drop_console: true,
+        drop_debugger: true
       }
     }
   },
