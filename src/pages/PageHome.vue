@@ -112,44 +112,39 @@
 </template>
 
 <script>
-import { ref, onMounted } from 'vue';
-
 export default {
-  setup() {
-    const technologies = ref([]);
-    const categories = ref([]);
-    const categorizedTechnologies = ref([]);
-    const isTooltipVisible = ref(false);
-    const dataURL = '../data.json';
-
-    onMounted(async () => {
+  data() {
+    return {
+      technologies: [],
+      categories: [],
+      categorizedTechnologies: [],
+      isTooltipVisible: false,
+      dataURL: '../data.json'
+    };
+  },
+  mounted() {
+    this.fetchTechnologies();
+  },
+  methods: {
+    async fetchTechnologies() {
       try {
-        const response = await fetch(dataURL);
+        const response = await fetch(this.dataURL);
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
         }
         const data = await response.json();
-
-        // Set data in batch to minimize reactivity updates
-        technologies.value = data.technologies;
-        categories.value = data.techCategories;
-
-        // Use Object.freeze for immutable data to improve performance
-        categorizedTechnologies.value = Object.freeze(
-          categories.value.map(category => Object.freeze({
+        this.technologies = data.technologies;
+        this.categories = data.techCategories;
+        this.categorizedTechnologies = Object.freeze(
+          this.categories.map(category => Object.freeze({
             name: category.name,
-            techs: Object.freeze(technologies.value.filter(tech => category.technologies.includes(tech.title)))
+            techs: Object.freeze(this.technologies.filter(tech => category.technologies.includes(tech.title)))
           }))
         );
       } catch (error) {
         console.error("Error fetching data:", error);
       }
-    });
-
-    return {
-      categorizedTechnologies,
-      isTooltipVisible
-    };
+    }
   }
 };
 </script>
