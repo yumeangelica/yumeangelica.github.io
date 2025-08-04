@@ -135,7 +135,6 @@
 
 <script>
 import TheProjectCard from '../components/TheProjectCard.vue';
-import { ref } from 'vue';
 
 export default {
   data() {
