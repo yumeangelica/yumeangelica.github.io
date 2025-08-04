@@ -13,10 +13,17 @@ export default {
   name: 'TheBackToTop',
   setup() {
     const isVisible = ref(false);
+    let scrollTimeout = null;
 
     const handleScroll = () => {
-      // Show the button when scrolled down more than 300px
-      isVisible.value = window.scrollY > 300;
+      // Throttle scroll events for better performance
+      if (scrollTimeout) return;
+
+      scrollTimeout = setTimeout(() => {
+        // Show the button when scrolled down more than 300px
+        isVisible.value = window.scrollY > 300;
+        scrollTimeout = null;
+      }, 16); // ~60fps
     };
 
     const scrollToTop = () => {
@@ -27,11 +34,14 @@ export default {
     };
 
     onMounted(() => {
-      window.addEventListener('scroll', handleScroll);
+      window.addEventListener('scroll', handleScroll, { passive: true });
     });
 
     onUnmounted(() => {
       window.removeEventListener('scroll', handleScroll);
+      if (scrollTimeout) {
+        clearTimeout(scrollTimeout);
+      }
     });
 
     return {
