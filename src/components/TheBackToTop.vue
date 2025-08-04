@@ -7,47 +7,40 @@
 </template>
 
 <script>
-import { ref, onMounted, onUnmounted } from 'vue';
-
 export default {
   name: 'TheBackToTop',
-  setup() {
-    const isVisible = ref(false);
-    let scrollTimeout = null;
-
-    const handleScroll = () => {
-      // Throttle scroll events for better performance
-      if (scrollTimeout) return;
-
-      scrollTimeout = setTimeout(() => {
-        // Show the button when scrolled down more than 300px
-        isVisible.value = window.scrollY > 300;
-        scrollTimeout = null;
-      }, 16); // ~60fps
+  data() {
+    return {
+      isVisible: false,
+      scrollTimeout: null
     };
+  },
+  methods: {
+    handleScroll() {
+      // Throttle scroll events for better performance
+      if (this.scrollTimeout) return;
 
-    const scrollToTop = () => {
+      this.scrollTimeout = setTimeout(() => {
+        // Show the button when scrolled down more than 300px
+        this.isVisible = window.scrollY > 300;
+        this.scrollTimeout = null;
+      }, 16); // ~60fps
+    },
+    scrollToTop() {
       window.scrollTo({
         top: 0,
         behavior: 'smooth'
       });
-    };
-
-    onMounted(() => {
-      window.addEventListener('scroll', handleScroll, { passive: true });
-    });
-
-    onUnmounted(() => {
-      window.removeEventListener('scroll', handleScroll);
-      if (scrollTimeout) {
-        clearTimeout(scrollTimeout);
-      }
-    });
-
-    return {
-      isVisible,
-      scrollToTop
-    };
+    }
+  },
+  mounted() {
+    window.addEventListener('scroll', this.handleScroll, { passive: true });
+  },
+  beforeUnmount() {
+    window.removeEventListener('scroll', this.handleScroll);
+    if (this.scrollTimeout) {
+      clearTimeout(this.scrollTimeout);
+    }
   }
 };
 </script>
