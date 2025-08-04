@@ -36,6 +36,7 @@ import { ref } from 'vue';
 import { onMounted, onUnmounted } from 'vue';
 
 const showNav = ref(false);
+let resizeTimeout = null;
 
 const toggleNav = () => {
   showNav.value = !showNav.value;
@@ -46,17 +47,26 @@ const closeNav = () => {
 };
 
 const handleResize = () => {
-  if (window.innerWidth >= 425 && showNav.value) {
-    showNav.value = false;
-  }
+  // Throttle resize events for better performance
+  if (resizeTimeout) return;
+
+  resizeTimeout = setTimeout(() => {
+    if (window.innerWidth >= 425 && showNav.value) {
+      showNav.value = false;
+    }
+    resizeTimeout = null;
+  }, 100); // Less frequent than scroll events
 };
 
 onMounted(() => {
-  window.addEventListener('resize', handleResize);
+  window.addEventListener('resize', handleResize, { passive: true });
 });
 
 onUnmounted(() => {
   window.removeEventListener('resize', handleResize);
+  if (resizeTimeout) {
+    clearTimeout(resizeTimeout);
+  }
 });
 </script>
 
