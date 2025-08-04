@@ -125,13 +125,22 @@ export default {
     onMounted(async () => {
       try {
         const response = await fetch(dataURL);
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
         const data = await response.json();
+
+        // Set data in batch to minimize reactivity updates
         technologies.value = data.technologies;
         categories.value = data.techCategories;
-        categorizedTechnologies.value = categories.value.map(category => ({
-          name: category.name,
-          techs: technologies.value.filter(tech => category.technologies.includes(tech.title))
-        }));
+
+        // Use Object.freeze for immutable data to improve performance
+        categorizedTechnologies.value = Object.freeze(
+          categories.value.map(category => Object.freeze({
+            name: category.name,
+            techs: Object.freeze(technologies.value.filter(tech => category.technologies.includes(tech.title)))
+          }))
+        );
       } catch (error) {
         console.error("Error fetching data:", error);
       }
