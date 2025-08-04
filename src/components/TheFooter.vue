@@ -2,8 +2,14 @@
   <footer role="contentinfo" aria-label="Site footer">&copy; 2020 - {{ year }} yumeangelica.github.io. All Rights Reserved.</footer>
 </template>
 
-<script setup>
-const year = new Date().getFullYear()
+<script>
+export default {
+  data() {
+    return {
+      year: new Date().getFullYear()
+    };
+  }
+};
 </script>
 
 <style>

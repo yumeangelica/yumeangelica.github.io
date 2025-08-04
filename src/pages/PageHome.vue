@@ -112,35 +112,39 @@
 </template>
 
 <script>
-import { ref, onMounted } from 'vue';
-
 export default {
-  setup() {
-    const technologies = ref([]);
-    const categories = ref([]);
-    const categorizedTechnologies = ref([]);
-    const isTooltipVisible = ref(false);
-    const dataURL = '../data.json';
-
-    onMounted(async () => {
+  data() {
+    return {
+      technologies: [],
+      categories: [],
+      categorizedTechnologies: [],
+      isTooltipVisible: false,
+      dataURL: '../data.json'
+    };
+  },
+  mounted() {
+    this.fetchTechnologies();
+  },
+  methods: {
+    async fetchTechnologies() {
       try {
-        const response = await fetch(dataURL);
+        const response = await fetch(this.dataURL);
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
         const data = await response.json();
-        technologies.value = data.technologies;
-        categories.value = data.techCategories;
-        categorizedTechnologies.value = categories.value.map(category => ({
-          name: category.name,
-          techs: technologies.value.filter(tech => category.technologies.includes(tech.title))
-        }));
+        this.technologies = data.technologies;
+        this.categories = data.techCategories;
+        this.categorizedTechnologies = Object.freeze(
+          this.categories.map(category => Object.freeze({
+            name: category.name,
+            techs: Object.freeze(this.technologies.filter(tech => category.technologies.includes(tech.title)))
+          }))
+        );
       } catch (error) {
         console.error("Error fetching data:", error);
       }
-    });
-
-    return {
-      categorizedTechnologies,
-      isTooltipVisible
-    };
+    }
   }
 };
 </script>

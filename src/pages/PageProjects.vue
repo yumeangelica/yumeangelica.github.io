@@ -135,25 +135,25 @@
 
 <script>
 import TheProjectCard from '../components/TheProjectCard.vue';
-import { ref } from 'vue';
 
 export default {
   data() {
     return {
-      allProjects: ref([]),
-      frontendProjects: ref([]),
-      backendProjects: ref([]),
-      fullstackProjects: ref([]),
-      cliProjects: ref([]),
-      mainProjects: ref([]),
-      technologies: ref([]),
+      allProjects: [],
+      frontendProjects: [],
+      backendProjects: [],
+      fullstackProjects: [],
+      cliProjects: [],
+      mainProjects: [],
+      technologies: [],
       selectedTech: [], // For technology filtering, multi-select, all by default
       selectedTypes: [], // For type filtering, single-select, all by default
       dataURL: '../data.json',
-      dataHandleError: ref(false), // If data fetching fails, show error message
-      loading: ref(true), // For accessibility, show loading message while fetching data
+      dataHandleError: false, // If data fetching fails, show error message
+      loading: true, // For accessibility, show loading message while fetching data
       showFloatingNav: false, // Show floating nav when scrolled
       isFloatingMenuOpen: false, // Toggle for floating menu
+      scrollTimeout: null, // For throttling scroll events
     }
   },
   components: {
@@ -300,15 +300,21 @@ export default {
     toggleFloatingMenu() {
       this.isFloatingMenuOpen = !this.isFloatingMenuOpen;
     },
-    // toggleMobileFilters removed: filters always visible on mobile
+    // Throttled scroll handler for better performance
     handleScroll() {
-      // Show floating nav when scrolled down 200px
-      this.showFloatingNav = window.scrollY > 200;
+      if (this.scrollTimeout) return;
 
-      // Close floating menu when scrolling
-      if (this.isFloatingMenuOpen) {
-        this.isFloatingMenuOpen = false;
-      }
+      this.scrollTimeout = setTimeout(() => {
+        // Show floating nav when scrolled down 200px
+        this.showFloatingNav = window.scrollY > 200;
+
+        // Close floating menu when scrolling
+        if (this.isFloatingMenuOpen) {
+          this.isFloatingMenuOpen = false;
+        }
+
+        this.scrollTimeout = null;
+      }, 16); // ~60fps throttling
     }
   },
   async created() { // When site is loaded, fetch data from data.json
@@ -336,8 +342,11 @@ export default {
     window.addEventListener('scroll', this.handleScroll);
   },
   beforeUnmount() {
-    // Clean up scroll listener
+    // Clean up scroll listener and timeout
     window.removeEventListener('scroll', this.handleScroll);
+    if (this.scrollTimeout) {
+      clearTimeout(this.scrollTimeout);
+    }
   }
 }
 

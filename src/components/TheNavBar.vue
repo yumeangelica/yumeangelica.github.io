@@ -31,33 +31,42 @@
 </template>
 
 
-<script setup>
-import { ref } from 'vue';
-import { onMounted, onUnmounted } from 'vue';
-
-const showNav = ref(false);
-
-const toggleNav = () => {
-  showNav.value = !showNav.value;
-};
-
-const closeNav = () => {
-  showNav.value = false;
-};
-
-const handleResize = () => {
-  if (window.innerWidth >= 425 && showNav.value) {
-    showNav.value = false;
+<script>
+export default {
+  data() {
+    return {
+      showNav: false,
+      resizeTimeout: null
+    };
+  },
+  methods: {
+    toggleNav() {
+      this.showNav = !this.showNav;
+    },
+    closeNav() {
+      this.showNav = false;
+    },
+    handleResize() {
+      // Throttle resize events for better performance
+      if (this.resizeTimeout) return;
+      this.resizeTimeout = setTimeout(() => {
+        if (window.innerWidth >= 425 && this.showNav) {
+          this.showNav = false;
+        }
+        this.resizeTimeout = null;
+      }, 100); // Less frequent than scroll events
+    }
+  },
+  mounted() {
+    window.addEventListener('resize', this.handleResize, { passive: true });
+  },
+  beforeUnmount() {
+    window.removeEventListener('resize', this.handleResize);
+    if (this.resizeTimeout) {
+      clearTimeout(this.resizeTimeout);
+    }
   }
 };
-
-onMounted(() => {
-  window.addEventListener('resize', handleResize);
-});
-
-onUnmounted(() => {
-  window.removeEventListener('resize', handleResize);
-});
 </script>
 
 
