@@ -1,11 +1,10 @@
 {
   "projects": [
     {
-      "id": 1,
       "type": "backend",
       "isMain": true,
       "title": "Discord bot for Jirai Sweeties server",
-      "imageURL": "/assets/img/jirai-sweeties-discord-bot-project.webp",
+      "imageURL": "/assets/projects/jirai-sweeties-discord-bot-project.webp",
       "technologyTitles": [
         "Python",
         "SQLite",
@@ -19,9 +18,9 @@
         "Historical tracking and price monitoring via SQLite",
         "Efficient web data extraction using aiohttp and lxml",
         "Rotating user agents for secure and reliable data extraction",
-        "Deployed on a Raspberry Pi to ensure 24/7 availability and maximize cost efficiency.",
+        "Deployed on a Raspberry Pi to ensure 24/7 availability and maximize cost efficiency",
         "Supports multi-store configurations and flexible scheduling",
-        "Type safety"
+        "Structured data modeling with Python TypedDict and type hints"
       ],
       "links": [
         {
@@ -31,11 +30,10 @@
       ]
     },
     {
-      "id": 2,
       "type": "fullstack",
       "isMain": true,
       "title": "NeedyPet",
-      "imageURL": "/assets/img/needypet-project.webp",
+      "imageURL": "/assets/projects/needypet-project.webp",
       "technologyTitles": [
         "Vue.js",
         "Ionic",
@@ -54,9 +52,13 @@
         "Vite"
       ],
       "additionalInfo": [
-        "Mobile & desktop friendly full-stack pet care management app",
-        "Algorithm in daily need management, timezone handling, authentication, nodemailer, versioning, automated deployment",
-        "Design, accessibility, secure development, optimization"
+        "Full-stack pet care management app for coordinating daily pet needs within households",
+        "Automated daily need generation — recurring care tasks like feeding, walking, and medication reset and carry over each day",
+        "Need completion tracking with quantities (grams, ml) and durations (minutes)",
+        "User roles with owner and caretaker permissions, secure authentication with hashed passwords",
+        "Timezone-aware scheduling — daily needs update at midnight in each user's local timezone",
+        "Responsive Ionic/Vue.js UI optimized for accessibility and performance",
+        "Docker containerization with Nginx for deployment"
       ],
       "links": [
         {
@@ -66,12 +68,16 @@
       ]
     },
     {
-      "id": 3,
       "type": "backend",
       "isMain": true,
       "title": "Store data extractor & monitor",
-      "imageURL": "/assets/img/store-data-extractor-project.webp",
-      "technologyTitles": ["Python", "SQLite", "GitHub", "Docker"],
+      "imageURL": "/assets/projects/store-data-extractor-project.webp",
+      "technologyTitles": [
+        "Python",
+        "SQLite",
+        "GitHub",
+        "Docker"
+      ],
       "additionalInfo": [
         "Developed as a standalone module but is also part of the larger Discord bot project for Jirai Sweeties server",
         "Automated store monitoring with instant product alerts",
@@ -79,7 +85,7 @@
         "Efficient web data extraction using aiohttp and lxml",
         "Rotating user agents for secure and reliable data extraction",
         "Supports multi-store configurations and flexible scheduling",
-        "Type safety"
+        "Structured data modeling with Python TypedDict and type hints"
       ],
       "links": [
         {
@@ -89,11 +95,10 @@
       ]
     },
     {
-      "id": 4,
       "type": "frontend",
       "isMain": true,
       "title": "Personal portfolio",
-      "imageURL": "/assets/img/portfolio-project.webp",
+      "imageURL": "/assets/projects/portfolio-project.webp",
       "technologyTitles": [
         "Vue.js",
         "JavaScript",
@@ -107,7 +112,8 @@
       "additionalInfo": [
         "A personal site to showcase my Vue.js frontend and UI design skills",
         "Focus on front-end structure, accessibility and responsiveness",
-        "Includes component testing with Vitest and Testing Library",
+        "JSON-based i18n system for all UI texts, enabling easy language support",
+        "Includes component testing with Vitest",
         "Version control and automated deployment via GitHub Pages"
       ],
       "links": [
@@ -118,12 +124,15 @@
       ]
     },
     {
-      "id": 5,
       "type": "cli",
       "isMain": true,
       "title": "User agent extractor",
-      "imageURL": "/assets/img/user-agent-extractor-project.webp",
-      "technologyTitles": ["Python", "Playwright", "GitHub"],
+      "imageURL": "/assets/projects/user-agent-extractor-project.webp",
+      "technologyTitles": [
+        "Python",
+        "Playwright",
+        "GitHub"
+      ],
       "additionalInfo": [
         "Command-line tool to extract user agents from specific websites",
         "Playwright-based scraping with full category and maker coverage",
@@ -140,11 +149,35 @@
       ]
     },
     {
-      "id": 6,
+      "type": "cli",
+      "isMain": true,
+      "title": "Web traffic simulator",
+      "imageURL": "/assets/projects/web-traffic-simulator-project.webp",
+      "technologyTitles": [
+        "Python",
+        "GitHub"
+      ],
+      "additionalInfo": [
+        "Professional Python tool for simulating realistic web traffic patterns on web applications",
+        "Originally developed to test a flaw in an IP-based visitor counting mechanism",
+        "IP address rotation with realistic public IPv4 addresses excluding private ranges",
+        "User-Agent rotation with authentic browser strings and realistic timing",
+        "Session management, cache busting, retry logic, and comprehensive error handling",
+        "Detailed campaign statistics with success rates and performance metrics",
+        "Graceful shutdown with proper signal handling and type safety"
+      ],
+      "links": [
+        {
+          "text": "Source Code",
+          "url": "https://github.com/yumeangelica/web_traffic_simulator"
+        }
+      ]
+    },
+    {
       "type": "fullstack",
       "isMain": false,
       "title": "Fullstack phonebook app",
-      "imageURL": "/assets/img/fullstack-phonebook-project.webp",
+      "imageURL": "/assets/projects/fullstack-phonebook-project.webp",
       "technologyTitles": [
         "MongoDB",
         "Express.js",
@@ -174,11 +207,10 @@
       ]
     },
     {
-      "id": 7,
       "type": "fullstack",
       "isMain": false,
       "title": "BookBoutique",
-      "imageURL": "/assets/img/book-boutique-project.webp",
+      "imageURL": "/assets/projects/book-boutique-project.webp",
       "technologyTitles": [
         "PHP",
         "MySQL",
@@ -199,14 +231,14 @@
         "Docker containerization with environment variable configuration",
         "Professional MVC architecture with reusable components",
         "Production-ready with deployment guidelines and security best practices"
-      ]
+      ],
+      "links": []
     },
     {
-      "id": 8,
       "type": "backend",
       "isMain": false,
       "title": "Django Weather App",
-      "imageURL": "/assets/img/django-weather-app-project.webp",
+      "imageURL": "/assets/projects/django-weather-app-project.webp",
       "technologyTitles": [
         "Python",
         "Django",
@@ -217,7 +249,11 @@
         "GitHub"
       ],
       "additionalInfo": [
-        "Weather Forecast App - A Django-based application that provides current weather and 3-day forecast data for cities. Uses OpenWeatherMap API to display temperature, humidity, wind speed, UV index, and more in a clean, user-friendly interface"
+        "Django-based weather forecast application",
+        "Current weather and 3-day forecast data for cities",
+        "Displays temperature, humidity, wind speed, UV index, and more",
+        "Uses OpenWeatherMap API for accurate data",
+        "Clean, responsive interface with intuitive city search"
       ],
       "links": [
         {
@@ -227,11 +263,10 @@
       ]
     },
     {
-      "id": 9,
       "type": "fullstack",
       "isMain": false,
       "title": "Taitovarasto for Virittämö as a client",
-      "imageURL": "/assets/img/taitovarasto-project.webp",
+      "imageURL": "/assets/projects/taitovarasto-project.webp",
       "technologyTitles": [
         "MongoDB",
         "Express.js",
@@ -245,21 +280,27 @@
         "Docker"
       ],
       "additionalInfo": [
-        "Recruitment and skills showcase app, built with a team. My role was focused on back-end development, database design, and API implementation",
-        "Full-stack, CRUD functionality, authentication, cybersecurity, nodemailer, tests"
-      ]
+        "Recruitment platform connecting companies with developers through a skills showcase system",
+        "Built the entire backend from scratch, replacing an outdated and broken previous version",
+        "Developer skill cards with profile details and competencies for company review",
+        "Company registration and messaging system for contacting administrators about developer availability",
+        "CRUD operations, user authentication, email notifications with Nodemailer, and security hardening"
+      ],
+      "links": []
     },
     {
-      "id": 10,
       "type": "cli",
       "isMain": false,
       "title": "Job finder",
-      "imageURL": "/assets/img/job-finder-project.webp",
-      "technologyTitles": ["Python", "GitHub"],
+      "imageURL": "/assets/projects/job-finder-project.webp",
+      "technologyTitles": [
+        "Python",
+        "GitHub"
+      ],
       "additionalInfo": [
         "Automates job searches on Duunitori and exports CSV reports",
         "Filter by keyword, area, and job type via CLI",
-        "Date-stamped search term based files saved to src/csv_files/",
+        "Date-stamped CSV report generation organized by search terms",
         "Requests and BeautifulSoup web data extraction",
         "User agent rotation for security and reliability"
       ],
@@ -271,12 +312,14 @@
       ]
     },
     {
-      "id": 11,
       "type": "cli",
       "isMain": false,
       "title": "Weather view",
-      "imageURL": "/assets/img/weather-view-project.webp",
-      "technologyTitles": ["Python", "GitHub"],
+      "imageURL": "/assets/projects/weather-view-project.webp",
+      "technologyTitles": [
+        "Python",
+        "GitHub"
+      ],
       "additionalInfo": [
         "Command line interface for real time weather data",
         "Current conditions and 3-day forecast with UV index",
@@ -294,11 +337,10 @@
       ]
     },
     {
-      "id": 12,
       "type": "frontend",
       "isMain": false,
       "title": "Roleplay Dice Roller",
-      "imageURL": "/assets/img/roleplay-dice-roller-project.webp",
+      "imageURL": "/assets/projects/roleplay-dice-roller-project.webp",
       "technologyTitles": [
         "JavaScript",
         "HTML5",
@@ -322,11 +364,10 @@
       ]
     },
     {
-      "id": 13,
       "type": "frontend",
       "isMain": false,
       "title": "Global Population Charts",
-      "imageURL": "/assets/img/global-population-charts-project.webp",
+      "imageURL": "/assets/projects/global-population-charts-project.webp",
       "technologyTitles": [
         "JavaScript",
         "HTML5",
@@ -350,11 +391,10 @@
       ]
     },
     {
-      "id": 14,
       "type": "frontend",
       "isMain": false,
       "title": "RPSLS Game",
-      "imageURL": "/assets/img/rpsls-game-project.webp",
+      "imageURL": "/assets/projects/rpsls-game-project.webp",
       "technologyTitles": [
         "JavaScript",
         "HTML5",
@@ -363,7 +403,7 @@
         "GitHub"
       ],
       "additionalInfo": [
-        "Vanilla JS Rock-Paper-Scissors-Lizard-Spock game. Designed to be responsive and accessible",
+        "Vanilla JS Rock-Paper-Scissors-Lizard-Spock game",
         "Designed to be responsive and accessible"
       ],
       "links": [
@@ -378,14 +418,18 @@
       ]
     },
     {
-      "id": 15,
       "type": "frontend",
       "isMain": false,
       "title": "Multifunctional Clock",
-      "imageURL": "/assets/img/multifunctional-clock-project.webp",
-      "technologyTitles": ["JavaScript", "HTML5", "CSS3", "GitHub"],
+      "imageURL": "/assets/projects/multifunctional-clock-project.webp",
+      "technologyTitles": [
+        "JavaScript",
+        "HTML5",
+        "CSS3",
+        "GitHub"
+      ],
       "additionalInfo": [
-        "Vanilla JS app that features a clock, timer, and stopwatch. Designed to be responsive and accessible",
+        "Vanilla JS app that features a clock, timer, and stopwatch",
         "Designed to be responsive and accessible"
       ],
       "links": [
@@ -402,250 +446,196 @@
   ],
   "technologies": [
     {
-      "id": 1,
-      "title": "Node.js",
-      "url": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nodejs/nodejs-original-wordmark.svg"
-    },
-    {
-      "id": 2,
-      "title": "Express.js",
-      "url": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/express/express-original-wordmark.svg"
-    },
-    {
-      "id": 3,
-      "title": "MongoDB",
-      "url": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mongodb/mongodb-original-wordmark.svg"
-    },
-    {
-      "id": 4,
-      "title": "Firebase",
-      "url": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/firebase/firebase-plain-wordmark.svg"
-    },
-    {
-      "id": 5,
-      "title": "Django",
-      "url": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/django/django-plain-wordmark.svg"
-    },
-    {
-      "id": 6,
-      "title": "REST API",
-      "url": "/assets/img/rest-api-logo.svg"
-    },
-    {
-      "id": 7,
-      "title": "React",
-      "url": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original-wordmark.svg"
-    },
-    {
-      "id": 8,
-      "title": "Redux",
-      "url": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/redux/redux-original.svg"
-    },
-    {
-      "id": 9,
-      "title": "Vue.js",
-      "url": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vuejs/vuejs-original-wordmark.svg"
-    },
-    {
-      "id": 10,
-      "title": "Ionic",
-      "url": "/assets/img/ionic-logo.svg"
-    },
-    {
-      "id": 11,
-      "title": "Pinia",
-      "url": "/assets/img/pinia-for-vue-logo.webp"
-    },
-    {
-      "id": 12,
-      "title": "JavaScript",
-      "url": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg"
-    },
-    {
-      "id": 13,
-      "title": "TypeScript",
-      "url": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/typescript/typescript-original.svg"
-    },
-    {
-      "id": 14,
-      "title": "PHP",
-      "url": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/php/php-original.svg"
-    },
-    {
-      "id": 15,
-      "title": "CSS3",
-      "url": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-original-wordmark.svg"
-    },
-    {
-      "id": 16,
-      "title": "Sass",
-      "url": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/sass/sass-original.svg"
-    },
-    {
-      "id": 17,
-      "title": "HTML5",
-      "url": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original-wordmark.svg"
-    },
-    {
-      "id": 18,
-      "title": "Bootstrap",
-      "url": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/bootstrap/bootstrap-original-wordmark.svg"
-    },
-    {
-      "id": 19,
-      "title": "Figma",
-      "url": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/figma/figma-original.svg"
-    },
-    {
-      "id": 20,
-      "title": "Vitest",
-      "url": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vitest/vitest-original.svg"
-    },
-    {
-      "id": 21,
-      "title": "Jest",
-      "url": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/jest/jest-plain.svg"
-    },
-    {
-      "id": 22,
-      "title": "Cypress",
-      "url": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/cypressio/cypressio-original.svg"
-    },
-    {
-      "id": 23,
-      "title": "Playwright",
-      "url": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/playwright/playwright-original.svg"
-    },
-    {
-      "id": 24,
-      "title": "Git",
-      "url": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/git/git-original-wordmark.svg"
-    },
-    {
-      "id": 25,
-      "title": "GitHub",
-      "url": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/github/github-original-wordmark.svg"
-    },
-    {
-      "id": 26,
-      "title": "Bitbucket",
-      "url": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/bitbucket/bitbucket-original-wordmark.svg"
-    },
-    {
-      "id": 27,
-      "title": "GitHub Actions",
-      "url": "/assets/img/github-actions-logo.svg"
-    },
-    {
-      "id": 28,
-      "title": "Docker",
-      "url": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/docker/docker-original-wordmark.svg"
-    },
-    {
-      "id": 29,
-      "title": "Azure",
-      "url": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/azure/azure-original-wordmark.svg"
-    },
-    {
-      "id": 30,
-      "title": "Python",
-      "url": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original-wordmark.svg"
-    },
-    {
-      "id": 31,
-      "title": "Java",
-      "url": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/java/java-original-wordmark.svg"
-    },
-    {
-      "id": 32,
-      "title": "SQLite",
-      "url": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/sqlite/sqlite-original-wordmark.svg"
-    },
-    {
-      "id": 33,
-      "title": "MySQL",
-      "url": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mysql/mysql-original-wordmark.svg"
-    },
-    {
-      "id": 34,
-      "title": "PostgreSQL",
-      "url": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postgresql/postgresql-original-wordmark.svg"
-    },
-    {
-      "id": 35,
-      "title": "Vite",
-      "url": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vitejs/vitejs-original.svg"
-    },
-    {
-      "id": 36,
-      "title": "Raspberry Pi",
-      "url": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/raspberrypi/raspberrypi-original-wordmark.svg"
-    },
-    {
-      "id": 37,
-      "title": "Webpack",
-      "url": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/webpack/webpack-original-wordmark.svg"
-    },
-    {
-      "id": 38,
-      "title": "Apache",
-      "url": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/apache/apache-original-wordmark.svg"
-    }
-  ],
-  "techCategories": [
-    {
-      "name": "Backend Technologies & Databases",
-      "technologies": [
-        "Node.js",
-        "Express.js",
-        "MongoDB",
-        "Firebase",
-        "Django",
-        "REST API"
+      "category": "Programming Languages",
+      "items": [
+        {
+          "title": "JavaScript",
+          "url": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg"
+        },
+        {
+          "title": "TypeScript",
+          "url": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/typescript/typescript-original.svg"
+        },
+        {
+          "title": "Python",
+          "url": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original-wordmark.svg"
+        },
+        {
+          "title": "Java",
+          "url": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/java/java-original-wordmark.svg"
+        },
+        {
+          "title": "PHP",
+          "url": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/php/php-original.svg"
+        }
       ]
     },
     {
-      "name": "Frontend Technologies & State Management",
-      "technologies": ["React", "Redux", "Vue.js", "Ionic", "Pinia", "Vite"]
-    },
-    {
-      "name": "Web Development Fundamentals",
-      "technologies": [
-        "JavaScript",
-        "TypeScript",
-        "PHP",
-        "CSS3",
-        "Sass",
-        "HTML5",
-        "Bootstrap"
+      "category": "Frontend Frameworks & Libraries",
+      "items": [
+        {
+          "title": "React",
+          "url": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original-wordmark.svg"
+        },
+        {
+          "title": "Redux",
+          "url": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/redux/redux-original.svg"
+        },
+        {
+          "title": "Vue.js",
+          "url": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vuejs/vuejs-original-wordmark.svg"
+        },
+        {
+          "title": "Ionic",
+          "url": "/assets/logos/ionic-logo.svg"
+        },
+        {
+          "title": "Pinia",
+          "url": "/assets/logos/pinia-for-vue-logo.svg"
+        }
       ]
     },
     {
-      "name": "UI/UX Design",
-      "technologies": ["Figma"]
-    },
-    {
-      "name": "Testing & Automation",
-      "technologies": ["Vitest", "Jest", "Cypress", "Playwright"]
-    },
-    {
-      "name": "Programming Languages & Relational Databases",
-      "technologies": ["Python", "Java", "SQLite", "MySQL", "PostgreSQL"]
-    },
-    {
-      "name": "Version Control, CI/CD & Cloud Services",
-      "technologies": [
-        "Git",
-        "GitHub",
-        "Bitbucket",
-        "GitHub Actions",
-        "Docker",
-        "Azure"
+      "category": "Backend Frameworks",
+      "items": [
+        {
+          "title": "Node.js",
+          "url": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nodejs/nodejs-original-wordmark.svg"
+        },
+        {
+          "title": "Express.js",
+          "url": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/express/express-original-wordmark.svg"
+        },
+        {
+          "title": "Django",
+          "url": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/django/django-plain-wordmark.svg"
+        },
+        {
+          "title": "REST API",
+          "url": "/assets/logos/rest-api-logo.svg"
+        }
       ]
     },
     {
-      "name": "Deployment & Platform Skills",
-      "technologies": ["Raspberry Pi", "Apache"]
+      "category": "Databases",
+      "items": [
+        {
+          "title": "MongoDB",
+          "url": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mongodb/mongodb-original-wordmark.svg"
+        },
+        {
+          "title": "Firebase",
+          "url": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/firebase/firebase-plain-wordmark.svg"
+        },
+        {
+          "title": "SQLite",
+          "url": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/sqlite/sqlite-original-wordmark.svg"
+        },
+        {
+          "title": "MySQL",
+          "url": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mysql/mysql-original-wordmark.svg"
+        },
+        {
+          "title": "PostgreSQL",
+          "url": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postgresql/postgresql-original-wordmark.svg"
+        }
+      ]
+    },
+    {
+      "category": "Styling & Design",
+      "items": [
+        {
+          "title": "HTML5",
+          "url": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original-wordmark.svg"
+        },
+        {
+          "title": "CSS3",
+          "url": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-original-wordmark.svg"
+        },
+        {
+          "title": "Sass",
+          "url": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/sass/sass-original.svg"
+        },
+        {
+          "title": "Bootstrap",
+          "url": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/bootstrap/bootstrap-original-wordmark.svg"
+        },
+        {
+          "title": "Figma",
+          "url": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/figma/figma-original.svg"
+        }
+      ]
+    },
+    {
+      "category": "Testing",
+      "items": [
+        {
+          "title": "Vitest",
+          "url": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vitest/vitest-original.svg"
+        },
+        {
+          "title": "Jest",
+          "url": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/jest/jest-plain.svg"
+        },
+        {
+          "title": "Cypress",
+          "url": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/cypressio/cypressio-original.svg"
+        },
+        {
+          "title": "Playwright",
+          "url": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/playwright/playwright-original.svg"
+        }
+      ]
+    },
+    {
+      "category": "Build & Development Tools",
+      "items": [
+        {
+          "title": "Vite",
+          "url": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vitejs/vitejs-original.svg"
+        },
+        {
+          "title": "Webpack",
+          "url": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/webpack/webpack-original-wordmark.svg"
+        }
+      ]
+    },
+    {
+      "category": "DevOps, CI/CD & Cloud",
+      "items": [
+        {
+          "title": "Git",
+          "url": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/git/git-original-wordmark.svg"
+        },
+        {
+          "title": "GitHub",
+          "url": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/github/github-original-wordmark.svg"
+        },
+        {
+          "title": "Bitbucket",
+          "url": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/bitbucket/bitbucket-original-wordmark.svg"
+        },
+        {
+          "title": "GitHub Actions",
+          "url": "/assets/logos/github-actions-logo.svg"
+        },
+        {
+          "title": "Docker",
+          "url": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/docker/docker-original-wordmark.svg"
+        },
+        {
+          "title": "Azure",
+          "url": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/azure/azure-original-wordmark.svg"
+        },
+        {
+          "title": "Apache",
+          "url": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/apache/apache-original-wordmark.svg"
+        },
+        {
+          "title": "Raspberry Pi",
+          "url": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/raspberrypi/raspberrypi-original-wordmark.svg"
+        }
+      ]
     }
   ]
 }

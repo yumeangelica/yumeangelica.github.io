@@ -3,16 +3,13 @@
 
 <head>
   <meta charset="UTF-8">
-  <link rel="shortcut icon" type="image/x-icon" href="./laptop_favicon.ico" size="16x16">
+  <link rel="icon" type="image/x-icon" href="/computer_favicon.ico">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>
-    <%= htmlWebpackPlugin.options.title %>
-  </title>
+  <title>Page Not Found</title>
   <script>
-    window.sessionStorage.redirect = window.location.pathname;
+    window.sessionStorage.redirect = window.location.pathname + window.location.search + window.location.hash;
   </script>
-  <meta http-equiv="refresh" content="0;URL='/yumeangelica.github.io'">
-  </meta>
+  <meta http-equiv="refresh" content="0;URL='/'">
 </head>
 
 <body>
