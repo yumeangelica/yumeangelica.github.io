@@ -3,7 +3,7 @@ import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 
 export default defineConfig({
-  publicpath: process.env.PUBLIC_URL || '/',
+  base: process.env.PUBLIC_URL || '/',
   plugins: [
     vue(),
   ],
@@ -35,8 +35,7 @@ export default defineConfig({
         },
         // Manual chunks for better code splitting
         manualChunks: {
-          vendor: ['vue', 'vue-router'],
-          utils: ['@/router/index.js']
+          vendor: ['vue', 'vue-router']
         }
       }
     },
