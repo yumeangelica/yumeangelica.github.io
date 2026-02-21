@@ -1,6 +1,6 @@
 <template>
   <Transition name="fade">
-    <button v-if="isVisible" @click="scrollToTop" class="back-to-top" aria-label="Scroll back to top" title="Back to top">
+    <button v-if="isVisible" @click="scrollToTop" class="back-to-top" :aria-label="$t('backToTop.ariaLabel')" :title="$t('backToTop.title')">
       ↑
     </button>
   </Transition>

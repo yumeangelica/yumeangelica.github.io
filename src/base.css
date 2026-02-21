@@ -17,8 +17,8 @@
   /* Component specific */
   --color-nav-bg: var(--color-primary-light);
   --color-card-bg: rgb(254, 239, 249);
-  --color-button: rgb(178, 110, 150);
-  --color-button-hover: rgb(165, 95, 135);
+  --color-button: rgb(148, 75, 118);
+  --color-button-hover: rgb(130, 62, 100);
 
   /* Other */
   --transition-duration: 0.6s;

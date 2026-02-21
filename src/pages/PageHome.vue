@@ -1,63 +1,46 @@
 <template>
-  <h1>Step into My World of Code & Creativity</h1>
+  <h1>{{ $t('home.title') }}</h1>
 
   <div class="row">
     <div class="col-lg-7">
 
-      <p> I'm a <span class="text-highlight">full-stack developer</span> who loves building things that are both beautiful and secure. With a
-        background in Business Administration and <span class="text-highlight">digital marketing</span>, I approach software development creatively
-        and strategically. Since 2020, I've specialized in creating <span class="text-highlight">accessible</span> and <span
-          class="text-highlight">optimized</span> web solutions, solving real-world challenges in dynamic <span class="text-highlight">agile
-          environments</span>. I hold a degree in <span class="text-highlight">Information and Communications Technology</span> and thrive in bridging
-        technology with user-friendly experiences. </p>
+      <p v-html="$t('home.introHtml')"></p>
 
-
-      <h2 id="tech-stack">Favorite Tech Stack & Tools</h2>
+      <h2 id="tech-stack">{{ $t('home.techStackTitle') }}</h2>
       <!-- Display technologies in categories -->
       <div class="tech-category" v-for="category in categorizedTechnologies" :key="category.name"
         :aria-labelledby="'category-' + category.name.toLowerCase().replace(/\s+/g, '-')">
         <h3 :id="'category-' + category.name.toLowerCase().replace(/\s+/g, '-')">{{ category.name }}</h3>
         <div class="introduction-highlights-paragraph" role="group">
-          <img v-for="tech in category.techs" :key="tech.id" class="devicon" :src="tech.url" :alt="tech.title" :title="tech.title" loading="lazy" />
+          <span v-for="tech in category.techs" :key="tech.title" class="devicon-wrapper" tabindex="0" role="img" :aria-label="tech.title">
+            <img class="devicon" :src="tech.url" :alt="tech.title" loading="lazy" aria-hidden="true" />
+            <span class="devicon-tooltip" aria-hidden="true">{{ tech.title }}</span>
+          </span>
         </div>
       </div>
     </div>
 
     <div class="col-md-auto">
-      <img src="/assets/img/angelica-profilepic.webp" class="img-responsive profilepic" alt="Angelica's Profile Picture" loading="lazy">
+      <img src="/assets/profile/angelica-profilepic.webp" class="img-responsive profilepic" :alt="$t('home.profilePicAlt')" loading="lazy">
     </div>
   </div>
 
   <section class="education">
     <div class="heartlist">
-      <h2>My Developer Journey</h2>
-      <ul role="presentation">
-        <li>Currently working as a Software Developer at OP Financial Group, focusing on creating accessible frontend solutions using React,
-          TypeScript, SCSS, and design systems in an international, highly regulated environment. Occasionally, I also dive into backend (Java Spring
-          Boot) and cloud development.</li>
-        <li>Previously, I was a full-stack developer at the City of Helsinki (Virittämö), primarily working on backend solutions with the MERN stack.
-        </li>
-        <li>Years of building personal projects driven by curiosity and a never-ending passion for learning.</li>
-        <li>Bachelor's degree in Business Administration from the University of Vaasa (graduated with excellence).</li>
-        <li>Completed over 180 ECTS credits in Information Technology at Metropolia University of Applied Sciences and other higher education
-          institutions.</li>
-        <li>Finished the Full Stack Open course series at the University of Helsinki with excellent grades and participated in the DEFA project.</li>
-        <li>Additional studies in DevOps with Docker, Cyber Security, and Python Programming at the University of Helsinki.</li>
-        <li>ICT degree from Business College Helsinki, graduating in April 2024 with a GPA of 4.95/5.</li>
-        <li>A versatile skill set blending technical expertise with strong social and business skills.</li>
+      <h2>{{ $t('home.journeyTitle') }}</h2>
+      <ul>
+        <li v-for="(item, index) in $tm('home.journeyItems')" :key="index">{{ item }}</li>
       </ul>
     </div>
   </section>
 
   <section class="certifications">
     <div class="heartlist">
-      <h2>Professional Certifications</h2>
-      <ul role="presentation">
-        <li>
-          <a class="styled-link"
-            href="https://learn.microsoft.com/api/credentials/share/en-us/yumeangelica/5AC06C18FC8D561A?sharingId=34D975BF021B8BDF" target="_blank"
-            rel="noopener noreferrer">
-            Microsoft Certified: Security, Compliance, and Identity Fundamentals (SC-900)
+      <h2>{{ $t('home.certificationsTitle') }}</h2>
+      <ul>
+        <li v-for="(cert, index) in $tm('home.certifications')" :key="index">
+          <a class="styled-link" :href="cert.url" target="_blank" rel="noopener noreferrer">
+            {{ cert.text }}
           </a>
         </li>
       </ul>
@@ -66,46 +49,43 @@
 
   <section class="interesting-fact">
     <h2>
-      A bit about my
-      <span class="tooltip-container" tabindex="0" role="tooltip" aria-label='yume, meaning "dream"' @focus="isTooltipVisible = true"
+      {{ $t('home.interestingFactTitleStart') }}
+      <span class="tooltip-container" tabindex="0" :aria-label="$t('home.yumeAriaLabel')" @focus="isTooltipVisible = true"
         @blur="isTooltipVisible = false">
-        yume
-        <span class="tooltip-text" aria-hidden="true" :class="{ 'visible': isTooltipVisible }">
-          "dream"
+        {{ $t('home.yumeWord') }}
+        <span class="tooltip-text" role="tooltip" aria-hidden="true" :class="{ 'visible': isTooltipVisible }">
+          {{ $t('home.yumeTooltip') }}
         </span>
       </span>
     </h2>
-    <p> Outside of coding, I'm passionate about producing music and exploring Japanese culture, both of which inspire my creativity and bring a unique
-      perspective to my work in tech. </p>
+    <p>{{ $t('home.interestingFactText') }}</p>
   </section>
 
   <section class="commitment">
-    <h2>Code with Passion</h2>
-    <p> I'm deeply passionate about programming and constantly strive to learn and grow. My creativity isn't just limited to coding, it’s enhanced by
-      my hobbies, making me a more innovative problem solver. Right now, I'm open to new opportunities in the tech field, so let’s connect! </p>
+    <h2>{{ $t('home.drivesTitle') }}</h2>
+    <p v-html="$t('home.drivesTextHtml')"></p>
+
   </section>
 
   <section class="contact">
-    <h2 id="contact">Get in Touch</h2>
-    <p>I'd love to hear from you — feel free to drop me an email.</p>
+    <h2 id="contact">{{ $t('home.contactTitle') }}</h2>
+    <p>{{ $t('home.contactEmail') }}</p>
 
     <p class="introduction-highlights-paragraph">
-      <img class="contact-image" src="/assets/img/angelica-contact.webp" alt="Angelica's Contact Information" loading="lazy" />
+      <img class="contact-image" src="/assets/profile/angelica-contact.webp" :alt="$t('home.contactImageAlt')" loading="lazy" />
     </p>
 
-    <p>
-      You can also find me on LinkedIn or GitHub by clicking the icons below.
-    </p>
+    <p>{{ $t('home.contactSocial') }}</p>
 
     <p class="introduction-highlights-paragraph">
-      <a href="https://www.linkedin.com/in/yumeangelica/" target="_blank" aria-label="Visit my LinkedIn profile" rel="noopener">
+      <a href="https://www.linkedin.com/in/yumeangelica/" target="_blank" :aria-label="$t('home.linkedinAriaLabel')" rel="noopener">
         <img class="contact-icon" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linkedin/linkedin-original-wordmark.svg"
-          alt="LinkedIn logo and link" loading="lazy" />
+          :alt="$t('home.linkedinAlt')" loading="lazy" />
       </a>
 
-      <a href="https://github.com/yumeangelica" target="_blank" aria-label="Visit my GitHub profile" rel="noopener">
+      <a href="https://github.com/yumeangelica" target="_blank" :aria-label="$t('home.githubAriaLabel')" rel="noopener">
         <img class="contact-icon" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original-wordmark.svg"
-          alt="GitHub logo and link" loading="lazy" />
+          :alt="$t('home.githubAlt')" loading="lazy" />
       </a>
     </p>
   </section>
@@ -115,11 +95,9 @@
 export default {
   data() {
     return {
-      technologies: [],
-      categories: [],
       categorizedTechnologies: [],
       isTooltipVisible: false,
-      dataURL: '../data.json'
+      dataURL: '/data.json'
     };
   },
   mounted() {
@@ -133,12 +111,11 @@ export default {
           throw new Error(`HTTP error! status: ${response.status}`);
         }
         const data = await response.json();
-        this.technologies = data.technologies;
-        this.categories = data.techCategories;
+
         this.categorizedTechnologies = Object.freeze(
-          this.categories.map(category => Object.freeze({
-            name: category.name,
-            techs: Object.freeze(this.technologies.filter(tech => category.technologies.includes(tech.title)))
+          data.technologies.map(group => Object.freeze({
+            name: group.category,
+            techs: Object.freeze(group.items)
           }))
         );
       } catch (error) {
@@ -155,12 +132,52 @@ export default {
   font-weight: bold;
 }
 
-.devicon {
-  max-width: 65px;
+/* Custom CSS tooltip for tech icons — faster hover response than native title attribute */
+.devicon-wrapper {
+  position: relative;
+  display: inline-block;
   margin-right: 15px;
   margin-bottom: 15px;
+}
+
+.devicon {
+  width: 65px;
+  max-width: 65px;
+  display: block;
   padding: 2px;
   border-radius: 5px;
+}
+
+.devicon-tooltip {
+  visibility: hidden;
+  opacity: 0;
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: var(--color-card-bg, #333);
+  color: var(--color-text, #fff);
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  white-space: nowrap;
+  pointer-events: none;
+  transition: opacity 0.15s ease;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  margin-bottom: 4px;
+}
+
+.devicon-wrapper:hover .devicon-tooltip,
+.devicon-wrapper:focus .devicon-tooltip,
+.devicon-wrapper:focus-within .devicon-tooltip {
+  visibility: visible;
+  opacity: 1;
+}
+
+.devicon-wrapper:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+  border-radius: 6px;
 }
 
 .contact-icon {
@@ -168,6 +185,7 @@ export default {
   margin-right: 25px;
   margin-bottom: 15px;
   border-radius: 5px;
+  transition: transform var(--transition-duration) ease;
 }
 
 .contact-image {
@@ -184,6 +202,13 @@ export default {
   width: 100%;
   max-width: 300px;
   margin: 10px 0px 20px 35px;
+}
+
+@media (max-width: 991px) {
+  .profilepic {
+    margin: 10px auto;
+    display: block;
+  }
 }
 
 /* Unordered heartlist */
@@ -265,12 +290,21 @@ export default {
 /* Mobile mode rules */
 @media (max-width: 568px) {
   .devicon {
+    width: 45px;
     max-width: 45px;
+  }
+
+  .devicon-wrapper {
     margin-right: 10px;
+    margin-bottom: 10px;
   }
 
   .contact-icon {
     max-width: 55px;
+  }
+
+  .contact-image {
+    max-width: 85%;
   }
 
   .heartlist li,
@@ -284,8 +318,6 @@ export default {
 
   .profilepic {
     max-width: 200px;
-    margin: 10px auto;
-    display: block;
   }
 
   .tooltip-text {

@@ -1,28 +1,28 @@
 <template>
-  <nav class="navbar navbar-expand-md navbar-light" role="navigation" aria-label="Main navigation">
-    <a href="#main-content" class="visually-hidden-focusable">Skip to main content</a>
+  <nav class="navbar navbar-expand-md navbar-light" role="navigation" :aria-label="$t('nav.mainNavigation')">
+    <a href="#main-content" class="visually-hidden-focusable">{{ $t('nav.skipToContent') }}</a>
     <div class="container-fluid">
       <!-- Toggler -->
       <button class="navbar-toggler ms-auto" type="button" @click="toggleNav" aria-controls="navbarNav" :aria-expanded="showNav ? 'true' : 'false'"
-        aria-label="Toggle navigation">
+        :aria-label="$t('nav.toggleNavigation')">
         <span class="navbar-toggler-icon"></span>
       </button>
       <!-- Navbar links -->
       <div class="collapse navbar-collapse" :class="{ 'show': showNav, 'show-animate': showNav }" id="navbarNav">
         <ul class="navbar-nav ms-auto me-auto">
           <li class="nav-item">
-            <router-link :to="{ name: 'home' }" class="nav-link navtext" aria-current="page" @click="closeNav">Home</router-link>
+            <router-link :to="{ name: 'home' }" class="nav-link" @click="closeNav">{{ $t('nav.home') }}</router-link>
           </li>
           <li class="nav-item">
-            <router-link :to="{ name: 'projects' }" class="nav-link navtext" @click="closeNav">Projects</router-link>
+            <router-link :to="{ name: 'projects' }" class="nav-link" @click="closeNav">{{ $t('nav.projects') }}</router-link>
           </li>
           <li class="nav-item">
-            <a href="https://github.com/yumeangelica" class="nav-link navtext" target="_blank" rel="noopener" @click="closeNav"
-              aria-label="GitHub (opens in new tab)">GitHub</a>
+            <a href="https://github.com/yumeangelica" class="nav-link" target="_blank" rel="noopener" @click="closeNav"
+              :aria-label="$t('nav.githubAriaLabel')">{{ $t('nav.github') }}</a>
           </li>
           <li class="nav-item">
-            <a href="https://www.linkedin.com/in/yumeangelica/" class="nav-link navtext" target="_blank" rel="noopener" @click="closeNav"
-              aria-label="LinkedIn (opens in new tab)">LinkedIn</a>
+            <a href="https://www.linkedin.com/in/yumeangelica/" class="nav-link" target="_blank" rel="noopener" @click="closeNav"
+              :aria-label="$t('nav.linkedinAriaLabel')">{{ $t('nav.linkedin') }}</a>
           </li>
         </ul>
       </div>
@@ -71,7 +71,7 @@ export default {
 
 
 <style scoped>
-/* For accessibility (keyborad users), skip to main content link */
+/* For accessibility (keyboard users), skip to main content link */
 .visually-hidden-focusable {
   color: var(--color-primary) !important;
   border: none;

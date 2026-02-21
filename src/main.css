@@ -30,8 +30,6 @@ body {
 #app {
   max-width: 100%;
   margin: 0 auto;
-  font-weight: normal;
-  background-color: var(--color-background) !important;
 }
 
 /* Headers */
@@ -47,7 +45,12 @@ h1 {
 
 h2 {
   text-align: left;
-  padding: 20px 0px 15px 0px;
+  padding: 10px 0px 15px 0px;
+}
+
+/* Section spacing */
+section {
+  margin-top: 15px;
 }
 
 h3 {
@@ -93,7 +96,7 @@ li {
 }
 
 /* Mobile styles */
-@media (max-width: 578px) {
+@media (max-width: 568px) {
   h1 {
     font-size: 1.6rem !important;
     padding: 10px 0px 15px 0px;
