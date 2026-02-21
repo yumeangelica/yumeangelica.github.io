@@ -1,130 +1,136 @@
 <template>
   <div class="projects-page">
     <!-- Page title -->
-    <h1 id="projects-overview" class="text-center">My Project Portfolio</h1>
+    <h1 id="projects-overview" class="text-center">{{ $t('projects.title') }}</h1>
 
     <!-- Filter functionality -->
     <div class="filter-container">
       <!-- Unified filter row: two centered rows, always visible on all devices -->
       <div class="filters-row">
-        <div class="filter-row-inner">
+        <div class="filter-row-inner" role="group" :aria-label="$t('projects.filterTypeGroupLabel')">
           <button @click="toggleTypeFilter(null)" class="filter-btn filter-type" :class="{ active: selectedTypes.length === 0 }"
-            aria-label="Show all types">
-            All
+            :aria-label="$t('projects.filterAllTypesAria')">
+            {{ $t('projects.filterAll') }}
           </button>
           <button @click="toggleTypeFilter('frontend')" class="filter-btn filter-type" :class="{ active: selectedTypes.includes('frontend') }"
-            :disabled="!isTypeTechComboAvailable('frontend', selectedTech)" aria-label="Frontend projects">
-            FE
+            :disabled="!isTypeTechComboAvailable('frontend', selectedTech)" :aria-label="$t('projects.filterFrontendAria')">
+            {{ $t('projects.filterFE') }}
           </button>
           <button @click="toggleTypeFilter('backend')" class="filter-btn filter-type" :class="{ active: selectedTypes.includes('backend') }"
-            :disabled="!isTypeTechComboAvailable('backend', selectedTech)" aria-label="Backend projects">
-            BE
+            :disabled="!isTypeTechComboAvailable('backend', selectedTech)" :aria-label="$t('projects.filterBackendAria')">
+            {{ $t('projects.filterBE') }}
           </button>
           <button @click="toggleTypeFilter('fullstack')" class="filter-btn filter-type" :class="{ active: selectedTypes.includes('fullstack') }"
-            :disabled="!isTypeTechComboAvailable('fullstack', selectedTech)" aria-label="Fullstack projects">
-            FS
+            :disabled="!isTypeTechComboAvailable('fullstack', selectedTech)" :aria-label="$t('projects.filterFullstackAria')">
+            {{ $t('projects.filterFS') }}
           </button>
           <button @click="toggleTypeFilter('cli')" class="filter-btn filter-type" :class="{ active: selectedTypes.includes('cli') }"
-            :disabled="!isTypeTechComboAvailable('cli', selectedTech)" aria-label="CLI projects">
-            CLI
+            :disabled="!isTypeTechComboAvailable('cli', selectedTech)" :aria-label="$t('projects.filterCliAria')">
+            {{ $t('projects.filterCLI') }}
           </button>
         </div>
-        <div class="filter-row-inner">
+        <div class="filter-row-inner" role="group" :aria-label="$t('projects.filterTechGroupLabel')">
           <button @click="toggleTechFilter(null)" class="filter-btn tech-filter-btn" :class="{ active: selectedTech.length === 0 }"
-            aria-label="Show all technologies">
-            <span>All</span>
+            :aria-label="$t('projects.filterAllTechAria')">
+            <span>{{ $t('projects.filterAll') }}</span>
           </button>
           <button v-for="tech in popularTechnologies" :key="tech.title" @click="toggleTechFilter(tech.title)" class="filter-btn tech-filter-btn"
             :class="{ active: selectedTech.includes(tech.title) }" :disabled="!isTechTypeComboAvailable(tech.title, selectedTypes)"
-            :aria-label="`Filter by ${tech.title}`">
+            :aria-label="$t('projects.filterTechAria', { title: tech.title })">
             <img :src="tech.url" :alt="tech.title" :title="tech.title" class="tech-icon" />
           </button>
         </div>
       </div>
     </div>
 
-    <!-- Loading and error indicators -->
-    <div v-if="loading" class="text-center" role="status" aria-live="polite">
-      <p>Loading projects...</p>
+    <!-- Filter results count for screen readers -->
+    <div v-if="!loading && !fetchError" class="visually-hidden" aria-live="polite" aria-atomic="true">
+      {{ $t('projects.filterResultsCount', { count: totalFilteredProjects }) }}
     </div>
 
-    <div v-if="dataHandleError" role="alert" class="error-message">
-      <p>Sorry, there was an error loading projects. Please try again later.</p>
+    <!-- Loading and error indicators -->
+    <div v-if="loading" class="text-center" role="status" aria-live="polite">
+      <p>{{ $t('projects.loading') }}</p>
+    </div>
+
+    <div v-if="fetchError" role="alert" class="error-message">
+      <p>{{ $t('projects.error') }}</p>
     </div>
 
     <!-- Main projects section -->
     <section v-if="filteredMainProjects.length > 0" aria-labelledby="main-projects">
-      <h2 id="main-projects" class="text-center">Main Projects</h2>
+      <h2 id="main-projects" class="text-center">{{ $t('projects.mainProjectsTitle') }}</h2>
       <div class="projects-container" aria-live="polite" :aria-busy="loading">
-        <TheProjectCard v-for="project in filteredMainProjects" :key="project.id" :project="project" :technologies="technologies" />
+        <TheProjectCard v-for="project in filteredMainProjects" :key="project.title" :project="project" :technologies="technologies" />
       </div>
     </section>
 
     <!-- Fullstack projects section -->
     <section v-if="filteredFullstackProjects.length > 0" aria-labelledby="fullstack-projects">
-      <h2 id="fullstack-projects" class="text-center">Fullstack Projects</h2>
+      <h2 id="fullstack-projects" class="text-center">{{ $t('projects.fullstackProjectsTitle') }}</h2>
       <div class="projects-container" aria-live="polite" :aria-busy="loading">
-        <TheProjectCard v-for="project in filteredFullstackProjects" :key="project.id" :project="project" :technologies="technologies" />
+        <TheProjectCard v-for="project in filteredFullstackProjects" :key="project.title" :project="project" :technologies="technologies" />
       </div>
     </section>
 
 
     <!-- Frontend projects section -->
     <section v-if="filteredFrontendProjects.length > 0" aria-labelledby="frontend-projects">
-      <h2 id="frontend-projects" class="text-center">Frontend Projects</h2>
+      <h2 id="frontend-projects" class="text-center">{{ $t('projects.frontendProjectsTitle') }}</h2>
       <div class="projects-container" aria-live="polite" :aria-busy="loading">
-        <TheProjectCard v-for="project in filteredFrontendProjects" :key="project.id" :project="project" :technologies="technologies" />
+        <TheProjectCard v-for="project in filteredFrontendProjects" :key="project.title" :project="project" :technologies="technologies" />
       </div>
     </section>
 
     <!-- Backend projects section -->
     <section v-if="filteredBackendProjects.length > 0" aria-labelledby="backend-projects">
-      <h2 id="backend-projects" class="text-center">Backend Projects</h2>
+      <h2 id="backend-projects" class="text-center">{{ $t('projects.backendProjectsTitle') }}</h2>
       <div class="projects-container" aria-live="polite" :aria-busy="loading">
-        <TheProjectCard v-for="project in filteredBackendProjects" :key="project.id" :project="project" :technologies="technologies" />
+        <TheProjectCard v-for="project in filteredBackendProjects" :key="project.title" :project="project" :technologies="technologies" />
       </div>
     </section>
 
 
     <!-- CLI projects section -->
     <section v-if="filteredCliProjects.length > 0" aria-labelledby="cli-projects">
-      <h2 id="cli-projects" class="text-center">CLI Projects</h2>
+      <h2 id="cli-projects" class="text-center">{{ $t('projects.cliProjectsTitle') }}</h2>
       <div class="projects-container" aria-live="polite" :aria-busy="loading">
-        <TheProjectCard v-for="project in filteredCliProjects" :key="project.id" :project="project" :technologies="technologies" />
+        <TheProjectCard v-for="project in filteredCliProjects" :key="project.title" :project="project" :technologies="technologies" />
       </div>
     </section>
 
     <!-- Floating navigation - appears when scrolled down -->
     <Transition name="fade">
-      <div v-if="showFloatingNav" class="floating-nav" role="navigation" aria-label="Quick navigation menu">
-        <button @click="toggleFloatingMenu" class="floating-nav-toggle" :aria-expanded="isFloatingMenuOpen" aria-label="Toggle quick navigation menu">
+      <div v-if="showFloatingNav" class="floating-nav" role="navigation" :aria-label="$t('projects.floatingNavAria')">
+        <button @click="toggleFloatingMenu" class="floating-nav-toggle" :aria-expanded="isFloatingMenuOpen"
+          :aria-label="$t('projects.floatingNavToggleAria')">
           <span class="nav-icon" :class="{ rotated: isFloatingMenuOpen }">☰</span>
         </button>
 
         <Transition name="slide-up">
           <div v-if="isFloatingMenuOpen" class="floating-nav-menu" role="menu">
             <button @click="scrollToSection('back-to-top')" class="floating-nav-button" role="menuitem">
-              ⬆ Back to Top
+              {{ $t('projects.floatingBackToTop') }}
             </button>
             <button @click="scrollToSection('main-projects')" class="floating-nav-button" :class="{ disabled: !isMainVisible }"
               :disabled="!isMainVisible" role="menuitem">
-              ⭐ Main Projects
+              {{ $t('projects.floatingMain') }}
             </button>
             <button @click="scrollToSection('frontend-projects')" class="floating-nav-button" :class="{ disabled: !isFrontendVisible }"
               :disabled="!isFrontendVisible" role="menuitem">
-              🎨 Frontend
+              {{ $t('projects.floatingFrontend') }}
             </button>
             <button @click="scrollToSection('backend-projects')" class="floating-nav-button" :class="{ disabled: !isBackendVisible }"
               :disabled="!isBackendVisible" role="menuitem">
-              🛠 Backend
+              {{ $t('projects.floatingBackend') }}
             </button>
             <button @click="scrollToSection('fullstack-projects')" class="floating-nav-button" :class="{ disabled: !isFullstackVisible }"
               :disabled="!isFullstackVisible" role="menuitem">
-              🌐 Fullstack
+              {{ $t('projects.floatingFullstack') }}
             </button>
             <button @click="scrollToSection('cli-projects')" class="floating-nav-button" :class="{ disabled: !isCliVisible }"
               :disabled="!isCliVisible" role="menuitem">
-              ⚡ CLI
+              {{ $t('projects.floatingCli') }}
             </button>
           </div>
         </Transition>
@@ -148,8 +154,8 @@ export default {
       technologies: [],
       selectedTech: [], // For technology filtering, multi-select, all by default
       selectedTypes: [], // For type filtering, single-select, all by default
-      dataURL: '../data.json',
-      dataHandleError: false, // If data fetching fails, show error message
+      dataURL: '/data.json',
+      fetchError: false, // If data fetching fails, show error message
       loading: true, // For accessibility, show loading message while fetching data
       showFloatingNav: false, // Show floating nav when scrolled
       isFloatingMenuOpen: false, // Toggle for floating menu
@@ -211,6 +217,13 @@ export default {
     },
     isCliVisible() {
       return this.filteredCliProjects.length > 0;
+    },
+    totalFilteredProjects() {
+      return this.filteredMainProjects.length +
+        this.filteredFrontendProjects.length +
+        this.filteredBackendProjects.length +
+        this.filteredFullstackProjects.length +
+        this.filteredCliProjects.length;
     },
   },
   methods: {
@@ -320,9 +333,12 @@ export default {
   async created() { // When site is loaded, fetch data from data.json
     try {
       const response = await fetch(this.dataURL);
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
       const data = await response.json();
       if (data) {
-        this.technologies = data.technologies;
+        this.technologies = data.technologies.flatMap(group => group.items);
         this.allProjects = data.projects;
         this.mainProjects = data.projects.filter(p => p.isMain === true);
         this.frontendProjects = data.projects.filter(p => p.type === 'frontend' && !p.isMain);
@@ -332,14 +348,14 @@ export default {
       }
       this.loading = false;
     } catch (error) {
-      this.dataHandleError = true;
+      this.fetchError = true;
       this.loading = false;
-      console.log(error.message);
+      console.error('Error fetching data:', error);
     }
   },
   mounted() {
     // Add scroll listener for floating navigation
-    window.addEventListener('scroll', this.handleScroll);
+    window.addEventListener('scroll', this.handleScroll, { passive: true });
   },
   beforeUnmount() {
     // Clean up scroll listener and timeout
@@ -358,19 +374,6 @@ export default {
 /* Main page container */
 .projects-page {
   padding-bottom: 50px;
-}
-
-/* Mobile adjustments for bottom padding */
-@media (max-width: 768px) {
-  .projects-page {
-    padding-bottom: 50px;
-  }
-}
-
-@media (max-width: 568px) {
-  .projects-page {
-    padding-bottom: 50px;
-  }
 }
 
 /* Compact unified filter row */
@@ -433,14 +436,6 @@ export default {
 .filter-btn:focus-visible {
   outline: 2px solid var(--color-primary);
   outline-offset: 2px;
-}
-
-/* Nav-button erikoistapaukset */
-.nav-button.secondary {
-  background-color: var(--color-card-bg);
-  color: var(--color-text);
-  border: 1px solid var(--color-primary-light);
-  opacity: 0.9;
 }
 
 .tech-filter-btn {
@@ -527,20 +522,9 @@ export default {
     padding: 0 10px;
   }
 
-  /* Remove mobile toggles: filters always visible */
-  .mobile-toggles {
-    display: none !important;
-  }
-
-  /* Unified filter row style for mobile: no background, border, or shadow */
   .filters-row {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
     gap: 8px;
     margin-bottom: 12px;
-    padding: 0 4px;
     background: none;
     border-radius: 0;
     box-shadow: none;
@@ -549,11 +533,6 @@ export default {
     width: 100%;
     transition: none;
     z-index: 20;
-  }
-
-  /* Remove mobile-hidden class, filters always visible */
-  .filters-row.mobile-hidden {
-    display: flex !important;
   }
 
   .filter-row-inner {
@@ -568,9 +547,6 @@ export default {
     font-size: 0.92rem;
     border-radius: 14px;
     box-shadow: none;
-  }
-
-  .filter-btn {
     background: var(--color-white, #fff);
     border: 1.5px solid var(--color-primary-light, #e0e0e0);
   }
@@ -591,11 +567,6 @@ export default {
     height: 20px;
   }
 
-  /* Remove all mobile-toggle-btn styles: button deleted */
-  .mobile-toggle-btn,
-  .toggle-arrow {
-    display: none !important;
-  }
 }
 
 /* Very small mobile specific adjustments */
@@ -606,22 +577,7 @@ export default {
   }
 }
 
-/* Larger tablet and desktop mode - hide mobile toggles, show all sections */
-@media (min-width: 769px) {
-  .mobile-toggles {
-    display: none;
-  }
 
-  .filters-row {
-    display: flex !important;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    margin-bottom: 18px;
-    padding: 0 4px;
-  }
-}
 
 /* Add styling for error message */
 .error-message {

@@ -1,4 +1,4 @@
-import { render, screen } from '@testing-library/vue'
+import { mount } from '@vue/test-utils'
 import TheProjectCard from 'components/TheProjectCard.vue'
 
 describe('TheProjectCard.vue', () => {
@@ -19,38 +19,51 @@ describe('TheProjectCard.vue', () => {
   ]
 
   it('renders project title, image, technologies, additional info and links', () => {
-    render(TheProjectCard, {
+    const wrapper = mount(TheProjectCard, {
       props: {
         project: mockProject,
         technologies: mockTechnologies
+      },
+      global: {
+        mocks: {
+          $t: (key, params = {}) => {
+            const messages = {
+              'projectCard.technologiesLabel': 'Technologies used',
+              'projectCard.linkAriaLabel': `Visit ${params.linkText} for ${params.projectTitle}`
+            };
+            return messages[key] || key;
+          },
+          $tm: (key) => key
+        }
       }
     })
 
     // Project title
-    expect(screen.getByText(mockProject.title)).toBeTruthy()
+    expect(wrapper.text()).toContain(mockProject.title)
 
     // Project image
-    const img = screen.getByAltText(mockProject.title)
-    expect(img).toBeTruthy()
-    expect(img.getAttribute('src')).toBe(mockProject.imageURL)
+    const img = wrapper.find(`img[alt="${mockProject.title}"]`)
+    expect(img.exists()).toBe(true)
+    expect(img.attributes('src')).toBe(mockProject.imageURL)
 
     // Technology icons
     mockProject.technologyTitles.forEach(techName => {
-      expect(screen.getByAltText(techName)).toBeTruthy()
+      expect(wrapper.find(`img[alt="${techName}"]`).exists()).toBe(true)
     })
 
     // Additional info
     mockProject.additionalInfo.forEach(info => {
-      expect(screen.getByText(info)).toBeTruthy()
+      expect(wrapper.text()).toContain(info)
     })
 
     // Project links
     mockProject.links.forEach(link => {
-      const linkElement = screen.getByRole('link', {
-        name: new RegExp(`visit ${link.text} for ${mockProject.title}`, 'i')
-      })
-      expect(linkElement).toBeTruthy()
-      expect(linkElement.getAttribute('href')).toBe(link.url)
+      const linkElement = wrapper.find(`a[href="${link.url}"]`)
+      expect(linkElement.exists()).toBe(true)
+      expect(linkElement.text()).toBe(link.text)
+      expect(linkElement.attributes('aria-label')).toMatch(
+        new RegExp(`visit ${link.text} for ${mockProject.title}`, 'i')
+      )
     })
   })
 })

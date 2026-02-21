@@ -5,17 +5,19 @@
     </div>
 
     <div class="project-details">
-      <h5>{{ projectTitle }}</h5>
-      <div class="used-technologies" aria-label="Technologies used">
-        <img v-for="techName in technologyTitles" :key="techName" class="small-devicon" :src="getTechIconUrl(techName)" :alt="techName"
-          :title="techName" loading="lazy" />
+      <h3>{{ projectTitle }}</h3>
+      <div class="used-technologies" role="group" :aria-label="$t('projectCard.technologiesLabel')">
+        <template v-for="techName in technologyTitles" :key="techName">
+          <img v-if="getTechIconUrl(techName)" class="small-devicon" :src="getTechIconUrl(techName)" :alt="techName" :title="techName"
+            loading="lazy" />
+        </template>
       </div>
       <p v-for="info in additionalInfo" :key="info" class="heartbefore additional-info">
         {{ info }}
       </p>
       <div class="buttons">
         <a v-for="link in links" :key="link.text" :href="link.url" class="project-button" target="_blank" rel="noopener"
-          :aria-label="`Visit ${link.text} for ${projectTitle}`">
+          :aria-label="$t('projectCard.linkAriaLabel', { linkText: link.text, projectTitle: projectTitle })">
           {{ link.text }}
         </a>
       </div>
@@ -27,8 +29,8 @@
 <script>
 export default {
   props: {
-    project: Object,
-    technologies: Array
+    project: { type: Object, required: true },
+    technologies: { type: Array, required: true }
   },
   computed: {
     projectTitle() {
@@ -38,7 +40,7 @@ export default {
       return this.project.additionalInfo;
     },
     links() {
-      return this.project.links;
+      return this.project.links || [];
     },
     technologyTitles() {
       return this.project.technologyTitles;
@@ -83,12 +85,9 @@ export default {
   flex-direction: column;
   width: 500px;
   margin: 10px;
-  background-color: var(--color-card-bg);
   border-radius: 10px;
-  overflow: hidden;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   transition: transform var(--transition-duration), box-shadow var(--transition-duration);
-  overflow-y: auto;
   border: 1px solid rgba(0, 0, 0, 0.05);
   flex: 1 1 calc(50% - 20px);
   max-width: 500px;
@@ -99,10 +98,16 @@ export default {
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
 }
 
+.project-image-container {
+  overflow: hidden;
+  border-radius: 10px 10px 0 0;
+  flex-shrink: 0;
+}
+
 .project-image-container img {
   width: 100%;
   height: auto;
-  object-fit: cover;
+  display: block;
 }
 
 .project-details {
@@ -113,17 +118,16 @@ export default {
   padding: 15px;
 }
 
-.project-details h5 {
+.project-details h3 {
   color: var(--color-heading);
   margin-bottom: 10px;
-  color: var(--color-heading);
+  font-size: 1.15rem;
 }
 
 .project-details p {
   color: var(--color-text);
   font-size: 0.90em;
   margin-bottom: 10px;
-  color: var(--color-text);
 }
 
 .buttons {
@@ -137,8 +141,6 @@ export default {
   color: var(--color-white);
   background-color: var(--color-button);
   text-decoration: none;
-  color: var(--color-white);
-  background-color: var(--color-button);
   padding: 5px 10px;
   border-radius: 15px;
   transition: background-color var(--transition-duration), color var(--transition-duration), box-shadow var(--transition-duration);

@@ -1,0 +1,103 @@
+{
+  "app": {
+    "mainContentLabel": "Main site content"
+  },
+  "nav": {
+    "mainNavigation": "Main navigation",
+    "skipToContent": "Skip to main content",
+    "home": "Home",
+    "projects": "Projects",
+    "github": "GitHub",
+    "linkedin": "LinkedIn",
+    "toggleNavigation": "Toggle navigation",
+    "githubAriaLabel": "GitHub (opens in new tab)",
+    "linkedinAriaLabel": "LinkedIn (opens in new tab)"
+  },
+  "header": {
+    "bannerAriaLabel": "Sakura banner for header"
+  },
+  "footer": {
+    "ariaLabel": "Site footer",
+    "copyright": "© 2020 - {year} yumeangelica.github.io. All Rights Reserved."
+  },
+  "backToTop": {
+    "ariaLabel": "Scroll back to top",
+    "title": "Back to top"
+  },
+  "home": {
+    "title": "Where Code Meets Creativity",
+    "introHtml": "I'm a <span class=\"text-highlight\">full-stack developer</span> with an eye for design and a mind for security. My background in Business Administration and digital marketing means I don't just build software — I think about <em>who</em> it's for and <em>why</em> it matters. Since 2020, I've been crafting accessible, optimized web solutions in agile environments, bridging technology with <span class=\"text-highlight\">experiences that actually feel good to use</span>. I hold a degree in Information and Communications Technology and I'm always looking for the next challenge.",
+    "techStackTitle": "Favorite Tech Stack & Tools",
+    "profilePicAlt": "Angelica's Profile Picture",
+    "journeyTitle": "My Developer Journey",
+    "journeyItems": [
+      "Currently a Software Developer at OP Financial Group, building accessible frontend solutions with React, TypeScript, SCSS, and design systems in an international, regulated environment — with occasional backend (Java Spring Boot) and cloud work.",
+      "Previously a full-stack developer at the City of Helsinki (Virittämö), focused on backend solutions with the MERN stack.",
+      "Bachelor's degree in Business Administration from the University of Vaasa, graduated with excellence.",
+      "Over 180 ECTS credits in Information Technology across Metropolia University of Applied Sciences and other higher education institutions.",
+      "Completed the Full Stack Open course series at the University of Helsinki with excellent grades and participated in the DEFA project.",
+      "Additional studies in DevOps with Docker, Cyber Security, and Python Programming at the University of Helsinki.",
+      "ICT degree from Business College Helsinki, graduating in April 2024 with a GPA of 4.95/5.",
+      "Years of personal projects fueled by genuine curiosity — because the best learning happens when you're having fun."
+    ],
+    "certificationsTitle": "Professional Certifications",
+    "certifications": [
+      {
+        "text": "Microsoft Certified: Security, Compliance, and Identity Fundamentals (SC-900)",
+        "url": "https://learn.microsoft.com/api/credentials/share/en-us/yumeangelica/5AC06C18FC8D561A?sharingId=34D975BF021B8BDF"
+      }
+    ],
+    "interestingFactTitleStart": "A bit about my",
+    "yumeWord": "yume",
+    "yumeTooltip": "\"dream\"",
+    "yumeAriaLabel": "yume, meaning \"dream\"",
+    "interestingFactText": "Outside of coding, I produce music and explore Japanese culture — two worlds that constantly feed my creativity and shape how I approach problem-solving in tech. There's something about finding harmony in sound that translates surprisingly well to finding elegance in code.",
+    "drivesTitle": "What Drives Me",
+    "drivesTextHtml": "I genuinely love what I do, and I think it shows in my work. My creativity extends beyond the editor — my hobbies push me to think differently, experiment more, and approach problems from unexpected angles. I'm currently open to new opportunities, so if you're looking for a developer who brings both <span class=\"text-highlight\">technical depth and a creative spark</span>, I'd love to hear from you.",
+    "contactTitle": "Get in Touch",
+    "contactEmail": "Drop me an email — I'd love to hear from you.",
+    "contactSocial": "You can also find me on LinkedIn or GitHub below.",
+    "contactImageAlt": "Contact information — reach out via LinkedIn",
+    "linkedinAriaLabel": "Visit my LinkedIn profile",
+    "githubAriaLabel": "Visit my GitHub profile",
+    "linkedinAlt": "LinkedIn logo and link",
+    "githubAlt": "GitHub logo and link"
+  },
+  "projects": {
+    "title": "Built with Love & Code",
+    "filterAll": "All",
+    "filterFE": "FE",
+    "filterBE": "BE",
+    "filterFS": "FS",
+    "filterCLI": "CLI",
+    "filterAllTypesAria": "Show all types",
+    "filterFrontendAria": "Frontend projects",
+    "filterBackendAria": "Backend projects",
+    "filterFullstackAria": "Fullstack projects",
+    "filterCliAria": "CLI projects",
+    "filterAllTechAria": "Show all technologies",
+    "filterTechAria": "Filter by {title}",
+    "filterTypeGroupLabel": "Filter by project type",
+    "filterTechGroupLabel": "Filter by technology",
+    "loading": "Loading projects...",
+    "error": "Oops — something went wrong loading the projects. Please try again later.",
+    "mainProjectsTitle": "Main Projects",
+    "fullstackProjectsTitle": "Fullstack Projects",
+    "frontendProjectsTitle": "Frontend Projects",
+    "backendProjectsTitle": "Backend Projects",
+    "cliProjectsTitle": "CLI Projects",
+    "floatingNavAria": "Quick navigation menu",
+    "floatingNavToggleAria": "Toggle quick navigation menu",
+    "floatingBackToTop": "⬆ Back to Top",
+    "floatingMain": "⭐ Main Projects",
+    "floatingFrontend": "🎨 Frontend",
+    "floatingBackend": "🛠 Backend",
+    "floatingFullstack": "🌐 Fullstack",
+    "floatingCli": "⚡ CLI",
+    "filterResultsCount": "{count} projects found"
+  },
+  "projectCard": {
+    "technologiesLabel": "Technologies used",
+    "linkAriaLabel": "Visit {linkText} for {projectTitle}"
+  }
+}

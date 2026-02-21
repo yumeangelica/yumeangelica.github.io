@@ -3,7 +3,13 @@
     "target": "es6",
     "module": "esnext",
     "moduleResolution": "node",
-    "jsx": "preserve"
+    "jsx": "preserve",
+    "paths": {
+      "@/*": ["./src/*"],
+      "components/*": ["./src/components/*"],
+      "pages/*": ["./src/pages/*"],
+      "assets/*": ["./src/assets/*"]
+    }
   },
   "exclude": ["node_modules", "dist"]
 }

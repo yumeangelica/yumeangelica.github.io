@@ -1,5 +1,5 @@
 <template>
-  <footer role="contentinfo" aria-label="Site footer">&copy; 2020 - {{ year }} yumeangelica.github.io. All Rights Reserved.</footer>
+  <footer role="contentinfo" :aria-label="$t('footer.ariaLabel')">{{ $t('footer.copyright', { year }) }}</footer>
 </template>
 
 <script>
@@ -14,8 +14,6 @@ export default {
 
 <style>
 footer {
-  bottom: 0;
-  left: 0;
   width: 100%;
   color: var(--color-text);
   text-align: center;

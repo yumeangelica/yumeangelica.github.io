@@ -1,11 +1,14 @@
 <template>
-  <div class="header-pic" role="img" aria-label="Sakura banner for header"></div>
+  <div class="header-pic" role="img" :aria-label="$t('header.bannerAriaLabel')"></div>
 </template>
 
+<script>
+export default {};
+</script>
 
 <style>
 .header-pic {
-  background-image: url(/assets/img/sakurabanner.jpeg);
+  background-image: url(/assets/profile/sakurabanner.webp);
   background-position: center;
   background-size: cover;
   padding: 25px 20px 5px 20px;

@@ -29,9 +29,15 @@ This portfolio was developed using:
 
 ---
 
+## 🌐 Internationalization
+
+All UI texts are externalized into a JSON-based i18n system (`messages_en.json`), making it straightforward to add new languages or update content without touching component code.
+
+---
+
 ## ✅ Testing
 
-This project also includes straightforward component tests using Vitest and Testing Library.
+This project also includes straightforward component tests using Vitest.
 
 These tests ensure key components — such as project cards and navigation links — render properly and handle data correctly. This demonstrates my practical approach to incorporating testing into web development projects.
 
