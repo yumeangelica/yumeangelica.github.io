@@ -34,7 +34,7 @@
 
       <div class="col-md-auto">
         <img src="/assets/profile/angelica-profilepic.webp" class="img-responsive profilepic" :alt="$t('home.profilePicAlt')" fetchpriority="high"
-          width="300" height="300">
+          width="400" height="500">
       </div>
     </div>
 
