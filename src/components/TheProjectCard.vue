@@ -6,12 +6,12 @@
 
     <div class="project-details">
       <h3>{{ projectTitle }}</h3>
-      <div class="used-technologies" role="group" :aria-label="$t('projectCard.technologiesLabel')">
-        <template v-for="techName in technologyTitles" :key="techName">
+      <ul class="used-technologies" :aria-label="$t('projectCard.technologiesLabel')">
+        <li v-for="techName in technologyTitles" :key="techName">
           <img v-if="getTechIconUrl(techName)" class="small-devicon" :src="getTechIconUrl(techName)" :alt="techName" :title="techName"
             loading="lazy" />
-        </template>
-      </div>
+        </li>
+      </ul>
       <p v-for="info in additionalInfo" :key="info" class="heartbefore additional-info">
         {{ info }}
       </p>
@@ -28,6 +28,7 @@
 
 <script>
 export default {
+  name: 'TheProjectCard',
   props: {
     project: { type: Object, required: true },
     technologies: { type: Array, required: true }
@@ -70,6 +71,12 @@ export default {
   flex-wrap: wrap;
   align-items: center;
   margin-bottom: 10px;
+  list-style: none;
+  padding: 0;
+}
+
+.used-technologies li {
+  display: inline-flex;
 }
 
 .additional-info {
