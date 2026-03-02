@@ -20,6 +20,6 @@ loadMessages('en').then(() => {
   const { redirect } = window.sessionStorage;
   delete window.sessionStorage.redirect;
   if (redirect && redirect !== window.location.pathname) {
-    router.replace(redirect);
+    router.isReady().then(() => router.replace(redirect));
   }
 })

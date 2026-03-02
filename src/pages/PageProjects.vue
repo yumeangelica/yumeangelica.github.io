@@ -141,8 +141,10 @@
 
 <script>
 import TheProjectCard from '../components/TheProjectCard.vue';
+import { fetchData } from '../dataCache.js';
 
 export default {
+  name: 'PageProjects',
   data() {
     return {
       allProjects: [],
@@ -154,7 +156,6 @@ export default {
       technologies: [],
       selectedTech: [], // For technology filtering, multi-select, all by default
       selectedTypes: [], // For type filtering, single-select, all by default
-      dataURL: '/data.json',
       fetchError: false, // If data fetching fails, show error message
       loading: true, // For accessibility, show loading message while fetching data
       showFloatingNav: false, // Show floating nav when scrolled
@@ -332,11 +333,7 @@ export default {
   },
   async created() { // When site is loaded, fetch data from data.json
     try {
-      const response = await fetch(this.dataURL);
-      if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
-      }
-      const data = await response.json();
+      const data = await fetchData();
       if (data) {
         this.technologies = data.technologies.flatMap(group => group.items);
         this.allProjects = data.projects;
