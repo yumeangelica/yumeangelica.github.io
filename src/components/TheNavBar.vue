@@ -33,6 +33,7 @@
 
 <script>
 export default {
+  name: 'TheNavBar',
   data() {
     return {
       showNav: false,
