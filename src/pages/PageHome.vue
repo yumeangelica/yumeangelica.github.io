@@ -33,8 +33,7 @@
       </div>
 
       <div class="col-md-auto">
-        <img src="/assets/profile/angelica-profilepic.webp" class="img-responsive profilepic" :alt="$t('home.profilePicAlt')" fetchpriority="high"
-          width="400" height="500">
+        <img src="/assets/profile/angelica-profilepic.webp" class="img-responsive profilepic" :alt="$t('home.profilePicAlt')" fetchpriority="high">
       </div>
     </div>
 
