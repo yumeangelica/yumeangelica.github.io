@@ -1,103 +1,121 @@
 <template>
   <h1>{{ $t('home.title') }}</h1>
 
-  <div class="row">
-    <div class="col-lg-7">
+  <!-- Loading state -->
+  <div v-if="loading" class="text-center" role="status" aria-live="polite">
+    <p>{{ $t('home.loading') || 'Loading...' }}</p>
+  </div>
 
-      <p v-html="$t('home.introHtml')"></p>
+  <!-- Error state -->
+  <div v-else-if="fetchError" role="alert" class="error-message">
+    <p>{{ $t('home.error') || 'Failed to load data. Please try again later.' }}</p>
+  </div>
 
-      <h2 id="tech-stack">{{ $t('home.techStackTitle') }}</h2>
-      <!-- Display technologies in categories -->
-      <div class="tech-category" v-for="category in categorizedTechnologies" :key="category.name"
-        :aria-labelledby="'category-' + category.name.toLowerCase().replace(/\s+/g, '-')">
-        <h3 :id="'category-' + category.name.toLowerCase().replace(/\s+/g, '-')">{{ category.name }}</h3>
-        <div class="introduction-highlights-paragraph" role="group">
-          <span v-for="tech in category.techs" :key="tech.title" class="devicon-wrapper" tabindex="0" role="img" :aria-label="tech.title">
-            <img class="devicon" :src="tech.url" :alt="tech.title" loading="lazy" aria-hidden="true" />
-            <span class="devicon-tooltip" aria-hidden="true">{{ tech.title }}</span>
-          </span>
+  <!-- Content -->
+  <template v-else>
+    <div class="row">
+      <div class="col-lg-7">
+
+        <p v-html="$t('home.introHtml')"></p>
+
+        <h2 id="tech-stack">{{ $t('home.techStackTitle') }}</h2>
+        <!-- Display technologies in categories -->
+        <div class="tech-category" v-for="category in categorizedTechnologies" :key="category.name"
+          :aria-labelledby="'category-' + category.name.toLowerCase().replace(/\s+/g, '-')">
+          <h3 :id="'category-' + category.name.toLowerCase().replace(/\s+/g, '-')">{{ category.name }}</h3>
+          <div class="introduction-highlights-paragraph" role="group">
+            <span v-for="tech in category.techs" :key="tech.title" class="devicon-wrapper" tabindex="0" role="img" :aria-label="tech.title">
+              <img class="devicon" :src="tech.url" :alt="tech.title" loading="lazy" aria-hidden="true" />
+              <span class="devicon-tooltip" aria-hidden="true">{{ tech.title }}</span>
+            </span>
+          </div>
         </div>
+      </div>
+
+      <div class="col-md-auto">
+        <img src="/assets/profile/angelica-profilepic.webp" class="img-responsive profilepic" :alt="$t('home.profilePicAlt')" fetchpriority="high"
+          width="300" height="300">
       </div>
     </div>
 
-    <div class="col-md-auto">
-      <img src="/assets/profile/angelica-profilepic.webp" class="img-responsive profilepic" :alt="$t('home.profilePicAlt')" loading="lazy">
-    </div>
-  </div>
+    <section class="education">
+      <div class="heartlist">
+        <h2>{{ $t('home.journeyTitle') }}</h2>
+        <ul>
+          <li v-for="(item, index) in $tm('home.journeyItems')" :key="index">{{ item }}</li>
+        </ul>
+      </div>
+    </section>
 
-  <section class="education">
-    <div class="heartlist">
-      <h2>{{ $t('home.journeyTitle') }}</h2>
-      <ul>
-        <li v-for="(item, index) in $tm('home.journeyItems')" :key="index">{{ item }}</li>
-      </ul>
-    </div>
-  </section>
+    <section class="certifications">
+      <div class="heartlist">
+        <h2>{{ $t('home.certificationsTitle') }}</h2>
+        <ul>
+          <li v-for="(cert, index) in $tm('home.certifications')" :key="index">
+            <a class="styled-link" :href="cert.url" target="_blank" rel="noopener noreferrer">
+              {{ cert.text }}
+            </a>
+          </li>
+        </ul>
+      </div>
+    </section>
 
-  <section class="certifications">
-    <div class="heartlist">
-      <h2>{{ $t('home.certificationsTitle') }}</h2>
-      <ul>
-        <li v-for="(cert, index) in $tm('home.certifications')" :key="index">
-          <a class="styled-link" :href="cert.url" target="_blank" rel="noopener noreferrer">
-            {{ cert.text }}
-          </a>
-        </li>
-      </ul>
-    </div>
-  </section>
-
-  <section class="interesting-fact">
-    <h2>
-      {{ $t('home.interestingFactTitleStart') }}
-      <span class="tooltip-container" tabindex="0" :aria-label="$t('home.yumeAriaLabel')" @focus="isTooltipVisible = true"
-        @blur="isTooltipVisible = false">
-        {{ $t('home.yumeWord') }}
-        <span class="tooltip-text" role="tooltip" aria-hidden="true" :class="{ 'visible': isTooltipVisible }">
-          {{ $t('home.yumeTooltip') }}
+    <section class="interesting-fact">
+      <h2>
+        {{ $t('home.interestingFactTitleStart') }}
+        <span class="tooltip-container" tabindex="0" :aria-label="$t('home.yumeAriaLabel')" @focus="isTooltipVisible = true"
+          @blur="isTooltipVisible = false">
+          {{ $t('home.yumeWord') }}
+          <span class="tooltip-text" role="tooltip" aria-hidden="true" :class="{ 'visible': isTooltipVisible }">
+            {{ $t('home.yumeTooltip') }}
+          </span>
         </span>
-      </span>
-    </h2>
-    <p>{{ $t('home.interestingFactText') }}</p>
-  </section>
+      </h2>
+      <p>{{ $t('home.interestingFactText') }}</p>
+    </section>
 
-  <section class="commitment">
-    <h2>{{ $t('home.drivesTitle') }}</h2>
-    <p v-html="$t('home.drivesTextHtml')"></p>
+    <section class="commitment">
+      <h2>{{ $t('home.drivesTitle') }}</h2>
+      <p v-html="$t('home.drivesTextHtml')"></p>
 
-  </section>
+    </section>
 
-  <section class="contact">
-    <h2 id="contact">{{ $t('home.contactTitle') }}</h2>
-    <p>{{ $t('home.contactEmail') }}</p>
+    <section class="contact">
+      <h2 id="contact">{{ $t('home.contactTitle') }}</h2>
+      <p>{{ $t('home.contactEmail') }}</p>
 
-    <p class="introduction-highlights-paragraph">
-      <img class="contact-image" src="/assets/profile/angelica-contact.webp" :alt="$t('home.contactImageAlt')" loading="lazy" />
-    </p>
+      <p class="introduction-highlights-paragraph">
+        <img class="contact-image" src="/assets/profile/angelica-contact.webp" :alt="$t('home.contactImageAlt')" loading="lazy" />
+      </p>
 
-    <p>{{ $t('home.contactSocial') }}</p>
+      <p>{{ $t('home.contactSocial') }}</p>
 
-    <p class="introduction-highlights-paragraph">
-      <a href="https://www.linkedin.com/in/yumeangelica/" target="_blank" :aria-label="$t('home.linkedinAriaLabel')" rel="noopener">
-        <img class="contact-icon" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linkedin/linkedin-original-wordmark.svg"
-          :alt="$t('home.linkedinAlt')" loading="lazy" />
-      </a>
+      <p class="introduction-highlights-paragraph">
+        <a href="https://www.linkedin.com/in/yumeangelica/" target="_blank" :aria-label="$t('home.linkedinAriaLabel')" rel="noopener">
+          <img class="contact-icon" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linkedin/linkedin-original-wordmark.svg"
+            :alt="$t('home.linkedinAlt')" loading="lazy" />
+        </a>
 
-      <a href="https://github.com/yumeangelica" target="_blank" :aria-label="$t('home.githubAriaLabel')" rel="noopener">
-        <img class="contact-icon" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original-wordmark.svg"
-          :alt="$t('home.githubAlt')" loading="lazy" />
-      </a>
-    </p>
-  </section>
+        <a href="https://github.com/yumeangelica" target="_blank" :aria-label="$t('home.githubAriaLabel')" rel="noopener">
+          <img class="contact-icon" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original-wordmark.svg"
+            :alt="$t('home.githubAlt')" loading="lazy" />
+        </a>
+      </p>
+    </section>
+  </template>
 </template>
 
 <script>
+import { fetchData } from '../dataCache.js';
+
 export default {
+  name: 'PageHome',
   data() {
     return {
       categorizedTechnologies: [],
       isTooltipVisible: false,
-      dataURL: '/data.json'
+      loading: true,
+      fetchError: false
     };
   },
   mounted() {
@@ -106,11 +124,7 @@ export default {
   methods: {
     async fetchTechnologies() {
       try {
-        const response = await fetch(this.dataURL);
-        if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status}`);
-        }
-        const data = await response.json();
+        const data = await fetchData();
 
         this.categorizedTechnologies = Object.freeze(
           data.technologies.map(group => Object.freeze({
@@ -119,7 +133,10 @@ export default {
           }))
         );
       } catch (error) {
+        this.fetchError = true;
         console.error("Error fetching data:", error);
+      } finally {
+        this.loading = false;
       }
     }
   }
@@ -127,6 +144,16 @@ export default {
 </script>
 
 <style scoped>
+/* Error message styling */
+.error-message {
+  color: #d32f2f;
+  background-color: #ffebee;
+  padding: 15px;
+  border-radius: 4px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
 .text-highlight {
   color: var(--color-primary-dark);
   font-weight: bold;
