@@ -128,7 +128,7 @@ export default {
         this.categorizedTechnologies = Object.freeze(
           data.technologies.map(group => Object.freeze({
             name: group.category,
-            techs: Object.freeze(group.items)
+            techs: Object.freeze(group.items.map(item => ({ ...item })))
           }))
         );
       } catch (error) {
