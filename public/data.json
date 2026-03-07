@@ -45,7 +45,8 @@
         "TypeScript",
         "CSS3",
         "HTML5",
-        "Jest",
+        "Vitest",
+        "Cypress",
         "Docker",
         "Azure",
         "GitHub",
@@ -57,6 +58,7 @@
         "Need completion tracking with quantities (grams, ml) and durations (minutes)",
         "User roles with owner and caretaker permissions, secure authentication with hashed passwords",
         "Timezone-aware scheduling — daily needs update at midnight in each user's local timezone",
+        "Email verification and password recovery integration",
         "Responsive Ionic/Vue.js UI optimized for accessibility and performance",
         "Docker containerization with Nginx for deployment"
       ],
@@ -158,7 +160,7 @@
         "GitHub"
       ],
       "additionalInfo": [
-        "Professional Python tool for simulating realistic web traffic patterns on web applications",
+        "Python tool for simulating realistic web traffic patterns on web applications",
         "Originally developed to test a flaw in an IP-based visitor counting mechanism",
         "IP address rotation with realistic public IPv4 addresses excluding private ranges",
         "User-Agent rotation with authentic browser strings and realistic timing",
@@ -192,12 +194,12 @@
         "Jest"
       ],
       "additionalInfo": [
-        "Modern fullstack application with international phone number validation",
+        "Fullstack application with international phone number validation",
         "Real-time form validation with country code selection and automatic formatting",
-        "Comprehensive testing suite with CI/CD pipeline and automated deployment",
+        "Testing suite with CI/CD pipeline and automated deployment",
         "Responsive design optimized for mobile, tablet, and desktop devices",
-        "Production-ready with security headers, rate limiting, and error handling",
-        "MongoDB integration with robust connection handling and data normalization"
+        "Security headers, rate limiting, and error handling",
+        "MongoDB integration with connection handling and data normalization"
       ],
       "links": [
         {
@@ -223,14 +225,14 @@
         "GitHub"
       ],
       "additionalInfo": [
-        "Modern full-stack web application for personal book collection management",
+        "Full-stack web application for personal book collection management",
         "User authentication with secure password requirements and account management",
         "Responsive glassmorphism UI design with real-time form validation",
         "ISBN validation with check digit verification for ISBN-10 and ISBN-13",
-        "Comprehensive security with prepared statements and password hashing",
+        "Security with prepared statements and password hashing",
         "Docker containerization with environment variable configuration",
-        "Professional MVC architecture with reusable components",
-        "Production-ready with deployment guidelines and security best practices"
+        "MVC architecture with reusable components",
+        "Deployment guidelines and security best practices"
       ],
       "links": []
     },
@@ -249,10 +251,13 @@
         "GitHub"
       ],
       "additionalInfo": [
-        "Django-based weather forecast application",
-        "Current weather and 3-day forecast data for cities",
-        "Displays temperature, humidity, wind speed, UV index, and more",
-        "Uses OpenWeatherMap API for accurate data",
+        "Django-based weather forecast application with real-time data",
+        "Current weather and 3-day forecast with hourly breakdown",
+        "Displays temperature, humidity, wind speed, UV index, sunrise and sunset times",
+        "Auto-location detection based on IP address using GeoIP2",
+        "Uses OpenWeatherMap API for accurate weather data",
+        "Docker containerization with Nginx reverse proxy and Gunicorn",
+        "Azure deployment ready with CI/CD pipeline via GitHub Actions",
         "Clean, responsive interface with intuitive city search"
       ],
       "links": [
@@ -325,7 +330,7 @@
         "Current conditions and 3-day forecast with UV index",
         "Uses OpenWeatherMap API for accurate data",
         "Solar position calculations via Pysolar for UV index",
-        "Robust input validation and error handling",
+        "Input validation and error handling",
         "Automatic timezone detection for local times",
         "Secure API key management with python-dotenv"
       ],
@@ -511,6 +516,10 @@
           "url": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/django/django-plain-wordmark.svg"
         },
         {
+          "title": "Java Spring Boot",
+          "url": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/spring/spring-original-wordmark.svg"
+        },
+        {
           "title": "REST API",
           "url": "/assets/logos/rest-api-logo.svg"
         }
@@ -584,6 +593,10 @@
         {
           "title": "Playwright",
           "url": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/playwright/playwright-original.svg"
+        },
+        {
+          "title": "SonarQube",
+          "url": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/sonarqube/sonarqube-original-wordmark.svg"
         }
       ]
     },
