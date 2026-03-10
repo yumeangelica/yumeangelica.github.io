@@ -181,25 +181,24 @@
       "title": "Fullstack phonebook app",
       "imageURL": "/assets/projects/fullstack-phonebook-project.webp",
       "technologyTitles": [
-        "MongoDB",
-        "Express.js",
         "React",
         "Node.js",
+        "Express.js",
+        "MongoDB",
+        "Webpack",
         "JavaScript",
         "CSS3",
         "HTML5",
-        "Bootstrap",
-        "GitHub",
-        "Webpack",
-        "Jest"
+        "GitHub"
       ],
       "additionalInfo": [
-        "Fullstack application with international phone number validation",
-        "Real-time form validation with country code selection and automatic formatting",
-        "Testing suite with CI/CD pipeline and automated deployment",
-        "Responsive design optimized for mobile, tablet, and desktop devices",
-        "Security headers, rate limiting, and error handling",
-        "MongoDB integration with connection handling and data normalization"
+        "Modern phonebook application with real-time validation and international phone number support",
+        "Add, edit, delete, and search contacts with pagination for large contact lists",
+        "Real-time form validation with visual feedback and country code selection",
+        "International phone number validation using libphonenumber-js with Finnish number normalization",
+        "Responsive design for desktop and mobile with comprehensive error handling",
+        "Testing with Node.js built-in test runner and supertest for API and component tests",
+        "Originally created for Full Stack Open course in 2023, significantly modernized in 2026"
       ],
       "links": [
         {
