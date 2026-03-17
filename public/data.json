@@ -36,7 +36,7 @@
       "imageURL": "/assets/projects/needypet-project.webp",
       "technologyTitles": [
         "Vue.js",
-        "Ionic",
+        "Tailwind CSS",
         "Pinia",
         "MongoDB",
         "Express.js",
@@ -54,12 +54,12 @@
       ],
       "additionalInfo": [
         "Full-stack pet care management app for coordinating daily pet needs within households",
-        "Automated daily need generation — recurring care tasks like feeding, walking, and medication reset and carry over each day",
+        "Automated daily need generation — recurring care tasks reset and carry over each day at midnight",
         "Need completion tracking with quantities (grams, ml) and durations (minutes)",
         "User roles with owner and caretaker permissions, secure authentication with hashed passwords",
         "Timezone-aware scheduling — daily needs update at midnight in each user's local timezone",
         "Email verification and password recovery integration",
-        "Responsive Ionic/Vue.js UI optimized for accessibility and performance",
+        "Responsive Vue.js 3 (Composition API) UI with Tailwind CSS",
         "Docker containerization with Nginx for deployment"
       ],
       "links": [
@@ -192,12 +192,13 @@
         "GitHub"
       ],
       "additionalInfo": [
-        "Modern phonebook application with real-time validation and international phone number support",
+        "Modern phonebook application with user authentication and per-user private contacts",
+        "Register, login, logout, and delete account with JWT-based authentication",
         "Add, edit, delete, and search contacts with pagination for large contact lists",
-        "Real-time form validation with visual feedback and country code selection",
-        "International phone number validation using libphonenumber-js with Finnish number normalization",
+        "Real-time form validation with visual feedback and international phone number support using libphonenumber-js",
+        "Finnish phone number normalization and country code selection",
         "Responsive design for desktop and mobile with comprehensive error handling",
-        "Testing with Node.js built-in test runner and supertest for API and component tests",
+        "Testing with Node.js built-in test runner (node:test) and supertest for API and component tests",
         "Originally created for Full Stack Open course in 2023, significantly modernized in 2026"
       ],
       "links": [
@@ -563,6 +564,10 @@
         {
           "title": "Sass",
           "url": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/sass/sass-original.svg"
+        },
+        {
+        "title": "Tailwind CSS",
+        "url": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tailwindcss/tailwindcss-original.svg"
         },
         {
           "title": "Bootstrap",
