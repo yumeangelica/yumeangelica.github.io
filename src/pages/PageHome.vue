@@ -155,7 +155,7 @@ export default {
 
 .text-highlight {
   color: var(--color-primary-dark);
-  font-weight: bold;
+  font-weight: 600;
 }
 
 /* Custom CSS tooltip for tech icons — faster hover response than native title attribute */

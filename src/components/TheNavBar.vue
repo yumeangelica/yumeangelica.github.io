@@ -110,13 +110,13 @@ nav {
 
 .nav-link.router-link-active {
   color: var(--color-accent) !important;
-  font-weight: bold;
+  font-weight: 600;
 }
 
 /* Navbar item styling */
 .nav-item {
   font-size: 1.3rem;
-  font-weight: 500;
+  font-weight: 600;
   padding: 0 6px;
 }
 
