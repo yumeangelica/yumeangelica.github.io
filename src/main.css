@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;500;600;700&display=swap');
 @import './base.css';
 
 html {
@@ -8,19 +9,8 @@ body {
   background-color: var(--color-background) !important;
   min-height: 100vh;
   line-height: 1.9 !important;
-  font-family:
-    Inter,
-    -apple-system,
-    BlinkMacSystemFont,
-    'Segoe UI',
-    Roboto,
-    Oxygen,
-    Ubuntu,
-    Cantarell,
-    'Fira Sans',
-    'Droid Sans',
-    'Helvetica Neue',
-    sans-serif;
+  font-family: 'Comfortaa', sans-serif;
+  font-weight: 400;
   font-size: 1rem;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -36,6 +26,16 @@ body {
 h1, h2, h3, h4, h5 {
   color: var(--color-heading) !important;
   margin-bottom: 1.5rem;
+  font-weight: 700;
+}
+
+label {
+  font-weight: 600;
+}
+
+strong,
+b {
+  font-weight: 700;
 }
 
 h1 {

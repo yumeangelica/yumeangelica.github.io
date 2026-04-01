@@ -397,7 +397,7 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-weight: 500;
+  font-weight: 600;
   font-size: 0.85rem;
   border-radius: 16px;
   padding: 4px 10px;
