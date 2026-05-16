@@ -33,3 +33,9 @@ deploy.sh
 *.sln
 *.sw?
 
+
+# Ignore GitHub and VSCode configuration files
+.github/agents/
+.github/skills/
+.github/prompts/
+.vscode/

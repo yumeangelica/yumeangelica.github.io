@@ -79,6 +79,36 @@ describe('TheNavBar.vue', () => {
     expect(wrapper.find('.navbar-collapse').classes()).not.toContain('show')
   })
 
+  it('closes navigation on resize when width is at least 425px', async () => {
+    vi.useFakeTimers()
+    const originalWidth = window.innerWidth
+    const wrapper = createWrapper()
+    const toggler = wrapper.find('.navbar-toggler')
+
+    await toggler.trigger('click')
+    expect(wrapper.find('.navbar-collapse').classes()).toContain('show')
+
+    const originalHandleResize = wrapper.vm.handleResize
+    const handleResizeSpy = vi.spyOn(wrapper.vm, 'handleResize')
+    window.removeEventListener('resize', originalHandleResize)
+    window.addEventListener('resize', wrapper.vm.handleResize, { passive: true })
+
+    window.innerWidth = 500
+    window.dispatchEvent(new Event('resize'))
+
+    expect(handleResizeSpy).toHaveBeenCalledTimes(1)
+    expect(wrapper.find('.navbar-collapse').classes()).toContain('show')
+
+    vi.advanceTimersByTime(100)
+    await wrapper.vm.$nextTick()
+
+    expect(wrapper.find('.navbar-collapse').classes()).not.toContain('show')
+
+    window.innerWidth = originalWidth
+    wrapper.unmount()
+    vi.useRealTimers()
+  })
+
   it('has correct aria-expanded attribute on toggler', async () => {
     const wrapper = createWrapper()
     const toggler = wrapper.find('.navbar-toggler')

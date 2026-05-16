@@ -66,4 +66,57 @@ describe('TheProjectCard.vue', () => {
       )
     })
   })
+
+  it('does not render an icon for unknown technology titles', () => {
+    const wrapper = mount(TheProjectCard, {
+      props: {
+        project: {
+          ...mockProject,
+          technologyTitles: ['Vue', 'Unknown Tech']
+        },
+        technologies: mockTechnologies
+      },
+      global: {
+        mocks: {
+          $t: (key, params = {}) => {
+            const messages = {
+              'projectCard.technologiesLabel': 'Technologies used',
+              'projectCard.linkAriaLabel': `Visit ${params.linkText} for ${params.projectTitle}`
+            };
+            return messages[key] || key;
+          },
+          $tm: (key) => key
+        }
+      }
+    })
+
+    expect(wrapper.find('img[alt="Vue"]').exists()).toBe(true)
+    expect(wrapper.find('img[alt="Unknown Tech"]').exists()).toBe(false)
+  })
+
+  it('renders no project links when links are missing', () => {
+    const wrapper = mount(TheProjectCard, {
+      props: {
+        project: {
+          ...mockProject,
+          links: undefined
+        },
+        technologies: mockTechnologies
+      },
+      global: {
+        mocks: {
+          $t: (key, params = {}) => {
+            const messages = {
+              'projectCard.technologiesLabel': 'Technologies used',
+              'projectCard.linkAriaLabel': `Visit ${params.linkText} for ${params.projectTitle}`
+            };
+            return messages[key] || key;
+          },
+          $tm: (key) => key
+        }
+      }
+    })
+
+    expect(wrapper.findAll('a.project-button')).toHaveLength(0)
+  })
 })
