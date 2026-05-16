@@ -43,6 +43,14 @@ describe('i18n', () => {
       await loadMessages('en')
       expect(t('footer.copyright')).toBe('© {year} Angelica')
     })
+
+    it('returns non-string values unchanged', async () => {
+      await loadMessages('en')
+      expect(t('home')).toEqual({
+        title: 'Welcome',
+        journeyItems: ['University', 'Self-study']
+      })
+    })
   })
 
   describe('tm()', () => {
