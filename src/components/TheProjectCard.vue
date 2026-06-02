@@ -35,21 +35,22 @@ export default {
   },
   computed: {
     projectTitle() {
-      return this.project.title;
+      return this.project?.title || '';
     },
     additionalInfo() {
-      return this.project.additionalInfo;
+      return Array.isArray(this.project?.additionalInfo) ? this.project.additionalInfo : [];
     },
     links() {
-      return this.project.links || [];
+      return Array.isArray(this.project?.links) ? this.project.links : [];
     },
     technologyTitles() {
-      return this.project.technologyTitles;
+      return Array.isArray(this.project?.technologyTitles) ? this.project.technologyTitles : [];
     }
   },
   methods: {
     getTechIconUrl(techName) {
-      const tech = this.technologies.find(t => t.title === techName);
+      const technologies = Array.isArray(this.technologies) ? this.technologies : [];
+      const tech = technologies.find(t => t.title === techName);
       return tech ? tech.url : "";
     }
   }

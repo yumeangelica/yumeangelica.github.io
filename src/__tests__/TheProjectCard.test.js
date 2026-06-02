@@ -119,4 +119,32 @@ describe('TheProjectCard.vue', () => {
 
     expect(wrapper.findAll('a.project-button')).toHaveLength(0)
   })
+
+  it('handles missing technology and info arrays gracefully', () => {
+    const wrapper = mount(TheProjectCard, {
+      props: {
+        project: {
+          ...mockProject,
+          technologyTitles: undefined,
+          additionalInfo: undefined
+        },
+        technologies: mockTechnologies
+      },
+      global: {
+        mocks: {
+          $t: (key, params = {}) => {
+            const messages = {
+              'projectCard.technologiesLabel': 'Technologies used',
+              'projectCard.linkAriaLabel': `Visit ${params.linkText} for ${params.projectTitle}`
+            };
+            return messages[key] || key;
+          },
+          $tm: (key) => key
+        }
+      }
+    })
+
+    expect(wrapper.findAll('.small-devicon')).toHaveLength(0)
+    expect(wrapper.findAll('.additional-info')).toHaveLength(0)
+  })
 })

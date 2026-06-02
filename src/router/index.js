@@ -11,11 +11,23 @@ const router = createRouter({
     {
       path: '/',
       name: 'home',
+      meta: {
+        seo: {
+          title: 'seo.home.title',
+          description: 'seo.home.description'
+        }
+      },
       component: PageHome
     },
     {
       path: '/projects',
       name: 'projects',
+      meta: {
+        seo: {
+          title: 'seo.projects.title',
+          description: 'seo.projects.description'
+        }
+      },
       /*
        Route-level code-splitting.
        This generates a separate chunk (About.[hash].js) for this route,
