@@ -9,5 +9,17 @@ describe('router', () => {
 
     expect(homeRoute?.name).toBe('home')
     expect(projectsRoute?.name).toBe('projects')
+    expect(homeRoute?.meta).toMatchObject({
+      seo: {
+        title: 'seo.home.title',
+        description: 'seo.home.description'
+      }
+    })
+    expect(projectsRoute?.meta).toMatchObject({
+      seo: {
+        title: 'seo.projects.title',
+        description: 'seo.projects.description'
+      }
+    })
   })
 })

@@ -1,54 +1,37 @@
-<h1 align="center">My Web Development Portfolio</h1>
+# My Web Development Portfolio
 
-Welcome! This is my personal web development portfolio — a simple and modern Vue.js site designed to introduce myself and showcase my work. [Link to my portfolio.](https://yumeangelica.github.io)
+Personal web development portfolio built with Vue 3 and Vite. Live site: https://yumeangelica.github.io
 
----
+## Overview
 
-## ✨ About
+- Intro section and project showcase
+- Reusable Vue components with a simple layout
+- UI copy stored in JSON for easy updates
 
-Here you'll find:
+## Tech Stack
 
-- A short introduction about me and my journey as a developer
-- A selection of projects I've created
-- An accessible and thoughtfully designed user interface built with reusable components
-
-I enjoy creating websites that are fast, accessible, secure, scalable, and user-friendly. I'm passionate about continuous learning and always looking for ways to improve.
-
----
-
-## 🛠️ Tech Stack
-
-This portfolio was developed using:
-
-- Vue.js 3
+- Vue 3 + Vue Router
 - Vite
 - JavaScript
-- Bootstrap 5 & CSS
-- Vue Router
+- Bootstrap 5 + CSS
 - GitHub Pages (hosting)
 
----
+## Scripts
 
-## 🌐 Internationalization
+- `npm run dev` - start local dev server
+- `npm run build` - production build
+- `npm run preview` - preview production build
+- `npm run test` - run tests
+- `npm run deploy` - build and deploy to GitHub Pages
 
-All UI texts are externalized into a JSON-based i18n system (`messages_en.json`), making it straightforward to add new languages or update content without touching component code.
+## Internationalization
 
----
+UI strings live in [public/messages_en.json](public/messages_en.json). Add a new language by adding another JSON file and wiring it in [src/i18n.js](src/i18n.js).
 
-## ✅ Testing
+## Testing
 
-This project also includes straightforward component tests using Vitest.
+Component tests use Vitest and Vue Test Utils. See [src/__tests__](src/__tests__).
 
-These tests ensure key components — such as project cards and navigation links — render properly and handle data correctly. This demonstrates my practical approach to incorporating testing into web development projects.
+## Contact
 
----
-
-## 📬 Contact
-
-If you're interested in collaborating or just want to say hello, my contact details are available directly within the portfolio.
-
-Thanks for stopping by! 💖
-
----
-
-© 2020–present, Yumengelica. All Rights Reserved.
+Contact details are listed on the portfolio site.

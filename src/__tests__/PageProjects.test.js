@@ -101,4 +101,72 @@ describe('PageProjects.vue', () => {
 
     vi.useRealTimers()
   })
+
+  it('scrolls to top and closes floating menu for back-to-top', async () => {
+    const scrollToSpy = vi.spyOn(window, 'scrollTo').mockImplementation(() => { })
+    const wrapper = mount(PageProjects, {
+      global: {
+        mocks: i18nMocks,
+        stubs: {
+          TheProjectCard: true
+        }
+      }
+    })
+
+    await flushPromises()
+
+    wrapper.vm.isFloatingMenuOpen = true
+    wrapper.vm.scrollToSection('back-to-top')
+
+    expect(scrollToSpy).toHaveBeenCalledWith({
+      top: 0,
+      behavior: 'smooth'
+    })
+    expect(wrapper.vm.isFloatingMenuOpen).toBe(false)
+
+    scrollToSpy.mockRestore()
+  })
+
+  it('scrolls to a section and closes floating menu when the section exists', async () => {
+    const wrapper = mount(PageProjects, {
+      global: {
+        mocks: i18nMocks,
+        stubs: {
+          TheProjectCard: true
+        }
+      }
+    })
+
+    await flushPromises()
+
+    const section = document.createElement('div')
+    section.id = 'frontend-projects'
+    section.scrollIntoView = vi.fn()
+    document.body.appendChild(section)
+
+    wrapper.vm.isFloatingMenuOpen = true
+    wrapper.vm.scrollToSection('frontend-projects')
+
+    expect(section.scrollIntoView).toHaveBeenCalledWith({ behavior: 'smooth', block: 'start' })
+    expect(wrapper.vm.isFloatingMenuOpen).toBe(false)
+
+    section.remove()
+  })
+
+  it('defaults to empty data when fetchData resolves with missing fields', async () => {
+    fetchData.mockResolvedValueOnce({})
+    const wrapper = mount(PageProjects, {
+      global: {
+        mocks: i18nMocks,
+        stubs: {
+          TheProjectCard: true
+        }
+      }
+    })
+
+    await flushPromises()
+
+    expect(wrapper.vm.allProjects).toEqual([])
+    expect(wrapper.vm.technologies).toEqual([])
+  })
 })

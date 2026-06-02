@@ -1,5 +1,10 @@
 import { mount } from '@vue/test-utils'
 import App from '../App.vue'
+import { updateSeo } from '../seo'
+
+vi.mock('../seo', () => ({
+  updateSeo: vi.fn()
+}))
 
 describe('App.vue', () => {
   const i18nMock = {
@@ -32,7 +37,10 @@ describe('App.vue', () => {
   it('renders main content label and layout components', () => {
     const wrapper = mount(App, {
       global: {
-        mocks: i18nMock,
+        mocks: {
+          ...i18nMock,
+          $route: { name: 'home' }
+        },
         stubs
       }
     })
@@ -45,5 +53,25 @@ describe('App.vue', () => {
     expect(wrapper.find('[data-test="nav-bar"]').exists()).toBe(true)
     expect(wrapper.find('[data-test="footer"]').exists()).toBe(true)
     expect(wrapper.find('[data-test="back-to-top"]').exists()).toBe(true)
+  })
+
+  it('updates SEO on mount and when the route changes', async () => {
+    const wrapper = mount(App, {
+      global: {
+        mocks: {
+          ...i18nMock,
+          $route: { name: 'home' }
+        },
+        stubs
+      }
+    })
+
+    expect(updateSeo).toHaveBeenCalled()
+
+    await wrapper.vm.$nextTick()
+    updateSeo.mockClear()
+    wrapper.vm.$options.watch.$route.call(wrapper.vm)
+
+    expect(updateSeo).toHaveBeenCalledTimes(1)
   })
 })

@@ -185,7 +185,8 @@ export default {
         'Azure',        // Cloud platform
         'Raspberry Pi', // Hardware projects
       ];
-      return this.technologies.filter(tech => techNames.includes(tech.title));
+      const technologies = Array.isArray(this.technologies) ? this.technologies : [];
+      return technologies.filter(tech => techNames.includes(tech.title));
     },
     filteredMainProjects() {
       // Only main projects, filtered by type/tech
@@ -230,39 +231,46 @@ export default {
   methods: {
     // Check if any project exists for the given type and selected techs
     isTypeTechComboAvailable(type, techArr) {
+      const projects = Array.isArray(this.allProjects) ? this.allProjects : [];
+      const selectedTech = Array.isArray(techArr) ? techArr : [];
       // If no tech selected, just check for type
-      if (!techArr || techArr.length === 0) {
-        return this.allProjects.some(p => p.type === type);
+      if (selectedTech.length === 0) {
+        return projects.some(p => p.type === type);
       }
       // If techArr contains more than one tech, only allow if a project has ALL those techs
       // But if no project has all selected techs, disable
-      return this.allProjects.some(p => p.type === type && techArr.length > 0 && techArr.every(t => p.technologyTitles && p.technologyTitles.includes(t)));
+      return projects.some(p => p.type === type && selectedTech.length > 0 && selectedTech.every(t => p.technologyTitles && p.technologyTitles.includes(t)));
     },
     // Check if any project exists for the given tech and selected type
     isTechTypeComboAvailable(tech, typeArr) {
+      const projects = Array.isArray(this.allProjects) ? this.allProjects : [];
+      const selectedTypes = Array.isArray(typeArr) ? typeArr : [];
       // If tech is already selected, always allow to deselect
       if (this.selectedTech.includes(tech)) return true;
 
       // If no type selected, check if any project has all selected techs + this tech
-      if (!typeArr || typeArr.length === 0) {
+      if (selectedTypes.length === 0) {
         const nextTechs = [...this.selectedTech, tech];
-        return this.allProjects.some(p => nextTechs.every(t => p.technologyTitles && p.technologyTitles.includes(t)));
+        return projects.some(p => nextTechs.every(t => p.technologyTitles && p.technologyTitles.includes(t)));
       }
       // If type selected, check if any project matches type and all selected techs + this tech
       const nextTechs = [...this.selectedTech, tech];
-      return this.allProjects.some(p => typeArr.includes(p.type) && nextTechs.every(t => p.technologyTitles && p.technologyTitles.includes(t)));
+      return projects.some(p => selectedTypes.includes(p.type) && nextTechs.every(t => p.technologyTitles && p.technologyTitles.includes(t)));
     },
     filterProjects(projects) {
+      const sourceProjects = Array.isArray(projects) ? projects : [];
+      const selectedTypes = Array.isArray(this.selectedTypes) ? this.selectedTypes : [];
+      const selectedTech = Array.isArray(this.selectedTech) ? this.selectedTech : [];
       // Filter by type first
-      let filtered = projects;
-      if (this.selectedTypes && this.selectedTypes.length > 0) {
-        filtered = filtered.filter(project => this.selectedTypes.includes(project.type));
+      let filtered = sourceProjects;
+      if (selectedTypes.length > 0) {
+        filtered = filtered.filter(project => selectedTypes.includes(project.type));
       }
       // Then filter by tech
-      if (!this.selectedTech || this.selectedTech.length === 0) return filtered;
+      if (selectedTech.length === 0) return filtered;
       return filtered.filter(project => {
         if (!project.technologyTitles) return false;
-        return this.selectedTech.every(tech => project.technologyTitles.includes(tech));
+        return selectedTech.every(tech => project.technologyTitles.includes(tech));
       });
     },
     toggleTechFilter(techName) {
@@ -334,15 +342,16 @@ export default {
   async created() { // When site is loaded, fetch data from data.json
     try {
       const data = await fetchData();
-      if (data) {
-        this.technologies = data.technologies.flatMap(group => group.items);
-        this.allProjects = data.projects;
-        this.mainProjects = data.projects.filter(p => p.isMain === true);
-        this.frontendProjects = data.projects.filter(p => p.type === 'frontend' && !p.isMain);
-        this.backendProjects = data.projects.filter(p => p.type === 'backend' && !p.isMain);
-        this.fullstackProjects = data.projects.filter(p => p.type === 'fullstack' && !p.isMain);
-        this.cliProjects = data.projects.filter(p => p.type === 'cli' && !p.isMain);
-      }
+      const projects = Array.isArray(data?.projects) ? data.projects : [];
+      const technologies = Array.isArray(data?.technologies) ? data.technologies : [];
+
+      this.technologies = technologies.flatMap(group => Array.isArray(group?.items) ? group.items : []);
+      this.allProjects = projects;
+      this.mainProjects = projects.filter(p => p.isMain === true);
+      this.frontendProjects = projects.filter(p => p.type === 'frontend' && !p.isMain);
+      this.backendProjects = projects.filter(p => p.type === 'backend' && !p.isMain);
+      this.fullstackProjects = projects.filter(p => p.type === 'fullstack' && !p.isMain);
+      this.cliProjects = projects.filter(p => p.type === 'cli' && !p.isMain);
       this.loading = false;
     } catch (error) {
       this.fetchError = true;

@@ -21,6 +21,7 @@ import TheNavBar from 'components/TheNavBar.vue'
 import TheFooter from 'components/TheFooter.vue'
 import TheHeaderPic from 'components/TheHeaderPic.vue'
 import TheBackToTop from 'components/TheBackToTop.vue'
+import { updateSeo } from './seo'
 
 export default {
   name: 'App',
@@ -29,6 +30,19 @@ export default {
     TheFooter,
     TheHeaderPic,
     TheBackToTop
+  },
+  mounted() {
+    this.updateSeo()
+  },
+  watch: {
+    $route() {
+      this.updateSeo()
+    }
+  },
+  methods: {
+    updateSeo() {
+      updateSeo(this.$route, this.$t)
+    }
   }
 }
 </script>

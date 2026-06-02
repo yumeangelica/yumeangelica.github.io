@@ -2,6 +2,16 @@
   "app": {
     "mainContentLabel": "Main site content"
   },
+  "seo": {
+    "home": {
+      "title": "Angelica's portfolio | Fullstack web development",
+      "description": "Angelica's accessible web development portfolio built with Vue.js, React, and Python"
+    },
+    "projects": {
+      "title": "Angelica's projects | Selected work",
+      "description": "Selected frontend, backend, fullstack, and CLI projects by Angelica"
+    }
+  },
   "nav": {
     "mainNavigation": "Main navigation",
     "skipToContent": "Skip to main content",
