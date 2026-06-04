@@ -1,5 +1,5 @@
-const DEFAULT_TITLE = "Angelica's fullstack web development portfolio"
-const DEFAULT_DESCRIPTION = "Angelica's fullstack web development portfolio - Vue.js, React, Python projects"
+const DEFAULT_TITLE = "Angelica's software development portfolio"
+const DEFAULT_DESCRIPTION = "Software developer portfolio featuring accessible web applications, Vue, React, TypeScript, Python automation, testing, and security-aware development"
 
 function getFallbackContent() {
   const descriptionTag = document.querySelector('meta[name="description"]')
