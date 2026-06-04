@@ -14,8 +14,11 @@ Personal web development portfolio built with Vue 3 and Vite. Live site: https:/
 - Vite
 - Bun (package manager)
 - JavaScript
-- Bootstrap 5 + CSS
+- Modern CSS
 - GitHub Pages (hosting)
+- Github Actions (CI/CD)
+- Vitest (testing)
+- Biome (linting)
 
 ## Scripts
 

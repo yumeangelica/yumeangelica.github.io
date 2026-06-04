@@ -5,7 +5,7 @@ describe('TheProjectCard.vue', () => {
   const mockProject = {
     title: 'Vue Portfolio',
     imageURL: 'https://assets.example.dev/image.jpg',
-    technologyTitles: ['Vue', 'Bootstrap'],
+    technologyTitles: ['Vue', 'CSS Framework'],
     additionalInfo: ['Responsive design', 'Dark mode supported'],
     links: [
       { text: 'GitHub', url: 'https://example.dev/github' },
@@ -15,7 +15,7 @@ describe('TheProjectCard.vue', () => {
 
   const mockTechnologies = [
     { title: 'Vue', url: 'https://cdn.example.dev/vue.svg' },
-    { title: 'Bootstrap', url: 'https://cdn.example.dev/bootstrap.svg' }
+    { title: 'CSS Framework', url: 'https://cdn.example.dev/css-framework.svg' }
   ]
 
   it('renders project title, image, technologies, additional info and links', () => {
