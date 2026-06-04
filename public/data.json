@@ -3,7 +3,7 @@
     {
       "type": "backend",
       "isMain": true,
-      "title": "Discord bot for Jirai Sweeties server",
+      "title": "Jirai Sweeties Discord bot",
       "imageURL": "/assets/projects/jirai-sweeties-discord-bot-project.webp",
       "technologyTitles": [
         "Python",
@@ -13,14 +13,13 @@
         "Raspberry Pi"
       ],
       "additionalInfo": [
-        "Interactive Discord bot with custom chat commands",
-        "Automated store monitoring with instant product alerts to Discord server",
-        "Historical tracking and price monitoring via SQLite",
-        "Efficient web data extraction using aiohttp and lxml",
-        "Rotating user agents for secure and reliable data extraction",
-        "Deployed on a Raspberry Pi to ensure 24/7 availability and maximize cost efficiency",
-        "Supports multi-store configurations and flexible scheduling",
-        "Structured data modeling with Python TypedDict and type hints"
+        "Python Discord bot for scheduled store-data monitoring and product-change notifications",
+        "Async data extraction workflows with aiohttp and lxml",
+        "SQLite persistence for product history and price-change tracking",
+        "Configurable store sources and scheduling for personal/community use",
+        "Docker and Raspberry Pi deployment notes for a low-cost always-on setup",
+        "Typed Python structures with TypedDict and type hints",
+        "Responsible-use focus: allowed public sources, conservative scheduling, and no restricted, authenticated, or access-controlled sources"
       ],
       "links": [
         {
@@ -32,7 +31,7 @@
     {
       "type": "fullstack",
       "isMain": true,
-      "title": "NeedyPet",
+      "title": "NeedyPet (legacy v1)",
       "imageURL": "/assets/projects/needypet-project.webp",
       "technologyTitles": [
         "Vue.js",
@@ -53,14 +52,14 @@
         "Vite"
       ],
       "additionalInfo": [
-        "Full-stack pet care management app for coordinating daily pet needs within households",
-        "Automated daily need generation — recurring care tasks reset and carry over each day at midnight",
-        "Need completion tracking with quantities (grams, ml) and durations (minutes)",
-        "User roles with owner and caretaker permissions, secure authentication with hashed passwords",
-        "Timezone-aware scheduling — daily needs update at midnight in each user's local timezone",
-        "Email verification and password recovery integration",
-        "Responsive Vue.js 3 (Composition API) UI with Tailwind CSS",
-        "Docker containerization with Nginx for deployment"
+        "Legacy full-stack pet care management app for coordinating daily care tasks within households",
+        "Recurring care-task generation with daily reset and carry-over behavior",
+        "Need completion tracking with quantities and durations",
+        "Owner and caretaker roles with authentication and hashed password storage",
+        "Timezone-aware scheduling for each user's local day boundary",
+        "Responsive Vue 3 UI with Pinia state management and Tailwind CSS",
+        "Node.js/Express REST API with MongoDB data model",
+        "Docker and Nginx deployment setup"
       ],
       "links": [
         {
@@ -71,8 +70,8 @@
     },
     {
       "type": "backend",
-      "isMain": true,
-      "title": "Store data extractor & monitor",
+      "isMain": false,
+      "title": "Store data extractor module",
       "imageURL": "/assets/projects/store-data-extractor-project.webp",
       "technologyTitles": [
         "Python",
@@ -81,13 +80,11 @@
         "Docker"
       ],
       "additionalInfo": [
-        "Developed as a standalone module but is also part of the larger Discord bot project for Jirai Sweeties server",
-        "Automated store monitoring with instant product alerts",
-        "Historical tracking and price monitoring via SQLite",
-        "Efficient web data extraction using aiohttp and lxml",
-        "Rotating user agents for secure and reliable data extraction",
-        "Supports multi-store configurations and flexible scheduling",
-        "Structured data modeling with Python TypedDict and type hints"
+        "Python module used as part of the Jirai Sweeties automation workflow",
+        "Scheduled product-data collection, parsing, and SQLite persistence",
+        "Configurable sources, structured data models, and typed Python data structures",
+        "Supports price and availability change tracking for allowed public sources",
+        "Responsible-use wording and README cleanup required before using this as standalone public proof"
       ],
       "links": [
         {
@@ -113,11 +110,12 @@
         "Vitest"
       ],
       "additionalInfo": [
-        "Personal Vue.js portfolio showcasing frontend structure, accessibility, responsiveness and project presentation",
-        "Vite-powered build setup with Bun as the package manager and locked dependency workflow",
-        "JSON-based i18n system for UI texts, project data and reusable content updates",
-        "Quality gates with Biome linting, Vitest component tests and content validation tests",
-        "GitHub Actions workflow for pull request checks and automated GitHub Pages deployment"
+        "Public Vue 3 portfolio for selected software development projects and career background",
+        "Vite build setup with Bun package management and locked dependency workflow",
+        "JSON-based content structure for UI text, project data, and reusable copy updates",
+        "Quality checks with Biome linting, Vitest component tests, content validation tests, and production builds",
+        "Accessibility-minded UI with skip link, keyboard focus styles, semantic sections, alt text, and responsive layout",
+        "GitHub Actions workflow for pull request checks and GitHub Pages deployment"
       ],
       "links": [
         {
@@ -128,8 +126,8 @@
     },
     {
       "type": "cli",
-      "isMain": true,
-      "title": "User agent extractor",
+      "isMain": false,
+      "title": "User-agent dataset utility",
       "imageURL": "/assets/projects/user-agent-extractor-project.webp",
       "technologyTitles": [
         "Python",
@@ -137,12 +135,10 @@
         "GitHub"
       ],
       "additionalInfo": [
-        "Command-line tool to extract user agents from specific websites",
-        "Playwright-based scraping with full category and maker coverage",
-        "Processed nearly 80k unique user agents in a single session",
-        "Multithreaded extraction with ThreadPoolExecutor and thread-safe duplicate detection",
-        "Handles pagination, rate limits, and retry logic with exponential backoff",
-        "Comprehensive data cleaning pipeline with 7-stage validation and CSV/text output"
+        "Python utility for collecting, validating, deduplicating, and exporting public user-agent strings for testing datasets",
+        "Playwright-based collection workflow with data-cleaning and export steps",
+        "Duplicate detection, retry handling, and CSV/text output",
+        "Best kept as supporting proof until README, responsible-use notes, tests, and source-scope wording are refreshed"
       ],
       "links": [
         {
@@ -152,34 +148,9 @@
       ]
     },
     {
-      "type": "cli",
-      "isMain": true,
-      "title": "Web traffic simulator",
-      "imageURL": "/assets/projects/web-traffic-simulator-project.webp",
-      "technologyTitles": [
-        "Python",
-        "GitHub"
-      ],
-      "additionalInfo": [
-        "Python tool for simulating realistic web traffic patterns on web applications",
-        "Originally developed to test a flaw in an IP-based visitor counting mechanism",
-        "IP address rotation with realistic public IPv4 addresses excluding private ranges",
-        "User-Agent rotation with authentic browser strings and realistic timing",
-        "Session management, cache busting, retry logic, and comprehensive error handling",
-        "Detailed campaign statistics with success rates and performance metrics",
-        "Graceful shutdown with proper signal handling and type safety"
-      ],
-      "links": [
-        {
-          "text": "Source Code",
-          "url": "https://github.com/yumeangelica/web_traffic_simulator"
-        }
-      ]
-    },
-    {
       "type": "fullstack",
       "isMain": false,
-      "title": "Fullstack phonebook app",
+      "title": "Full-stack phonebook app",
       "imageURL": "/assets/projects/fullstack-phonebook-project.webp",
       "technologyTitles": [
         "React",
@@ -193,14 +164,13 @@
         "GitHub"
       ],
       "additionalInfo": [
-        "Modern phonebook application with user authentication and per-user private contacts",
-        "Register, login, logout, and delete account with JWT-based authentication",
-        "Add, edit, delete, and search contacts with pagination for large contact lists",
-        "Real-time form validation with visual feedback and international phone number support using libphonenumber-js",
-        "Finnish phone number normalization and country code selection",
-        "Responsive design for desktop and mobile with comprehensive error handling",
-        "Testing with Node.js built-in test runner (node:test) and supertest for API and component tests",
-        "Originally created for Full Stack Open course in 2023, significantly modernized in 2026"
+        "Course-origin full-stack phonebook application with per-user private contacts",
+        "Register, login, logout, and delete-account flows with JWT-based authentication",
+        "Add, edit, delete, search, and paginate contacts",
+        "Form validation with visual feedback and international phone-number support",
+        "Responsive React UI with Node.js/Express and MongoDB backend",
+        "API and component testing with node:test and supertest where implemented",
+        "Supporting project proof for React, Node.js, Express, MongoDB, and testing basics"
       ],
       "links": [
         {
@@ -225,14 +195,13 @@
         "GitHub"
       ],
       "additionalInfo": [
-        "Full-stack web application for personal book collection management",
-        "User authentication with secure password requirements and password change functionality",
-        "Modern card-based UI design with muted pink theme and real-time form validation",
-        "ISBN validation with check digit verification for ISBN-10 and ISBN-13",
-        "Security with prepared statements, password hashing, and reuse prevention",
-        "Docker containerization with environment variable configuration",
-        "MVC architecture with reusable components",
-        "Secure account management with password verification for destructive actions"
+        "Full-stack learning project for managing a personal book collection",
+        "PHP and MySQL application with Apache and Docker setup",
+        "User authentication, password change flow, and account-management safeguards",
+        "Prepared statements, password hashing, and input validation where implemented",
+        "ISBN validation with check-digit verification for ISBN-10 and ISBN-13",
+        "MVC-style structure with reusable components",
+        "Supporting proof for earlier full-stack and database work"
       ],
       "links": [
         {
@@ -256,14 +225,13 @@
         "GitHub"
       ],
       "additionalInfo": [
-        "Django-based weather forecast application with real-time data",
-        "Current weather and 3-day forecast with hourly breakdown",
-        "Displays temperature, humidity, wind speed, UV index, sunrise and sunset times",
-        "Auto-location detection based on IP address using GeoIP2",
-        "Uses OpenWeatherMap API for accurate weather data",
-        "Docker containerization with Nginx reverse proxy and Gunicorn",
-        "Azure deployment ready with CI/CD pipeline via GitHub Actions",
-        "Clean, responsive interface with intuitive city search"
+        "Django-based weather forecast application with city search and external weather API integration",
+        "Current conditions and 3-day forecast with hourly breakdown",
+        "Displays temperature, humidity, wind speed, UV index, sunrise, and sunset times",
+        "Optional auto-location detection based on IP address using GeoIP2",
+        "Environment-based API key configuration for OpenWeatherMap",
+        "Docker, Gunicorn, Nginx, and GitHub Actions oriented deployment setup",
+        "Responsive interface with clear search flow and public API integration proof"
       ],
       "links": [
         {
@@ -275,7 +243,7 @@
     {
       "type": "fullstack",
       "isMain": false,
-      "title": "Taitovarasto for Virittämö as a client",
+      "title": "Taitovarasto for City of Helsinki / Virittämö",
       "imageURL": "/assets/projects/taitovarasto-project.webp",
       "technologyTitles": [
         "MongoDB",
@@ -290,11 +258,11 @@
         "Docker"
       ],
       "additionalInfo": [
-        "Recruitment platform connecting companies with developers through a skills showcase system",
-        "Built the entire backend from scratch, replacing an outdated and broken previous version",
-        "Developer skill cards with profile details and competencies for company review",
-        "Company registration and messaging system for contacting administrators about developer availability",
-        "CRUD operations, user authentication, email notifications with Nodemailer, and security hardening"
+        "Backend-focused full-stack team project for a developer skills showcase and recruitment-support application",
+        "Worked on backend architecture, database structure, and REST API functionality",
+        "Implemented CRUD operations, authentication-related flows, email notifications, and maintainability improvements",
+        "Built with JavaScript, TypeScript, Node.js, Express, React, MongoDB, Vite, and Docker",
+        "Professional/team project proof for full-stack JavaScript and agile collaboration"
       ],
       "links": []
     },
@@ -308,11 +276,11 @@
         "GitHub"
       ],
       "additionalInfo": [
-        "Automates job searches on Duunitori and exports CSV reports",
-        "Filter by keyword, area, and job type via CLI",
-        "Date-stamped CSV report generation organized by search terms",
-        "Requests and BeautifulSoup web data extraction",
-        "User agent rotation for security and reliability"
+        "Personal Python CLI helper for job-search tracking and CSV report generation",
+        "Filters by keyword, area, and job type for personal workflow use",
+        "Date-stamped CSV reports organized by search terms",
+        "Requests and BeautifulSoup based public-page data extraction where allowed",
+        "Needs README safety pass before being used as portfolio proof"
       ],
       "links": [
         {
@@ -331,13 +299,11 @@
         "GitHub"
       ],
       "additionalInfo": [
-        "Command line interface for real time weather data",
-        "Current conditions and 3-day forecast with UV index",
-        "Uses OpenWeatherMap API for accurate data",
-        "Solar position calculations via Pysolar for UV index",
-        "Input validation and error handling",
-        "Automatic timezone detection for local times",
-        "Secure API key management with python-dotenv"
+        "Python CLI for current weather conditions and short-term forecast lookup",
+        "Uses OpenWeatherMap API with environment-based API key configuration",
+        "Shows current conditions, 3-day forecast, UV index, and local times",
+        "Input validation, error handling, and timezone-aware display logic",
+        "Supporting Python API-integration and CLI proof"
       ],
       "links": [
         {
@@ -359,8 +325,8 @@
         "GitHub"
       ],
       "additionalInfo": [
-        "Vanilla JS dice roller for roleplaying games",
-        "Designed to be responsive and accessible"
+        "Vanilla JavaScript dice roller for roleplaying games",
+        "Responsive layout with accessibility basics"
       ],
       "links": [
         {
@@ -386,8 +352,8 @@
         "GitHub"
       ],
       "additionalInfo": [
-        "Vanilla JS app for visualizing global population data",
-        "Designed to be responsive and accessible"
+        "Vanilla JavaScript app for visualizing global population data",
+        "Responsive layout with accessibility basics"
       ],
       "links": [
         {
@@ -413,8 +379,8 @@
         "GitHub"
       ],
       "additionalInfo": [
-        "Vanilla JS Rock-Paper-Scissors-Lizard-Spock game",
-        "Designed to be responsive and accessible"
+        "Vanilla JavaScript Rock-Paper-Scissors-Lizard-Spock game",
+        "Responsive layout with accessibility basics"
       ],
       "links": [
         {
@@ -439,8 +405,8 @@
         "GitHub"
       ],
       "additionalInfo": [
-        "Vanilla JS app that features a clock, timer, and stopwatch",
-        "Designed to be responsive and accessible"
+        "Vanilla JavaScript app with clock, timer, and stopwatch features",
+        "Responsive layout with accessibility basics"
       ],
       "links": [
         {
@@ -456,7 +422,7 @@
   ],
   "technologies": [
     {
-      "category": "Programming Languages",
+      "category": "Core Web Stack",
       "items": [
         {
           "title": "JavaScript",
@@ -467,47 +433,17 @@
           "url": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/typescript/typescript-original.svg"
         },
         {
-          "title": "Python",
-          "url": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original-wordmark.svg"
-        },
-        {
-          "title": "Java",
-          "url": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/java/java-original-wordmark.svg"
-        },
-        {
-          "title": "PHP",
-          "url": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/php/php-original.svg"
-        }
-      ]
-    },
-    {
-      "category": "Frontend Frameworks & Libraries",
-      "items": [
-        {
-          "title": "React",
-          "url": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original-wordmark.svg"
-        },
-        {
-          "title": "Redux",
-          "url": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/redux/redux-original.svg"
-        },
-        {
           "title": "Vue.js",
           "url": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vuejs/vuejs-original-wordmark.svg"
         },
         {
-          "title": "Ionic",
-          "url": "/assets/logos/ionic-logo.svg"
+          "title": "Nuxt",
+          "url": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nuxt/nuxt-original-wordmark.svg"
         },
         {
-          "title": "Pinia",
-          "url": "/assets/logos/pinia-for-vue-logo.svg"
-        }
-      ]
-    },
-    {
-      "category": "Backend Frameworks",
-      "items": [
+          "title": "React",
+          "url": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original-wordmark.svg"
+        },
         {
           "title": "Node.js",
           "url": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nodejs/nodejs-original-wordmark.svg"
@@ -517,48 +453,6 @@
           "url": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/express/express-original-wordmark.svg"
         },
         {
-          "title": "Django",
-          "url": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/django/django-plain-wordmark.svg"
-        },
-        {
-          "title": "Java Spring Boot",
-          "url": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/spring/spring-original-wordmark.svg"
-        },
-        {
-          "title": "REST API",
-          "url": "/assets/logos/rest-api-logo.svg"
-        }
-      ]
-    },
-    {
-      "category": "Databases",
-      "items": [
-        {
-          "title": "MongoDB",
-          "url": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mongodb/mongodb-original-wordmark.svg"
-        },
-        {
-          "title": "Firebase",
-          "url": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/firebase/firebase-plain-wordmark.svg"
-        },
-        {
-          "title": "SQLite",
-          "url": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/sqlite/sqlite-original-wordmark.svg"
-        },
-        {
-          "title": "MySQL",
-          "url": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mysql/mysql-original-wordmark.svg"
-        },
-        {
-          "title": "PostgreSQL",
-          "url": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postgresql/postgresql-original-wordmark.svg"
-        }
-      ]
-    },
-    {
-      "category": "Styling & Design",
-      "items": [
-        {
           "title": "HTML5",
           "url": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original-wordmark.svg"
         },
@@ -567,33 +461,78 @@
           "url": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-original-wordmark.svg"
         },
         {
+          "title": "Tailwind CSS",
+          "url": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tailwindcss/tailwindcss-original.svg"
+        },
+        {
+          "title": "Pinia",
+          "url": "/assets/logos/pinia-for-vue-logo.svg"
+        },
+        {
           "title": "Sass",
           "url": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/sass/sass-original.svg"
         },
         {
-        "title": "Tailwind CSS",
-        "url": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tailwindcss/tailwindcss-original.svg"
-        },
-        {
           "title": "Bootstrap",
           "url": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/bootstrap/bootstrap-original-wordmark.svg"
-        },
-        {
-          "title": "Figma",
-          "url": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/figma/figma-original.svg"
         }
       ]
     },
     {
-      "category": "Testing",
+      "category": "Python, Backend & Data",
+      "items": [
+        {
+          "title": "Python",
+          "url": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original-wordmark.svg"
+        },
+        {
+          "title": "Django",
+          "url": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/django/django-plain-wordmark.svg"
+        },
+        {
+          "title": "FastAPI",
+          "url": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/fastapi/fastapi-original-wordmark.svg"
+        },
+        {
+          "title": "REST API",
+          "url": "/assets/logos/rest-api-logo.svg"
+        },
+        {
+          "title": "SQLite",
+          "url": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/sqlite/sqlite-original-wordmark.svg"
+        },
+        {
+          "title": "PostgreSQL",
+          "url": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postgresql/postgresql-original-wordmark.svg"
+        },
+        {
+          "title": "MongoDB",
+          "url": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mongodb/mongodb-original-wordmark.svg"
+        },
+        {
+          "title": "MySQL",
+          "url": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mysql/mysql-original-wordmark.svg"
+        },
+        {
+          "title": "Java",
+          "url": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/java/java-original-wordmark.svg"
+        },
+        {
+          "title": "Java Spring Boot",
+          "url": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/spring/spring-original-wordmark.svg"
+        },
+        {
+          "title": "PHP",
+          "url": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/php/php-original.svg"
+        }
+      ]
+    },
+    {
+      "category": "Quality & Delivery",
       "items": [
         {
           "title": "Vitest",
           "url": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vitest/vitest-original.svg"
-        },
-        {
-          "title": "Jest",
-          "url": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/jest/jest-plain.svg"
         },
         {
           "title": "Cypress",
@@ -604,35 +543,9 @@
           "url": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/playwright/playwright-original.svg"
         },
         {
-          "title": "SonarQube",
-          "url": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/sonarqube/sonarqube-original-wordmark.svg"
-        }
-      ]
-    },
-    {
-      "category": "Build & Development Tools",
-      "items": [
-        {
-          "title": "Vite",
-          "url": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vitejs/vitejs-original.svg"
-        },
-        {
-          "title": "Webpack",
-          "url": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/webpack/webpack-original-wordmark.svg"
-        },
-        {
-          "title": "Bun",
-          "url": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/bun/bun-original.svg"
-        },
-        {
           "title": "Biome",
           "url": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/biome/biome-original-wordmark.svg"
-        }
-      ]
-    },
-    {
-      "category": "DevOps, CI/CD & Cloud",
-      "items": [
+        },
         {
           "title": "Git",
           "url": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/git/git-original-wordmark.svg"
@@ -642,12 +555,20 @@
           "url": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/github/github-original-wordmark.svg"
         },
         {
-          "title": "Bitbucket",
-          "url": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/bitbucket/bitbucket-original-wordmark.svg"
-        },
-        {
           "title": "GitHub Actions",
           "url": "/assets/logos/github-actions-logo.svg"
+        },
+        {
+          "title": "Vite",
+          "url": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vitejs/vitejs-original.svg"
+        },
+        {
+          "title": "Bun",
+          "url": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/bun/bun-original.svg"
+        },
+        {
+          "title": "Webpack",
+          "url": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/webpack/webpack-original-wordmark.svg"
         },
         {
           "title": "Docker",
