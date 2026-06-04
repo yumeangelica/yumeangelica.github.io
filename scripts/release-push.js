@@ -122,6 +122,14 @@ async function main() {
 
   const remoteUrl = (await $`git remote get-url origin`.text()).trim()
   const compareUrl = getCompareUrl(remoteUrl, branch)
+  const prDescriptionPath = '.pr-description.md'
+  let prDescription = null
+
+  try {
+    prDescription = await $`bun run scripts/pr-description.js --validated --write ${prDescriptionPath}`.text()
+  } catch {
+    console.error('\nCould not generate the PR description, but the branch was pushed successfully.')
+  }
 
   console.log(`\nPushed ${branch}.`)
 
@@ -129,6 +137,11 @@ async function main() {
     console.log(`Open PR: ${compareUrl}`)
   } else {
     console.log('Open a PR from this branch on GitHub.')
+  }
+
+  if (prDescription) {
+    console.log(`\nPR description saved to ${prDescriptionPath}:`)
+    console.log(prDescription)
   }
 }
 
