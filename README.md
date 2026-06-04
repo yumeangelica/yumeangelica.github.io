@@ -119,7 +119,23 @@ bun run build
 
 ## Release flow
 
-Release push scripts run lint, tests, and a production build locally before pushing a branch. After a pull request is merged into `main`, GitHub Actions builds the site and deploys the `dist` output to the `gh-pages` branch.
+Run release push scripts from a feature or release branch after committing your content or code changes. The branch must not be `main`, and the working tree must be clean.
+
+```bash
+bun run patch-push
+```
+
+`patch-push`, `minor-push`, and `major-push` all use `scripts/release-push.js` with the matching semantic-version bump. The script:
+
+- updates `package.json` version
+- runs `bun run lint`, `bun run test`, and `bun run build`
+- restores the original version and stops if a local quality gate fails
+- commits the version bump with `Patch update`, `Minor update`, or `Major update`
+- pushes the current branch to `origin`
+- writes a ready-to-copy PR body to `.pr-description.md`
+- prints the GitHub compare URL for opening a pull request
+
+After the pull request is merged into `main`, `.github/workflows/deploy.yml` installs dependencies with Bun, builds the site, and runs `scripts/deploy-gh-pages.js`. The deploy helper publishes the built `dist` output to the `gh-pages` branch and creates a `v<version>` tag when that tag does not already exist.
 
 ## License
 
