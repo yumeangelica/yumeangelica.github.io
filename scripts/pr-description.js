@@ -1,7 +1,7 @@
 #!/usr/bin/env bun
 import { $ } from 'bun'
 
-const defaultOutputPath = null
+const defaultOutputPath = '.pr-description.md'
 const defaultBaseRef = 'origin/main'
 const validationCommands = ['bun run lint', 'bun run test', 'bun run build']
 
