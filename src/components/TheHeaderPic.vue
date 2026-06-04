@@ -13,7 +13,7 @@ export default {
   background-image: url(/assets/profile/sakurabanner.webp);
   background-position: center;
   background-size: cover;
-  padding: 25px 20px 5px 20px;
+  padding: 25px 20px 5px;
   text-align: center;
   height: 100px;
   opacity: 0.7;

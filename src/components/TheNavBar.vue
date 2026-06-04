@@ -74,7 +74,7 @@ export default {
 <style scoped>
 /* For accessibility (keyboard users), skip to main content link */
 .visually-hidden-focusable {
-  color: var(--color-primary) !important;
+  color: var(--color-primary);
   border: none;
   margin-left: 10px;
 }
@@ -104,12 +104,12 @@ nav {
 
 /* Navbar link styling */
 .nav-link {
-  color: var(--color-primary) !important;
+  color: var(--color-primary);
   transition: color 0.3s ease-in-out;
 }
 
 .nav-link.router-link-active {
-  color: var(--color-accent) !important;
+  color: var(--color-accent);
   font-weight: 600;
 }
 
@@ -202,12 +202,22 @@ nav {
 
 /* Mobile styles for small screens (max-width: 425px) */
 @media (max-width: 425px) {
+  .navbar-light .navbar-toggler {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 44px;
+    min-height: 44px;
+    touch-action: manipulation;
+  }
+
   .navbar-collapse {
     position: absolute;
-    top: 125%;
-    left: 80%;
-    transform: translateX(-70%);
-    max-width: 85%;
+    top: calc(100% + 12px);
+    right: 10px;
+    left: auto;
+    transform: none;
+    max-width: calc(100vw - 20px);
     background-color: var(--color-nav-bg);
     border-radius: 15px;
     box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);

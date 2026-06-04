@@ -7,9 +7,9 @@ html {
 }
 
 body {
-  background-color: var(--color-background) !important;
+  background-color: var(--color-background);
   min-height: 100vh;
-  line-height: 1.9 !important;
+  line-height: 1.9;
   font-family: 'Comfortaa', sans-serif;
   font-weight: 400;
   font-size: 1rem;
@@ -25,7 +25,7 @@ body {
 
 /* Headers */
 h1, h2, h3, h4, h5 {
-  color: var(--color-heading) !important;
+  color: var(--color-heading);
   margin-bottom: 1.5rem;
   font-weight: 700;
 }
@@ -41,12 +41,12 @@ b {
 
 h1 {
   text-align: center;
-  padding: 10px 0px 25px 0px;
+  padding: 10px 0 25px;
 }
 
 h2 {
   text-align: left;
-  padding: 10px 0px 15px 0px;
+  padding: 10px 0 15px;
 }
 
 /* Section spacing */
@@ -56,11 +56,11 @@ section {
 
 h3 {
   font-size: 1.5rem;
-  padding: 10px 0px 10px 0px;
+  padding: 10px 0;
 }
 
 h4, h5 {
-  padding: 10px 0px 10px 0px;
+  padding: 10px 0;
 }
 
 /* Images */
@@ -100,12 +100,12 @@ li {
 @media (max-width: 568px) {
   h1 {
     font-size: 1.6rem !important;
-    padding: 10px 0px 15px 0px;
+    padding: 10px 0 15px;
   }
 
   h2 {
     font-size: 1.4rem !important;
-    padding: 15px 0px 10px 0px;
+    padding: 15px 0 10px;
   }
 
   h3 {
