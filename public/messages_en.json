@@ -36,7 +36,39 @@
   },
   "home": {
     "title": "Where Code Meets Creativity",
-    "introHtml": "I'm a <span class=\"text-highlight\">full-stack developer</span> with an eye for design and a mind for security. My background in Business Administration and digital marketing means I don't just build software — I think about <em>who</em> it's for and <em>why</em> it matters. Since 2020, I've been building accessible web applications in agile teams, bridging technology with <span class=\"text-highlight\">experiences that actually feel good to use</span>. I hold a degree in Information and Communications Technology and I'm always looking for the next challenge.",
+    "introSegments": [
+      {
+        "text": "I'm a "
+      },
+      {
+        "type": "highlight",
+        "text": "full-stack developer"
+      },
+      {
+        "text": " with an eye for design and a mind for security. My background in Business Administration and digital marketing means I don't just build software — I think about "
+      },
+      {
+        "type": "emphasis",
+        "text": "who"
+      },
+      {
+        "text": " it's for and "
+      },
+      {
+        "type": "emphasis",
+        "text": "why"
+      },
+      {
+        "text": " it matters. Since 2020, I've been building accessible web applications in agile teams, bridging technology with "
+      },
+      {
+        "type": "highlight",
+        "text": "experiences that actually feel good to use"
+      },
+      {
+        "text": ". I hold a degree in Information and Communications Technology and I'm always looking for the next challenge."
+      }
+    ],
     "techStackTitle": "Favorite Tech Stack & Tools",
     "profilePicAlt": "Angelica's Profile Picture",
     "journeyTitle": "My Developer Journey",
@@ -64,7 +96,18 @@
     "yumeAriaLabel": "yume, meaning \"dream\"",
     "interestingFactText": "Outside of coding, I produce music and explore Japanese culture — two worlds that constantly feed my creativity and shape how I approach problem-solving in tech. There's something about finding harmony in sound that translates surprisingly well to finding elegance in code.",
     "drivesTitle": "What Drives Me",
-    "drivesTextHtml": "I love what I do, and I think it shows in my work. My creativity extends beyond the editor — my hobbies push me to think differently, experiment more, and approach problems from unexpected angles. I'm currently open to new opportunities, so if you're looking for a developer who brings both <span class=\"text-highlight\">technical depth and a creative spark</span>, I'd love to hear from you.",
+    "drivesSegments": [
+      {
+        "text": "I love what I do, and I think it shows in my work. My creativity extends beyond the editor — my hobbies push me to think differently, experiment more, and approach problems from unexpected angles. I'm currently open to new opportunities, so if you're looking for a developer who brings both "
+      },
+      {
+        "type": "highlight",
+        "text": "technical depth and a creative spark"
+      },
+      {
+        "text": ", I'd love to hear from you."
+      }
+    ],
     "contactTitle": "Get in Touch",
     "contactEmail": "Drop me an email — I'd love to hear from you.",
     "contactSocial": "You can also find me on LinkedIn or GitHub below.",

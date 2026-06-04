@@ -5,9 +5,9 @@
 - build-tool: Vite
 - router: Vue Router 5
 - test-stack: Vitest with jsdom
-- package-manager: npm
-- lockfile: package-lock.json
+- package-manager: Bun
+- lockfile: bun.lock
 - static-data: public/data.json
 - static-messages: public/messages_en.json
-- commands: npm ci, npm run dev, npm run test, npm run build, npm run preview, npm run deploy
+- commands: bun install --frozen-lockfile, bun run dev, bun run lint, bun run test, bun run build, bun run preview, bun run deploy
 - relevant-skills: runtime-toolkit, vue-toolkit, code-quality
