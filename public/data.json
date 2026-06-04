@@ -108,15 +108,17 @@
         "HTML5",
         "Bootstrap",
         "GitHub",
+        "Bun",
+        "Biome",
         "Vite",
         "Vitest"
       ],
       "additionalInfo": [
-        "A personal site to showcase my Vue.js frontend and UI design skills",
-        "Focus on front-end structure, accessibility and responsiveness",
-        "JSON-based i18n system for all UI texts, enabling easy language support",
-        "Includes component testing with Vitest",
-        "Version control and automated deployment via GitHub Pages"
+        "Personal Vue.js portfolio showcasing frontend structure, accessibility, responsiveness and project presentation",
+        "Vite-powered build setup with Bun as the package manager and locked dependency workflow",
+        "JSON-based i18n system for UI texts, project data and reusable content updates",
+        "Quality gates with Biome linting, Vitest component tests and content validation tests",
+        "GitHub Actions workflow for pull request checks and automated GitHub Pages deployment"
       ],
       "links": [
         {
@@ -618,6 +620,14 @@
         {
           "title": "Webpack",
           "url": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/webpack/webpack-original-wordmark.svg"
+        },
+        {
+          "title": "Bun",
+          "url": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/bun/bun-original.svg"
+        },
+        {
+          "title": "Biome",
+          "url": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/biome/biome-original-wordmark.svg"
         }
       ]
     },
