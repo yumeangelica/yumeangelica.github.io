@@ -14,10 +14,10 @@
     "format": "biome format --write .",
     "test": "vitest run",
     "test:watch": "vitest",
-    "patch-push": "bun -e \"const fs=require('node:fs'); const p='package.json'; const pkg=JSON.parse(fs.readFileSync(p,'utf8')); const v=pkg.version.split('.').map(Number); v[2]+=1; pkg.version=v.join('.'); fs.writeFileSync(p, JSON.stringify(pkg, null, 2)+'\\n')\" && git add package.json bun.lock && git commit -m 'Patch update' && git push --set-upstream origin $(git rev-parse --abbrev-ref HEAD)",
-    "minor-push": "bun -e \"const fs=require('node:fs'); const p='package.json'; const pkg=JSON.parse(fs.readFileSync(p,'utf8')); const v=pkg.version.split('.').map(Number); v[1]+=1; v[2]=0; pkg.version=v.join('.'); fs.writeFileSync(p, JSON.stringify(pkg, null, 2)+'\\n')\" && git add package.json bun.lock && git commit -m 'Minor update' && git push --set-upstream origin $(git rev-parse --abbrev-ref HEAD)",
-    "major-push": "bun -e \"const fs=require('node:fs'); const p='package.json'; const pkg=JSON.parse(fs.readFileSync(p,'utf8')); const v=pkg.version.split('.').map(Number); v[0]+=1; v[1]=0; v[2]=0; pkg.version=v.join('.'); fs.writeFileSync(p, JSON.stringify(pkg, null, 2)+'\\n')\" && git add package.json bun.lock && git commit -m 'Major update' && git push --set-upstream origin $(git rev-parse --abbrev-ref HEAD)",
-    "deploy": "bun run build && echo 'app built' && ./deploy.sh && echo 'app deployed to github pages'"
+    "patch-push": "bun run scripts/release-push.js patch",
+    "minor-push": "bun run scripts/release-push.js minor",
+    "major-push": "bun run scripts/release-push.js major",
+    "deploy": "bun run build && bun run scripts/deploy-gh-pages.js"
   },
   "dependencies": {
     "vue": "^3.5.31",
