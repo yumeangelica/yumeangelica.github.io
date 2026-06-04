@@ -16,7 +16,13 @@
     <div class="row">
       <div class="col-lg-7">
 
-        <p v-html="$t('home.introHtml')"></p>
+        <p>
+          <template v-for="(segment, index) in $tm('home.introSegments')" :key="`intro-${index}`">
+            <span v-if="segment.type === 'highlight'" class="text-highlight">{{ segment.text }}</span>
+            <em v-else-if="segment.type === 'emphasis'">{{ segment.text }}</em>
+            <template v-else>{{ segment.text }}</template>
+          </template>
+        </p>
 
         <h2 id="tech-stack">{{ $t('home.techStackTitle') }}</h2>
         <!-- Display technologies in categories -->
@@ -75,7 +81,12 @@
 
     <section class="commitment">
       <h2>{{ $t('home.drivesTitle') }}</h2>
-      <p v-html="$t('home.drivesTextHtml')"></p>
+      <p>
+        <template v-for="(segment, index) in $tm('home.drivesSegments')" :key="`drives-${index}`">
+          <span v-if="segment.type === 'highlight'" class="text-highlight">{{ segment.text }}</span>
+          <template v-else>{{ segment.text }}</template>
+        </template>
+      </p>
 
     </section>
 

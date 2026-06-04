@@ -239,7 +239,7 @@ export default {
       }
       // If techArr contains more than one tech, only allow if a project has ALL those techs
       // But if no project has all selected techs, disable
-      return projects.some(p => p.type === type && selectedTech.length > 0 && selectedTech.every(t => p.technologyTitles && p.technologyTitles.includes(t)));
+      return projects.some(p => p.type === type && selectedTech.length > 0 && selectedTech.every(t => p.technologyTitles?.includes(t)));
     },
     // Check if any project exists for the given tech and selected type
     isTechTypeComboAvailable(tech, typeArr) {
@@ -251,11 +251,11 @@ export default {
       // If no type selected, check if any project has all selected techs + this tech
       if (selectedTypes.length === 0) {
         const nextTechs = [...this.selectedTech, tech];
-        return projects.some(p => nextTechs.every(t => p.technologyTitles && p.technologyTitles.includes(t)));
+        return projects.some(p => nextTechs.every(t => p.technologyTitles?.includes(t)));
       }
       // If type selected, check if any project matches type and all selected techs + this tech
       const nextTechs = [...this.selectedTech, tech];
-      return projects.some(p => selectedTypes.includes(p.type) && nextTechs.every(t => p.technologyTitles && p.technologyTitles.includes(t)));
+      return projects.some(p => selectedTypes.includes(p.type) && nextTechs.every(t => p.technologyTitles?.includes(t)));
     },
     filterProjects(projects) {
       const sourceProjects = Array.isArray(projects) ? projects : [];

@@ -14,7 +14,6 @@ const i18nMocks = {
       'home.error': 'Failed to load data.',
       'home.techStackTitle': 'Tech Stack',
       'home.profilePicAlt': 'Profile picture',
-      'home.introHtml': 'Intro text',
       'home.journeyTitle': 'Journey',
       'home.certificationsTitle': 'Certifications',
       'home.interestingFactTitleStart': 'Interesting',
@@ -23,7 +22,6 @@ const i18nMocks = {
       'home.yumeTooltip': 'Dream',
       'home.interestingFactText': 'Fact',
       'home.drivesTitle': 'Drives',
-      'home.drivesTextHtml': 'Drive text',
       'home.contactTitle': 'Contact',
       'home.contactEmail': 'email@example.dev',
       'home.contactImageAlt': 'Contact image',
@@ -41,6 +39,12 @@ const i18nMocks = {
     }
     if (key === 'home.certifications') {
       return [{ text: 'Cert', url: 'https://example.dev/cert' }]
+    }
+    if (key === 'home.introSegments') {
+      return [{ text: 'Intro text' }]
+    }
+    if (key === 'home.drivesSegments') {
+      return [{ text: 'Drive text' }]
     }
     return []
   }

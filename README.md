@@ -12,17 +12,20 @@ Personal web development portfolio built with Vue 3 and Vite. Live site: https:/
 
 - Vue 3 + Vue Router
 - Vite
+- Bun (package manager)
 - JavaScript
 - Bootstrap 5 + CSS
 - GitHub Pages (hosting)
 
 ## Scripts
 
-- `npm run dev` - start local dev server
-- `npm run build` - production build
-- `npm run preview` - preview production build
-- `npm run test` - run tests
-- `npm run deploy` - build and deploy to GitHub Pages
+- `bun install` - install dependencies
+- `bun run dev` - start local dev server
+- `bun run lint` - run Biome lint
+- `bun run build` - production build
+- `bun run preview` - preview production build
+- `bun run test` - run tests
+- `bun run deploy` - build and deploy to GitHub Pages
 
 ## Internationalization
 
