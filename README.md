@@ -35,6 +35,10 @@ UI strings live in [public/messages_en.json](public/messages_en.json). Add a new
 
 Component tests use Vitest and Vue Test Utils. See [src/__tests__](src/__tests__).
 
+## CI and Deployment
+
+Pull requests run lint, tests, and a production build in GitHub Actions. Pushes to `main` run the same quality checks and then deploy the built `dist` output to the `gh-pages` branch.
+
 ## Contact
 
 Contact details are listed on the portfolio site.

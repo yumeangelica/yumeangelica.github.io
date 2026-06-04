@@ -6,6 +6,9 @@ on:
     branches:
       - main
 
+permissions:
+  contents: read
+
 jobs:
   quality:
     name: Lint, Test, Build
@@ -29,3 +32,54 @@ jobs:
 
       - name: Build
         run: bun run build
+
+  deploy:
+    name: Deploy GitHub Pages
+    needs: quality
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v2
+
+      - name: Install dependencies
+        run: bun install --frozen-lockfile
+
+      - name: Build
+        run: bun run build
+
+      - name: Deploy to gh-pages
+        run: |
+          set -e
+
+          BUILD_DIR="dist"
+          RELEASE_BRANCH="gh-pages"
+          VERSION="$(bun -p "require('./package.json').version")"
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          git fetch origin "$RELEASE_BRANCH"
+          git add -f "$BUILD_DIR"
+          tree="$(git write-tree --prefix="$BUILD_DIR")"
+          git reset -- "$BUILD_DIR"
+          git update-index --refresh
+
+          tag="$(git rev-parse --short HEAD)"
+          commit="$(git commit-tree -p "refs/remotes/origin/$RELEASE_BRANCH" -m "Deploy $tag as version $VERSION" "$tree")"
+
+          git update-ref "refs/heads/$RELEASE_BRANCH" "$commit"
+          git push origin "refs/heads/$RELEASE_BRANCH"
+
+          if ! git rev-parse "v$VERSION" >/dev/null 2>&1; then
+            git tag -a "v$VERSION" -m "Release tag for version $VERSION" "$commit"
+            git push origin "v$VERSION"
+          fi
