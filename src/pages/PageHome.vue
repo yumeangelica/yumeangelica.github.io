@@ -173,8 +173,6 @@ export default {
 .devicon-wrapper {
   position: relative;
   display: inline-block;
-  margin-right: 15px;
-  margin-bottom: 15px;
 }
 
 .devicon {
@@ -192,12 +190,15 @@ export default {
   bottom: 100%;
   left: 50%;
   transform: translateX(-50%);
-  background-color: var(--color-card-bg, #333);
-  color: var(--color-text, #fff);
+  background-color: var(--color-card-bg);
+  color: var(--color-text);
   padding: 4px 8px;
   border-radius: 4px;
   font-size: 0.75rem;
-  white-space: nowrap;
+  width: max-content;
+  max-width: min(220px, calc(100vw - 32px));
+  overflow-wrap: break-word;
+  white-space: normal;
   pointer-events: none;
   transition: opacity 0.15s ease;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
@@ -238,7 +239,7 @@ export default {
 .profilepic {
   width: 100%;
   max-width: 300px;
-  margin: 10px 0px 20px 35px;
+  margin: 10px 0 20px 35px;
 }
 
 @media (max-width: 991px) {
@@ -264,11 +265,18 @@ export default {
 .heartlist li {
   font-size: 1.1rem;
   position: relative;
-  padding: 1px 0px 1px 0px;
+  padding: 1px 0;
 }
 
 .introduction-highlights-paragraph {
   margin-bottom: 20px;
+}
+
+.tech-category .introduction-highlights-paragraph {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 15px;
 }
 
 .tooltip-container {
@@ -289,6 +297,8 @@ export default {
   border-radius: 6px;
   padding: 5px 10px;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  max-width: min(280px, calc(100vw - 32px));
+  overflow-wrap: break-word;
   transition: opacity 0.4s ease, visibility 0.4s ease;
 
   /* Position the tooltip */
@@ -297,7 +307,7 @@ export default {
   bottom: 0;
   left: 110%;
   transform: translateY(-50%);
-  white-space: nowrap;
+  white-space: normal;
 }
 
 .tooltip-text.visible {
@@ -331,9 +341,8 @@ export default {
     max-width: 45px;
   }
 
-  .devicon-wrapper {
-    margin-right: 10px;
-    margin-bottom: 10px;
+  .tech-category .introduction-highlights-paragraph {
+    gap: 10px;
   }
 
   .contact-icon {
@@ -363,9 +372,9 @@ export default {
     opacity: 0;
     position: absolute;
     left: auto;
-    right: -45px;
+    right: 0;
     bottom: 25px;
-    transform: translateX(0%);
+    transform: translateX(0);
   }
 
   .tooltip-container:hover .tooltip-text {

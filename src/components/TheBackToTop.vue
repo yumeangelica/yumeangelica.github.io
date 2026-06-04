@@ -60,7 +60,10 @@ export default {
   font-weight: 600;
   cursor: pointer;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-  transition: all var(--transition-duration) ease;
+  transition:
+    background-color var(--transition-duration) ease,
+    box-shadow var(--transition-duration) ease,
+    transform var(--transition-duration) ease;
   z-index: 1000;
   display: flex;
   align-items: center;
@@ -84,11 +87,7 @@ export default {
   transition: opacity 0.4s ease, transform 0.4s ease;
 }
 
-.fade-enter-from {
-  opacity: 0;
-  transform: translateY(20px) scale(0.8);
-}
-
+.fade-enter-from,
 .fade-leave-to {
   opacity: 0;
   transform: translateY(20px) scale(0.8);
@@ -110,8 +109,8 @@ export default {
   .back-to-top {
     bottom: 15px;
     right: 10px;
-    width: 40px;
-    height: 40px;
+    width: 44px;
+    height: 44px;
     font-size: 16px;
   }
 }

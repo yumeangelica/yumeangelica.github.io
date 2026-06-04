@@ -50,7 +50,6 @@ export default {
 <style>
 body {
   overflow-x: hidden;
-  /* Prevent horizontal scrolling */
 }
 
 .custom-container {
@@ -67,7 +66,7 @@ main {
 /* Tablet and small screen */
 @media (max-width: 1440px) {
   .custom-container {
-    margin: 0px 25px;
+    margin: 0 25px;
     padding: 0 4px;
   }
 }
@@ -75,7 +74,7 @@ main {
 /* Mobile */
 @media (max-width: 768px) {
   .custom-container {
-    margin: 0px 15px;
+    margin: 0 15px;
     padding: 0 4px;
   }
 }
@@ -83,7 +82,7 @@ main {
 /* Very small mobile */
 @media (max-width: 568px) {
   .custom-container {
-    margin: 0px 10px;
+    margin: 0 10px;
     padding: 0 4px;
   }
 }

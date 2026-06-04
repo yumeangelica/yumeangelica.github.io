@@ -62,8 +62,6 @@ export default {
 .small-devicon {
   max-width: 45px;
   max-height: 45px;
-  margin-right: 10px;
-  margin-bottom: 10px;
   border-radius: 5px;
 }
 
@@ -71,12 +69,13 @@ export default {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
+  gap: 10px;
   margin-bottom: 10px;
 }
 
 .additional-info {
-  margin-bottom: 0px !important;
-  padding-bottom: 0px !important;
+  margin-bottom: 0 !important;
+  padding-bottom: 0 !important;
   color: var(--color-text) !important;
 }
 
@@ -95,9 +94,11 @@ export default {
   max-width: 500px;
 }
 
-.project-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+@media (hover: hover) and (pointer: fine) {
+  .project-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  }
 }
 
 .project-image-container {
@@ -124,40 +125,49 @@ export default {
   color: var(--color-heading);
   margin-bottom: 10px;
   font-size: 1.15rem;
+  overflow-wrap: break-word;
 }
 
 .project-details p {
   color: var(--color-text);
-  font-size: 0.90em;
+  font-size: 0.9em;
   margin-bottom: 10px;
+  overflow-wrap: break-word;
 }
 
 .buttons {
   margin-top: auto;
   display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
   justify-content: flex-start;
-  padding-top: 10px;
+  padding-top: 14px;
 }
 
 .project-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 112px;
+  min-height: 44px;
+  max-width: 100%;
   color: var(--color-white);
   background-color: var(--color-button);
   text-decoration: none;
-  padding: 5px 10px;
-  border-radius: 15px;
+  padding: 10px 16px;
+  border-radius: 999px;
+  font-weight: 600;
+  line-height: 1.2;
+  text-align: center;
+  touch-action: manipulation;
   transition: background-color var(--transition-duration), color var(--transition-duration), box-shadow var(--transition-duration);
-  margin-right: 10px;
-  font-size: 0.9rem;
+  font-size: 0.95rem;
 }
 
 .project-button:hover {
   background-color: var(--color-button-hover);
   color: var(--color-white);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
-
-.project-button:last-child {
-  margin-right: 0;
 }
 
 /* Add focus styles for better keyboard accessibility */
@@ -167,10 +177,10 @@ export default {
   background-color: var(--color-button-hover);
 }
 
-/* Make sure card image has good focus indication when navigated to with keyboard */
-.project-image-container img:focus-visible {
-  outline: 2px solid var(--color-primary);
-  outline-offset: 2px;
+@media (min-width: 1280px) {
+  .project-card {
+    max-width: 540px;
+  }
 }
 
 @media (max-width: 568px) {
@@ -188,6 +198,10 @@ export default {
     max-height: 30px;
   }
 
+  .used-technologies {
+    gap: 8px;
+  }
+
   .project-card {
     width: 100%;
     margin: 10px 0;
@@ -195,13 +209,14 @@ export default {
   }
 
   .buttons {
-    flex-wrap: wrap;
+    gap: 8px;
+    padding-top: 12px;
   }
 
   .project-button {
-    padding: 5px;
-    font-size: 0.85em !important;
-    margin-right: 5px;
+    min-width: 104px;
+    padding: 9px 14px;
+    font-size: 0.9rem;
   }
 }
 </style>

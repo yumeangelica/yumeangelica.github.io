@@ -412,22 +412,18 @@ export default {
   padding: 4px 10px;
   min-width: 0;
   cursor: pointer;
-  transition: all var(--transition-duration) ease;
+  touch-action: manipulation;
+  transition:
+    background-color var(--transition-duration) ease,
+    border-color var(--transition-duration) ease,
+    box-shadow var(--transition-duration) ease,
+    color var(--transition-duration) ease,
+    filter var(--transition-duration) ease,
+    opacity var(--transition-duration) ease;
   background-color: var(--color-card-bg);
   color: var(--color-text);
   border: 1.5px solid var(--color-primary-light);
   opacity: 0.95;
-}
-
-.filter-btn.disabled,
-.filter-btn:disabled {
-  opacity: 0.35 !important;
-  color: var(--color-text) !important;
-  background-color: var(--color-card-bg) !important;
-  border-color: var(--color-primary-light) !important;
-  cursor: not-allowed !important;
-  box-shadow: none !important;
-  filter: grayscale(1) brightness(1.2);
 }
 
 .filter-btn.active {
@@ -444,8 +440,19 @@ export default {
   outline-offset: 2px;
 }
 
+.filter-btn.disabled,
+.filter-btn:disabled {
+  opacity: 0.35 !important;
+  color: var(--color-text) !important;
+  background-color: var(--color-card-bg) !important;
+  border-color: var(--color-primary-light) !important;
+  cursor: not-allowed !important;
+  box-shadow: none !important;
+  filter: grayscale(1) brightness(1.2);
+}
+
 .tech-filter-btn {
-  gap: 0;
+  gap: 2px;
   min-height: 28px;
   line-height: 1.1;
   padding: 4px 7px;
@@ -454,52 +461,12 @@ export default {
 .tech-filter-btn span {
   display: inline;
   font-size: 0.85rem;
-  margin-left: 2px;
 }
 
 .tech-icon {
   width: 22px;
   height: 22px;
   border-radius: 3px;
-  transition: box-shadow 0.2s;
-}
-
-@media (max-width: 768px) {
-  .filters-row {
-    gap: 4px;
-    margin-bottom: 12px;
-  }
-
-  .filter-row-inner {
-    gap: 4px;
-  }
-
-  .tech-icon {
-    width: 18px;
-    height: 18px;
-  }
-}
-
-@media (max-width: 568px) {
-  .filters-row {
-    gap: 2px;
-    margin-bottom: 8px;
-  }
-
-  .filter-row-inner {
-    gap: 2px;
-  }
-
-  .filter-btn {
-    padding: 3px 6px;
-    font-size: 0.75rem;
-    border-radius: 12px;
-  }
-
-  .tech-icon {
-    width: 14px;
-    height: 14px;
-  }
 }
 
 /* Project containers */
@@ -520,7 +487,7 @@ export default {
   .projects-container {
     flex-direction: column;
     align-items: center;
-    padding: 0px;
+    padding: 0;
   }
 
   .filter-container {
@@ -549,22 +516,22 @@ export default {
 
   .filter-btn {
     min-width: 44px;
-    min-height: 32px;
+    min-height: 36px;
     font-size: 0.92rem;
     border-radius: 14px;
     box-shadow: none;
-    background: var(--color-white, #fff);
-    border: 1.5px solid var(--color-primary-light, #e0e0e0);
+    background: var(--color-white);
+    border: 1.5px solid var(--color-primary-light);
   }
 
   .filter-btn.active {
-    background: var(--color-primary, #6c63ff);
-    color: var(--color-white, #fff);
-    border-color: var(--color-primary, #6c63ff);
+    background: var(--color-primary);
+    color: var(--color-white);
+    border-color: var(--color-primary);
   }
 
   .filter-btn:focus-visible {
-    outline: 2px solid var(--color-primary, #6c63ff);
+    outline: 2px solid var(--color-primary);
     outline-offset: 2px;
   }
 
@@ -573,6 +540,12 @@ export default {
     height: 20px;
   }
 
+}
+
+@media (max-width: 568px) {
+  .filter-btn {
+    padding: 3px 6px;
+  }
 }
 
 /* Very small mobile specific adjustments */
@@ -620,7 +593,10 @@ export default {
   justify-content: center;
   font-size: 1.2rem;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-  transition: all var(--transition-duration) ease;
+  transition:
+    background-color var(--transition-duration) ease,
+    box-shadow var(--transition-duration) ease,
+    transform var(--transition-duration) ease;
 }
 
 .floating-nav-toggle:hover {
@@ -666,7 +642,9 @@ export default {
   cursor: pointer;
   font-size: 0.9rem;
   text-align: left;
-  transition: all var(--transition-duration) ease;
+  transition:
+    background-color var(--transition-duration) ease,
+    color var(--transition-duration) ease;
   white-space: nowrap;
 }
 
@@ -707,18 +685,18 @@ export default {
 
 @media (max-width: 568px) {
   .floating-nav {
-    bottom: 70px;
+    bottom: 74px;
     right: 10px;
   }
 
   .floating-nav-toggle {
-    width: 40px;
-    height: 40px;
+    width: 44px;
+    height: 44px;
     font-size: 1rem;
   }
 
   .floating-nav-menu {
-    bottom: 50px;
+    bottom: 54px;
     min-width: 90px;
     padding: 6px;
   }
@@ -742,7 +720,7 @@ export default {
 
 .slide-up-enter-active,
 .slide-up-leave-active {
-  transition: all 0.2s ease;
+  transition: opacity 0.2s ease, transform 0.2s ease;
 }
 
 .slide-up-enter-from,
