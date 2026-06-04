@@ -20,8 +20,6 @@
     "deploy": "bun run build && echo 'app built' && ./deploy.sh && echo 'app deployed to github pages'"
   },
   "dependencies": {
-    "@popperjs/core": "^2.11.8",
-    "bootstrap": "^5.3.8",
     "vue": "^3.5.31",
     "vue-router": "^5.0.4"
   },
@@ -33,10 +31,5 @@
     "terser": "^5.46.1",
     "vite": "^8.0.3",
     "vitest": "^4.1.2"
-  },
-  "overrides": {
-    "minimatch": ">=10.2.3",
-    "brace-expansion": ">=5.0.5",
-    "yaml": ">=2.8.3"
   }
 }
