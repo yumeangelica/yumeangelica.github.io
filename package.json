@@ -1,6 +1,6 @@
 {
   "name": "yumeangelica.github.io",
-  "version": "2.1.1",
+  "version": "2.1.2",
   "private": true,
   "type": "module",
   "packageManager": "bun@1.3.14",
@@ -14,6 +14,7 @@
     "format": "biome format --write .",
     "test": "vitest run",
     "test:watch": "vitest",
+    "pr-description": "bun run scripts/pr-description.js",
     "patch-push": "bun run scripts/release-push.js patch",
     "minor-push": "bun run scripts/release-push.js minor",
     "major-push": "bun run scripts/release-push.js major",

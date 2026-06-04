@@ -28,7 +28,9 @@ Personal web development portfolio built with Vue 3 and Vite. Live site: https:/
 - `bun run build` - production build
 - `bun run preview` - preview production build
 - `bun run test` - run tests
+- `bun run pr-description` - generate a pull request description from the current branch
 - `bun run deploy` - build and deploy to GitHub Pages
+- `bun run patch-push` / `minor-push` / `major-push` - run local checks, bump version, push the current branch, and print a pull request link and description
 
 ## Internationalization
 
@@ -38,9 +40,9 @@ UI strings live in [public/messages_en.json](public/messages_en.json). Add a new
 
 Component tests use Vitest and Vue Test Utils. See [src/__tests__](src/__tests__).
 
-## CI and Deployment
+## Release Flow
 
-Pull requests run lint, tests, and a production build in GitHub Actions. Pushes to `main` run the same quality checks and then deploy the built `dist` output to the `gh-pages` branch.
+Release push scripts run lint, tests, and a production build locally before pushing a branch. After a pull request is merged into `main`, GitHub Actions builds the site and deploys the `dist` output to the `gh-pages` branch.
 
 ## Contact
 
