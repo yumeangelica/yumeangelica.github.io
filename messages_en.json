@@ -4,12 +4,12 @@
   },
   "seo": {
     "home": {
-      "title": "Angelica's portfolio | Fullstack web development",
-      "description": "Angelica's accessible web development portfolio built with Vue.js, React, and Python"
+      "title": "Angelica's portfolio | Software development",
+      "description": "Software developer portfolio featuring accessible web applications, Vue, React, TypeScript, Python automation, testing, and security-aware development"
     },
     "projects": {
-      "title": "Angelica's projects | Selected work",
-      "description": "Selected frontend, backend, fullstack, and CLI projects by Angelica"
+      "title": "Angelica's projects | Selected software development work",
+      "description": "Selected web, full-stack, Python automation, and CLI projects by Angelica"
     }
   },
   "nav": {
@@ -35,53 +35,46 @@
     "title": "Back to top"
   },
   "home": {
-    "title": "Where Code Meets Creativity",
+    "title": "Software Development Portfolio",
     "introSegments": [
       {
         "text": "I'm a "
       },
       {
         "type": "highlight",
-        "text": "full-stack developer"
+        "text": "software developer"
       },
       {
-        "text": " with an eye for design and a mind for security. My background in Business Administration and digital marketing means I don't just build software — I think about "
+        "text": " building accessible, well-tested web applications with React, TypeScript, Vue, JavaScript, and a growing Python automation track. I care about clear interfaces, maintainable code, practical testing, and security-aware development. My background in business administration and digital marketing helps me think about "
       },
       {
         "type": "emphasis",
         "text": "who"
       },
       {
-        "text": " it's for and "
+        "text": " the software is for and "
       },
       {
         "type": "emphasis",
         "text": "why"
       },
       {
-        "text": " it matters. Since 2020, I've been building accessible web applications in agile teams, bridging technology with "
-      },
-      {
-        "type": "highlight",
-        "text": "experiences that actually feel good to use"
-      },
-      {
-        "text": ". I hold a degree in Information and Communications Technology and I'm always looking for the next challenge."
+        "text": " it matters."
       }
     ],
-    "techStackTitle": "Favorite Tech Stack & Tools",
+    "techStackTitle": "Core Tech Stack & Tools",
     "profilePicAlt": "Angelica's Profile Picture",
-    "journeyTitle": "My Developer Journey",
+    "journeyTitle": "Developer Journey",
     "journeyItems": [
-      "Currently a Software Developer at OP Financial Group, building accessible frontend solutions with React, TypeScript, SCSS, and design systems in an international, regulated environment.",
-      "Also contributing to backend (Java Spring Boot) and cloud work at OP.",
-      "Previously a full-stack developer at the City of Helsinki (Virittämö), working primarily on backend with the MERN stack.",
-      "Bachelor's degree in Business Administration from the University of Vaasa, graduated with excellence.",
-      "Over 180 ECTS credits in Information Technology across Metropolia University of Applied Sciences and other higher education institutions.",
-      "Completed the Full Stack Open course series at the University of Helsinki with excellent grades and participated in the DEFA project.",
+      "Currently working at OP Pohjola as a Software Developer Trainee, building accessible frontend features with React, TypeScript, SCSS, and design-system components in an international, regulated agile environment.",
+      "Also supporting REST API and Java/Spring Boot-related tasks, including maintenance and migration work where needed.",
+      "Previously worked on a backend-focused full-stack team project for City of Helsinki / Virittämö, using JavaScript, TypeScript, Node.js, Express, React, and MongoDB.",
+      "Bachelor's degree in Business Administration from the University of Vaasa, major in Marketing and minor in Communications.",
+      "Over 180 ECTS credits in Information Technology across Finnish higher-education institutions, including Metropolia University of Applied Sciences and the University of Helsinki.",
+      "Completed the Full Stack Open course series at the University of Helsinki and participated in the DEFA project.",
       "Additional studies in DevOps with Docker, Cyber Security, and Python Programming at the University of Helsinki.",
       "ICT degree from Business College Helsinki, graduating in April 2024 with a GPA of 4.95/5.",
-      "Years of personal projects fueled by genuine curiosity — because the best learning happens when you're having fun."
+      "Personal projects in web development, Python tooling, automation, and accessible user interfaces."
     ],
     "certificationsTitle": "Professional Certifications",
     "certifications": [
@@ -94,31 +87,24 @@
     "yumeWord": "yume",
     "yumeTooltip": "\"dream\"",
     "yumeAriaLabel": "yume, meaning \"dream\"",
-    "interestingFactText": "Outside of coding, I produce music and explore Japanese culture — two worlds that constantly feed my creativity and shape how I approach problem-solving in tech. There's something about finding harmony in sound that translates surprisingly well to finding elegance in code.",
+    "interestingFactText": "Outside of coding, I produce music and explore Japanese culture. Those creative interests influence how I approach problem-solving, structure, and small details in user experiences.",
     "drivesTitle": "What Drives Me",
     "drivesSegments": [
       {
-        "text": "I love what I do, and I think it shows in my work. My creativity extends beyond the editor — my hobbies push me to think differently, experiment more, and approach problems from unexpected angles. I'm currently open to new opportunities, so if you're looking for a developer who brings both "
-      },
-      {
-        "type": "highlight",
-        "text": "technical depth and a creative spark"
-      },
-      {
-        "text": ", I'd love to hear from you."
+        "text": "I'm currently open to new software developer opportunities where I can contribute to accessible, maintainable web applications and keep growing across modern frontend, full-stack JavaScript, and Python automation."
       }
     ],
     "contactTitle": "Get in Touch",
-    "contactEmail": "Drop me an email — I'd love to hear from you.",
-    "contactSocial": "You can also find me on LinkedIn or GitHub below.",
-    "contactImageAlt": "Contact information — reach out via LinkedIn",
+    "contactEmail": "Email me if you would like to discuss a software development role or a relevant project.",
+    "contactSocial": "You can also find me on LinkedIn and GitHub.",
+    "contactImageAlt": "Contact information, reach out via LinkedIn",
     "linkedinAriaLabel": "Visit my LinkedIn profile",
     "githubAriaLabel": "Visit my GitHub profile",
     "linkedinAlt": "LinkedIn logo and link",
     "githubAlt": "GitHub logo and link"
   },
   "projects": {
-    "title": "Built with Love & Code",
+    "title": "Selected Projects",
     "filterAll": "All",
     "filterFE": "FE",
     "filterBE": "BE",
@@ -134,20 +120,20 @@
     "filterTypeGroupLabel": "Filter by project type",
     "filterTechGroupLabel": "Filter by technology",
     "loading": "Loading projects...",
-    "error": "Oops — something went wrong loading the projects. Please try again later.",
+    "error": "Something went wrong loading the projects. Please try again later.",
     "mainProjectsTitle": "Main Projects",
-    "fullstackProjectsTitle": "Fullstack Projects",
+    "fullstackProjectsTitle": "Full-stack Projects",
     "frontendProjectsTitle": "Frontend Projects",
     "backendProjectsTitle": "Backend Projects",
     "cliProjectsTitle": "CLI Projects",
     "floatingNavAria": "Quick navigation menu",
     "floatingNavToggleAria": "Toggle quick navigation menu",
-    "floatingBackToTop": "⬆ Back to Top",
-    "floatingMain": "⭐ Main Projects",
-    "floatingFrontend": "🎨 Frontend",
-    "floatingBackend": "🛠 Backend",
-    "floatingFullstack": "🌐 Fullstack",
-    "floatingCli": "⚡ CLI",
+    "floatingBackToTop": "Back to Top",
+    "floatingMain": "Main Projects",
+    "floatingFrontend": "Frontend",
+    "floatingBackend": "Backend",
+    "floatingFullstack": "Full-stack",
+    "floatingCli": "CLI",
     "filterResultsCount": "{count} projects found"
   },
   "projectCard": {
