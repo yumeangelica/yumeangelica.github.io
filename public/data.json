@@ -19,7 +19,7 @@
         "Configurable store sources and scheduling for personal/community use",
         "Docker and Raspberry Pi deployment notes for a low-cost always-on setup",
         "Typed Python structures with TypedDict and type hints",
-        "Responsible-use focus: allowed public sources, conservative scheduling, and no authentication or access-control bypass"
+        "Responsible-use focus: allowed public sources, conservative scheduling, and no restricted, authenticated, or access-controlled sources"
       ],
       "links": [
         {
