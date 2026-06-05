@@ -1,99 +1,6 @@
 {
   "projects": [
     {
-      "type": "backend",
-      "isMain": true,
-      "title": "Jirai Sweeties Discord bot",
-      "imageURL": "/assets/projects/jirai-sweeties-discord-bot-project.webp",
-      "technologyTitles": [
-        "Python",
-        "SQLite",
-        "GitHub",
-        "Docker",
-        "Raspberry Pi"
-      ],
-      "additionalInfo": [
-        "Python Discord bot for scheduled store-data monitoring and product-change notifications",
-        "Async data extraction workflows with aiohttp and lxml",
-        "SQLite persistence for product history and price-change tracking",
-        "Configurable store sources and scheduling for personal/community use",
-        "Docker and Raspberry Pi deployment notes for a low-cost always-on setup",
-        "Typed Python structures with TypedDict and type hints",
-        "Responsible-use focus: allowed public sources, conservative scheduling, and no restricted, authenticated, or access-controlled sources"
-      ],
-      "links": [
-        {
-          "text": "Source Code",
-          "url": "https://github.com/yumeangelica/jirai_sweeties"
-        }
-      ]
-    },
-    {
-      "type": "fullstack",
-      "isMain": true,
-      "title": "NeedyPet (legacy v1)",
-      "imageURL": "/assets/projects/needypet-project.webp",
-      "technologyTitles": [
-        "Vue.js",
-        "Tailwind CSS",
-        "Pinia",
-        "MongoDB",
-        "Express.js",
-        "Node.js",
-        "JavaScript",
-        "TypeScript",
-        "CSS3",
-        "HTML5",
-        "Vitest",
-        "Cypress",
-        "Docker",
-        "Azure",
-        "GitHub",
-        "Vite"
-      ],
-      "additionalInfo": [
-        "Legacy full-stack pet care management app for coordinating daily care tasks within households",
-        "Recurring care-task generation with daily reset and carry-over behavior",
-        "Need completion tracking with quantities and durations",
-        "Owner and caretaker roles with authentication and hashed password storage",
-        "Timezone-aware scheduling for each user's local day boundary",
-        "Responsive Vue 3 UI with Pinia state management and Tailwind CSS",
-        "Node.js/Express REST API with MongoDB data model",
-        "Docker and Nginx deployment setup"
-      ],
-      "links": [
-        {
-          "text": "Source Code",
-          "url": "https://github.com/yumeangelica/needypet"
-        }
-      ]
-    },
-    {
-      "type": "backend",
-      "isMain": false,
-      "title": "Store data extractor module",
-      "imageURL": "/assets/projects/store-data-extractor-project.webp",
-      "technologyTitles": [
-        "Python",
-        "SQLite",
-        "GitHub",
-        "Docker"
-      ],
-      "additionalInfo": [
-        "Python module used as part of the Jirai Sweeties automation workflow",
-        "Scheduled product-data collection, parsing, and SQLite persistence",
-        "Configurable sources, structured data models, and typed Python data structures",
-        "Supports price and availability change tracking for allowed public sources",
-        "Responsible-use wording and README cleanup required before using this as standalone public proof"
-      ],
-      "links": [
-        {
-          "text": "Source Code",
-          "url": "https://github.com/yumeangelica/store_data_extractor"
-        }
-      ]
-    },
-    {
       "type": "frontend",
       "isMain": true,
       "title": "Personal portfolio",
@@ -125,25 +32,124 @@
       ]
     },
     {
-      "type": "cli",
-      "isMain": false,
-      "title": "User-agent dataset utility",
-      "imageURL": "/assets/projects/user-agent-extractor-project.webp",
+      "type": "fullstack",
+      "isMain": true,
+      "title": "NeedyPet (legacy v1)",
+      "imageURL": "/assets/projects/needypet-project.webp",
       "technologyTitles": [
-        "Python",
-        "Playwright",
-        "GitHub"
+        "Vue.js",
+        "Tailwind CSS",
+        "Pinia",
+        "MongoDB",
+        "Express.js",
+        "Node.js",
+        "JavaScript",
+        "TypeScript",
+        "CSS3",
+        "HTML5",
+        "Vitest",
+        "Docker",
+        "Azure",
+        "GitHub",
+        "Vite"
       ],
       "additionalInfo": [
-        "Python utility for collecting, validating, deduplicating, and exporting public user-agent strings for testing datasets",
-        "Playwright-based collection workflow with data-cleaning and export steps",
-        "Duplicate detection, retry handling, and CSV/text output",
-        "Best kept as supporting proof until README, responsible-use notes, tests, and source-scope wording are refreshed"
+        "Legacy full-stack pet care management app for coordinating daily care tasks within households",
+        "Recurring care-task generation with daily reset and carry-over behavior",
+        "Need completion tracking with quantities and durations",
+        "Owner and caretaker roles with authentication and hashed password storage",
+        "Timezone-aware scheduling for each user's local day boundary",
+        "Responsive Vue 3 UI with Pinia state management and Tailwind CSS",
+        "Node.js/Express REST API with MongoDB data model",
+        "Docker and Nginx deployment setup"
       ],
       "links": [
         {
           "text": "Source Code",
-          "url": "https://github.com/yumeangelica/user_agent_extractor"
+          "url": "https://github.com/yumeangelica/needypet"
+        }
+      ]
+    },
+    {
+      "type": "backend",
+      "isMain": true,
+      "title": "Jirai Sweeties Discord bot",
+      "imageURL": "/assets/projects/jirai-sweeties-discord-bot-project.webp",
+      "technologyTitles": [
+        "Python",
+        "SQLite",
+        "GitHub",
+        "Docker",
+        "Raspberry Pi"
+      ],
+      "additionalInfo": [
+        "Python Discord bot for scheduled store-data monitoring and product-change notifications",
+        "Async data extraction workflows with aiohttp and lxml",
+        "SQLite persistence for product history and price-change tracking",
+        "Configurable store sources and scheduling for personal/community use",
+        "Docker and Raspberry Pi deployment notes for a low-cost always-on setup",
+        "Typed Python structures with TypedDict and type hints",
+        "Responsible-use focus: allowed public sources, conservative scheduling, and no restricted, authenticated, or access-controlled sources"
+      ],
+      "links": [
+        {
+          "text": "Source Code",
+          "url": "https://github.com/yumeangelica/jirai_sweeties"
+        }
+      ]
+    },
+    {
+      "type": "backend",
+      "isMain": true,
+      "title": "Django Weather App",
+      "imageURL": "/assets/projects/django-weather-app-project.webp",
+      "technologyTitles": [
+        "Python",
+        "Django",
+        "CSS3",
+        "HTML5",
+        "Docker",
+        "Azure",
+        "GitHub"
+      ],
+      "additionalInfo": [
+        "Django-based weather forecast application with city search and external weather API integration",
+        "Current conditions and 3-day forecast with hourly breakdown",
+        "Displays temperature, humidity, wind speed, UV index, sunrise, and sunset times",
+        "Optional auto-location detection based on IP address using GeoIP2",
+        "Environment-based API key configuration for OpenWeatherMap",
+        "Docker, Gunicorn, Nginx, and GitHub Actions oriented deployment setup",
+        "Responsive interface with clear search flow and public API integration proof"
+      ],
+      "links": [
+        {
+          "text": "Source Code",
+          "url": "https://github.com/yumeangelica/django-weather-app"
+        }
+      ]
+    },
+    {
+      "type": "backend",
+      "isMain": false,
+      "title": "Store data extractor module",
+      "imageURL": "/assets/projects/store-data-extractor-project.webp",
+      "technologyTitles": [
+        "Python",
+        "SQLite",
+        "GitHub",
+        "Docker"
+      ],
+      "additionalInfo": [
+        "Python module used as part of the Jirai Sweeties automation workflow",
+        "Scheduled product-data collection, parsing, and SQLite persistence",
+        "Configurable sources, structured data models, and typed Python data structures",
+        "Supports price and availability change tracking for allowed public sources",
+        "Supporting module for the Jirai Sweeties workflow; kept as secondary proof with responsible-use notes"
+      ],
+      "links": [
+        {
+          "text": "Source Code",
+          "url": "https://github.com/yumeangelica/store_data_extractor"
         }
       ]
     },
@@ -157,7 +163,6 @@
         "Node.js",
         "Express.js",
         "MongoDB",
-        "Webpack",
         "JavaScript",
         "CSS3",
         "HTML5",
@@ -211,85 +216,6 @@
       ]
     },
     {
-      "type": "backend",
-      "isMain": false,
-      "title": "Django Weather App",
-      "imageURL": "/assets/projects/django-weather-app-project.webp",
-      "technologyTitles": [
-        "Python",
-        "Django",
-        "CSS3",
-        "HTML5",
-        "Docker",
-        "Azure",
-        "GitHub"
-      ],
-      "additionalInfo": [
-        "Django-based weather forecast application with city search and external weather API integration",
-        "Current conditions and 3-day forecast with hourly breakdown",
-        "Displays temperature, humidity, wind speed, UV index, sunrise, and sunset times",
-        "Optional auto-location detection based on IP address using GeoIP2",
-        "Environment-based API key configuration for OpenWeatherMap",
-        "Docker, Gunicorn, Nginx, and GitHub Actions oriented deployment setup",
-        "Responsive interface with clear search flow and public API integration proof"
-      ],
-      "links": [
-        {
-          "text": "Source Code",
-          "url": "https://github.com/yumeangelica/django-weather-app"
-        }
-      ]
-    },
-    {
-      "type": "fullstack",
-      "isMain": false,
-      "title": "Taitovarasto for City of Helsinki / Virittämö",
-      "imageURL": "/assets/projects/taitovarasto-project.webp",
-      "technologyTitles": [
-        "MongoDB",
-        "Express.js",
-        "React",
-        "Node.js",
-        "JavaScript",
-        "CSS3",
-        "HTML5",
-        "GitHub",
-        "Vite",
-        "Docker"
-      ],
-      "additionalInfo": [
-        "Backend-focused full-stack team project for a developer skills showcase and recruitment-support application",
-        "Worked on backend architecture, database structure, and REST API functionality",
-        "Implemented CRUD operations, authentication-related flows, email notifications, and maintainability improvements",
-        "Built with JavaScript, TypeScript, Node.js, Express, React, MongoDB, Vite, and Docker",
-        "Professional/team project proof for full-stack JavaScript and agile collaboration"
-      ],
-      "links": []
-    },
-    {
-      "type": "cli",
-      "isMain": false,
-      "title": "Job finder",
-      "imageURL": "/assets/projects/job-finder-project.webp",
-      "technologyTitles": [
-        "Python",
-        "GitHub"
-      ],
-      "additionalInfo": [
-        "Personal Python CLI helper for job-search tracking and CSV report generation",
-        "Filters by keyword, area, and job type for personal workflow use",
-        "Date-stamped CSV reports organized by search terms",
-        "Requests and BeautifulSoup based public-page data extraction where allowed",
-        "Needs README safety pass before being used as portfolio proof"
-      ],
-      "links": [
-        {
-          "text": "Source Code",
-          "url": "https://github.com/yumeangelica/job_finder"
-        }
-      ]
-    },
-    {
       "type": "cli",
       "isMain": false,
       "title": "Weather view",
@@ -309,113 +235,6 @@
         {
           "text": "Source Code",
           "url": "https://github.com/yumeangelica/weather_view"
-        }
-      ]
-    },
-    {
-      "type": "frontend",
-      "isMain": false,
-      "title": "Roleplay Dice Roller",
-      "imageURL": "/assets/projects/roleplay-dice-roller-project.webp",
-      "technologyTitles": [
-        "JavaScript",
-        "HTML5",
-        "CSS3",
-        "Bootstrap",
-        "GitHub"
-      ],
-      "additionalInfo": [
-        "Vanilla JavaScript dice roller for roleplaying games",
-        "Responsive layout with accessibility basics"
-      ],
-      "links": [
-        {
-          "text": "Source Code",
-          "url": "https://github.com/yumeangelica/roleplay-dice-roller"
-        },
-        {
-          "text": "View Application",
-          "url": "https://yumeangelica.github.io/roleplay-dice-roller/"
-        }
-      ]
-    },
-    {
-      "type": "frontend",
-      "isMain": false,
-      "title": "Global Population Charts",
-      "imageURL": "/assets/projects/global-population-charts-project.webp",
-      "technologyTitles": [
-        "JavaScript",
-        "HTML5",
-        "CSS3",
-        "Bootstrap",
-        "GitHub"
-      ],
-      "additionalInfo": [
-        "Vanilla JavaScript app for visualizing global population data",
-        "Responsive layout with accessibility basics"
-      ],
-      "links": [
-        {
-          "text": "Source Code",
-          "url": "https://github.com/yumeangelica/global-population-charts"
-        },
-        {
-          "text": "View Application",
-          "url": "https://yumeangelica.github.io/global-population-charts/"
-        }
-      ]
-    },
-    {
-      "type": "frontend",
-      "isMain": false,
-      "title": "RPSLS Game",
-      "imageURL": "/assets/projects/rpsls-game-project.webp",
-      "technologyTitles": [
-        "JavaScript",
-        "HTML5",
-        "CSS3",
-        "Bootstrap",
-        "GitHub"
-      ],
-      "additionalInfo": [
-        "Vanilla JavaScript Rock-Paper-Scissors-Lizard-Spock game",
-        "Responsive layout with accessibility basics"
-      ],
-      "links": [
-        {
-          "text": "Source Code",
-          "url": "https://github.com/yumeangelica/rpsls-game"
-        },
-        {
-          "text": "View Application",
-          "url": "https://yumeangelica.github.io/rpsls-game/"
-        }
-      ]
-    },
-    {
-      "type": "frontend",
-      "isMain": false,
-      "title": "Multifunctional Clock",
-      "imageURL": "/assets/projects/multifunctional-clock-project.webp",
-      "technologyTitles": [
-        "JavaScript",
-        "HTML5",
-        "CSS3",
-        "GitHub"
-      ],
-      "additionalInfo": [
-        "Vanilla JavaScript app with clock, timer, and stopwatch features",
-        "Responsive layout with accessibility basics"
-      ],
-      "links": [
-        {
-          "text": "Source Code",
-          "url": "https://github.com/yumeangelica/multifunctional-clock"
-        },
-        {
-          "text": "View Application",
-          "url": "https://yumeangelica.github.io/multifunctional-clock/"
         }
       ]
     }
@@ -439,6 +258,10 @@
         {
           "title": "Nuxt",
           "url": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nuxt/nuxt-original-wordmark.svg"
+        },
+        {
+          "title": "Pinia",
+          "url": "/assets/logos/pinia-for-vue-logo.svg"
         },
         {
           "title": "React",
@@ -465,21 +288,13 @@
           "url": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tailwindcss/tailwindcss-original.svg"
         },
         {
-          "title": "Pinia",
-          "url": "/assets/logos/pinia-for-vue-logo.svg"
-        },
-        {
           "title": "Sass",
           "url": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/sass/sass-original.svg"
-        },
-        {
-          "title": "Bootstrap",
-          "url": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/bootstrap/bootstrap-original-wordmark.svg"
         }
       ]
     },
     {
-      "category": "Python, Backend & Data",
+      "category": "Backend, Python & Data",
       "items": [
         {
           "title": "Python",
@@ -514,38 +329,26 @@
           "url": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mysql/mysql-original-wordmark.svg"
         },
         {
+          "title": "PHP",
+          "url": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/php/php-original.svg"
+        },
+        {
+          "title": "Apache",
+          "url": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/apache/apache-original-wordmark.svg"
+        },
+        {
           "title": "Java",
           "url": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/java/java-original-wordmark.svg"
         },
         {
           "title": "Java Spring Boot",
           "url": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/spring/spring-original-wordmark.svg"
-        },
-        {
-          "title": "PHP",
-          "url": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/php/php-original.svg"
         }
       ]
     },
     {
-      "category": "Quality & Delivery",
+      "category": "Tooling, Quality & Delivery",
       "items": [
-        {
-          "title": "Vitest",
-          "url": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vitest/vitest-original.svg"
-        },
-        {
-          "title": "Cypress",
-          "url": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/cypressio/cypressio-original.svg"
-        },
-        {
-          "title": "Playwright",
-          "url": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/playwright/playwright-original.svg"
-        },
-        {
-          "title": "Biome",
-          "url": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/biome/biome-original-wordmark.svg"
-        },
         {
           "title": "Git",
           "url": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/git/git-original-wordmark.svg"
@@ -559,6 +362,18 @@
           "url": "/assets/logos/github-actions-logo.svg"
         },
         {
+          "title": "Vitest",
+          "url": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vitest/vitest-original.svg"
+        },
+        {
+          "title": "Playwright",
+          "url": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/playwright/playwright-original.svg"
+        },
+        {
+          "title": "Biome",
+          "url": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/biome/biome-original-wordmark.svg"
+        },
+        {
           "title": "Vite",
           "url": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vitejs/vitejs-original.svg"
         },
@@ -567,20 +382,12 @@
           "url": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/bun/bun-original.svg"
         },
         {
-          "title": "Webpack",
-          "url": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/webpack/webpack-original-wordmark.svg"
-        },
-        {
           "title": "Docker",
           "url": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/docker/docker-original-wordmark.svg"
         },
         {
           "title": "Azure",
           "url": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/azure/azure-original-wordmark.svg"
-        },
-        {
-          "title": "Apache",
-          "url": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/apache/apache-original-wordmark.svg"
         },
         {
           "title": "Raspberry Pi",
