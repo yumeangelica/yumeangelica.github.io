@@ -8,11 +8,11 @@ Status: Active public portfolio
 
 ## Overview
 
-This repository contains my public portfolio site, selected project cards, and career-facing copy. The site presents web, full-stack, Python automation, and supporting learning projects in a recruiter-friendly format.
+This repository contains my public portfolio site, selected project cards, and career-facing copy for early-career software developer roles. The site presents Vue/frontend, full-stack, Python automation, and supporting learning projects in a recruiter-friendly format, with the portfolio site itself as the lead public proof.
 
 The portfolio is intentionally public-safe. It should not contain employer-internal code, private project data, secrets, API keys, customer details, proprietary system names, or unpublished workplace information.
 
-## Tech stack
+## Technologies & Tools
 
 ### Frontend
 

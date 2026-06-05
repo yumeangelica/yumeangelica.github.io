@@ -5,11 +5,11 @@
   "seo": {
     "home": {
       "title": "Angelica's portfolio | Software development",
-      "description": "Software developer portfolio featuring accessible web applications, Vue, React, TypeScript, Python automation, testing, and security-aware development"
+      "description": "Early-career software developer portfolio featuring accessible Vue and web applications, full-stack projects, Python automation, testing, delivery discipline, and security-aware development"
     },
     "projects": {
       "title": "Angelica's projects | Selected software development work",
-      "description": "Selected web, full-stack, Python automation, and CLI projects by Angelica"
+      "description": "Selected Vue, web, full-stack, Python automation, and CLI project proof by Angelica"
     }
   },
   "nav": {
@@ -38,11 +38,11 @@
     "title": "Software Development Portfolio",
     "introSegments": [
       {
-        "text": "I'm a "
+        "text": "I'm an "
       },
       {
         "type": "highlight",
-        "text": "software developer"
+        "text": "early-career software developer"
       },
       {
         "text": " building accessible, well-tested web applications with React, TypeScript, Vue, JavaScript, and a growing Python automation track. I care about clear interfaces, maintainable code, practical testing, and security-aware development. My background in business administration and digital marketing helps me think about "
@@ -62,14 +62,14 @@
         "text": " it matters."
       }
     ],
-    "techStackTitle": "Core Tech Stack & Tools",
-    "profilePicAlt": "Angelica's Profile Picture",
+    "techStackTitle": "Technologies & Tools",
+    "profilePicAlt": "Angelica's CV Profile Picture",
     "journeyTitle": "Developer Journey",
     "journeyItems": [
       "Currently working at OP Pohjola as a Software Developer Trainee, building accessible frontend features with React, TypeScript, SCSS, and design-system components in an international, regulated agile environment.",
       "Also supporting REST API and Java/Spring Boot-related tasks, including maintenance and migration work where needed.",
       "Previously worked on a backend-focused full-stack team project for City of Helsinki / Virittämö, using JavaScript, TypeScript, Node.js, Express, React, and MongoDB.",
-      "Bachelor's degree in Business Administration from the University of Vaasa, major in Marketing and minor in Communications.",
+      "Bachelor of Science in Economics and Business Administration from the University of Vaasa, major in Marketing and minor in Communications.",
       "Over 180 ECTS credits in Information Technology across Finnish higher-education institutions, including Metropolia University of Applied Sciences and the University of Helsinki.",
       "Completed the Full Stack Open course series at the University of Helsinki and participated in the DEFA project.",
       "Additional studies in DevOps with Docker, Cyber Security, and Python Programming at the University of Helsinki.",
@@ -95,9 +95,9 @@
       }
     ],
     "contactTitle": "Get in Touch",
-    "contactEmail": "Email me if you would like to discuss a software development role or a relevant project.",
-    "contactSocial": "You can also find me on LinkedIn and GitHub.",
-    "contactImageAlt": "Contact information, reach out via LinkedIn",
+    "contactEmail": "Reach out on LinkedIn if you would like to discuss a software development role or a relevant project.",
+    "contactSocial": "You can also find my work on GitHub.",
+    "contactImageAlt": "Reach out via LinkedIn",
     "linkedinAriaLabel": "Visit my LinkedIn profile",
     "githubAriaLabel": "Visit my GitHub profile",
     "linkedinAlt": "LinkedIn logo and link",
