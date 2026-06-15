@@ -17,6 +17,7 @@
   /* Component specific */
   --color-nav-bg: var(--color-primary-light);
   --color-card-bg: rgb(254, 239, 249);
+  --color-card-heading: rgb(145, 52, 108);
   --color-button: rgb(148, 75, 118);
   --color-button-hover: rgb(130, 62, 100);
 

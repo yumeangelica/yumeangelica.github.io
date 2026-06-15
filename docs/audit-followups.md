@@ -143,9 +143,9 @@ is done, and add new findings under the matching priority group using the same
 - [x] Built-in minimal English i18n fallback when the primary message file fails (+ test).
 - [x] Route-aware `og:url` + `<link rel="canonical">`, plus `og:image:alt` and a
   static `twitter:card` (summary_large_image) with twitter title/description (+ test).
-- [x] Contrast fixes that meet AA: `--color-button` for the project-card heading,
-  `--color-primary-dark` for mobile nav links, and a darker error-text red;
-  de-duplicated the `.error-message` style into `main.css`.
+- [x] Contrast fixes that meet AA: `--color-card-heading` for the project-card
+  heading, `--color-primary-dark` for mobile nav links, and a darker error-text
+  red; de-duplicated the `.error-message` style into `main.css`.
 - [x] Project-card images: exact intrinsic `width`/`height` per image (from
   `data.json`) so the browser reserves correct space and avoids CLS.
 - [x] Removed `tabindex="0"` from the non-interactive home tech icons (and the now-dead
