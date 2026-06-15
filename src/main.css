@@ -96,6 +96,17 @@ li {
   color: var(--color-primary);
 }
 
+/* Shared error message banner (home + projects data-load failures) */
+.error-message {
+  /* Material red 800 — meets AA contrast on the light-red background */
+  color: #c62828;
+  background-color: #ffebee;
+  padding: 15px;
+  border-radius: 4px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
 /* Mobile styles */
 @media (max-width: 568px) {
   h1 {

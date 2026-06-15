@@ -1,5 +1,6 @@
 <template>
-  <div class="header-pic" role="img" :aria-label="$t('header.bannerAriaLabel')"></div>
+  <!-- Decorative banner: conveys no information, so it is hidden from assistive tech -->
+  <div class="header-pic" aria-hidden="true"></div>
 </template>
 
 <script>

@@ -101,35 +101,36 @@
 
     <!-- Floating navigation - appears when scrolled down -->
     <Transition name="fade">
-      <div v-if="showFloatingNav" class="floating-nav" role="navigation" :aria-label="$t('projects.floatingNavAria')">
+      <div v-if="showFloatingNav" class="floating-nav" role="navigation" :aria-label="$t('projects.floatingNavAria')"
+        @keydown.esc="isFloatingMenuOpen = false">
         <button @click="toggleFloatingMenu" class="floating-nav-toggle" :aria-expanded="isFloatingMenuOpen"
           :aria-label="$t('projects.floatingNavToggleAria')">
           <span class="nav-icon" :class="{ rotated: isFloatingMenuOpen }">☰</span>
         </button>
 
         <Transition name="slide-up">
-          <div v-if="isFloatingMenuOpen" class="floating-nav-menu" role="menu">
-            <button @click="scrollToSection('back-to-top')" class="floating-nav-button" role="menuitem">
+          <div v-if="isFloatingMenuOpen" class="floating-nav-menu">
+            <button @click="scrollToSection('back-to-top')" class="floating-nav-button">
               {{ $t('projects.floatingBackToTop') }}
             </button>
             <button @click="scrollToSection('main-projects')" class="floating-nav-button" :class="{ disabled: !isMainVisible }"
-              :disabled="!isMainVisible" role="menuitem">
+              :disabled="!isMainVisible">
               {{ $t('projects.floatingMain') }}
             </button>
             <button @click="scrollToSection('frontend-projects')" class="floating-nav-button" :class="{ disabled: !isFrontendVisible }"
-              :disabled="!isFrontendVisible" role="menuitem">
+              :disabled="!isFrontendVisible">
               {{ $t('projects.floatingFrontend') }}
             </button>
             <button @click="scrollToSection('backend-projects')" class="floating-nav-button" :class="{ disabled: !isBackendVisible }"
-              :disabled="!isBackendVisible" role="menuitem">
+              :disabled="!isBackendVisible">
               {{ $t('projects.floatingBackend') }}
             </button>
             <button @click="scrollToSection('fullstack-projects')" class="floating-nav-button" :class="{ disabled: !isFullstackVisible }"
-              :disabled="!isFullstackVisible" role="menuitem">
+              :disabled="!isFullstackVisible">
               {{ $t('projects.floatingFullstack') }}
             </button>
             <button @click="scrollToSection('cli-projects')" class="floating-nav-button" :class="{ disabled: !isCliVisible }"
-              :disabled="!isCliVisible" role="menuitem">
+              :disabled="!isCliVisible">
               {{ $t('projects.floatingCli') }}
             </button>
           </div>
@@ -557,16 +558,6 @@ export default {
 }
 
 
-
-/* Add styling for error message */
-.error-message {
-  color: #d32f2f;
-  background-color: #ffebee;
-  padding: 15px;
-  border-radius: 4px;
-  margin-bottom: 20px;
-  text-align: center;
-}
 
 /* Floating navigation styles */
 .floating-nav {

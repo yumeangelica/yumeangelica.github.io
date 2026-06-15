@@ -30,7 +30,7 @@
           :aria-labelledby="'category-' + category.name.toLowerCase().replace(/\s+/g, '-')">
           <h3 :id="'category-' + category.name.toLowerCase().replace(/\s+/g, '-')">{{ category.name }}</h3>
           <div class="introduction-highlights-paragraph" role="group">
-            <span v-for="tech in category.techs" :key="tech.title" class="devicon-wrapper" tabindex="0" role="img" :aria-label="tech.title">
+            <span v-for="tech in category.techs" :key="tech.title" class="devicon-wrapper" role="img" :aria-label="tech.title">
               <img class="devicon" :src="tech.url" :alt="tech.title" loading="lazy" aria-hidden="true" />
               <span class="devicon-tooltip" aria-hidden="true">{{ tech.title }}</span>
             </span>
@@ -57,7 +57,8 @@
         <h2>{{ $t('home.certificationsTitle') }}</h2>
         <ul>
           <li v-for="(cert, index) in $tm('home.certifications')" :key="index">
-            <a class="styled-link" :href="cert.url" target="_blank" rel="noopener noreferrer">
+            <a class="styled-link" :href="cert.url" target="_blank" rel="noopener noreferrer"
+              :aria-label="$t('home.certificationAriaLabel', { text: cert.text })">
               {{ cert.text }}
             </a>
           </li>
@@ -154,16 +155,6 @@ export default {
 </script>
 
 <style scoped>
-/* Error message styling */
-.error-message {
-  color: #d32f2f;
-  background-color: #ffebee;
-  padding: 15px;
-  border-radius: 4px;
-  margin-bottom: 20px;
-  text-align: center;
-}
-
 .text-highlight {
   color: var(--color-primary-dark);
   font-weight: 600;
@@ -205,17 +196,9 @@ export default {
   margin-bottom: 4px;
 }
 
-.devicon-wrapper:hover .devicon-tooltip,
-.devicon-wrapper:focus .devicon-tooltip,
-.devicon-wrapper:focus-within .devicon-tooltip {
+.devicon-wrapper:hover .devicon-tooltip {
   visibility: visible;
   opacity: 1;
-}
-
-.devicon-wrapper:focus-visible {
-  outline: 2px solid var(--color-primary);
-  outline-offset: 2px;
-  border-radius: 6px;
 }
 
 .contact-icon {
@@ -387,7 +370,6 @@ export default {
 a:focus-visible {
   outline: 3px solid var(--color-primary);
   outline-offset: 2px;
-  transform: scale(1.05);
 }
 
 /* Ensure tooltip is visible when focused via keyboard */

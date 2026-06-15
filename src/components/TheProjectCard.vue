@@ -122,7 +122,8 @@ export default {
 }
 
 .project-details h3 {
-  color: var(--color-heading);
+  /* Darker token for AA contrast against the light-pink card background */
+  color: var(--color-primary-dark);
   margin-bottom: 10px;
   font-size: 1.15rem;
   overflow-wrap: break-word;
