@@ -1,7 +1,7 @@
 <template>
   <article class="project-card">
     <div class="project-image-container">
-      <img :src="project.imageURL" :alt="projectTitle" loading="lazy" />
+      <img :src="project.imageURL" :alt="projectTitle" :width="project.imageWidth" :height="project.imageHeight" loading="lazy" />
     </div>
 
     <div class="project-details">
@@ -108,6 +108,10 @@ export default {
 }
 
 .project-image-container img {
+  /* Responsive image. The intrinsic width/height attributes (from data.json)
+     let the browser reserve the correct space per image before load to avoid
+     layout shift (CLS); width:100% + height:auto keep it fluid without
+     distorting the aspect ratio. */
   width: 100%;
   height: auto;
   display: block;

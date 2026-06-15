@@ -5,6 +5,8 @@
       "isMain": true,
       "title": "Personal portfolio",
       "imageURL": "/assets/projects/portfolio-project.webp",
+      "imageWidth": 2002,
+      "imageHeight": 1030,
       "technologyTitles": [
         "Vue.js",
         "JavaScript",
@@ -36,6 +38,8 @@
       "isMain": true,
       "title": "NeedyPet (legacy v1)",
       "imageURL": "/assets/projects/needypet-project.webp",
+      "imageWidth": 1000,
+      "imageHeight": 513,
       "technologyTitles": [
         "Vue.js",
         "Tailwind CSS",
@@ -75,6 +79,8 @@
       "isMain": true,
       "title": "Jirai Sweeties Discord bot",
       "imageURL": "/assets/projects/jirai-sweeties-discord-bot-project.webp",
+      "imageWidth": 2000,
+      "imageHeight": 1032,
       "technologyTitles": [
         "Python",
         "SQLite",
@@ -103,6 +109,8 @@
       "isMain": true,
       "title": "Django Weather App",
       "imageURL": "/assets/projects/django-weather-app-project.webp",
+      "imageWidth": 2002,
+      "imageHeight": 1030,
       "technologyTitles": [
         "Python",
         "Django",
@@ -133,6 +141,8 @@
       "isMain": false,
       "title": "Store data extractor module",
       "imageURL": "/assets/projects/store-data-extractor-project.webp",
+      "imageWidth": 1000,
+      "imageHeight": 515,
       "technologyTitles": [
         "Python",
         "SQLite",
@@ -158,6 +168,8 @@
       "isMain": false,
       "title": "Full-stack phonebook app",
       "imageURL": "/assets/projects/fullstack-phonebook-project.webp",
+      "imageWidth": 1000,
+      "imageHeight": 515,
       "technologyTitles": [
         "React",
         "Node.js",
@@ -189,6 +201,8 @@
       "isMain": false,
       "title": "BookBoutique",
       "imageURL": "/assets/projects/book-boutique-project.webp",
+      "imageWidth": 2002,
+      "imageHeight": 1030,
       "technologyTitles": [
         "PHP",
         "MySQL",
@@ -220,6 +234,8 @@
       "isMain": false,
       "title": "Weather view",
       "imageURL": "/assets/projects/weather-view-project.webp",
+      "imageWidth": 1000,
+      "imageHeight": 515,
       "technologyTitles": [
         "Python",
         "GitHub"
