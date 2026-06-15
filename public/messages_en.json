@@ -23,9 +23,6 @@
     "githubAriaLabel": "GitHub (opens in new tab)",
     "linkedinAriaLabel": "LinkedIn (opens in new tab)"
   },
-  "header": {
-    "bannerAriaLabel": "Sakura banner for header"
-  },
   "footer": {
     "ariaLabel": "Site footer",
     "copyright": "© 2020 - {year} yumeangelica.github.io. All Rights Reserved."
@@ -77,6 +74,7 @@
       "Personal projects in web development, Python tooling, automation, and accessible user interfaces."
     ],
     "certificationsTitle": "Professional Certifications",
+    "certificationAriaLabel": "{text} (opens in new tab)",
     "certifications": [
       {
         "text": "Microsoft Certified: Security, Compliance, and Identity Fundamentals (SC-900)",
@@ -98,8 +96,8 @@
     "contactEmail": "Reach out on LinkedIn if you would like to discuss a software development role or a relevant project.",
     "contactSocial": "You can also find my work on GitHub.",
     "contactImageAlt": "Reach out via LinkedIn",
-    "linkedinAriaLabel": "Visit my LinkedIn profile",
-    "githubAriaLabel": "Visit my GitHub profile",
+    "linkedinAriaLabel": "Visit my LinkedIn profile (opens in new tab)",
+    "githubAriaLabel": "Visit my GitHub profile (opens in new tab)",
     "linkedinAlt": "LinkedIn logo and link",
     "githubAlt": "GitHub logo and link"
   },
@@ -138,6 +136,6 @@
   },
   "projectCard": {
     "technologiesLabel": "Technologies used",
-    "linkAriaLabel": "Visit {linkText} for {projectTitle}"
+    "linkAriaLabel": "Visit {linkText} for {projectTitle} (opens in new tab)"
   }
 }

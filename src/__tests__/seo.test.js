@@ -44,6 +44,16 @@ describe('seo helper', () => {
     expect(document.querySelector('meta[property="og:description"]')?.getAttribute('content')).toBe('Home description')
   })
 
+  it('sets route-aware og:url and canonical from the route path', () => {
+    const t = vi.fn((key) => key)
+
+    updateSeo({ fullPath: '/projects', meta: { seo: {} } }, t)
+
+    const expectedUrl = 'https://yumeangelica.github.io/projects'
+    expect(document.querySelector('meta[property="og:url"]')?.getAttribute('content')).toBe(expectedUrl)
+    expect(document.querySelector('link[rel="canonical"]')?.getAttribute('href')).toBe(expectedUrl)
+  })
+
   it('falls back to existing defaults when SEO metadata or translations are missing', () => {
     document.title = 'Current default title'
     const descriptionTag = document.createElement('meta')

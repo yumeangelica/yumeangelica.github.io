@@ -211,6 +211,15 @@ nav {
     touch-action: manipulation;
   }
 
+  /* Smaller mobile nav text is normal-size: use the darker token for AA contrast on the pink menu background */
+  .nav-link {
+    color: var(--color-primary-dark);
+  }
+
+  .nav-link.router-link-active {
+    color: var(--color-primary-dark);
+  }
+
   .navbar-collapse {
     position: absolute;
     top: calc(100% + 12px);

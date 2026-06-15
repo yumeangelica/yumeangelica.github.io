@@ -40,8 +40,8 @@ The portfolio is intentionally public-safe. It should not contain employer-inter
 ### Delivery
 
 - Bun package manager
-- GitHub Actions
-- GitHub Pages deployment
+- GitHub Actions CI for pull requests (lint, test, build)
+- GitHub Actions deployment to GitHub Pages on merge to `main`
 
 ## Getting started
 
@@ -78,14 +78,19 @@ Current accessibility considerations include:
 - Skip link to main content
 - Semantic page sections and headings
 - Keyboard-focus styles for interactive elements
-- Alt text for meaningful images and technology icons
+- Reduced-motion support via `prefers-reduced-motion`
+- Alt text for meaningful images, with decorative imagery hidden from assistive tech
+- "Opens in new tab" cues on external links
 - Responsive layout for smaller screens
 - Component tests and content checks for selected UI behavior
+
+Theme colors were reviewed against WCAG 2.2 AA contrast targets; see
+`docs/audit-followups.md` for items still pending live verification.
 
 Known improvement areas:
 
 - Add a documented manual keyboard-navigation checklist
-- Add contrast review notes after visual updates
+- Run a browser-based axe / Lighthouse pass after visual updates
 - Add project-card content-length guidance for readability
 
 ## Security, privacy, and public-safety notes

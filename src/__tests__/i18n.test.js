@@ -69,6 +69,14 @@ describe('i18n', () => {
   })
 
   describe('loadMessages fallback', () => {
+    it('uses built-in English fallback when the primary load fails', async () => {
+      global.fetch = vi.fn(() => Promise.resolve({ ok: false, status: 500 }))
+
+      await loadMessages('en')
+      expect(t('home.title')).toBe('Software Development Portfolio')
+      expect(t('nav.home')).toBe('Home')
+    })
+
     it('falls back to English when non-English locale fails', async () => {
       let callCount = 0
       global.fetch = vi.fn(() => {

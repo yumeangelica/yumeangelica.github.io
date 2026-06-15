@@ -48,6 +48,9 @@ describe('content quality gates', () => {
       expect(project.title).toEqual(expect.any(String))
       expect(['frontend', 'backend', 'fullstack', 'cli']).toContain(project.type)
       expect(project.imageURL).toMatch(/^\/assets\/projects\/.+\.webp$/)
+      // Intrinsic image dimensions are required so the card can reserve space and avoid CLS.
+      expect(Number.isInteger(project.imageWidth) && project.imageWidth > 0, `${project.title} is missing a positive integer imageWidth`).toBe(true)
+      expect(Number.isInteger(project.imageHeight) && project.imageHeight > 0, `${project.title} is missing a positive integer imageHeight`).toBe(true)
       expect(Array.isArray(project.technologyTitles)).toBe(true)
       expect(project.technologyTitles.length).toBeGreaterThan(0)
       expect(Array.isArray(project.additionalInfo)).toBe(true)

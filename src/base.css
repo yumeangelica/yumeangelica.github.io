@@ -1,27 +1,28 @@
-/* Root pseudo class for variables */
+/* Design tokens (theme palette + shared timing) */
 :root {
-  /* Base colors */
-  --color-white: rgb(255, 255, 255);
+  /* Neutral */
+  --color-white: rgb(255, 255, 255); /* button/icon text on colored backgrounds */
 
-  /* Theme colors */
-  --color-primary: rgb(178, 77, 137);
-  --color-primary-light: rgb(241, 199, 232);
-  --color-primary-dark: rgb(95, 41, 74);
+  /* Brand mauve/pink ramp */
+  --color-primary: rgb(178, 77, 137); /* main brand color: headings, links, focus outlines */
+  --color-primary-light: rgb(241, 199, 232); /* tints: nav background, borders, hover fills */
+  --color-primary-dark: rgb(95, 41, 74); /* deepest shade: emphasis text, mobile nav links, dark hovers */
 
-  /* UI Component colors */
-  --color-background: rgb(255, 250, 253);
-  --color-text: rgb(33, 33, 33);
-  --color-heading: var(--color-primary);
-  --color-accent: rgb(165, 79, 144);
+  /* Page surfaces and body text */
+  --color-background: rgb(255, 250, 253); /* page background */
+  --color-text: rgb(33, 33, 33); /* default body text */
+  --color-heading: var(--color-primary); /* global section headings (h1–h5) */
+  --color-accent: rgb(165, 79, 144); /* active navigation link */
 
-  /* Component specific */
-  --color-nav-bg: var(--color-primary-light);
-  --color-card-bg: rgb(254, 239, 249);
-  --color-button: rgb(148, 75, 118);
-  --color-button-hover: rgb(130, 62, 100);
+  /* Component-specific surfaces and accents */
+  --color-nav-bg: var(--color-primary-light); /* navbar background */
+  --color-card-bg: rgb(254, 239, 249); /* project-card background */
+  --color-card-heading: rgb(145, 52, 108); /* project-card title; darker than --color-primary for AA contrast on --color-card-bg */
+  --color-button: rgb(148, 75, 118); /* project-card button background */
+  --color-button-hover: rgb(130, 62, 100); /* project-card button hover background */
 
-  /* Other */
-  --transition-duration: 0.6s;
+  /* Motion */
+  --transition-duration: 0.6s; /* shared transition timing across interactive elements */
 }
 
 

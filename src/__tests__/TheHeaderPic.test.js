@@ -2,25 +2,15 @@ import { mount } from '@vue/test-utils'
 import TheHeaderPic from 'components/TheHeaderPic.vue'
 
 describe('TheHeaderPic.vue', () => {
-  const i18nMock = {
-    $t: (key) => {
-      if (key === 'header.bannerAriaLabel') {
-        return 'Profile banner'
-      }
-      return key
-    }
-  }
-
-  it('renders image role and aria label', () => {
-    const wrapper = mount(TheHeaderPic, {
-      global: {
-        mocks: i18nMock
-      }
-    })
+  it('renders a decorative banner hidden from assistive tech', () => {
+    const wrapper = mount(TheHeaderPic)
 
     const headerPic = wrapper.get('.header-pic')
 
-    expect(headerPic.attributes('role')).toBe('img')
-    expect(headerPic.attributes('aria-label')).toBe('Profile banner')
+    // The banner is purely decorative, so it should be hidden from screen
+    // readers and expose no img role or label.
+    expect(headerPic.attributes('aria-hidden')).toBe('true')
+    expect(headerPic.attributes('role')).toBeUndefined()
+    expect(headerPic.attributes('aria-label')).toBeUndefined()
   })
 })

@@ -30,10 +30,15 @@ const router = createRouter({
       },
       /*
        Route-level code-splitting.
-       This generates a separate chunk (About.[hash].js) for this route,
+       This generates a separate chunk for PageProjects,
        which is lazy-loaded when the route is visited.
       */
       component: PageProjects
+    },
+    {
+      // Catch-all: redirect unknown paths to home so no route renders an empty view.
+      path: '/:pathMatch(.*)*',
+      redirect: { name: 'home' }
     }
   ]
 })

@@ -5,6 +5,8 @@ describe('TheProjectCard.vue', () => {
   const mockProject = {
     title: 'Vue Portfolio',
     imageURL: 'https://assets.example.dev/image.jpg',
+    imageWidth: 1000,
+    imageHeight: 515,
     technologyTitles: ['Vue', 'CSS Framework'],
     additionalInfo: ['Responsive design', 'Dark mode supported'],
     links: [
@@ -29,7 +31,7 @@ describe('TheProjectCard.vue', () => {
           $t: (key, params = {}) => {
             const messages = {
               'projectCard.technologiesLabel': 'Technologies used',
-              'projectCard.linkAriaLabel': `Visit ${params.linkText} for ${params.projectTitle}`
+              'projectCard.linkAriaLabel': `Visit ${params.linkText} for ${params.projectTitle} (opens in new tab)`
             };
             return messages[key] || key;
           },
@@ -45,6 +47,9 @@ describe('TheProjectCard.vue', () => {
     const img = wrapper.find(`img[alt="${mockProject.title}"]`)
     expect(img.exists()).toBe(true)
     expect(img.attributes('src')).toBe(mockProject.imageURL)
+    // Intrinsic dimensions are bound so the browser can reserve space (CLS).
+    expect(img.attributes('width')).toBe(String(mockProject.imageWidth))
+    expect(img.attributes('height')).toBe(String(mockProject.imageHeight))
 
     // Technology icons
     mockProject.technologyTitles.forEach(techName => {
@@ -81,7 +86,7 @@ describe('TheProjectCard.vue', () => {
           $t: (key, params = {}) => {
             const messages = {
               'projectCard.technologiesLabel': 'Technologies used',
-              'projectCard.linkAriaLabel': `Visit ${params.linkText} for ${params.projectTitle}`
+              'projectCard.linkAriaLabel': `Visit ${params.linkText} for ${params.projectTitle} (opens in new tab)`
             };
             return messages[key] || key;
           },
@@ -108,7 +113,7 @@ describe('TheProjectCard.vue', () => {
           $t: (key, params = {}) => {
             const messages = {
               'projectCard.technologiesLabel': 'Technologies used',
-              'projectCard.linkAriaLabel': `Visit ${params.linkText} for ${params.projectTitle}`
+              'projectCard.linkAriaLabel': `Visit ${params.linkText} for ${params.projectTitle} (opens in new tab)`
             };
             return messages[key] || key;
           },
@@ -135,7 +140,7 @@ describe('TheProjectCard.vue', () => {
           $t: (key, params = {}) => {
             const messages = {
               'projectCard.technologiesLabel': 'Technologies used',
-              'projectCard.linkAriaLabel': `Visit ${params.linkText} for ${params.projectTitle}`
+              'projectCard.linkAriaLabel': `Visit ${params.linkText} for ${params.projectTitle} (opens in new tab)`
             };
             return messages[key] || key;
           },
