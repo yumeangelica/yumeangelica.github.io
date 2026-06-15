@@ -21,6 +21,9 @@ coverage
 build
 deploy.sh
 
+# Local-only design / unused asset staging (not part of the published site)
+design/
+
 
 # Editor directories and files
 .vscode/*
