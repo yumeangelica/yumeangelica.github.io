@@ -126,8 +126,10 @@ export default {
 }
 
 .project-details h3 {
-  /* Darker token for AA contrast against the light-pink card background */
-  color: var(--color-primary-dark);
+  /* Mauve button token: meets AA contrast on the light-pink card background
+     while staying softer than the near-black primary-dark, and matches the
+     card buttons. */
+  color: var(--color-button);
   margin-bottom: 10px;
   font-size: 1.15rem;
   overflow-wrap: break-word;
