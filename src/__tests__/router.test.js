@@ -22,4 +22,11 @@ describe('router', () => {
       }
     })
   })
+
+  it('redirects unknown paths to home', async () => {
+    await router.push('/this-route-does-not-exist')
+
+    expect(router.currentRoute.value.name).toBe('home')
+    expect(router.currentRoute.value.path).toBe('/')
+  })
 })
