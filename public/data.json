@@ -53,7 +53,8 @@
         "HTML5",
         "Vitest",
         "Docker",
-        "Azure",
+        "Bun",
+        "Biome",
         "GitHub",
         "Vite"
       ],
@@ -65,7 +66,8 @@
         "Timezone-aware scheduling for each user's local day boundary",
         "Responsive Vue 3 UI with Pinia state management and Tailwind CSS",
         "Node.js/Express REST API with MongoDB data model",
-        "Docker and Nginx deployment setup"
+        "Bun runtime and package management with Biome linting and Vitest tests",
+        "Single-container Docker deployment where one server serves the built Vue SPA and the Express API"
       ],
       "links": [
         {
@@ -89,8 +91,8 @@
         "Raspberry Pi"
       ],
       "additionalInfo": [
-        "Python Discord bot for scheduled store-data monitoring and product-change notifications",
-        "Async data extraction workflows with aiohttp and lxml",
+        "Python Discord bot for scheduled store-data monitoring and real-time product-change notifications to Discord channels",
+        "Async data extraction workflows with aiohttp, lxml, and curl_cffi browser impersonation",
         "SQLite persistence for product history and price-change tracking",
         "Configurable store sources and scheduling for personal/community use",
         "Docker and Raspberry Pi deployment notes for a low-cost always-on setup",
@@ -123,10 +125,11 @@
       "additionalInfo": [
         "Django-based weather forecast application with city search and external weather API integration",
         "Current conditions and 3-day forecast with hourly breakdown",
-        "Displays temperature, humidity, wind speed, UV index, sunrise, and sunset times",
+        "Displays temperature, humidity, wind speed, estimated UV index, sunrise, and sunset times",
+        "Estimated UV index calculated from solar position with pysolar, no paid UV API required",
         "Optional auto-location detection based on IP address using GeoIP2",
         "Environment-based API key configuration for OpenWeatherMap",
-        "Docker, Gunicorn, Nginx, and GitHub Actions oriented deployment setup",
+        "Docker, Gunicorn, Nginx, WhiteNoise, and GitHub Actions oriented deployment setup",
         "Responsive interface with clear search flow and public API integration proof"
       ],
       "links": [
@@ -178,6 +181,9 @@
         "JavaScript",
         "CSS3",
         "HTML5",
+        "Bun",
+        "Vite",
+        "Biome",
         "GitHub"
       ],
       "additionalInfo": [
@@ -185,7 +191,8 @@
         "Register, login, logout, and delete-account flows with JWT-based authentication",
         "Add, edit, delete, search, and paginate contacts",
         "Form validation with visual feedback and international phone-number support",
-        "Responsive React UI with Node.js/Express and MongoDB backend",
+        "Responsive React UI built with Vite and a Node.js/Express and MongoDB backend",
+        "Bun runtime and package management with Biome linting",
         "API and component testing with node:test and supertest where implemented",
         "Supporting project proof for React, Node.js, Express, MongoDB, and testing basics"
       ],
@@ -243,7 +250,7 @@
       "additionalInfo": [
         "Python CLI for current weather conditions and short-term forecast lookup",
         "Uses OpenWeatherMap API with environment-based API key configuration",
-        "Shows current conditions, 3-day forecast, UV index, and local times",
+        "Shows current conditions, 3-day forecast, estimated UV index, and local times",
         "Input validation, error handling, and timezone-aware display logic",
         "Supporting Python API-integration and CLI proof"
       ],
