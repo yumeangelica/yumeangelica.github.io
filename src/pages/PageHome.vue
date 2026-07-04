@@ -1,14 +1,14 @@
 <template>
-  <h1>{{ $t('home.title') }}</h1>
+  <h1>{{ $t('intro.title') }}</h1>
 
   <!-- Loading state -->
   <div v-if="loading" class="text-center" role="status" aria-live="polite">
-    <p>{{ $t('home.loading') || 'Loading...' }}</p>
+    <p>{{ $t('common.loading') }}</p>
   </div>
 
   <!-- Error state -->
   <div v-else-if="fetchError" role="alert" class="error-message">
-    <p>{{ $t('home.error') || 'Failed to load data. Please try again later.' }}</p>
+    <p>{{ $t('common.error') }}</p>
   </div>
 
   <!-- Content -->
@@ -17,14 +17,14 @@
       <div class="col-lg-7">
 
         <p>
-          <template v-for="(segment, index) in $tm('home.introSegments')" :key="`intro-${index}`">
+          <template v-for="(segment, index) in $tm('intro.segments')" :key="`intro-${index}`">
             <span v-if="segment.type === 'highlight'" class="text-highlight">{{ segment.text }}</span>
             <em v-else-if="segment.type === 'emphasis'">{{ segment.text }}</em>
             <template v-else>{{ segment.text }}</template>
           </template>
         </p>
 
-        <h2 id="tech-stack">{{ $t('home.techStackTitle') }}</h2>
+        <h2 id="tech-stack">{{ $t('techStack.title') }}</h2>
         <!-- Display technologies in categories -->
         <div class="tech-category" v-for="category in categorizedTechnologies" :key="category.name"
           :aria-labelledby="'category-' + category.name.toLowerCase().replace(/\s+/g, '-')">
@@ -39,26 +39,26 @@
       </div>
 
       <div class="col-md-auto">
-        <img src="/assets/profile/angelica-profilepic.webp" class="img-responsive profilepic" :alt="$t('home.profilePicAlt')" fetchpriority="high">
+        <img src="/assets/profile/angelica-profilepic.webp" class="img-responsive profilepic" :alt="$t('intro.profileImageAlt')" fetchpriority="high">
       </div>
     </div>
 
     <section class="education">
       <div class="heartlist">
-        <h2>{{ $t('home.journeyTitle') }}</h2>
+        <h2>{{ $t('journey.title') }}</h2>
         <ul>
-          <li v-for="(item, index) in $tm('home.journeyItems')" :key="index">{{ item }}</li>
+          <li v-for="(item, index) in $tm('journey.items')" :key="index">{{ item }}</li>
         </ul>
       </div>
     </section>
 
     <section class="certifications">
       <div class="heartlist">
-        <h2>{{ $t('home.certificationsTitle') }}</h2>
+        <h2>{{ $t('certifications.title') }}</h2>
         <ul>
-          <li v-for="(cert, index) in $tm('home.certifications')" :key="index">
+          <li v-for="(cert, index) in $tm('certifications.items')" :key="index">
             <a class="styled-link" :href="cert.url" target="_blank" rel="noopener noreferrer"
-              :aria-label="$t('home.certificationAriaLabel', { text: cert.text })">
+              :aria-label="$t('common.externalLinkAriaLabel', { label: cert.text })">
               {{ cert.text }}
             </a>
           </li>
@@ -68,22 +68,22 @@
 
     <section class="interesting-fact">
       <h2>
-        {{ $t('home.interestingFactTitleStart') }}
-        <span class="tooltip-container" tabindex="0" :aria-label="$t('home.yumeAriaLabel')" @focus="isTooltipVisible = true"
+        {{ $t('yume.titleStart') }}
+        <span class="tooltip-container" tabindex="0" :aria-label="$t('yume.ariaLabel')" @focus="isTooltipVisible = true"
           @blur="isTooltipVisible = false">
-          {{ $t('home.yumeWord') }}
+          {{ $t('yume.word') }}
           <span class="tooltip-text" role="tooltip" aria-hidden="true" :class="{ 'visible': isTooltipVisible }">
-            {{ $t('home.yumeTooltip') }}
+            {{ $t('yume.tooltip') }}
           </span>
         </span>
       </h2>
-      <p>{{ $t('home.interestingFactText') }}</p>
+      <p>{{ $t('yume.text') }}</p>
     </section>
 
     <section class="commitment">
-      <h2>{{ $t('home.drivesTitle') }}</h2>
+      <h2>{{ $t('drives.title') }}</h2>
       <p>
-        <template v-for="(segment, index) in $tm('home.drivesSegments')" :key="`drives-${index}`">
+        <template v-for="(segment, index) in $tm('drives.segments')" :key="`drives-${index}`">
           <span v-if="segment.type === 'highlight'" class="text-highlight">{{ segment.text }}</span>
           <template v-else>{{ segment.text }}</template>
         </template>
@@ -92,24 +92,26 @@
     </section>
 
     <section class="contact">
-      <h2 id="contact">{{ $t('home.contactTitle') }}</h2>
-      <p>{{ $t('home.contactEmail') }}</p>
+      <h2 id="contact">{{ $t('contact.title') }}</h2>
+      <p>{{ $t('contact.linkedinPrompt') }}</p>
 
       <p class="introduction-highlights-paragraph">
-        <img class="contact-image" src="/assets/profile/angelica-contact.webp" :alt="$t('home.contactImageAlt')" loading="lazy" />
+        <img class="contact-image" src="/assets/profile/angelica-contact.webp" :alt="$t('contact.imageAlt')" loading="lazy" />
       </p>
 
-      <p>{{ $t('home.contactSocial') }}</p>
+      <p>{{ $t('contact.githubPrompt') }}</p>
 
       <p class="introduction-highlights-paragraph">
-        <a href="https://www.linkedin.com/in/yumeangelica/" target="_blank" :aria-label="$t('home.linkedinAriaLabel')" rel="noopener">
-          <img class="contact-icon" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linkedin/linkedin-original-wordmark.svg"
-            :alt="$t('home.linkedinAlt')" loading="lazy" />
+        <a href="https://www.linkedin.com/in/yumeangelica/" target="_blank"
+          :aria-label="$t('common.externalLinkAriaLabel', { label: $t('contact.visitLinkedin') })" rel="noopener">
+          <img class="contact-icon" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linkedin/linkedin-original-wordmark.svg" alt=""
+            loading="lazy" />
         </a>
 
-        <a href="https://github.com/yumeangelica" target="_blank" :aria-label="$t('home.githubAriaLabel')" rel="noopener">
-          <img class="contact-icon" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original-wordmark.svg"
-            :alt="$t('home.githubAlt')" loading="lazy" />
+        <a href="https://github.com/yumeangelica" target="_blank"
+          :aria-label="$t('common.externalLinkAriaLabel', { label: $t('contact.visitGithub') })" rel="noopener">
+          <img class="contact-icon" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original-wordmark.svg" alt=""
+            loading="lazy" />
         </a>
       </p>
     </section>

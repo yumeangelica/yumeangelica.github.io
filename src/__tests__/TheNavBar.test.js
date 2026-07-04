@@ -5,15 +5,14 @@ describe('TheNavBar.vue', () => {
   const i18nMock = {
     $t: (key) => {
       const messages = {
-        'nav.mainNavigation': 'Main navigation',
+        'nav.ariaLabel': 'Main navigation',
         'nav.skipToContent': 'Skip to content',
-        'nav.toggleNavigation': 'Toggle navigation',
+        'nav.toggleAriaLabel': 'Toggle navigation',
         'nav.home': 'Home',
         'nav.projects': 'Projects',
         'nav.github': 'GitHub',
         'nav.linkedin': 'LinkedIn',
-        'nav.githubAriaLabel': 'Visit GitHub profile',
-        'nav.linkedinAriaLabel': 'Visit LinkedIn profile'
+        'common.externalLinkAriaLabel': '{label} (opens in new tab)'
       }
       return messages[key] || key
     },

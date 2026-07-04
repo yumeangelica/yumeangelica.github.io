@@ -9,41 +9,40 @@ vi.mock('../dataCache.js', () => ({
 const i18nMocks = {
   $t: (key) => {
     const messages = {
-      'home.title': 'Home',
-      'home.loading': 'Loading...',
-      'home.error': 'Failed to load data.',
-      'home.techStackTitle': 'Tech Stack',
-      'home.profilePicAlt': 'Profile picture',
-      'home.journeyTitle': 'Journey',
-      'home.certificationsTitle': 'Certifications',
-      'home.interestingFactTitleStart': 'Interesting',
-      'home.yumeAriaLabel': 'Yume',
-      'home.yumeWord': 'Yume',
-      'home.yumeTooltip': 'Dream',
-      'home.interestingFactText': 'Fact',
-      'home.drivesTitle': 'Drives',
-      'home.contactTitle': 'Contact',
-      'home.contactEmail': 'email@example.dev',
-      'home.contactImageAlt': 'Contact image',
-      'home.contactSocial': 'Social',
-      'home.linkedinAriaLabel': 'LinkedIn',
-      'home.linkedinAlt': 'LinkedIn logo',
-      'home.githubAriaLabel': 'GitHub',
-      'home.githubAlt': 'GitHub logo'
+      'intro.title': 'Home',
+      'common.loading': 'Loading...',
+      'common.error': 'Failed to load data.',
+      'common.externalLinkAriaLabel': '{label} (opens in new tab)',
+      'techStack.title': 'Tech Stack',
+      'intro.profileImageAlt': 'Profile picture',
+      'journey.title': 'Journey',
+      'certifications.title': 'Certifications',
+      'yume.titleStart': 'Interesting',
+      'yume.ariaLabel': 'Yume',
+      'yume.word': 'Yume',
+      'yume.tooltip': 'Dream',
+      'yume.text': 'Fact',
+      'drives.title': 'Drives',
+      'contact.title': 'Contact',
+      'contact.linkedinPrompt': 'email@example.dev',
+      'contact.imageAlt': 'Contact image',
+      'contact.githubPrompt': 'Social',
+      'contact.visitLinkedin': 'Visit my LinkedIn profile',
+      'contact.visitGithub': 'Visit my GitHub profile'
     }
     return messages[key] || key
   },
   $tm: (key) => {
-    if (key === 'home.journeyItems') {
+    if (key === 'journey.items') {
       return ['Milestone']
     }
-    if (key === 'home.certifications') {
+    if (key === 'certifications.items') {
       return [{ text: 'Cert', url: 'https://example.dev/cert' }]
     }
-    if (key === 'home.introSegments') {
+    if (key === 'intro.segments') {
       return [{ text: 'Intro text' }]
     }
-    if (key === 'home.drivesSegments') {
+    if (key === 'drives.segments') {
       return [{ text: 'Drive text' }]
     }
     return []

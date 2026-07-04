@@ -1,10 +1,10 @@
 <template>
-  <nav class="navbar navbar-expand-md navbar-light" role="navigation" :aria-label="$t('nav.mainNavigation')">
+  <nav class="navbar navbar-expand-md navbar-light" role="navigation" :aria-label="$t('nav.ariaLabel')">
     <a href="#main-content" class="visually-hidden-focusable">{{ $t('nav.skipToContent') }}</a>
     <div class="container-fluid">
       <!-- Toggler -->
       <button class="navbar-toggler ms-auto" type="button" @click="toggleNav" aria-controls="navbarNav" :aria-expanded="showNav ? 'true' : 'false'"
-        :aria-label="$t('nav.toggleNavigation')">
+        :aria-label="$t('nav.toggleAriaLabel')">
         <span class="navbar-toggler-icon"></span>
       </button>
       <!-- Navbar links -->
@@ -18,11 +18,11 @@
           </li>
           <li class="nav-item">
             <a href="https://github.com/yumeangelica" class="nav-link" target="_blank" rel="noopener" @click="closeNav"
-              :aria-label="$t('nav.githubAriaLabel')">{{ $t('nav.github') }}</a>
+              :aria-label="$t('common.externalLinkAriaLabel', { label: $t('nav.github') })">{{ $t('nav.github') }}</a>
           </li>
           <li class="nav-item">
             <a href="https://www.linkedin.com/in/yumeangelica/" class="nav-link" target="_blank" rel="noopener" @click="closeNav"
-              :aria-label="$t('nav.linkedinAriaLabel')">{{ $t('nav.linkedin') }}</a>
+              :aria-label="$t('common.externalLinkAriaLabel', { label: $t('nav.linkedin') })">{{ $t('nav.linkedin') }}</a>
           </li>
         </ul>
       </div>

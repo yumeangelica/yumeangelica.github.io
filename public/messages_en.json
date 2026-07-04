@@ -1,6 +1,11 @@
 {
   "app": {
-    "mainContentLabel": "Main site content"
+    "mainContentAriaLabel": "Main site content"
+  },
+  "common": {
+    "loading": "Loading...",
+    "error": "Something went wrong loading the content. Please try again later.",
+    "externalLinkAriaLabel": "{label} (opens in new tab)"
   },
   "seo": {
     "home": {
@@ -13,15 +18,13 @@
     }
   },
   "nav": {
-    "mainNavigation": "Main navigation",
+    "ariaLabel": "Main navigation",
     "skipToContent": "Skip to main content",
+    "toggleAriaLabel": "Toggle navigation",
     "home": "Home",
     "projects": "Projects",
     "github": "GitHub",
-    "linkedin": "LinkedIn",
-    "toggleNavigation": "Toggle navigation",
-    "githubAriaLabel": "GitHub (opens in new tab)",
-    "linkedinAriaLabel": "LinkedIn (opens in new tab)"
+    "linkedin": "LinkedIn"
   },
   "footer": {
     "ariaLabel": "Site footer",
@@ -31,9 +34,9 @@
     "ariaLabel": "Scroll back to top",
     "title": "Back to top"
   },
-  "home": {
+  "intro": {
     "title": "Software Development Portfolio",
-    "introSegments": [
+    "segments": [
       {
         "text": "I'm an "
       },
@@ -59,10 +62,14 @@
         "text": " it matters."
       }
     ],
-    "techStackTitle": "Technologies & Tools",
-    "profilePicAlt": "Angelica's CV Profile Picture",
-    "journeyTitle": "Developer Journey",
-    "journeyItems": [
+    "profileImageAlt": "Angelica's profile picture"
+  },
+  "techStack": {
+    "title": "Technologies & Tools"
+  },
+  "journey": {
+    "title": "Developer Journey",
+    "items": [
       "Currently working at OP Pohjola as a Software Developer Trainee, building accessible frontend features with React, TypeScript, SCSS, and design-system components in an international, regulated agile environment.",
       "Also supporting REST API and Java/Spring Boot-related tasks, including maintenance and migration work where needed.",
       "Previously worked on a backend-focused full-stack team project for City of Helsinki / Virittämö, using JavaScript, TypeScript, Node.js, Express, React, and MongoDB.",
@@ -72,67 +79,98 @@
       "Additional studies in DevOps with Docker, Cyber Security, and Python Programming at the University of Helsinki.",
       "ICT degree from Business College Helsinki, graduating in April 2024 with a GPA of 4.95/5.",
       "Personal projects in web development, Python tooling, automation, and accessible user interfaces."
-    ],
-    "certificationsTitle": "Professional Certifications",
-    "certificationAriaLabel": "{text} (opens in new tab)",
-    "certifications": [
+    ]
+  },
+  "certifications": {
+    "title": "Professional Certifications",
+    "items": [
       {
         "text": "Microsoft Certified: Security, Compliance, and Identity Fundamentals (SC-900)",
         "url": "https://learn.microsoft.com/api/credentials/share/en-us/yumeangelica/5AC06C18FC8D561A?sharingId=34D975BF021B8BDF"
       }
-    ],
-    "interestingFactTitleStart": "A bit about my",
-    "yumeWord": "yume",
-    "yumeTooltip": "\"dream\"",
-    "yumeAriaLabel": "yume, meaning \"dream\"",
-    "interestingFactText": "Outside of coding, I produce music and explore Japanese culture. Those creative interests influence how I approach problem-solving, structure, and small details in user experiences.",
-    "drivesTitle": "What Drives Me",
-    "drivesSegments": [
+    ]
+  },
+  "yume": {
+    "titleStart": "A bit about my",
+    "word": "yume",
+    "tooltip": "\"dream\"",
+    "ariaLabel": "yume, meaning \"dream\"",
+    "text": "Outside of coding, I produce music and explore Japanese culture. Those creative interests influence how I approach problem-solving, structure, and small details in user experiences."
+  },
+  "drives": {
+    "title": "What Drives Me",
+    "segments": [
       {
         "text": "I'm currently open to new software developer opportunities where I can contribute to accessible, maintainable web applications and keep growing across modern frontend, full-stack JavaScript, and Python automation."
       }
-    ],
-    "contactTitle": "Get in Touch",
-    "contactEmail": "Reach out on LinkedIn if you would like to discuss a software development role or a relevant project.",
-    "contactSocial": "You can also find my work on GitHub.",
-    "contactImageAlt": "Reach out via LinkedIn",
-    "linkedinAriaLabel": "Visit my LinkedIn profile (opens in new tab)",
-    "githubAriaLabel": "Visit my GitHub profile (opens in new tab)",
-    "linkedinAlt": "LinkedIn logo and link",
-    "githubAlt": "GitHub logo and link"
+    ]
+  },
+  "contact": {
+    "title": "Get in Touch",
+    "linkedinPrompt": "Reach out on LinkedIn if you would like to discuss a software development role or a relevant project.",
+    "githubPrompt": "You can also find my work on GitHub.",
+    "imageAlt": "Reach out via LinkedIn",
+    "visitLinkedin": "Visit my LinkedIn profile",
+    "visitGithub": "Visit my GitHub profile"
   },
   "projects": {
     "title": "Selected Projects",
-    "filterAll": "All",
-    "filterFE": "FE",
-    "filterBE": "BE",
-    "filterFS": "FS",
-    "filterCLI": "CLI",
-    "filterAllTypesAria": "Show all types",
-    "filterFrontendAria": "Frontend projects",
-    "filterBackendAria": "Backend projects",
-    "filterFullstackAria": "Fullstack projects",
-    "filterCliAria": "CLI projects",
-    "filterAllTechAria": "Show all technologies",
-    "filterTechAria": "Filter by {title}",
-    "filterTypeGroupLabel": "Filter by project type",
-    "filterTechGroupLabel": "Filter by technology",
     "loading": "Loading projects...",
     "error": "Something went wrong loading the projects. Please try again later.",
-    "mainProjectsTitle": "Main Projects",
-    "fullstackProjectsTitle": "Full-stack Projects",
-    "frontendProjectsTitle": "Frontend Projects",
-    "backendProjectsTitle": "Backend Projects",
-    "cliProjectsTitle": "CLI Projects",
-    "floatingNavAria": "Quick navigation menu",
-    "floatingNavToggleAria": "Toggle quick navigation menu",
-    "floatingBackToTop": "Back to Top",
-    "floatingMain": "Main Projects",
-    "floatingFrontend": "Frontend",
-    "floatingBackend": "Backend",
-    "floatingFullstack": "Full-stack",
-    "floatingCli": "CLI",
-    "filterResultsCount": "{count} projects found"
+    "filters": {
+      "typeGroupAriaLabel": "Filter by project type",
+      "techGroupAriaLabel": "Filter by technology",
+      "allLabel": "All",
+      "allTypesAriaLabel": "Show all project types",
+      "allTechAriaLabel": "Show all technologies",
+      "types": {
+        "frontend": {
+          "label": "FE",
+          "ariaLabel": "Frontend projects"
+        },
+        "backend": {
+          "label": "BE",
+          "ariaLabel": "Backend projects"
+        },
+        "fullstack": {
+          "label": "FS",
+          "ariaLabel": "Full-stack projects"
+        },
+        "cli": {
+          "label": "CLI",
+          "ariaLabel": "CLI projects"
+        }
+      },
+      "techAriaLabel": "Filter by {title}",
+      "resultsFound": "{count} projects found",
+      "resultsFoundOne": "1 project found"
+    },
+    "sections": {
+      "main": {
+        "title": "Main Projects",
+        "navLabel": "Main Projects"
+      },
+      "fullstack": {
+        "title": "Full-stack Projects",
+        "navLabel": "Full-stack"
+      },
+      "frontend": {
+        "title": "Frontend Projects",
+        "navLabel": "Frontend"
+      },
+      "backend": {
+        "title": "Backend Projects",
+        "navLabel": "Backend"
+      },
+      "cli": {
+        "title": "CLI Projects",
+        "navLabel": "CLI"
+      }
+    },
+    "floatingNav": {
+      "ariaLabel": "Quick navigation menu",
+      "toggleAriaLabel": "Toggle quick navigation menu"
+    }
   },
   "projectCard": {
     "technologiesLabel": "Technologies used",

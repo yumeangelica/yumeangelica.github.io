@@ -6,7 +6,7 @@ import i18nPlugin, { loadMessages } from './i18n'
 
 import './main.css'
 
-loadMessages('en').then(() => {
+loadMessages().then(() => {
   const app = createApp(App)
 
   app.use(router)

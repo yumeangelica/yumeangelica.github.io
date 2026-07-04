@@ -7,36 +7,25 @@
     <div class="filter-container">
       <!-- Unified filter row: two centered rows, always visible on all devices -->
       <div class="filters-row">
-        <div class="filter-row-inner" role="group" :aria-label="$t('projects.filterTypeGroupLabel')">
-          <button @click="toggleTypeFilter(null)" class="filter-btn filter-type" :class="{ active: selectedTypes.length === 0 }"
-            :aria-label="$t('projects.filterAllTypesAria')">
-            {{ $t('projects.filterAll') }}
+        <div class="filter-row-inner" role="group" :aria-label="$t('projects.filters.typeGroupAriaLabel')">
+          <button type="button" @click="toggleTypeFilter(null)" class="filter-btn filter-type" :class="{ active: selectedTypes.length === 0 }"
+            :aria-label="$t('projects.filters.allTypesAriaLabel')">
+            {{ $t('projects.filters.allLabel') }}
           </button>
-          <button @click="toggleTypeFilter('frontend')" class="filter-btn filter-type" :class="{ active: selectedTypes.includes('frontend') }"
-            :disabled="!isTypeTechComboAvailable('frontend', selectedTech)" :aria-label="$t('projects.filterFrontendAria')">
-            {{ $t('projects.filterFE') }}
-          </button>
-          <button @click="toggleTypeFilter('backend')" class="filter-btn filter-type" :class="{ active: selectedTypes.includes('backend') }"
-            :disabled="!isTypeTechComboAvailable('backend', selectedTech)" :aria-label="$t('projects.filterBackendAria')">
-            {{ $t('projects.filterBE') }}
-          </button>
-          <button @click="toggleTypeFilter('fullstack')" class="filter-btn filter-type" :class="{ active: selectedTypes.includes('fullstack') }"
-            :disabled="!isTypeTechComboAvailable('fullstack', selectedTech)" :aria-label="$t('projects.filterFullstackAria')">
-            {{ $t('projects.filterFS') }}
-          </button>
-          <button @click="toggleTypeFilter('cli')" class="filter-btn filter-type" :class="{ active: selectedTypes.includes('cli') }"
-            :disabled="!isTypeTechComboAvailable('cli', selectedTech)" :aria-label="$t('projects.filterCliAria')">
-            {{ $t('projects.filterCLI') }}
+          <button type="button" v-for="type in typeFilters" :key="type" @click="toggleTypeFilter(type)" class="filter-btn filter-type"
+            :class="{ active: selectedTypes.includes(type) }" :disabled="!isTypeTechComboAvailable(type, selectedTech)"
+            :aria-label="$t(`projects.filters.types.${type}.ariaLabel`)">
+            {{ $t(`projects.filters.types.${type}.label`) }}
           </button>
         </div>
-        <div class="filter-row-inner" role="group" :aria-label="$t('projects.filterTechGroupLabel')">
-          <button @click="toggleTechFilter(null)" class="filter-btn tech-filter-btn" :class="{ active: selectedTech.length === 0 }"
-            :aria-label="$t('projects.filterAllTechAria')">
-            <span>{{ $t('projects.filterAll') }}</span>
+        <div class="filter-row-inner" role="group" :aria-label="$t('projects.filters.techGroupAriaLabel')">
+          <button type="button" @click="toggleTechFilter(null)" class="filter-btn tech-filter-btn" :class="{ active: selectedTech.length === 0 }"
+            :aria-label="$t('projects.filters.allTechAriaLabel')">
+            <span>{{ $t('projects.filters.allLabel') }}</span>
           </button>
-          <button v-for="tech in popularTechnologies" :key="tech.title" @click="toggleTechFilter(tech.title)" class="filter-btn tech-filter-btn"
+          <button type="button" v-for="tech in popularTechnologies" :key="tech.title" @click="toggleTechFilter(tech.title)" class="filter-btn tech-filter-btn"
             :class="{ active: selectedTech.includes(tech.title) }" :disabled="!isTechTypeComboAvailable(tech.title, selectedTypes)"
-            :aria-label="$t('projects.filterTechAria', { title: tech.title })">
+            :aria-label="$t('projects.filters.techAriaLabel', { title: tech.title })">
             <img :src="tech.url" :alt="tech.title" :title="tech.title" class="tech-icon" />
           </button>
         </div>
@@ -45,7 +34,7 @@
 
     <!-- Filter results count for screen readers -->
     <div v-if="!loading && !fetchError" class="visually-hidden" aria-live="polite" aria-atomic="true">
-      {{ $t('projects.filterResultsCount', { count: totalFilteredProjects }) }}
+      {{ resultsAnnouncement }}
     </div>
 
     <!-- Loading and error indicators -->
@@ -57,81 +46,31 @@
       <p>{{ $t('projects.error') }}</p>
     </div>
 
-    <!-- Main projects section -->
-    <section v-if="filteredMainProjects.length > 0" aria-labelledby="main-projects">
-      <h2 id="main-projects" class="text-center">{{ $t('projects.mainProjectsTitle') }}</h2>
+    <!-- Project sections, one per type that currently has matching projects -->
+    <section v-for="section in visibleSections" :key="section.type" :aria-labelledby="section.id">
+      <h2 :id="section.id" class="text-center">{{ $t(`projects.sections.${section.type}.title`) }}</h2>
       <div class="projects-container" aria-live="polite" :aria-busy="loading">
-        <TheProjectCard v-for="project in filteredMainProjects" :key="project.title" :project="project" :technologies="technologies" />
-      </div>
-    </section>
-
-    <!-- Fullstack projects section -->
-    <section v-if="filteredFullstackProjects.length > 0" aria-labelledby="fullstack-projects">
-      <h2 id="fullstack-projects" class="text-center">{{ $t('projects.fullstackProjectsTitle') }}</h2>
-      <div class="projects-container" aria-live="polite" :aria-busy="loading">
-        <TheProjectCard v-for="project in filteredFullstackProjects" :key="project.title" :project="project" :technologies="technologies" />
-      </div>
-    </section>
-
-
-    <!-- Frontend projects section -->
-    <section v-if="filteredFrontendProjects.length > 0" aria-labelledby="frontend-projects">
-      <h2 id="frontend-projects" class="text-center">{{ $t('projects.frontendProjectsTitle') }}</h2>
-      <div class="projects-container" aria-live="polite" :aria-busy="loading">
-        <TheProjectCard v-for="project in filteredFrontendProjects" :key="project.title" :project="project" :technologies="technologies" />
-      </div>
-    </section>
-
-    <!-- Backend projects section -->
-    <section v-if="filteredBackendProjects.length > 0" aria-labelledby="backend-projects">
-      <h2 id="backend-projects" class="text-center">{{ $t('projects.backendProjectsTitle') }}</h2>
-      <div class="projects-container" aria-live="polite" :aria-busy="loading">
-        <TheProjectCard v-for="project in filteredBackendProjects" :key="project.title" :project="project" :technologies="technologies" />
-      </div>
-    </section>
-
-
-    <!-- CLI projects section -->
-    <section v-if="filteredCliProjects.length > 0" aria-labelledby="cli-projects">
-      <h2 id="cli-projects" class="text-center">{{ $t('projects.cliProjectsTitle') }}</h2>
-      <div class="projects-container" aria-live="polite" :aria-busy="loading">
-        <TheProjectCard v-for="project in filteredCliProjects" :key="project.title" :project="project" :technologies="technologies" />
+        <TheProjectCard v-for="project in section.projects" :key="project.title" :project="project" :technologies="technologies" />
       </div>
     </section>
 
     <!-- Floating navigation - appears when scrolled down -->
     <Transition name="fade">
-      <div v-if="showFloatingNav" class="floating-nav" role="navigation" :aria-label="$t('projects.floatingNavAria')"
+      <div v-if="showFloatingNav" class="floating-nav" role="navigation" :aria-label="$t('projects.floatingNav.ariaLabel')"
         @keydown.esc="isFloatingMenuOpen = false">
-        <button @click="toggleFloatingMenu" class="floating-nav-toggle" :aria-expanded="isFloatingMenuOpen"
-          :aria-label="$t('projects.floatingNavToggleAria')">
+        <button type="button" @click="toggleFloatingMenu" class="floating-nav-toggle" :aria-expanded="isFloatingMenuOpen"
+          :aria-label="$t('projects.floatingNav.toggleAriaLabel')">
           <span class="nav-icon" :class="{ rotated: isFloatingMenuOpen }">☰</span>
         </button>
 
         <Transition name="slide-up">
           <div v-if="isFloatingMenuOpen" class="floating-nav-menu">
-            <button @click="scrollToSection('back-to-top')" class="floating-nav-button">
-              {{ $t('projects.floatingBackToTop') }}
+            <button type="button" @click="scrollToSection('back-to-top')" class="floating-nav-button">
+              {{ $t('backToTop.title') }}
             </button>
-            <button @click="scrollToSection('main-projects')" class="floating-nav-button" :class="{ disabled: !isMainVisible }"
-              :disabled="!isMainVisible">
-              {{ $t('projects.floatingMain') }}
-            </button>
-            <button @click="scrollToSection('frontend-projects')" class="floating-nav-button" :class="{ disabled: !isFrontendVisible }"
-              :disabled="!isFrontendVisible">
-              {{ $t('projects.floatingFrontend') }}
-            </button>
-            <button @click="scrollToSection('backend-projects')" class="floating-nav-button" :class="{ disabled: !isBackendVisible }"
-              :disabled="!isBackendVisible">
-              {{ $t('projects.floatingBackend') }}
-            </button>
-            <button @click="scrollToSection('fullstack-projects')" class="floating-nav-button" :class="{ disabled: !isFullstackVisible }"
-              :disabled="!isFullstackVisible">
-              {{ $t('projects.floatingFullstack') }}
-            </button>
-            <button @click="scrollToSection('cli-projects')" class="floating-nav-button" :class="{ disabled: !isCliVisible }"
-              :disabled="!isCliVisible">
-              {{ $t('projects.floatingCli') }}
+            <button type="button" v-for="type in floatingNavTypes" :key="type" @click="scrollToSection(`${type}-projects`)"
+              class="floating-nav-button" :class="{ disabled: !hasVisibleProjects(type) }" :disabled="!hasVisibleProjects(type)">
+              {{ $t(`projects.sections.${type}.navLabel`) }}
             </button>
           </div>
         </Transition>
@@ -143,6 +82,14 @@
 <script>
 import TheProjectCard from '../components/TheProjectCard.vue';
 import { fetchData } from '../dataCache.js';
+import { scrollBehavior } from '../scroll';
+
+// Project types shown as selectable type-filter buttons, in display order.
+const TYPE_FILTERS = ['frontend', 'backend', 'fullstack', 'cli'];
+// Project sections in the order they are rendered on the page.
+const SECTION_TYPES = ['main', 'fullstack', 'frontend', 'backend', 'cli'];
+// Section links in the floating quick-navigation menu, in menu order.
+const FLOATING_NAV_TYPES = ['main', 'frontend', 'backend', 'fullstack', 'cli'];
 
 export default {
   name: 'PageProjects',
@@ -189,47 +136,42 @@ export default {
       const technologies = Array.isArray(this.technologies) ? this.technologies : [];
       return technologies.filter(tech => techNames.includes(tech.title));
     },
-    filteredMainProjects() {
-      // Only main projects, filtered by type/tech
-      return this.filterProjects(this.mainProjects);
+    typeFilters() {
+      return TYPE_FILTERS;
     },
-    filteredFrontendProjects() {
-      // Only non-main frontend projects
-      return this.filterProjects(this.frontendProjects);
+    floatingNavTypes() {
+      return FLOATING_NAV_TYPES;
     },
-    filteredBackendProjects() {
-      return this.filterProjects(this.backendProjects);
+    // Projects for each section, filtered by the active type/tech selection.
+    filteredProjectsByType() {
+      return {
+        main: this.filterProjects(this.mainProjects),
+        fullstack: this.filterProjects(this.fullstackProjects),
+        frontend: this.filterProjects(this.frontendProjects),
+        backend: this.filterProjects(this.backendProjects),
+        cli: this.filterProjects(this.cliProjects),
+      };
     },
-    filteredFullstackProjects() {
-      return this.filterProjects(this.fullstackProjects);
-    },
-    filteredCliProjects() {
-      return this.filterProjects(this.cliProjects);
-    },
-    isMainVisible() {
-      return this.filteredMainProjects.length > 0;
-    },
-    isFrontendVisible() {
-      return this.filteredFrontendProjects.length > 0;
-    },
-    isBackendVisible() {
-      return this.filteredBackendProjects.length > 0;
-    },
-    isFullstackVisible() {
-      return this.filteredFullstackProjects.length > 0;
-    },
-    isCliVisible() {
-      return this.filteredCliProjects.length > 0;
+    // Sections with at least one matching project, in render order.
+    visibleSections() {
+      return SECTION_TYPES
+        .map(type => ({ type, id: `${type}-projects`, projects: this.filteredProjectsByType[type] }))
+        .filter(section => section.projects.length > 0);
     },
     totalFilteredProjects() {
-      return this.filteredMainProjects.length +
-        this.filteredFrontendProjects.length +
-        this.filteredBackendProjects.length +
-        this.filteredFullstackProjects.length +
-        this.filteredCliProjects.length;
+      return Object.values(this.filteredProjectsByType).reduce((total, list) => total + list.length, 0);
+    },
+    resultsAnnouncement() {
+      return this.totalFilteredProjects === 1
+        ? this.$t('projects.filters.resultsFoundOne')
+        : this.$t('projects.filters.resultsFound', { count: this.totalFilteredProjects });
     },
   },
   methods: {
+    // Whether a given section type currently has any matching project.
+    hasVisibleProjects(type) {
+      return this.filteredProjectsByType[type].length > 0;
+    },
     // Check if any project exists for the given type and selected techs
     isTypeTechComboAvailable(type, techArr) {
       const projects = Array.isArray(this.allProjects) ? this.allProjects : [];
@@ -307,7 +249,7 @@ export default {
       if (sectionId === 'back-to-top') {
         window.scrollTo({
           top: 0,
-          behavior: 'smooth'
+          behavior: scrollBehavior()
         });
         this.isFloatingMenuOpen = false; // Close menu after navigation
         return;
@@ -316,7 +258,7 @@ export default {
       // Regular section scrolling
       const element = document.getElementById(sectionId);
       if (element) {
-        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        element.scrollIntoView({ behavior: scrollBehavior(), block: 'start' });
         this.isFloatingMenuOpen = false; // Close menu after navigation
       }
     },

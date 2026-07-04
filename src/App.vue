@@ -4,7 +4,7 @@
       <TheHeaderPic />
       <TheNavBar />
     </header>
-    <main id="main-content" role="main" :aria-label="$t('app.mainContentLabel')">
+    <main id="main-content" role="main" :aria-label="$t('app.mainContentAriaLabel')">
       <div class="container-fluid">
         <div class="custom-container">
           <RouterView />

@@ -1,11 +1,26 @@
 import { readdirSync, readFileSync } from 'node:fs'
 import { dirname, extname, join, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
+import { EN_FALLBACK } from '../i18n'
 
 const rootDir = resolve(dirname(fileURLToPath(import.meta.url)), '../..')
 
 function readJson(path) {
   return JSON.parse(readFileSync(join(rootDir, path), 'utf8'))
+}
+
+// Resolve a dot-notation key against a nested messages object.
+function resolveKey(messages, key) {
+  return key.split('.').reduce((node, part) => (node == null ? undefined : node[part]), messages)
+}
+
+// Collect [dotPath, value] pairs for every non-object leaf (strings and arrays) in an object.
+function collectLeaves(value, path = []) {
+  if (value && typeof value === 'object' && !Array.isArray(value)) {
+    return Object.entries(value).flatMap(([key, item]) => collectLeaves(item, [...path, key]))
+  }
+
+  return [[path.join('.'), value]]
 }
 
 function collectFiles(dir, extensions) {
@@ -77,5 +92,47 @@ describe('content quality gates', () => {
     const filesWithVHtml = vueFiles.filter((file) => readFileSync(join(rootDir, file), 'utf8').includes('v-html'))
 
     expect(filesWithVHtml).toEqual([])
+  })
+
+  it('resolves every static translation key used in Vue components', () => {
+    const messages = readJson('public/messages_en.json')
+    const keyPattern = /\$tm?\(\s*'([^']+)'/g
+
+    const missing = collectFiles('src', ['.vue']).flatMap((file) => {
+      const content = readFileSync(join(rootDir, file), 'utf8')
+      return [...content.matchAll(keyPattern)]
+        .map((match) => match[1])
+        .filter((key) => {
+          const value = resolveKey(messages, key)
+          return typeof value !== 'string' && typeof value !== 'object'
+        })
+        .map((key) => ({ file, key }))
+    })
+
+    expect(missing).toEqual([])
+  })
+
+  it('keeps the built-in i18n fallback in sync with the message file', () => {
+    const messages = readJson('public/messages_en.json')
+
+    collectLeaves(EN_FALLBACK).forEach(([key, value]) => {
+      expect(resolveKey(messages, key), `EN_FALLBACK key "${key}" is missing or differs from messages_en.json`).toEqual(value)
+    })
+  })
+
+  it('defines the project section and type-filter keys built dynamically in the template', () => {
+    const messages = readJson('public/messages_en.json')
+
+    // Sections are keyed by `projects.sections.<type>.{title,navLabel}` via a template literal in PageProjects.vue.
+    for (const type of ['main', 'frontend', 'backend', 'fullstack', 'cli']) {
+      expect(typeof resolveKey(messages, `projects.sections.${type}.title`), `missing projects.sections.${type}.title`).toBe('string')
+      expect(typeof resolveKey(messages, `projects.sections.${type}.navLabel`), `missing projects.sections.${type}.navLabel`).toBe('string')
+    }
+
+    // Type filters are keyed by `projects.filters.types.<type>.{label,ariaLabel}` the same way.
+    for (const type of ['frontend', 'backend', 'fullstack', 'cli']) {
+      expect(typeof resolveKey(messages, `projects.filters.types.${type}.label`), `missing projects.filters.types.${type}.label`).toBe('string')
+      expect(typeof resolveKey(messages, `projects.filters.types.${type}.ariaLabel`), `missing projects.filters.types.${type}.ariaLabel`).toBe('string')
+    }
   })
 })

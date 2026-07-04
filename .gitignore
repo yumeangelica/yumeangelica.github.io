@@ -41,3 +41,7 @@ design/
 .github/skills/
 .github/prompts/
 .vscode/
+
+# Local-only AI agent guidance (not part of the published repo)
+AGENTS.md
+CLAUDE.md

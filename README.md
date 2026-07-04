@@ -109,7 +109,7 @@ AI-assisted tools may be used for planning, debugging, documentation, and review
 
 Most public copy lives in:
 
-- `public/messages_en.json` for home page, navigation, SEO, and labels
+- `public/messages_en.json` for content, navigation, SEO, and labels, grouped by topic (`intro`, `journey`, `certifications`, `contact`, `projects`, ...)
 - `public/data.json` for project cards and technology metadata
 - `README.md` for repository-level explanation
 - `index.html` and `src/seo.js` for fallback SEO metadata
@@ -121,6 +121,14 @@ bun run lint
 bun run test
 bun run build
 ```
+
+### Adding a new language
+
+The site uses a small custom i18n layer (`src/i18n.js`) that fetches `public/messages_<locale>.json` at startup. To add a locale:
+
+1. Copy `public/messages_en.json` to `public/messages_<locale>.json` (for example `messages_fi.json`) and translate the **values only** — keep the key structure and every `{placeholder}` name identical, so the same code resolves each key.
+2. Point the app at the new locale by passing it to `loadMessages('<locale>')` in `src/main.js`. The default is `DEFAULT_LOCALE` (`en`) from `src/i18n.js`; if a non-default locale fails to load, the app falls back to English automatically.
+3. Run the checks above. The content-quality tests verify that every translation key used in the components exists, which helps catch keys forgotten during translation.
 
 ## Release flow
 
