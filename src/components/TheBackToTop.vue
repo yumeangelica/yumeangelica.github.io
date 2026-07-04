@@ -1,12 +1,14 @@
 <template>
   <Transition name="fade">
-    <button v-if="isVisible" @click="scrollToTop" class="back-to-top" :aria-label="$t('backToTop.ariaLabel')" :title="$t('backToTop.title')">
+    <button v-if="isVisible" type="button" @click="scrollToTop" class="back-to-top" :aria-label="$t('backToTop.ariaLabel')" :title="$t('backToTop.title')">
       ↑
     </button>
   </Transition>
 </template>
 
 <script>
+import { scrollBehavior } from '../scroll';
+
 export default {
   name: 'TheBackToTop',
   data() {
@@ -29,7 +31,7 @@ export default {
     scrollToTop() {
       window.scrollTo({
         top: 0,
-        behavior: 'smooth'
+        behavior: scrollBehavior()
       });
     }
   },
