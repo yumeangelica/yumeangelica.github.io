@@ -4,28 +4,35 @@ const state = reactive({
   messages: {}
 });
 
+/** Locale loaded by default and used as the fallback source for other locales. */
+const DEFAULT_LOCALE = 'en';
+
 /**
  * Minimal English fallback used only when the primary message file cannot
  * be fetched, so the app renders readable text instead of raw dot-keys.
  * The full copy lives in /public/messages_en.json.
  */
 const EN_FALLBACK = {
-  app: { mainContentLabel: 'Main site content' },
+  app: { mainContentAriaLabel: 'Main site content' },
+  common: {
+    loading: 'Loading...',
+    error: 'Something went wrong loading the content. Please try again later.'
+  },
   seo: {
     home: { title: "Angelica's portfolio | Software development" },
     projects: { title: "Angelica's projects | Selected software development work" }
   },
   nav: {
-    mainNavigation: 'Main navigation',
+    ariaLabel: 'Main navigation',
     skipToContent: 'Skip to main content',
     home: 'Home',
     projects: 'Projects',
     github: 'GitHub',
     linkedin: 'LinkedIn',
-    toggleNavigation: 'Toggle navigation'
+    toggleAriaLabel: 'Toggle navigation'
   },
   footer: { copyright: '© 2020 - {year} yumeangelica.github.io. All Rights Reserved.' },
-  home: { title: 'Software Development Portfolio' }
+  intro: { title: 'Software Development Portfolio' }
 };
 
 /**
@@ -37,7 +44,7 @@ function resolve(obj, path) {
 
 /**
  * Translate a message key with optional parameter interpolation.
- * @param {string} key - Dot-notation key (e.g. 'home.title')
+ * @param {string} key - Dot-notation key (e.g. 'intro.title')
  * @param {Object} params - Variables to interpolate (e.g. { year: 2026 })
  * @returns {string} Translated string, or the key itself if not found
  */
@@ -69,10 +76,10 @@ function tm(key) {
 
 /**
  * Load messages from a locale JSON file in /public.
- * Falls back to English if the requested locale fails.
- * @param {string} locale - Locale code (default: 'en')
+ * Falls back to the default locale if the requested locale fails.
+ * @param {string} locale - Locale code (default: DEFAULT_LOCALE)
  */
-async function loadMessages(locale = 'en') {
+async function loadMessages(locale = DEFAULT_LOCALE) {
   let loaded = false;
 
   try {
@@ -82,22 +89,22 @@ async function loadMessages(locale = 'en') {
     loaded = true;
   } catch (error) {
     console.error(`[i18n] Failed to load messages for locale "${locale}":`, error);
-    // If a non-English locale failed, try the English file as fallback
-    if (locale !== 'en') {
-      console.warn('[i18n] Falling back to English');
+    // If a non-default locale failed, try the default locale file as fallback
+    if (locale !== DEFAULT_LOCALE) {
+      console.warn(`[i18n] Falling back to "${DEFAULT_LOCALE}"`);
       try {
-        const fallback = await fetch('/messages_en.json');
+        const fallback = await fetch(`/messages_${DEFAULT_LOCALE}.json`);
         if (fallback.ok) {
           state.messages = await fallback.json();
           loaded = true;
         }
       } catch {
-        console.error('[i18n] Fallback to English also failed');
+        console.error(`[i18n] Fallback to "${DEFAULT_LOCALE}" also failed`);
       }
     }
   }
 
-  // If no message file loaded (e.g. the English file itself failed), seed a
+  // If no message file loaded (e.g. the default-locale file itself failed), seed a
   // minimal built-in fallback so the UI shows readable text instead of dot-keys.
   if (!loaded) {
     console.warn('[i18n] Using built-in English fallback messages');
@@ -116,4 +123,4 @@ const i18nPlugin = {
 };
 
 export default i18nPlugin;
-export { loadMessages, t, tm };
+export { loadMessages, t, tm, EN_FALLBACK, DEFAULT_LOCALE };

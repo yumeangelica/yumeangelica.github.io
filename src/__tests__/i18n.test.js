@@ -73,7 +73,7 @@ describe('i18n', () => {
       global.fetch = vi.fn(() => Promise.resolve({ ok: false, status: 500 }))
 
       await loadMessages('en')
-      expect(t('home.title')).toBe('Software Development Portfolio')
+      expect(t('intro.title')).toBe('Software Development Portfolio')
       expect(t('nav.home')).toBe('Home')
     })
 

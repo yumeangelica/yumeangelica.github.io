@@ -10,7 +10,7 @@ describe('App.vue', () => {
   const i18nMock = {
     $t: (key) => {
       const messages = {
-        'app.mainContentLabel': 'Main content'
+        'app.mainContentAriaLabel': 'Main content'
       }
       return messages[key] || key
     }
