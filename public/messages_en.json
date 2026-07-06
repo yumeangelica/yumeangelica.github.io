@@ -120,6 +120,9 @@
     "filters": {
       "typeGroupAriaLabel": "Filter by project type",
       "techGroupAriaLabel": "Filter by technology",
+      "typeLabel": "Type",
+      "techLabel": "Technology",
+      "techToggleAriaLabel": "Toggle technology filters, {count} selected",
       "allLabel": "All",
       "allTypesAriaLabel": "Show all project types",
       "allTechAriaLabel": "Show all technologies",
