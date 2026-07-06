@@ -20,11 +20,9 @@
       ],
       "additionalInfo": [
         "Public Vue 3 portfolio for selected software development projects and career background",
-        "Vite build setup with Bun package management and locked dependency workflow",
-        "JSON-based content structure for UI text, project data, and reusable copy updates",
-        "Quality checks with Biome linting, Vitest component tests, content validation tests, and production builds",
-        "Accessibility-minded UI with skip link, keyboard focus styles, semantic sections, alt text, and responsive layout",
-        "GitHub Actions workflow for pull request checks and GitHub Pages deployment"
+        "Accessible UI with skip link, keyboard focus styles, semantic sections, and responsive layout",
+        "Biome linting, Vitest component and content tests, and GitHub Actions deployment to GitHub Pages",
+        "Vite and Bun tooling with JSON-based content for UI text and project data"
       ],
       "links": [
         {
@@ -59,15 +57,11 @@
         "Vite"
       ],
       "additionalInfo": [
-        "Legacy full-stack pet care management app for coordinating daily care tasks within households",
-        "Recurring care-task generation with daily reset and carry-over behavior",
-        "Need completion tracking with quantities and durations",
-        "Owner and caretaker roles with authentication and hashed password storage",
-        "Timezone-aware scheduling for each user's local day boundary",
-        "Responsive Vue 3 UI with Pinia state management and Tailwind CSS",
-        "Node.js/Express REST API with MongoDB data model",
-        "Bun runtime and package management with Biome linting and Vitest tests",
-        "Single-container Docker deployment where one server serves the built Vue SPA and the Express API"
+        "Legacy full-stack pet care app for coordinating daily care tasks within households",
+        "Recurring care-task generation with daily reset, carry-over, quantities, and durations",
+        "Owner and caretaker roles with authentication, hashed passwords, and timezone-aware scheduling",
+        "Responsive Vue 3 UI with Pinia and Tailwind over a Node.js/Express REST API with MongoDB",
+        "Single-container Docker deployment with Bun, Biome linting, and Vitest tests"
       ],
       "links": [
         {
@@ -91,13 +85,10 @@
         "Raspberry Pi"
       ],
       "additionalInfo": [
-        "Python Discord bot for scheduled store-data monitoring and real-time product-change notifications to Discord channels",
-        "Async data extraction workflows with aiohttp, lxml, and curl_cffi browser impersonation",
-        "SQLite persistence for product history and price-change tracking",
-        "Configurable store sources and scheduling for personal/community use",
-        "Docker and Raspberry Pi deployment notes for a low-cost always-on setup",
-        "Typed Python structures with TypedDict and type hints",
-        "Responsible-use focus: allowed public sources, conservative scheduling, and no restricted, authenticated, or access-controlled sources"
+        "Python Discord bot for scheduled store monitoring and real-time product-change notifications",
+        "Async extraction with aiohttp, lxml, and curl_cffi; SQLite product and price history",
+        "Typed Python with configurable sources, plus Docker and Raspberry Pi deployment notes",
+        "Responsible-use focus with allowed public sources and conservative scheduling"
       ],
       "links": [
         {
@@ -123,14 +114,10 @@
         "GitHub"
       ],
       "additionalInfo": [
-        "Django-based weather forecast application with city search and external weather API integration",
-        "Current conditions and 3-day forecast with hourly breakdown",
-        "Displays temperature, humidity, wind speed, estimated UV index, sunrise, and sunset times",
-        "Estimated UV index calculated from solar position with pysolar, no paid UV API required",
-        "Optional auto-location detection based on IP address using GeoIP2",
-        "Environment-based API key configuration for OpenWeatherMap",
-        "Docker, Gunicorn, Nginx, WhiteNoise, and GitHub Actions oriented deployment setup",
-        "Responsive interface with clear search flow and public API integration proof"
+        "Django weather app with city search and OpenWeatherMap API integration",
+        "Current conditions and 3-day forecast with hourly breakdown, humidity, wind, and sun times",
+        "UV index estimated from solar position with pysolar, plus optional GeoIP2 auto-location",
+        "Deployment-oriented setup with Docker, Gunicorn, Nginx, WhiteNoise, and GitHub Actions"
       ],
       "links": [
         {
@@ -153,11 +140,9 @@
         "Docker"
       ],
       "additionalInfo": [
-        "Python module used as part of the Jirai Sweeties automation workflow",
-        "Scheduled product-data collection, parsing, and SQLite persistence",
-        "Configurable sources, structured data models, and typed Python data structures",
-        "Supports price and availability change tracking for allowed public sources",
-        "Supporting module for the Jirai Sweeties workflow; kept as secondary proof with responsible-use notes"
+        "Python module powering the Jirai Sweeties automation workflow",
+        "Scheduled data collection and parsing with SQLite persistence and typed data structures",
+        "Price and availability tracking for allowed public sources with responsible-use notes"
       ],
       "links": [
         {
@@ -187,14 +172,10 @@
         "GitHub"
       ],
       "additionalInfo": [
-        "Course-origin full-stack phonebook application with per-user private contacts",
-        "Register, login, logout, and delete-account flows with JWT-based authentication",
-        "Add, edit, delete, search, and paginate contacts",
-        "Form validation with visual feedback and international phone-number support",
-        "Responsive React UI built with Vite and a Node.js/Express and MongoDB backend",
-        "Bun runtime and package management with Biome linting",
-        "API and component testing with node:test and supertest where implemented",
-        "Supporting project proof for React, Node.js, Express, MongoDB, and testing basics"
+        "Course-origin full-stack phonebook app with per-user private contacts",
+        "JWT-based authentication with register, login, logout, and delete-account flows",
+        "Responsive React and Vite UI with form validation and international phone-number support",
+        "Node.js/Express and MongoDB backend with API tests using node:test and supertest"
       ],
       "links": [
         {
@@ -222,12 +203,9 @@
       ],
       "additionalInfo": [
         "Full-stack learning project for managing a personal book collection",
-        "PHP and MySQL application with Apache and Docker setup",
-        "User authentication, password change flow, and account-management safeguards",
-        "Prepared statements, password hashing, and input validation where implemented",
-        "ISBN validation with check-digit verification for ISBN-10 and ISBN-13",
-        "MVC-style structure with reusable components",
-        "Supporting proof for earlier full-stack and database work"
+        "PHP and MySQL with Apache and Docker in an MVC-style structure",
+        "User authentication and account safeguards with password hashing and prepared statements",
+        "Input validation including ISBN-10 and ISBN-13 check-digit verification"
       ],
       "links": [
         {
@@ -248,11 +226,9 @@
         "GitHub"
       ],
       "additionalInfo": [
-        "Python CLI for current weather conditions and short-term forecast lookup",
-        "Uses OpenWeatherMap API with environment-based API key configuration",
+        "Python CLI for current weather and short-term forecast lookup via OpenWeatherMap",
         "Shows current conditions, 3-day forecast, estimated UV index, and local times",
-        "Input validation, error handling, and timezone-aware display logic",
-        "Supporting Python API-integration and CLI proof"
+        "Input validation, error handling, timezone-aware display, and environment-based API keys"
       ],
       "links": [
         {
