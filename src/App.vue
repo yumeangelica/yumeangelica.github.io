@@ -55,36 +55,13 @@ body {
 .custom-container {
   max-width: 1400px;
   margin: 0 auto;
-  padding: 0 4px;
+  /* Fluid gutter replaces the old per-breakpoint margin overrides */
+  padding: 0 clamp(10px, 3vw, 25px);
 }
 
 main {
   flex-grow: 1;
   min-height: calc(90vh - 50px);
-}
-
-/* Tablet and small screen */
-@media (max-width: 1440px) {
-  .custom-container {
-    margin: 0 25px;
-    padding: 0 4px;
-  }
-}
-
-/* Mobile */
-@media (max-width: 768px) {
-  .custom-container {
-    margin: 0 15px;
-    padding: 0 4px;
-  }
-}
-
-/* Very small mobile */
-@media (max-width: 568px) {
-  .custom-container {
-    margin: 0 10px;
-    padding: 0 4px;
-  }
 }
 
 /* Add global focus styles for keyboard navigation */
