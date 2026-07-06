@@ -1,5 +1,5 @@
 <template>
-  <nav class="navbar navbar-expand-md navbar-light" role="navigation" :aria-label="$t('nav.ariaLabel')">
+  <nav class="navbar navbar-expand-md navbar-light" role="navigation" :aria-label="$t('nav.ariaLabel')" @keydown.esc="closeNav">
     <a href="#main-content" class="visually-hidden-focusable">{{ $t('nav.skipToContent') }}</a>
     <div class="container-fluid">
       <!-- Toggler -->
@@ -97,15 +97,41 @@ export default {
 /* Navbar overall styling */
 nav {
   background: var(--color-nav-bg);
-  margin-bottom: 40px;
-  padding: 4px 0;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  margin-bottom: clamp(28px, 4vw, 44px);
+  padding: 6px 0;
+  box-shadow: var(--shadow-sm);
 }
 
 /* Navbar link styling */
 .nav-link {
+  position: relative;
   color: var(--color-primary);
-  transition: color 0.3s ease-in-out;
+  transition: color var(--transition-fast) ease-in-out;
+}
+
+/* Soft gradient underline that scales in on hover/focus and stays visible
+   on the active route — calmer than the old background-fill jump. */
+.nav-link::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: 0.2em;
+  width: min(100%, 3.5em);
+  height: 2px;
+  border-radius: var(--radius-pill);
+  background: linear-gradient(to right, transparent, var(--color-primary), transparent);
+  transform: translateX(-50%) scaleX(0);
+  transition: transform var(--transition-fast) ease;
+}
+
+.nav-link:hover::after,
+.nav-link:focus-visible::after,
+.nav-link.router-link-active::after {
+  transform: translateX(-50%) scaleX(1);
+}
+
+.nav-link:hover {
+  color: var(--color-primary-dark);
 }
 
 .nav-link.router-link-active {
@@ -120,17 +146,9 @@ nav {
   padding: 0 6px;
 }
 
-/* Hover and focus effects for nav items */
-.nav-item:hover,
-.nav-item:focus {
-  background-color: var(--color-primary-light);
-  color: var(--color-primary);
-  border-radius: 5px;
-}
-
-/* Navbar toggler icon customization */
+/* Navbar toggler icon customization — stroke uses the palette primary rgb(178, 77, 137) */
 .navbar-light .navbar-toggler-icon {
-  background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'><path stroke='rgb(252, 122, 191)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/></svg>");
+  background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'><path stroke='rgb(178, 77, 137)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/></svg>");
 }
 
 /* Toggler button styling */
@@ -214,6 +232,12 @@ nav {
   /* Smaller mobile nav text is normal-size: use the darker token for AA contrast on the pink menu background */
   .nav-link {
     color: var(--color-primary-dark);
+    /* Comfortable touch rows in the dropdown */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 44px;
+    padding: 0.25rem 1rem;
   }
 
   .nav-link.router-link-active {
@@ -228,22 +252,25 @@ nav {
     transform: none;
     max-width: calc(100vw - 20px);
     background-color: var(--color-nav-bg);
-    border-radius: 15px;
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
-    padding: 20px 25px;
+    border: 1px solid var(--color-border-soft);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-lg);
+    padding: 14px 22px;
     z-index: 1000;
+  }
+
+  /* Gentle reveal for the dropdown; frozen harmlessly by the global
+     prefers-reduced-motion override. */
+  .navbar-collapse.show-animate {
+    animation: nav-menu-in var(--transition-fast) ease;
+    transform-origin: top right;
   }
 
   .nav-item {
     width: 100%;
     text-align: center;
     font-size: 1rem;
-    padding: 5px 10px;
-  }
-
-  .nav-item:focus,
-  .nav-item:hover {
-    background-color: var(--color-primary-light);
+    padding: 0;
   }
 
   .navbar-nav {
@@ -252,6 +279,18 @@ nav {
 
   nav {
     position: relative;
+  }
+}
+
+@keyframes nav-menu-in {
+  from {
+    opacity: 0;
+    transform: translateY(-6px) scale(0.97);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
   }
 }
 </style>
