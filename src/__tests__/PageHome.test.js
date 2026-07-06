@@ -28,7 +28,9 @@ const i18nMocks = {
       'contact.imageAlt': 'Contact image',
       'contact.githubPrompt': 'Social',
       'contact.visitLinkedin': 'Visit my LinkedIn profile',
-      'contact.visitGithub': 'Visit my GitHub profile'
+      'contact.visitGithub': 'Visit my GitHub profile',
+      'nav.github': 'GitHub',
+      'nav.linkedin': 'LinkedIn'
     }
     return messages[key] || key
   },
@@ -109,5 +111,31 @@ describe('PageHome.vue', () => {
     expect(wrapper.find('img[alt="Vue.js"]').exists()).toBe(true)
     expect(wrapper.find('img[alt="TypeScript"]').exists()).toBe(true)
     expect(wrapper.find('img[alt="Node.js"]').exists()).toBe(true)
+  })
+
+  it('renders contact social buttons as safe external links', async () => {
+    fetchData.mockResolvedValueOnce({ technologies: [] })
+
+    const wrapper = mount(PageHome, {
+      global: {
+        mocks: i18nMocks
+      }
+    })
+
+    await flushPromises()
+
+    const buttons = wrapper.findAll('.contact-button')
+    expect(buttons.length).toBe(2)
+
+    const linkedin = buttons.find(link => link.text() === 'LinkedIn')
+    expect(linkedin.attributes('href')).toBe('https://www.linkedin.com/in/yumeangelica/')
+
+    const github = buttons.find(link => link.text() === 'GitHub')
+    expect(github.attributes('href')).toBe('https://github.com/yumeangelica')
+
+    buttons.forEach(link => {
+      expect(link.attributes('target')).toBe('_blank')
+      expect(link.attributes('rel')).toBe('noopener')
+    })
   })
 })

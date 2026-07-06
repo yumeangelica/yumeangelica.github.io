@@ -38,10 +38,12 @@
         </div>
       </div>
 
-      <div class="col-md-auto">
+      <div class="col-md-auto profile-col">
         <img src="/assets/profile/angelica-profilepic.webp" class="img-responsive profilepic" :alt="$t('intro.profileImageAlt')" fetchpriority="high">
       </div>
     </div>
+
+    <div class="section-divider" aria-hidden="true"></div>
 
     <section class="education">
       <div class="heartlist">
@@ -66,7 +68,9 @@
       </div>
     </section>
 
-    <section class="interesting-fact">
+    <div class="section-divider" aria-hidden="true"></div>
+
+    <section class="interesting-fact section-wash">
       <h2>
         {{ $t('yume.titleStart') }}
         <span class="tooltip-container" tabindex="0" :aria-label="$t('yume.ariaLabel')" @focus="isTooltipVisible = true"
@@ -80,7 +84,9 @@
       <p>{{ $t('yume.text') }}</p>
     </section>
 
-    <section class="commitment">
+    <div class="section-divider" aria-hidden="true"></div>
+
+    <section class="commitment section-wash">
       <h2>{{ $t('drives.title') }}</h2>
       <p>
         <template v-for="(segment, index) in $tm('drives.segments')" :key="`drives-${index}`">
@@ -91,7 +97,9 @@
 
     </section>
 
-    <section class="contact">
+    <div class="section-divider" aria-hidden="true"></div>
+
+    <section class="contact section-wash">
       <h2 id="contact">{{ $t('contact.title') }}</h2>
       <p>{{ $t('contact.linkedinPrompt') }}</p>
 
@@ -101,19 +109,25 @@
 
       <p>{{ $t('contact.githubPrompt') }}</p>
 
-      <p class="introduction-highlights-paragraph">
-        <a href="https://www.linkedin.com/in/yumeangelica/" target="_blank"
+      <div class="contact-buttons">
+        <a href="https://www.linkedin.com/in/yumeangelica/" class="contact-button" target="_blank"
           :aria-label="$t('common.externalLinkAriaLabel', { label: $t('contact.visitLinkedin') })" rel="noopener">
-          <img class="contact-icon" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linkedin/linkedin-original-wordmark.svg" alt=""
-            loading="lazy" />
+          <svg class="contact-button-icon" aria-hidden="true" viewBox="0 0 24 24" fill="currentColor">
+            <path
+              d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.36V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.55C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.72C24 .77 23.2 0 22.22 0z" />
+          </svg>
+          {{ $t('nav.linkedin') }}
         </a>
 
-        <a href="https://github.com/yumeangelica" target="_blank"
+        <a href="https://github.com/yumeangelica" class="contact-button" target="_blank"
           :aria-label="$t('common.externalLinkAriaLabel', { label: $t('contact.visitGithub') })" rel="noopener">
-          <img class="contact-icon" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original-wordmark.svg" alt=""
-            loading="lazy" />
+          <svg class="contact-button-icon" aria-hidden="true" viewBox="0 0 24 24" fill="currentColor">
+            <path
+              d="M12 .3a12 12 0 0 0-3.79 23.39c.6.11.82-.26.82-.58v-2.03c-3.34.73-4.04-1.61-4.04-1.61-.55-1.39-1.33-1.76-1.33-1.76-1.09-.74.08-.73.08-.73 1.2.09 1.84 1.24 1.84 1.24 1.07 1.83 2.81 1.3 3.5 1 .1-.78.42-1.31.76-1.61-2.66-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.13-.3-.54-1.52.11-3.18 0 0 1-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.28-1.55 3.29-1.23 3.29-1.23.65 1.66.24 2.88.12 3.18a4.65 4.65 0 0 1 1.23 3.22c0 4.61-2.8 5.63-5.48 5.92.43.37.81 1.1.81 2.22v3.29c0 .32.22.7.83.58A12 12 0 0 0 12 .3z" />
+          </svg>
+          {{ $t('nav.github') }}
         </a>
-      </p>
+      </div>
     </section>
   </template>
 </template>
@@ -166,13 +180,24 @@ export default {
 .devicon-wrapper {
   position: relative;
   display: inline-block;
+  background-color: var(--color-card-bg);
+  border: 1px solid var(--color-border-soft);
+  border-radius: var(--radius-md);
+  padding: 8px;
+  transition: transform var(--transition-fast) ease, box-shadow var(--transition-fast) ease;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .devicon-wrapper:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-sm);
+  }
 }
 
 .devicon {
-  width: 65px;
-  max-width: 65px;
+  width: 48px;
+  max-width: 48px;
   display: block;
-  padding: 2px;
   border-radius: 5px;
 }
 
@@ -194,7 +219,7 @@ export default {
   white-space: normal;
   pointer-events: none;
   transition: opacity 0.15s ease;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  box-shadow: var(--shadow-md);
   margin-bottom: 4px;
 }
 
@@ -203,34 +228,77 @@ export default {
   opacity: 1;
 }
 
-.contact-icon {
-  max-width: 80px;
-  margin-right: 25px;
-  margin-bottom: 15px;
-  border-radius: 5px;
-  transition: transform var(--transition-duration) ease;
-}
-
 .contact-image {
   max-width: 90%;
   width: 320px;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
 }
 
-.contact-icon:hover {
-  transform: scale(1.05);
-  cursor: pointer;
+/* Social pill buttons: same visual language as project-card buttons */
+.contact-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 25px;
 }
 
+.contact-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-height: 48px;
+  min-width: 150px;
+  padding: 10px 24px;
+  color: var(--color-white);
+  background-color: var(--color-button);
+  border-radius: var(--radius-pill);
+  text-decoration: none;
+  font-weight: 600;
+  line-height: 1.2;
+  touch-action: manipulation;
+  transition: background-color var(--transition-fast) ease, box-shadow var(--transition-fast) ease;
+}
+
+.contact-button:hover {
+  background-color: var(--color-button-hover);
+  box-shadow: var(--shadow-md);
+}
+
+.contact-button:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+  background-color: var(--color-button-hover);
+}
+
+.contact-button-icon {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+}
+
+/* Photo column centers vertically against the intro text */
+.profile-col {
+  align-self: center;
+}
+
+/* Photo keeps its natural 4:5 proportions: soft rounded rectangle with a
+   thin pink border — no crop, no circle */
 .profilepic {
+  display: block;
   width: 100%;
   max-width: 300px;
   margin: 10px 0 20px 35px;
+  border: 2px solid var(--color-primary-light);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
 }
 
 @media (max-width: 991px) {
   .profilepic {
-    margin: 10px auto;
-    display: block;
+    max-width: 260px;
+    margin: 15px auto 28px;
   }
 }
 
@@ -248,9 +316,9 @@ export default {
 }
 
 .heartlist li {
-  font-size: 1.1rem;
+  font-size: clamp(0.95rem, 0.9rem + 0.3vw, 1.1rem);
   position: relative;
-  padding: 1px 0;
+  padding: 3px 0;
 }
 
 .introduction-highlights-paragraph {
@@ -279,9 +347,10 @@ export default {
   width: auto;
   color: var(--color-primary);
   text-align: center;
-  border-radius: 6px;
+  border-radius: var(--radius-sm);
   padding: 5px 10px;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  background-color: var(--color-background);
+  box-shadow: var(--shadow-lg);
   max-width: min(280px, calc(100vw - 32px));
   overflow-wrap: break-word;
   transition: opacity 0.4s ease, visibility 0.4s ease;
@@ -310,8 +379,8 @@ export default {
   color: var(--color-primary);
   text-decoration: none;
   border-bottom: 1px solid var(--color-primary);
-  transition: color var(--transition-duration) ease,
-    border-bottom-color var(--transition-duration) ease;
+  transition: color var(--transition-fast) ease,
+    border-bottom-color var(--transition-fast) ease;
 }
 
 .styled-link:hover {
@@ -322,33 +391,35 @@ export default {
 /* Mobile mode rules */
 @media (max-width: 568px) {
   .devicon {
-    width: 45px;
-    max-width: 45px;
+    width: 36px;
+    max-width: 36px;
+  }
+
+  .devicon-wrapper {
+    padding: 6px;
+    border-radius: var(--radius-sm);
   }
 
   .tech-category .introduction-highlights-paragraph {
     gap: 10px;
   }
 
-  .contact-icon {
-    max-width: 55px;
-  }
-
   .contact-image {
     max-width: 85%;
   }
 
-  .heartlist li,
-  p {
-    font-size: 0.9rem;
+  /* Full-width stacked buttons: easy thumb targets on phones */
+  .contact-button {
+    width: 100%;
+    max-width: 320px;
   }
 
   .heartlist ul li:before {
-    font-size: 0.9rem;
+    font-size: 0.95rem;
   }
 
   .profilepic {
-    max-width: 200px;
+    max-width: 220px;
   }
 
   .tooltip-text {
@@ -366,12 +437,6 @@ export default {
     visibility: visible;
     opacity: 1;
   }
-}
-
-/* Improve focus visibility for links */
-a:focus-visible {
-  outline: 3px solid var(--color-primary);
-  outline-offset: 2px;
 }
 
 /* Ensure tooltip is visible when focused via keyboard */

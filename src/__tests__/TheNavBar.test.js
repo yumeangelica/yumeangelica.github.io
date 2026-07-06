@@ -108,6 +108,17 @@ describe('TheNavBar.vue', () => {
     vi.useRealTimers()
   })
 
+  it('closes navigation on Escape key', async () => {
+    const wrapper = createWrapper()
+    const toggler = wrapper.find('.navbar-toggler')
+
+    await toggler.trigger('click')
+    expect(wrapper.find('.navbar-collapse').classes()).toContain('show')
+
+    await wrapper.find('nav').trigger('keydown.esc')
+    expect(wrapper.find('.navbar-collapse').classes()).not.toContain('show')
+  })
+
   it('has correct aria-expanded attribute on toggler', async () => {
     const wrapper = createWrapper()
     const toggler = wrapper.find('.navbar-toggler')

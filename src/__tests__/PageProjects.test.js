@@ -72,6 +72,29 @@ describe('PageProjects.vue', () => {
     expect(filtered[0].title).toBe('Frontend Match')
   })
 
+  it('toggles the technology filter panel', async () => {
+    const wrapper = mount(PageProjects, {
+      global: {
+        mocks: i18nMocks,
+        stubs: {
+          TheProjectCard: true
+        }
+      }
+    })
+
+    await flushPromises()
+
+    const toggle = wrapper.find('.filter-panel-toggle')
+
+    expect(wrapper.vm.isTechFiltersOpen).toBe(false)
+
+    await toggle.trigger('click')
+    expect(wrapper.vm.isTechFiltersOpen).toBe(true)
+
+    await toggle.trigger('click')
+    expect(wrapper.vm.isTechFiltersOpen).toBe(false)
+  })
+
   it('shows floating nav and closes menu after throttled scroll', async () => {
     Object.defineProperty(window, 'scrollY', {
       value: 250,

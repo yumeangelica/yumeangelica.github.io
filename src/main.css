@@ -16,46 +16,30 @@ h6 {
   line-height: 1.2;
 }
 
+/* Fluid type scale: one clamp() per level covers mobile through desktop
+   without per-breakpoint overrides. */
 h1 {
-  font-size: calc(1.375rem + 1.5vw);
+  font-size: clamp(1.7rem, 1.25rem + 1.8vw, 2.5rem);
 }
 
 h2 {
-  font-size: calc(1.325rem + 0.9vw);
+  font-size: clamp(1.4rem, 1.1rem + 1.2vw, 2rem);
 }
 
 h3 {
-  font-size: calc(1.3rem + 0.6vw);
+  font-size: clamp(1.2rem, 1rem + 0.8vw, 1.6rem);
 }
 
 h4 {
-  font-size: calc(1.275rem + 0.3vw);
+  font-size: clamp(1.1rem, 0.95rem + 0.6vw, 1.4rem);
 }
 
 h5 {
-  font-size: 1.25rem;
+  font-size: clamp(1rem, 0.9rem + 0.4vw, 1.2rem);
 }
 
 h6 {
   font-size: 1rem;
-}
-
-@media (min-width: 1200px) {
-  h1 {
-    font-size: 2.5rem;
-  }
-
-  h2 {
-    font-size: 2rem;
-  }
-
-  h3 {
-    font-size: 1.75rem;
-  }
-
-  h4 {
-    font-size: 1.5rem;
-  }
 }
 
 ol,
@@ -269,7 +253,7 @@ html {
 body {
   background-color: var(--color-background);
   min-height: 100vh;
-  line-height: 1.9;
+  line-height: 1.75;
   font-family: 'Comfortaa', sans-serif;
   font-weight: 400;
   font-size: 1rem;
@@ -288,6 +272,7 @@ h1, h2, h3, h4, h5 {
   color: var(--color-heading);
   margin-bottom: 1.5rem;
   font-weight: 700;
+  letter-spacing: 0.015em;
 }
 
 label {
@@ -311,11 +296,10 @@ h2 {
 
 /* Section spacing */
 section {
-  margin-top: 15px;
+  margin-top: clamp(1.75rem, 4vw, 2.75rem);
 }
 
 h3 {
-  font-size: 1.5rem;
   padding: 10px 0;
 }
 
@@ -325,14 +309,14 @@ h4, h5 {
 
 /* Images */
 img {
-  border-radius: 10px;
+  border-radius: var(--radius-sm);
 }
 
 /* Paragraphs */
 p {
   color: var(--color-text);
   margin-bottom: 25px;
-  font-size: 1.1rem;
+  font-size: clamp(0.95rem, 0.9rem + 0.3vw, 1.1rem);
 }
 
 /* Links */
@@ -362,32 +346,38 @@ li {
   color: #c62828;
   background-color: #ffebee;
   padding: 15px;
-  border-radius: 4px;
+  border-radius: var(--radius-md);
   margin-bottom: 20px;
   text-align: center;
 }
 
-/* Mobile styles */
-@media (max-width: 568px) {
-  h1 {
-    font-size: 1.6rem !important;
-    padding: 10px 0 15px;
-  }
+/* Decorative section divider: soft gradient hairline with a ♡ centerpiece.
+   Always used on aria-hidden elements — the glyph is purely visual. */
+.section-divider {
+  position: relative;
+  height: 1px;
+  max-width: min(420px, 70%);
+  margin: clamp(1.75rem, 4vw, 2.75rem) auto;
+  background: linear-gradient(to right, transparent, var(--color-primary-light), transparent);
+}
 
-  h2 {
-    font-size: 1.4rem !important;
-    padding: 15px 0 10px;
-  }
+.section-divider::before {
+  content: '♡';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 0 14px;
+  background-color: var(--color-background);
+  color: var(--color-primary);
+  font-size: 1.05rem;
+  line-height: 1;
+}
 
-  h3 {
-    font-size: 1.2rem !important;
-  }
-
-  h4 {
-    font-size: 1.1rem !important;
-  }
-
-  h5 {
-    font-size: 1rem !important;
-  }
+/* Soft gradient wash behind featured sections (yume, contact): gentle depth
+   while text still sits on an effectively near-background surface. */
+.section-wash {
+  background: linear-gradient(165deg, var(--color-primary-soft), rgba(241, 199, 232, 0.12) 55%, transparent);
+  border-radius: var(--radius-lg);
+  padding: clamp(16px, 3.5vw, 32px);
 }

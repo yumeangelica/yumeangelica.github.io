@@ -7,27 +7,39 @@
     <div class="filter-container">
       <!-- Unified filter row: two centered rows, always visible on all devices -->
       <div class="filters-row">
-        <div class="filter-row-inner" role="group" :aria-label="$t('projects.filters.typeGroupAriaLabel')">
-          <button type="button" @click="toggleTypeFilter(null)" class="filter-btn filter-type" :class="{ active: selectedTypes.length === 0 }"
-            :aria-label="$t('projects.filters.allTypesAriaLabel')">
-            {{ $t('projects.filters.allLabel') }}
-          </button>
-          <button type="button" v-for="type in typeFilters" :key="type" @click="toggleTypeFilter(type)" class="filter-btn filter-type"
-            :class="{ active: selectedTypes.includes(type) }" :disabled="!isTypeTechComboAvailable(type, selectedTech)"
-            :aria-label="$t(`projects.filters.types.${type}.ariaLabel`)">
-            {{ $t(`projects.filters.types.${type}.label`) }}
-          </button>
+        <div class="filter-group">
+          <span class="filter-label">{{ $t('projects.filters.typeLabel') }}</span>
+          <div class="filter-row-inner filter-row-type" role="group" :aria-label="$t('projects.filters.typeGroupAriaLabel')">
+            <button type="button" @click="toggleTypeFilter(null)" class="filter-btn filter-type" :class="{ active: selectedTypes.length === 0 }"
+              :aria-label="$t('projects.filters.allTypesAriaLabel')">
+              {{ $t('projects.filters.allLabel') }}
+            </button>
+            <button type="button" v-for="type in typeFilters" :key="type" @click="toggleTypeFilter(type)" class="filter-btn filter-type"
+              :class="{ active: selectedTypes.includes(type) }" :disabled="!isTypeTechComboAvailable(type, selectedTech)"
+              :aria-label="$t(`projects.filters.types.${type}.ariaLabel`)">
+              {{ $t(`projects.filters.types.${type}.label`) }}
+            </button>
+          </div>
         </div>
-        <div class="filter-row-inner" role="group" :aria-label="$t('projects.filters.techGroupAriaLabel')">
-          <button type="button" @click="toggleTechFilter(null)" class="filter-btn tech-filter-btn" :class="{ active: selectedTech.length === 0 }"
-            :aria-label="$t('projects.filters.allTechAriaLabel')">
-            <span>{{ $t('projects.filters.allLabel') }}</span>
+        <div class="filter-group">
+          <button type="button" class="filter-panel-toggle" @click="isTechFiltersOpen = !isTechFiltersOpen" :aria-expanded="isTechFiltersOpen"
+            aria-controls="technology-filters" :aria-label="$t('projects.filters.techToggleAriaLabel', { count: selectedTech.length })">
+            <span>{{ $t('projects.filters.techLabel') }}</span>
+            <span v-if="selectedTech.length > 0" class="filter-count" aria-hidden="true">{{ selectedTech.length }}</span>
+            <span class="filter-chevron" :class="{ open: isTechFiltersOpen }" aria-hidden="true">⌄</span>
           </button>
-          <button type="button" v-for="tech in popularTechnologies" :key="tech.title" @click="toggleTechFilter(tech.title)" class="filter-btn tech-filter-btn"
-            :class="{ active: selectedTech.includes(tech.title) }" :disabled="!isTechTypeComboAvailable(tech.title, selectedTypes)"
-            :aria-label="$t('projects.filters.techAriaLabel', { title: tech.title })">
-            <img :src="tech.url" :alt="tech.title" :title="tech.title" class="tech-icon" />
-          </button>
+          <div v-show="isTechFiltersOpen" id="technology-filters" class="filter-row-inner filter-row-tech" role="group"
+            :aria-label="$t('projects.filters.techGroupAriaLabel')">
+            <button type="button" @click="toggleTechFilter(null)" class="filter-btn tech-filter-btn tech-filter-all" :class="{ active: selectedTech.length === 0 }"
+              :aria-label="$t('projects.filters.allTechAriaLabel')">
+              <span>{{ $t('projects.filters.allLabel') }}</span>
+            </button>
+            <button type="button" v-for="tech in popularTechnologies" :key="tech.title" @click="toggleTechFilter(tech.title)" class="filter-btn tech-filter-btn"
+              :class="{ active: selectedTech.includes(tech.title) }" :disabled="!isTechTypeComboAvailable(tech.title, selectedTypes)"
+              :aria-label="$t('projects.filters.techAriaLabel', { title: tech.title })">
+              <img :src="tech.url" :alt="tech.title" :title="tech.title" class="tech-icon" />
+            </button>
+          </div>
         </div>
       </div>
     </div>
@@ -108,6 +120,7 @@ export default {
       loading: true, // For accessibility, show loading message while fetching data
       showFloatingNav: false, // Show floating nav when scrolled
       isFloatingMenuOpen: false, // Toggle for floating menu
+      isTechFiltersOpen: false, // Mobile disclosure for the technology filter grid
       scrollTimeout: null, // For throttling scroll events
     }
   },
@@ -325,15 +338,82 @@ export default {
   padding-bottom: 50px;
 }
 
-/* Compact unified filter row */
+/* Mobile-first filters: wrapping pill rows that fit any viewport width;
+   the technology menu is a disclosure panel on every screen size */
+.filter-container {
+  max-width: 780px;
+  margin: 0 auto 32px;
+  padding: 0 8px;
+}
+
 .filters-row {
+  display: grid;
+  gap: 10px;
+}
+
+.filter-group {
+  display: grid;
+  justify-items: center;
+  gap: 5px;
+}
+
+.filter-label {
+  color: var(--color-primary-dark);
+  font-size: 0.78rem;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.filter-panel-toggle {
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
   gap: 8px;
-  margin-bottom: 18px;
-  padding: 0 4px;
+  width: min(100%, 320px);
+  min-height: 44px;
+  padding: 8px 14px;
+  color: var(--color-primary-dark);
+  background:
+    linear-gradient(150deg, rgba(255, 255, 255, 0.62), rgba(253, 244, 251, 0.96)),
+    var(--color-surface-pink);
+  border: 1.5px solid var(--color-primary-light);
+  border-radius: var(--radius-pill);
+  box-shadow: var(--shadow-sm);
+  font-weight: 700;
+  cursor: pointer;
+  touch-action: manipulation;
+}
+
+.filter-panel-toggle:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+.filter-count {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 24px;
+  height: 24px;
+  padding: 0 7px;
+  color: var(--color-white);
+  background-color: var(--color-primary);
+  border-radius: var(--radius-pill);
+  font-size: 0.78rem;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.filter-chevron {
+  margin-left: auto;
+  color: var(--color-primary);
+  font-size: 1rem;
+  line-height: 1;
+  transition: transform var(--transition-fast) ease;
+}
+
+.filter-chevron.open {
+  transform: rotate(180deg);
 }
 
 .filter-row-inner {
@@ -341,7 +421,15 @@ export default {
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
-  gap: 8px;
+  gap: 6px;
+  width: 100%;
+  padding: 7px;
+  background:
+    linear-gradient(150deg, rgba(255, 255, 255, 0.58), rgba(253, 244, 251, 0.94)),
+    var(--color-surface-pink);
+  border: 1px solid var(--color-border-soft);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
 }
 
 /* Filter-btn for all filter buttons */
@@ -350,23 +438,31 @@ export default {
   align-items: center;
   justify-content: center;
   font-weight: 600;
-  font-size: 0.85rem;
-  border-radius: 16px;
-  padding: 4px 10px;
-  min-width: 0;
+  font-size: 0.88rem;
+  border-radius: var(--radius-pill);
+  padding: 6px 12px;
+  min-width: 44px;
+  min-height: 44px;
   cursor: pointer;
   touch-action: manipulation;
   transition:
-    background-color var(--transition-duration) ease,
-    border-color var(--transition-duration) ease,
-    box-shadow var(--transition-duration) ease,
-    color var(--transition-duration) ease,
-    filter var(--transition-duration) ease,
-    opacity var(--transition-duration) ease;
+    background-color var(--transition-fast) ease,
+    border-color var(--transition-fast) ease,
+    box-shadow var(--transition-fast) ease,
+    color var(--transition-fast) ease,
+    filter var(--transition-fast) ease,
+    opacity var(--transition-fast) ease;
   background-color: var(--color-card-bg);
   color: var(--color-text);
   border: 1.5px solid var(--color-primary-light);
   opacity: 0.95;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .filter-btn:not(:disabled):not(.active):hover {
+    border-color: var(--color-primary);
+    box-shadow: var(--shadow-sm);
+  }
 }
 
 .filter-btn.active {
@@ -374,7 +470,7 @@ export default {
   color: var(--color-white);
   border-color: var(--color-primary);
   font-weight: 600;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--shadow-sm);
   opacity: 1;
 }
 
@@ -395,15 +491,13 @@ export default {
 }
 
 .tech-filter-btn {
-  gap: 2px;
-  min-height: 28px;
-  line-height: 1.1;
-  padding: 4px 7px;
+  width: 44px;
+  padding: 0;
 }
 
-.tech-filter-btn span {
-  display: inline;
-  font-size: 0.85rem;
+.tech-filter-all {
+  width: auto;
+  padding: 0 14px;
 }
 
 .tech-icon {
@@ -412,13 +506,58 @@ export default {
   border-radius: 3px;
 }
 
+/* Larger screens: panels hug their content instead of stretching full width */
+@media (min-width: 769px) {
+  .filter-container {
+    padding: 0 10px;
+  }
+
+  .filters-row {
+    gap: 12px;
+  }
+
+  .filter-group {
+    gap: 6px;
+  }
+
+  .filter-row-inner {
+    gap: 7px;
+    width: fit-content;
+    max-width: 100%;
+    padding: 8px;
+  }
+
+  .filter-row-tech {
+    width: min(100%, 650px);
+  }
+}
+
+/* Section headings: small centered hairline accent, same visual language
+   as the home-page dividers */
+section h2 {
+  position: relative;
+  padding-bottom: 18px;
+}
+
+section h2::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: 8px;
+  transform: translateX(-50%);
+  width: min(140px, 40%);
+  height: 2px;
+  border-radius: var(--radius-pill);
+  background: linear-gradient(to right, transparent, var(--color-primary-light), transparent);
+}
+
 /* Project containers */
 .projects-container {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 20px;
+  gap: clamp(16px, 2.5vw, 24px);
   align-items: stretch;
   padding: 10px;
   margin-bottom: 30px;
@@ -432,74 +571,7 @@ export default {
     align-items: center;
     padding: 0;
   }
-
-  .filter-container {
-    margin-bottom: 30px;
-    padding: 0 10px;
-  }
-
-  .filters-row {
-    gap: 8px;
-    margin-bottom: 12px;
-    background: none;
-    border-radius: 0;
-    box-shadow: none;
-    border: none;
-    max-width: 98vw;
-    width: 100%;
-    transition: none;
-    z-index: 20;
-  }
-
-  .filter-row-inner {
-    gap: 8px;
-    width: 100%;
-    justify-content: center;
-  }
-
-  .filter-btn {
-    min-width: 44px;
-    min-height: 36px;
-    font-size: 0.92rem;
-    border-radius: 14px;
-    box-shadow: none;
-    background: var(--color-white);
-    border: 1.5px solid var(--color-primary-light);
-  }
-
-  .filter-btn.active {
-    background: var(--color-primary);
-    color: var(--color-white);
-    border-color: var(--color-primary);
-  }
-
-  .filter-btn:focus-visible {
-    outline: 2px solid var(--color-primary);
-    outline-offset: 2px;
-  }
-
-  .tech-icon {
-    width: 20px;
-    height: 20px;
-  }
-
 }
-
-@media (max-width: 568px) {
-  .filter-btn {
-    padding: 3px 6px;
-  }
-}
-
-/* Very small mobile specific adjustments */
-@media (max-width: 400px) {
-  .tech-icon {
-    width: 16px;
-    height: 16px;
-  }
-}
-
-
 
 /* Floating navigation styles */
 .floating-nav {
@@ -525,17 +597,17 @@ export default {
   align-items: center;
   justify-content: center;
   font-size: 1.2rem;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  box-shadow: var(--shadow-md);
   transition:
-    background-color var(--transition-duration) ease,
-    box-shadow var(--transition-duration) ease,
-    transform var(--transition-duration) ease;
+    background-color var(--transition-fast) ease,
+    box-shadow var(--transition-fast) ease,
+    transform var(--transition-fast) ease;
 }
 
 .floating-nav-toggle:hover {
   background-color: var(--color-primary-dark);
   transform: translateY(-2px);
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+  box-shadow: var(--shadow-lg);
 }
 
 .floating-nav-toggle:focus-visible {
@@ -555,15 +627,15 @@ export default {
   position: absolute;
   bottom: 60px;
   right: 0;
-  background-color: var(--color-white);
-  border-radius: 10px;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  background-color: var(--color-surface-lilac);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-lg);
   padding: 10px;
   display: flex;
   flex-direction: column;
   gap: 5px;
   min-width: 120px;
-  border: 1px solid var(--color-primary-light);
+  border: 1px solid var(--color-border-soft);
 }
 
 .floating-nav-button {
@@ -571,13 +643,13 @@ export default {
   background-color: transparent;
   color: var(--color-text);
   border: none;
-  border-radius: 6px;
+  border-radius: var(--radius-sm);
   cursor: pointer;
   font-size: 0.9rem;
   text-align: left;
   transition:
-    background-color var(--transition-duration) ease,
-    color var(--transition-duration) ease;
+    background-color var(--transition-fast) ease,
+    color var(--transition-fast) ease;
   white-space: nowrap;
 }
 

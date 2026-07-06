@@ -21,8 +21,30 @@
   --color-button: rgb(148, 75, 118); /* project-card button background */
   --color-button-hover: rgb(130, 62, 100); /* project-card button hover background */
 
+  /* Derived tints — same palette, alpha/tint variants of the tokens above */
+  --color-primary-soft: rgba(241, 199, 232, 0.35); /* --color-primary-light at low alpha: section washes */
+  --color-border-soft: rgba(241, 199, 232, 0.65); /* --color-primary-light at 65% alpha: soft borders, photo ring */
+
+  /* Whisper surfaces — very pale pink and lilac card/menu backgrounds;
+     used instead of pure white so every surface stays in the palette */
+  --color-surface-pink: rgb(253, 244, 251);
+  --color-surface-lilac: rgb(247, 240, 252);
+
+  /* Shadows — layered and plum-tinted (from --color-primary-dark rgb(95, 41, 74)) for a softer feel than grey */
+  --shadow-sm: 0 1px 2px rgba(95, 41, 74, 0.08), 0 2px 8px rgba(95, 41, 74, 0.08);
+  --shadow-md: 0 2px 4px rgba(95, 41, 74, 0.1), 0 6px 16px rgba(95, 41, 74, 0.12);
+  --shadow-lg: 0 4px 8px rgba(95, 41, 74, 0.1), 0 12px 28px rgba(95, 41, 74, 0.16);
+
+  /* Radii */
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+  --radius-pill: 999px;
+
   /* Motion */
   --transition-duration: 0.6s; /* shared transition timing across interactive elements */
+  --transition-fast: 0.2s; /* hover/press microinteractions */
+  --transition-medium: 0.35s; /* menu/tooltip reveals */
 }
 
 

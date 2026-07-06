@@ -4,6 +4,7 @@ import TheProjectCard from 'components/TheProjectCard.vue'
 describe('TheProjectCard.vue', () => {
   const mockProject = {
     title: 'Vue Portfolio',
+    type: 'frontend',
     imageURL: 'https://assets.example.dev/image.jpg',
     imageWidth: 1000,
     imageHeight: 515,
@@ -31,7 +32,8 @@ describe('TheProjectCard.vue', () => {
           $t: (key, params = {}) => {
             const messages = {
               'projectCard.technologiesLabel': 'Technologies used',
-              'projectCard.linkAriaLabel': `Visit ${params.linkText} for ${params.projectTitle} (opens in new tab)`
+              'projectCard.linkAriaLabel': `Visit ${params.linkText} for ${params.projectTitle} (opens in new tab)`,
+              'projects.filters.types.frontend.label': 'Frontend'
             };
             return messages[key] || key;
           },
@@ -42,6 +44,15 @@ describe('TheProjectCard.vue', () => {
 
     // Project title
     expect(wrapper.text()).toContain(mockProject.title)
+
+    // Project type badge over the image
+    const badge = wrapper.find('.project-type-badge')
+    expect(badge.exists()).toBe(true)
+    expect(badge.text()).toBe('Frontend')
+
+    // First additionalInfo item renders as the lead summary, the rest as list items
+    expect(wrapper.find('.project-summary').text()).toBe(mockProject.additionalInfo[0])
+    expect(wrapper.findAll('.project-highlights .additional-info')).toHaveLength(mockProject.additionalInfo.length - 1)
 
     // Project image
     const img = wrapper.find(`img[alt="${mockProject.title}"]`)
@@ -70,6 +81,29 @@ describe('TheProjectCard.vue', () => {
         new RegExp(`visit ${link.text} for ${mockProject.title}`, 'i')
       )
     })
+  })
+
+  it('collapses technology icons beyond eight into a +N chip', () => {
+    const manyTechs = Array.from({ length: 10 }, (_, i) => `Tech ${i + 1}`)
+    const wrapper = mount(TheProjectCard, {
+      props: {
+        project: { ...mockProject, technologyTitles: manyTechs },
+        technologies: manyTechs.map(title => ({ title, url: `https://cdn.example.dev/${title}.svg` }))
+      },
+      global: {
+        mocks: {
+          $t: (key) => key,
+          $tm: (key) => key
+        }
+      }
+    })
+
+    expect(wrapper.findAll('.small-devicon')).toHaveLength(8)
+    const moreChip = wrapper.find('.tech-chip-more')
+    expect(moreChip.exists()).toBe(true)
+    expect(moreChip.text()).toContain('+2')
+    // Hidden technologies stay available to assistive tech
+    expect(moreChip.text()).toContain('Tech 9, Tech 10')
   })
 
   it('does not render an icon for unknown technology titles', () => {
