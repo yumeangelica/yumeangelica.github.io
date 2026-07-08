@@ -1,12 +1,27 @@
 import { fileURLToPath, URL } from 'node:url'
+import { browserslistToTargets } from 'lightningcss'
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
+
+// Browser targets for Lightning CSS, aligned with the es2020 build target.
+const cssTargets = browserslistToTargets([
+  'chrome >= 80',
+  'firefox >= 78',
+  'safari >= 14',
+  'edge >= 80',
+])
 
 export default defineConfig({
   base: process.env.PUBLIC_URL || '/',
   plugins: [
     vue(),
   ],
+  css: {
+    transformer: 'lightningcss',
+    lightningcss: {
+      targets: cssTargets,
+    },
+  },
   test: {
     globals: true,
     environment: 'jsdom',
@@ -49,6 +64,8 @@ export default defineConfig({
         drop_console: true,
         drop_debugger: true
       }
-    }
+    },
+    // Use Lightning CSS for faster, smaller CSS minification
+    cssMinify: 'lightningcss'
   },
 })

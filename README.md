@@ -21,6 +21,7 @@ The portfolio is intentionally public-safe. It should not contain employer-inter
 - JavaScript
 - Modern CSS
 - Vite
+- Lightning CSS for CSS transforms and minification
 
 ### Content
 
