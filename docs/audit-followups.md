@@ -22,7 +22,7 @@ is done, and add new findings under the matching priority group using the same
     GitHub Actions logos) and relink them in `data.json`. If kept remote in the
     meantime, at least pin a devicon version instead of `@latest`.
 
-- [ ] **Font loading optimization**
+- [x] **Font loading optimization**
   - **Finding:** Comfortaa is pulled via a render-blocking CSS `@import` in
     `src/main.css`, and `index.html` preconnects only to `cdn.jsdelivr.net`, not
     to the font origin (`fonts.googleapis.com` / `fonts.gstatic.com`).
@@ -32,6 +32,10 @@ is done, and add new findings under the matching priority group using the same
     Self-hosting adds binary assets and is the strongest but largest option.
   - **Suggested next step:** At minimum add the gstatic/googleapis preconnect and
     move the font load out of CSS `@import`; ideally self-host the woff2.
+  - **Resolved:** Chose option (b). Comfortaa is now self-hosted as woff2 under
+    `public/fonts/` via `@font-face` in `src/main.css` (no CSS `@import`, no
+    Google Fonts origin), with `comfortaa-latin-400.woff2` preloaded in
+    `index.html`. No font request or visitor IP is sent to a third-party CDN.
 
 - [ ] **Designed Open Graph / Twitter share image (1200×630)**
   - **Finding:** `og:image` / `twitter:image` currently point at the portrait
