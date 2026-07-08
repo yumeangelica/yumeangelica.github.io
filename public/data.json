@@ -244,19 +244,19 @@
       "items": [
         {
           "title": "JavaScript",
-          "url": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg"
+          "url": "/assets/logos/javascript-original.svg"
         },
         {
           "title": "TypeScript",
-          "url": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/typescript/typescript-original.svg"
+          "url": "/assets/logos/typescript-original.svg"
         },
         {
           "title": "Vue.js",
-          "url": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vuejs/vuejs-original-wordmark.svg"
+          "url": "/assets/logos/vuejs-original-wordmark.svg"
         },
         {
           "title": "Nuxt",
-          "url": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nuxt/nuxt-original-wordmark.svg"
+          "url": "/assets/logos/nuxt-original-wordmark.svg"
         },
         {
           "title": "Pinia",
@@ -264,31 +264,31 @@
         },
         {
           "title": "React",
-          "url": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original-wordmark.svg"
+          "url": "/assets/logos/react-original-wordmark.svg"
         },
         {
           "title": "Node.js",
-          "url": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nodejs/nodejs-original-wordmark.svg"
+          "url": "/assets/logos/nodejs-original-wordmark.svg"
         },
         {
           "title": "Express.js",
-          "url": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/express/express-original-wordmark.svg"
+          "url": "/assets/logos/express-original-wordmark.svg"
         },
         {
           "title": "HTML5",
-          "url": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original-wordmark.svg"
+          "url": "/assets/logos/html5-original-wordmark.svg"
         },
         {
           "title": "CSS3",
-          "url": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-original-wordmark.svg"
+          "url": "/assets/logos/css3-original-wordmark.svg"
         },
         {
           "title": "Tailwind CSS",
-          "url": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tailwindcss/tailwindcss-original.svg"
+          "url": "/assets/logos/tailwindcss-original.svg"
         },
         {
           "title": "Sass",
-          "url": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/sass/sass-original.svg"
+          "url": "/assets/logos/sass-original.svg"
         }
       ]
     },
@@ -297,15 +297,15 @@
       "items": [
         {
           "title": "Python",
-          "url": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original-wordmark.svg"
+          "url": "/assets/logos/python-original-wordmark.svg"
         },
         {
           "title": "Django",
-          "url": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/django/django-plain-wordmark.svg"
+          "url": "/assets/logos/django-plain-wordmark.svg"
         },
         {
           "title": "FastAPI",
-          "url": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/fastapi/fastapi-original-wordmark.svg"
+          "url": "/assets/logos/fastapi-original-wordmark.svg"
         },
         {
           "title": "REST API",
@@ -313,35 +313,35 @@
         },
         {
           "title": "SQLite",
-          "url": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/sqlite/sqlite-original-wordmark.svg"
+          "url": "/assets/logos/sqlite-original-wordmark.svg"
         },
         {
           "title": "PostgreSQL",
-          "url": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postgresql/postgresql-original-wordmark.svg"
+          "url": "/assets/logos/postgresql-original-wordmark.svg"
         },
         {
           "title": "MongoDB",
-          "url": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mongodb/mongodb-original-wordmark.svg"
+          "url": "/assets/logos/mongodb-original-wordmark.svg"
         },
         {
           "title": "MySQL",
-          "url": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mysql/mysql-original-wordmark.svg"
+          "url": "/assets/logos/mysql-original-wordmark.svg"
         },
         {
           "title": "PHP",
-          "url": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/php/php-original.svg"
+          "url": "/assets/logos/php-original.svg"
         },
         {
           "title": "Apache",
-          "url": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/apache/apache-original-wordmark.svg"
+          "url": "/assets/logos/apache-original-wordmark.svg"
         },
         {
           "title": "Java",
-          "url": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/java/java-original-wordmark.svg"
+          "url": "/assets/logos/java-original-wordmark.svg"
         },
         {
           "title": "Java Spring Boot",
-          "url": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/spring/spring-original-wordmark.svg"
+          "url": "/assets/logos/spring-original-wordmark.svg"
         }
       ]
     },
@@ -350,11 +350,11 @@
       "items": [
         {
           "title": "Git",
-          "url": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/git/git-original-wordmark.svg"
+          "url": "/assets/logos/git-original-wordmark.svg"
         },
         {
           "title": "GitHub",
-          "url": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/github/github-original-wordmark.svg"
+          "url": "/assets/logos/github-original-wordmark.svg"
         },
         {
           "title": "GitHub Actions",
@@ -362,35 +362,35 @@
         },
         {
           "title": "Vitest",
-          "url": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vitest/vitest-original.svg"
+          "url": "/assets/logos/vitest-original.svg"
         },
         {
           "title": "Playwright",
-          "url": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/playwright/playwright-original.svg"
+          "url": "/assets/logos/playwright-original.svg"
         },
         {
           "title": "Biome",
-          "url": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/biome/biome-original-wordmark.svg"
+          "url": "/assets/logos/biome-original-wordmark.svg"
         },
         {
           "title": "Vite",
-          "url": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vitejs/vitejs-original.svg"
+          "url": "/assets/logos/vitejs-original.svg"
         },
         {
           "title": "Bun",
-          "url": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/bun/bun-original.svg"
+          "url": "/assets/logos/bun-original.svg"
         },
         {
           "title": "Docker",
-          "url": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/docker/docker-original-wordmark.svg"
+          "url": "/assets/logos/docker-original-wordmark.svg"
         },
         {
           "title": "Azure",
-          "url": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/azure/azure-original-wordmark.svg"
+          "url": "/assets/logos/azure-original-wordmark.svg"
         },
         {
           "title": "Raspberry Pi",
-          "url": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/raspberrypi/raspberrypi-original-wordmark.svg"
+          "url": "/assets/logos/raspberrypi-original-wordmark.svg"
         }
       ]
     }
