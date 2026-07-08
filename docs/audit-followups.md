@@ -10,7 +10,7 @@ is done, and add new findings under the matching priority group using the same
 
 ## High value, needs owner decision or larger change
 
-- [ ] **Self-host tech icons instead of `jsdelivr@latest`**
+- [x] **Self-host tech icons instead of `jsdelivr@latest`**
   - **Finding:** ~30 technology icons and the two home contact logos load at
     runtime from `https://cdn.jsdelivr.net/gh/devicons/devicon@latest/...`.
     Risks: third-party availability, unpinned `@latest` drift, visitor IP/UA
@@ -21,6 +21,15 @@ is done, and add new findings under the matching priority group using the same
     `public/assets/logos/` (the repo already self-hosts Pinia / REST API /
     GitHub Actions logos) and relink them in `data.json`. If kept remote in the
     meantime, at least pin a devicon version instead of `@latest`.
+  - **Resolved:** All 32 devicon technology icons are now self-hosted under
+    `public/assets/logos/`, downloaded from devicon pinned to tag `v2.17.0` (not
+    `@latest`) and kept at their canonical basenames (e.g.
+    `python-original-wordmark.svg`). Every icon `url` in `public/data.json` now
+    points at `/assets/logos/…`, so no technology icon is fetched from
+    `cdn.jsdelivr.net` at runtime and no visitor IP is sent to the CDN. The now
+    unused `preconnect` / `dns-prefetch` hints to `https://cdn.jsdelivr.net` were
+    removed from `index.html`. (Also removed the unused `ionic-logo.svg`
+    leftover from that directory, which was no longer referenced anywhere.)
 
 - [x] **Font loading optimization**
   - **Finding:** Comfortaa is pulled via a render-blocking CSS `@import` in

@@ -82,6 +82,20 @@ describe('content quality gates', () => {
     })
   })
 
+  it('has no unused logo assets in public/assets/logos', () => {
+    // Every SVG under public/assets/logos/ must be referenced from public/data.json,
+    // otherwise it is an orphaned asset shipped to visitors for no reason.
+    const logoFiles = readdirSync(join(rootDir, 'public/assets/logos'), { withFileTypes: true })
+      .filter((entry) => entry.isFile() && extname(entry.name) === '.svg')
+      .map((entry) => entry.name)
+
+    const dataRaw = readFileSync(join(rootDir, 'public/data.json'), 'utf8')
+    const referenced = new Set((dataRaw.match(/\/assets\/logos\/[^"']+\.svg/g) ?? []).map((path) => path.split('/').pop()))
+
+    const unused = logoFiles.filter((file) => !referenced.has(file))
+    expect(unused, `unused logo assets in public/assets/logos: ${unused.join(', ')}`).toEqual([])
+  })
+
   it('keeps public messages free of embedded HTML strings', () => {
     const messages = readJson('public/messages_en.json')
     expect(collectHtmlStrings(messages)).toEqual([])

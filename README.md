@@ -23,6 +23,7 @@ The portfolio is intentionally public-safe. It should not contain employer-inter
 - Vite
 - Lightning CSS for CSS transforms and minification
 - Self-hosted Comfortaa web font (no third-party font requests)
+- Self-hosted technology icons (devicon SVGs pinned and served from `public/assets/logos/`, no CDN requests)
 
 ### Content
 
@@ -103,6 +104,7 @@ Known improvement areas:
 - Automation projects should be described as allowed public-source monitoring, data extraction, parsing, persistence, and notifications with responsible-use boundaries.
 - Dependency updates should be reviewed through lockfile changes, local checks, and pull request review.
 - The Comfortaa web font is self-hosted from `public/fonts/`, so no visitor IP or request is sent to a third-party font CDN.
+- The technology icons are self-hosted from `public/assets/logos/` (devicon SVGs pinned to a fixed version), so no visitor IP or request is sent to a third-party icon CDN.
 
 ## AI-assisted development note
 
