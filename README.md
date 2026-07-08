@@ -21,6 +21,8 @@ The portfolio is intentionally public-safe. It should not contain employer-inter
 - JavaScript
 - Modern CSS
 - Vite
+- Lightning CSS for CSS transforms and minification
+- Self-hosted Comfortaa web font (no third-party font requests)
 
 ### Content
 
@@ -100,6 +102,7 @@ Known improvement areas:
 - Project cards should not publish target-specific scraping details, bypass wording, fake-traffic wording, or private operational details.
 - Automation projects should be described as allowed public-source monitoring, data extraction, parsing, persistence, and notifications with responsible-use boundaries.
 - Dependency updates should be reviewed through lockfile changes, local checks, and pull request review.
+- The Comfortaa web font is self-hosted from `public/fonts/`, so no visitor IP or request is sent to a third-party font CDN.
 
 ## AI-assisted development note
 
