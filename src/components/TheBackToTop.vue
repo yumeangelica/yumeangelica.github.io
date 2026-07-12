@@ -61,7 +61,7 @@ export default {
   font-size: 20px;
   font-weight: 600;
   cursor: pointer;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 4px 12px rgba(95, 41, 74, 0.15);
   transition:
     background-color var(--transition-duration) ease,
     box-shadow var(--transition-duration) ease,
@@ -75,7 +75,7 @@ export default {
 .back-to-top:hover {
   background-color: var(--color-primary-dark);
   transform: translateY(-2px);
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 6px 16px rgba(95, 41, 74, 0.2);
 }
 
 .back-to-top:focus-visible {
