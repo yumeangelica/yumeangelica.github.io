@@ -10,7 +10,7 @@
   "seo": {
     "home": {
       "title": "Angelica's portfolio | Software development",
-      "description": "Early-career software developer portfolio featuring accessible Vue and web applications, full-stack projects, Python automation, testing, delivery discipline, and security-aware development"
+      "description": "Early-career software developer portfolio featuring accessible Vue and Nuxt web applications, full-stack projects, Python automation, testing, delivery discipline, and security-aware development"
     },
     "projects": {
       "title": "Angelica's projects | Selected software development work",
@@ -45,7 +45,7 @@
         "text": "early-career software developer"
       },
       {
-        "text": " building accessible, well-tested web applications with React, TypeScript, Vue, JavaScript, and a growing Python automation track. I care about clear interfaces, maintainable code, practical testing, and security-aware development. My background in business administration and digital marketing helps me think about "
+        "text": " building accessible, well-tested web applications with Vue, Nuxt, React, TypeScript, JavaScript, and a growing Python automation track. I work with a modern toolchain and care about clear interfaces, maintainable code, practical testing, and security-aware development. My background in business administration and digital marketing helps me think about "
       },
       {
         "type": "emphasis",

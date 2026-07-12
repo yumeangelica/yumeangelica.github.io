@@ -1,6 +1,38 @@
 {
   "projects": [
     {
+      "type": "fullstack",
+      "isMain": true,
+      "title": "NeedyPet Care Tracker (Nuxt 4)",
+      "imageURL": "/assets/projects/needypet-care-tracker-project.webp",
+      "imageWidth": 2002,
+      "imageHeight": 1030,
+      "technologyTitles": [
+        "Nuxt",
+        "Vue.js",
+        "TypeScript",
+        "Tailwind CSS",
+        "SQLite",
+        "Bun",
+        "Vitest",
+        "Git",
+        "GitHub"
+      ],
+      "additionalInfo": [
+        "Nuxt 4 rebuild of NeedyPet: full-stack pet care app for owners and caretakers sharing daily care tasks",
+        "Accessible, mobile-first UI with installable PWA, offline support, and English/Finnish localization",
+        "Nitro server API with Drizzle ORM over SQLite/libSQL (Turso) and Zod validation shared across client and server",
+        "Cookie-session authentication (argon2id, email confirmation, password reset, rate limiting) with owner and caretaker permissions",
+        "Timezone-aware care-day rollover with recurring tasks, care records, and weekly statistics"
+      ],
+      "links": [
+        {
+          "text": "Source Code",
+          "url": "https://github.com/yumeangelica/needypet-care-tracker"
+        }
+      ]
+    },
+    {
       "type": "frontend",
       "isMain": true,
       "title": "Personal portfolio",
@@ -12,7 +44,9 @@
         "JavaScript",
         "CSS3",
         "HTML5",
+        "Git",
         "GitHub",
+        "GitHub Actions",
         "Bun",
         "Biome",
         "Vite",
@@ -20,7 +54,7 @@
       ],
       "additionalInfo": [
         "Public Vue 3 portfolio for selected software development projects and career background",
-        "Accessible UI with skip link, keyboard focus styles, semantic sections, and responsive layout",
+        "Accessible, mobile-first UI with skip link, keyboard focus styles, semantic sections, and responsive layout",
         "Biome linting, Vitest component and content tests, and GitHub Actions deployment to GitHub Pages",
         "Vite and Bun tooling with JSON-based content for UI text and project data"
       ],
@@ -34,7 +68,7 @@
     {
       "type": "fullstack",
       "isMain": true,
-      "title": "NeedyPet (legacy v1)",
+      "title": "NeedyPet (Vue + Express)",
       "imageURL": "/assets/projects/needypet-project.webp",
       "imageWidth": 1000,
       "imageHeight": 513,
@@ -53,15 +87,16 @@
         "Docker",
         "Bun",
         "Biome",
+        "Git",
         "GitHub",
         "Vite"
       ],
       "additionalInfo": [
-        "Legacy full-stack pet care app for coordinating daily care tasks within households",
+        "Polished full-stack pet care app for coordinating daily care tasks within households, kept as a showcase of this stack",
         "Recurring care-task generation with daily reset, carry-over, quantities, and durations",
-        "Owner and caretaker roles with authentication, hashed passwords, and timezone-aware scheduling",
-        "Responsive Vue 3 UI with Pinia and Tailwind over a Node.js/Express REST API with MongoDB",
-        "Single-container Docker deployment with Bun, Biome linting, and Vitest tests"
+        "Owner and caretaker roles with JWT authentication, hashed passwords, Zod validation, and timezone-aware scheduling",
+        "Accessible, mobile-first Vue 3 UI with Pinia and Tailwind over a Node.js/Express REST API with MongoDB and Mongoose",
+        "Single-container Docker deployment with Bun, Biome linting, and Vitest tests; succeeded by a separate Nuxt 4 rebuild"
       ],
       "links": [
         {
@@ -80,6 +115,7 @@
       "technologyTitles": [
         "Python",
         "SQLite",
+        "Git",
         "GitHub",
         "Docker",
         "Raspberry Pi"
@@ -87,7 +123,7 @@
       "additionalInfo": [
         "Python Discord bot for scheduled store monitoring and real-time product-change notifications",
         "Async extraction with aiohttp, lxml, and curl_cffi; SQLite product and price history",
-        "Typed Python with configurable sources, plus Docker and Raspberry Pi deployment notes",
+        "Typed, uv-managed Python with configurable sources, plus Docker and Raspberry Pi deployment notes",
         "Responsible-use focus with allowed public sources and conservative scheduling"
       ],
       "links": [
@@ -110,14 +146,16 @@
         "CSS3",
         "HTML5",
         "Docker",
+        "Nginx",
         "Azure",
+        "Git",
         "GitHub"
       ],
       "additionalInfo": [
         "Django weather app with city search and OpenWeatherMap API integration",
-        "Current conditions and 3-day forecast with hourly breakdown, humidity, wind, and sun times",
+        "Accessible, mobile-first UI showing current conditions and a 3-day forecast with hourly breakdown, humidity, wind, and sun times",
         "UV index estimated from solar position with pysolar, plus optional GeoIP2 auto-location",
-        "Deployment-oriented setup with Docker, Gunicorn, Nginx, WhiteNoise, and GitHub Actions"
+        "uv-managed dependencies with a deployment-oriented setup: Docker, Gunicorn, Nginx, WhiteNoise, and GitHub Actions"
       ],
       "links": [
         {
@@ -133,16 +171,12 @@
       "imageURL": "/assets/projects/store-data-extractor-project.webp",
       "imageWidth": 1000,
       "imageHeight": 515,
-      "technologyTitles": [
-        "Python",
-        "SQLite",
-        "GitHub",
-        "Docker"
-      ],
+      "technologyTitles": ["Python", "SQLite", "Git", "GitHub", "Docker"],
       "additionalInfo": [
         "Python module powering the Jirai Sweeties automation workflow",
         "Scheduled data collection and parsing with SQLite persistence and typed data structures",
-        "Price and availability tracking for allowed public sources with responsible-use notes"
+        "Price and availability tracking for allowed public sources with responsible-use notes",
+        "uv-managed dependencies with async fetching via aiohttp and curl_cffi and Docker deployment"
       ],
       "links": [
         {
@@ -169,13 +203,15 @@
         "Bun",
         "Vite",
         "Biome",
-        "GitHub"
+        "Git",
+        "GitHub",
+        "GitHub Actions"
       ],
       "additionalInfo": [
         "Course-origin full-stack phonebook app with per-user private contacts",
         "JWT-based authentication with register, login, logout, and delete-account flows",
-        "Responsive React and Vite UI with form validation and international phone-number support",
-        "Node.js/Express and MongoDB backend with API tests using node:test and supertest"
+        "Accessible, mobile-first React and Vite UI with form validation and international phone-number support",
+        "Node.js/Express and MongoDB/Mongoose backend with API tests using node:test and supertest"
       ],
       "links": [
         {
@@ -199,13 +235,15 @@
         "JavaScript",
         "CSS3",
         "HTML5",
-        "GitHub"
+        "Git",
+        "GitHub",
+        "GitHub Actions"
       ],
       "additionalInfo": [
         "Full-stack learning project for managing a personal book collection",
         "PHP and MySQL with Apache and Docker in an MVC-style structure",
         "User authentication and account safeguards with password hashing and prepared statements",
-        "Input validation including ISBN-10 and ISBN-13 check-digit verification"
+        "Input validation including ISBN-10 and ISBN-13 check-digit verification, with an accessible, mobile-first UI"
       ],
       "links": [
         {
@@ -221,14 +259,12 @@
       "imageURL": "/assets/projects/weather-view-project.webp",
       "imageWidth": 1000,
       "imageHeight": 515,
-      "technologyTitles": [
-        "Python",
-        "GitHub"
-      ],
+      "technologyTitles": ["Python", "Git", "GitHub", "GitHub Actions"],
       "additionalInfo": [
         "Python CLI for current weather and short-term forecast lookup via OpenWeatherMap",
         "Shows current conditions, 3-day forecast, estimated UV index, and local times",
-        "Input validation, error handling, timezone-aware display, and environment-based API keys"
+        "Input validation, error handling, timezone-aware display, and environment-based API keys",
+        "uv-managed dependencies with Ruff linting and unittest coverage run in GitHub Actions"
       ],
       "links": [
         {
@@ -383,6 +419,10 @@
         {
           "title": "Docker",
           "url": "/assets/logos/docker-original-wordmark.svg"
+        },
+        {
+          "title": "Nginx",
+          "url": "/assets/logos/nginx-original.svg"
         },
         {
           "title": "Azure",
