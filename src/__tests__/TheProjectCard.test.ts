@@ -1,5 +1,8 @@
 import { mount } from '@vue/test-utils'
 import TheProjectCard from 'components/TheProjectCard.vue'
+import { describe, expect, it } from 'vitest'
+import type { TranslationParams } from '../i18n'
+import type { ProjectCardProject, Technology } from '../types/portfolio'
 
 describe('TheProjectCard.vue', () => {
   const mockProject = {
@@ -12,34 +15,44 @@ describe('TheProjectCard.vue', () => {
     additionalInfo: ['Responsive design', 'Dark mode supported'],
     links: [
       { text: 'GitHub', url: 'https://example.dev/github' },
-      { text: 'Live Demo', url: 'https://example.dev/live' }
-    ]
-  }
+      { text: 'Live Demo', url: 'https://example.dev/live' },
+    ],
+  } satisfies ProjectCardProject
 
   const mockTechnologies = [
     { title: 'Vue', url: 'https://cdn.example.dev/vue.svg' },
-    { title: 'CSS Framework', url: 'https://cdn.example.dev/css-framework.svg' }
-  ]
+    {
+      title: 'CSS Framework',
+      url: 'https://cdn.example.dev/css-framework.svg',
+    },
+  ] satisfies Technology[]
+
+  const projectCardT = (
+    key: string,
+    params: TranslationParams = {},
+  ): string => {
+    const messages: Record<string, string> = {
+      'projectCard.technologiesLabel': 'Technologies used',
+      'projectCard.linkAriaLabel': `Visit ${params.linkText} for ${params.projectTitle} (opens in new tab)`,
+      'projects.filters.types.frontend.label': 'Frontend',
+    }
+    return messages[key] || key
+  }
+
+  const identityI18n = (key: string): string => key
 
   it('renders project title, image, technologies, additional info and links', () => {
     const wrapper = mount(TheProjectCard, {
       props: {
         project: mockProject,
-        technologies: mockTechnologies
+        technologies: mockTechnologies,
       },
       global: {
         mocks: {
-          $t: (key, params = {}) => {
-            const messages = {
-              'projectCard.technologiesLabel': 'Technologies used',
-              'projectCard.linkAriaLabel': `Visit ${params.linkText} for ${params.projectTitle} (opens in new tab)`,
-              'projects.filters.types.frontend.label': 'Frontend'
-            };
-            return messages[key] || key;
-          },
-          $tm: (key) => key
-        }
-      }
+          $t: projectCardT,
+          $tm: identityI18n,
+        },
+      },
     })
 
     // Project title
@@ -51,8 +64,12 @@ describe('TheProjectCard.vue', () => {
     expect(badge.text()).toBe('Frontend')
 
     // First additionalInfo item renders as the lead summary, the rest as list items
-    expect(wrapper.find('.project-summary').text()).toBe(mockProject.additionalInfo[0])
-    expect(wrapper.findAll('.project-highlights .additional-info')).toHaveLength(mockProject.additionalInfo.length - 1)
+    expect(wrapper.find('.project-summary').text()).toBe(
+      mockProject.additionalInfo[0],
+    )
+    expect(
+      wrapper.findAll('.project-highlights .additional-info'),
+    ).toHaveLength(mockProject.additionalInfo.length - 1)
 
     // Project image
     const img = wrapper.find(`img[alt="${mockProject.title}"]`)
@@ -63,22 +80,22 @@ describe('TheProjectCard.vue', () => {
     expect(img.attributes('height')).toBe(String(mockProject.imageHeight))
 
     // Technology icons
-    mockProject.technologyTitles.forEach(techName => {
+    mockProject.technologyTitles.forEach((techName) => {
       expect(wrapper.find(`img[alt="${techName}"]`).exists()).toBe(true)
     })
 
     // Additional info
-    mockProject.additionalInfo.forEach(info => {
+    mockProject.additionalInfo.forEach((info) => {
       expect(wrapper.text()).toContain(info)
     })
 
     // Project links
-    mockProject.links.forEach(link => {
+    mockProject.links.forEach((link) => {
       const linkElement = wrapper.find(`a[href="${link.url}"]`)
       expect(linkElement.exists()).toBe(true)
       expect(linkElement.text()).toBe(link.text)
       expect(linkElement.attributes('aria-label')).toMatch(
-        new RegExp(`visit ${link.text} for ${mockProject.title}`, 'i')
+        new RegExp(`visit ${link.text} for ${mockProject.title}`, 'i'),
       )
     })
   })
@@ -88,14 +105,17 @@ describe('TheProjectCard.vue', () => {
     const wrapper = mount(TheProjectCard, {
       props: {
         project: { ...mockProject, technologyTitles: manyTechs },
-        technologies: manyTechs.map(title => ({ title, url: `https://cdn.example.dev/${title}.svg` }))
+        technologies: manyTechs.map((title) => ({
+          title,
+          url: `https://cdn.example.dev/${title}.svg`,
+        })),
       },
       global: {
         mocks: {
-          $t: (key) => key,
-          $tm: (key) => key
-        }
-      }
+          $t: identityI18n,
+          $tm: identityI18n,
+        },
+      },
     })
 
     expect(wrapper.findAll('.small-devicon')).toHaveLength(8)
@@ -111,22 +131,16 @@ describe('TheProjectCard.vue', () => {
       props: {
         project: {
           ...mockProject,
-          technologyTitles: ['Vue', 'Unknown Tech']
+          technologyTitles: ['Vue', 'Unknown Tech'],
         },
-        technologies: mockTechnologies
+        technologies: mockTechnologies,
       },
       global: {
         mocks: {
-          $t: (key, params = {}) => {
-            const messages = {
-              'projectCard.technologiesLabel': 'Technologies used',
-              'projectCard.linkAriaLabel': `Visit ${params.linkText} for ${params.projectTitle} (opens in new tab)`
-            };
-            return messages[key] || key;
-          },
-          $tm: (key) => key
-        }
-      }
+          $t: projectCardT,
+          $tm: identityI18n,
+        },
+      },
     })
 
     expect(wrapper.find('img[alt="Vue"]').exists()).toBe(true)
@@ -138,22 +152,16 @@ describe('TheProjectCard.vue', () => {
       props: {
         project: {
           ...mockProject,
-          links: undefined
+          links: undefined,
         },
-        technologies: mockTechnologies
+        technologies: mockTechnologies,
       },
       global: {
         mocks: {
-          $t: (key, params = {}) => {
-            const messages = {
-              'projectCard.technologiesLabel': 'Technologies used',
-              'projectCard.linkAriaLabel': `Visit ${params.linkText} for ${params.projectTitle} (opens in new tab)`
-            };
-            return messages[key] || key;
-          },
-          $tm: (key) => key
-        }
-      }
+          $t: projectCardT,
+          $tm: identityI18n,
+        },
+      },
     })
 
     expect(wrapper.findAll('a.project-button')).toHaveLength(0)
@@ -165,22 +173,16 @@ describe('TheProjectCard.vue', () => {
         project: {
           ...mockProject,
           technologyTitles: undefined,
-          additionalInfo: undefined
+          additionalInfo: undefined,
         },
-        technologies: mockTechnologies
+        technologies: mockTechnologies,
       },
       global: {
         mocks: {
-          $t: (key, params = {}) => {
-            const messages = {
-              'projectCard.technologiesLabel': 'Technologies used',
-              'projectCard.linkAriaLabel': `Visit ${params.linkText} for ${params.projectTitle} (opens in new tab)`
-            };
-            return messages[key] || key;
-          },
-          $tm: (key) => key
-        }
-      }
+          $t: projectCardT,
+          $tm: identityI18n,
+        },
+      },
     })
 
     expect(wrapper.findAll('.small-devicon')).toHaveLength(0)

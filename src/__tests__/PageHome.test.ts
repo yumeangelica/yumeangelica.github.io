@@ -1,14 +1,16 @@
 import { mount } from '@vue/test-utils'
 import PageHome from 'pages/PageHome.vue'
-import { fetchData } from '../dataCache.js'
+import { fetchData as fetchDataImport } from '../dataCache'
 
-vi.mock('../dataCache.js', () => ({
-  fetchData: vi.fn()
+vi.mock('../dataCache', () => ({
+  fetchData: vi.fn(),
 }))
 
+const fetchData = vi.mocked(fetchDataImport)
+
 const i18nMocks = {
-  $t: (key) => {
-    const messages = {
+  $t: (key: string): string => {
+    const messages: Record<string, string> = {
       'intro.title': 'Home',
       'common.loading': 'Loading...',
       'common.error': 'Failed to load data.',
@@ -30,11 +32,11 @@ const i18nMocks = {
       'contact.visitLinkedin': 'Visit my LinkedIn profile',
       'contact.visitGithub': 'Visit my GitHub profile',
       'nav.github': 'GitHub',
-      'nav.linkedin': 'LinkedIn'
+      'nav.linkedin': 'LinkedIn',
     }
     return messages[key] || key
   },
-  $tm: (key) => {
+  $tm: (key: string): Array<string | { text: string; url?: string }> => {
     if (key === 'journey.items') {
       return ['Milestone']
     }
@@ -48,10 +50,11 @@ const i18nMocks = {
       return [{ text: 'Drive text' }]
     }
     return []
-  }
+  },
 }
 
-const flushPromises = () => new Promise(resolve => setTimeout(resolve, 0))
+const flushPromises = (): Promise<void> =>
+  new Promise((resolve) => window.setTimeout(resolve, 0))
 
 describe('PageHome.vue', () => {
   beforeEach(() => {
@@ -60,12 +63,12 @@ describe('PageHome.vue', () => {
 
   it('shows error state when fetchData rejects and loading ends', async () => {
     fetchData.mockRejectedValueOnce(new Error('Network error'))
-    const consoleSpy = vi.spyOn(console, 'error').mockImplementation(() => { })
+    const consoleSpy = vi.spyOn(console, 'error').mockImplementation(() => {})
 
     const wrapper = mount(PageHome, {
       global: {
-        mocks: i18nMocks
-      }
+        mocks: i18nMocks,
+      },
     })
 
     await flushPromises()
@@ -79,32 +82,31 @@ describe('PageHome.vue', () => {
 
   it('renders technology category headings and icons when fetchData resolves', async () => {
     fetchData.mockResolvedValueOnce({
+      projects: [],
       technologies: [
         {
           category: 'Frontend',
           items: [
             { title: 'Vue.js', url: '/vue.svg' },
-            { title: 'TypeScript', url: '/ts.svg' }
-          ]
+            { title: 'TypeScript', url: '/ts.svg' },
+          ],
         },
         {
           category: 'Backend',
-          items: [
-            { title: 'Node.js', url: '/node.svg' }
-          ]
-        }
-      ]
+          items: [{ title: 'Node.js', url: '/node.svg' }],
+        },
+      ],
     })
 
     const wrapper = mount(PageHome, {
       global: {
-        mocks: i18nMocks
-      }
+        mocks: i18nMocks,
+      },
     })
 
     await flushPromises()
 
-    const headings = wrapper.findAll('h3').map(node => node.text())
+    const headings = wrapper.findAll('h3').map((node) => node.text())
     expect(headings).toContain('Frontend')
     expect(headings).toContain('Backend')
 
@@ -114,12 +116,12 @@ describe('PageHome.vue', () => {
   })
 
   it('renders contact social buttons as safe external links', async () => {
-    fetchData.mockResolvedValueOnce({ technologies: [] })
+    fetchData.mockResolvedValueOnce({ projects: [], technologies: [] })
 
     const wrapper = mount(PageHome, {
       global: {
-        mocks: i18nMocks
-      }
+        mocks: i18nMocks,
+      },
     })
 
     await flushPromises()
@@ -127,15 +129,41 @@ describe('PageHome.vue', () => {
     const buttons = wrapper.findAll('.contact-button')
     expect(buttons.length).toBe(2)
 
-    const linkedin = buttons.find(link => link.text() === 'LinkedIn')
-    expect(linkedin.attributes('href')).toBe('https://www.linkedin.com/in/yumeangelica/')
+    const linkedin = buttons.find((link) => link.text() === 'LinkedIn')
+    expect(linkedin).toBeDefined()
+    if (!linkedin) throw new Error('Expected the LinkedIn contact link')
+    expect(linkedin.attributes('href')).toBe(
+      'https://www.linkedin.com/in/yumeangelica/',
+    )
 
-    const github = buttons.find(link => link.text() === 'GitHub')
+    const github = buttons.find((link) => link.text() === 'GitHub')
+    expect(github).toBeDefined()
+    if (!github) throw new Error('Expected the GitHub contact link')
     expect(github.attributes('href')).toBe('https://github.com/yumeangelica')
 
-    buttons.forEach(link => {
+    buttons.forEach((link) => {
       expect(link.attributes('target')).toBe('_blank')
       expect(link.attributes('rel')).toBe('noopener')
     })
+  })
+
+  it("reserves layout space using the profile images' intrinsic dimensions", async () => {
+    fetchData.mockResolvedValueOnce({ projects: [], technologies: [] })
+
+    const wrapper = mount(PageHome, {
+      global: {
+        mocks: i18nMocks,
+      },
+    })
+
+    await flushPromises()
+
+    const profileImage = wrapper.find('.profilepic')
+    expect(profileImage.attributes('width')).toBe('400')
+    expect(profileImage.attributes('height')).toBe('500')
+
+    const contactImage = wrapper.find('.contact-image')
+    expect(contactImage.attributes('width')).toBe('8072')
+    expect(contactImage.attributes('height')).toBe('767')
   })
 })

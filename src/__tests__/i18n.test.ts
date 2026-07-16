@@ -1,24 +1,28 @@
-import { t, tm, loadMessages } from '../i18n'
+import { loadMessages, t, tm } from '../i18n'
 
-// Inject test messages directly via loadMessages mock
+function jsonResponse(body: unknown, status = 200): Response {
+  return new Response(JSON.stringify(body), {
+    status,
+    headers: { 'Content-Type': 'application/json' },
+  })
+}
+
 beforeEach(() => {
-  // Mock fetch to return test messages
-  global.fetch = vi.fn(() =>
-    Promise.resolve({
-      ok: true,
-      json: () => Promise.resolve({
-        nav: { home: 'Home', projects: 'Projects' },
-        footer: { copyright: '© {year} Angelica' },
-        home: {
-          title: 'Welcome',
-          journeyItems: ['University', 'Self-study']
-        }
-      })
-    })
+  const fetchMock = vi.fn<typeof fetch>().mockResolvedValue(
+    jsonResponse({
+      nav: { home: 'Home', projects: 'Projects' },
+      footer: { copyright: '© {year} Angelica' },
+      home: {
+        title: 'Welcome',
+        journeyItems: ['University', 'Self-study'],
+      },
+    }),
   )
+  vi.stubGlobal('fetch', fetchMock)
 })
 
 afterEach(() => {
+  vi.unstubAllGlobals()
   vi.restoreAllMocks()
 })
 
@@ -48,7 +52,7 @@ describe('i18n', () => {
       await loadMessages('en')
       expect(t('home')).toEqual({
         title: 'Welcome',
-        journeyItems: ['University', 'Self-study']
+        journeyItems: ['University', 'Self-study'],
       })
     })
   })
@@ -58,6 +62,7 @@ describe('i18n', () => {
       await loadMessages('en')
       const items = tm('home.journeyItems')
       expect(Array.isArray(items)).toBe(true)
+      if (!Array.isArray(items)) throw new Error('Expected an array message')
       expect(items).toHaveLength(2)
       expect(items[0]).toBe('University')
     })
@@ -70,7 +75,12 @@ describe('i18n', () => {
 
   describe('loadMessages fallback', () => {
     it('uses built-in English fallback when the primary load fails', async () => {
-      global.fetch = vi.fn(() => Promise.resolve({ ok: false, status: 500 }))
+      vi.stubGlobal(
+        'fetch',
+        vi
+          .fn<typeof fetch>()
+          .mockResolvedValue(new Response(null, { status: 500 })),
+      )
 
       await loadMessages('en')
       expect(t('intro.title')).toBe('Software Development Portfolio')
@@ -78,23 +88,15 @@ describe('i18n', () => {
     })
 
     it('falls back to English when non-English locale fails', async () => {
-      let callCount = 0
-      global.fetch = vi.fn(() => {
-        callCount++
-        if (callCount === 1) {
-          // First call (non-English) fails
-          return Promise.resolve({ ok: false, status: 404 })
-        }
-        // Second call (English fallback) succeeds
-        return Promise.resolve({
-          ok: true,
-          json: () => Promise.resolve({ nav: { home: 'Home' } })
-        })
-      })
+      const fetchMock = vi
+        .fn<typeof fetch>()
+        .mockResolvedValueOnce(new Response(null, { status: 404 }))
+        .mockResolvedValueOnce(jsonResponse({ nav: { home: 'Home' } }))
+      vi.stubGlobal('fetch', fetchMock)
 
       await loadMessages('fi')
       expect(t('nav.home')).toBe('Home')
-      expect(global.fetch).toHaveBeenCalledTimes(2)
+      expect(fetchMock).toHaveBeenCalledTimes(2)
     })
   })
 })

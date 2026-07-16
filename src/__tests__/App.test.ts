@@ -1,37 +1,39 @@
 import { mount } from '@vue/test-utils'
 import App from '../App.vue'
-import { updateSeo } from '../seo'
+import { updateSeo as updateSeoImport } from '../seo'
 
 vi.mock('../seo', () => ({
-  updateSeo: vi.fn()
+  updateSeo: vi.fn(),
 }))
+
+const updateSeo = vi.mocked(updateSeoImport)
 
 describe('App.vue', () => {
   const i18nMock = {
-    $t: (key) => {
-      const messages = {
-        'app.mainContentAriaLabel': 'Main content'
+    $t: (key: string): string => {
+      const messages: Record<string, string> = {
+        'app.mainContentAriaLabel': 'Main content',
       }
       return messages[key] || key
-    }
+    },
   }
 
   const stubs = {
     TheHeaderPic: {
-      template: '<div data-test="header-pic" />'
+      template: '<div data-test="header-pic" />',
     },
     TheNavBar: {
-      template: '<nav data-test="nav-bar" />'
+      template: '<nav data-test="nav-bar" />',
     },
     TheFooter: {
-      template: '<footer data-test="footer" />'
+      template: '<footer data-test="footer" />',
     },
     TheBackToTop: {
-      template: '<div data-test="back-to-top" />'
+      template: '<div data-test="back-to-top" />',
     },
     RouterView: {
-      template: '<div data-test="router-view" />'
-    }
+      template: '<div data-test="router-view" />',
+    },
   }
 
   it('renders main content label and layout components', () => {
@@ -39,10 +41,10 @@ describe('App.vue', () => {
       global: {
         mocks: {
           ...i18nMock,
-          $route: { name: 'home' }
+          $route: { name: 'home' },
         },
-        stubs
-      }
+        stubs,
+      },
     })
 
     const main = wrapper.find('main[role="main"]')
@@ -60,17 +62,25 @@ describe('App.vue', () => {
       global: {
         mocks: {
           ...i18nMock,
-          $route: { name: 'home' }
+          $route: { name: 'home' },
         },
-        stubs
-      }
+        stubs,
+      },
     })
 
     expect(updateSeo).toHaveBeenCalled()
 
     await wrapper.vm.$nextTick()
     updateSeo.mockClear()
-    wrapper.vm.$options.watch.$route.call(wrapper.vm)
+    const routeWatcher = wrapper.vm.$options.watch?.$route
+    if (typeof routeWatcher !== 'function')
+      throw new Error('Expected the $route watcher')
+    routeWatcher.call(
+      wrapper.vm,
+      wrapper.vm.$route,
+      wrapper.vm.$route,
+      () => {},
+    )
 
     expect(updateSeo).toHaveBeenCalledTimes(1)
   })

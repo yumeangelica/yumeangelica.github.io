@@ -1,8 +1,7 @@
-
 import { createApp } from 'vue'
 import App from './App.vue'
-import router from './router'
 import i18nPlugin, { loadMessages } from './i18n'
+import router from './router'
 
 import './main.css'
 
@@ -15,9 +14,9 @@ loadMessages().then(() => {
   app.mount('#app')
 
   // GitHub Pages redirect hack for crawler-friendly SPAs
-  const { redirect } = window.sessionStorage;
-  delete window.sessionStorage.redirect;
+  const redirect = window.sessionStorage.getItem('redirect')
+  window.sessionStorage.removeItem('redirect')
   if (redirect && redirect !== window.location.pathname) {
-    router.isReady().then(() => router.replace(redirect));
+    router.isReady().then(() => router.replace(redirect))
   }
 })

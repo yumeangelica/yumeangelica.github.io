@@ -1,29 +1,29 @@
 describe('fetchData', () => {
-  let fetchData
+  let fetchData: typeof import('../dataCache').fetchData
 
   beforeEach(async () => {
     vi.resetModules()
-      ; ({ fetchData } = await import('../dataCache'))
+    const dataCache = await import('../dataCache')
+    fetchData = dataCache.fetchData
   })
 
   afterEach(() => {
+    vi.unstubAllGlobals()
     vi.restoreAllMocks()
   })
 
   it('shares the same fetch promise across calls and resolves data', async () => {
     const payload = { message: 'ok' }
-    global.fetch = vi.fn(() =>
-      Promise.resolve({
-        ok: true,
-        json: () => Promise.resolve(payload)
-      })
-    )
+    const fetchMock = vi
+      .fn<typeof fetch>()
+      .mockResolvedValue(new Response(JSON.stringify(payload), { status: 200 }))
+    vi.stubGlobal('fetch', fetchMock)
 
     const promiseA = fetchData()
     const promiseB = fetchData()
 
     expect(promiseA).toBe(promiseB)
-    expect(global.fetch).toHaveBeenCalledTimes(1)
+    expect(fetchMock).toHaveBeenCalledTimes(1)
 
     const resultA = await promiseA
     const resultB = await promiseB
@@ -34,18 +34,19 @@ describe('fetchData', () => {
 
   it('retries after a failed fetch and resolves on next call', async () => {
     const payload = { message: 'retry-ok' }
-    global.fetch = vi.fn()
-      .mockResolvedValueOnce({ ok: false, status: 500 })
-      .mockResolvedValueOnce({
-        ok: true,
-        json: () => Promise.resolve(payload)
-      })
+    const fetchMock = vi
+      .fn<typeof fetch>()
+      .mockResolvedValueOnce(new Response(null, { status: 500 }))
+      .mockResolvedValueOnce(
+        new Response(JSON.stringify(payload), { status: 200 }),
+      )
+    vi.stubGlobal('fetch', fetchMock)
 
     await expect(fetchData()).rejects.toThrow('HTTP error! status: 500')
 
     const result = await fetchData()
 
-    expect(global.fetch).toHaveBeenCalledTimes(2)
+    expect(fetchMock).toHaveBeenCalledTimes(2)
     expect(result).toEqual(payload)
   })
 })

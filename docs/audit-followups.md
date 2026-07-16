@@ -108,16 +108,17 @@ is done, and add new findings under the matching priority group using the same
   - **Suggested next step:** Generate `sitemap.xml` during `bun run build` (or a
     small script) so `lastmod` reflects the latest content change.
 
-- [ ] **Home hero / contact image dimensions for CLS**
-  - **Finding:** The home profile and contact images lack explicit `width`/`height`.
-  - **Reason deferred:** Reliable intrinsic dimensions could not be read in this
-    environment (`identify` unavailable; webp header parse inconclusive), and
-    guessing values risks introducing wrong aspect ratios. These images are also
-    size-constrained by existing CSS (`max-width`) and the profile image uses
-    `fetchpriority="high"` rather than lazy loading, so their CLS impact is low.
-    The primary CLS source — the project grid — was fixed in this branch.
-  - **Suggested next step:** Obtain exact intrinsic sizes and add matching
-    `width`/`height` (or `aspect-ratio`) if a live Lighthouse CLS check flags them.
+- [x] **Home hero / contact image dimensions for CLS**
+  - **Finding:** The home profile and contact images lacked explicit
+    `width`/`height`, so the browser could not reserve their exact aspect ratios
+    before loading them.
+  - **Resolved:** Read the intrinsic WebP dimensions locally and added matching
+    attributes in `src/pages/PageHome.vue`: profile `400 × 500`, contact
+    `8072 × 767`. A component test now guards both values.
+  - **Follow-up:** The contact image is only about 76 KB but has far more source
+    pixels than its 320px display width needs. Re-export it near 640px wide after
+    a visual comparison to reduce decode work without introducing blur or
+    compression artifacts.
 
 - [ ] **`getTechIconUrl` lookup efficiency**
   - **Finding:** `TheProjectCard.getTechIconUrl` does an O(n) `find` per tech icon
@@ -137,12 +138,12 @@ is done, and add new findings under the matching priority group using the same
   - **Suggested next step:** If production diagnostics are ever wanted, exclude
     `console.error`/`console.warn` via terser `pure_funcs` configuration.
 
-- [ ] **`deploy.sh` (gitignored) mirrors `scripts/deploy-gh-pages.js`**
-  - **Finding:** A local bash deploy script duplicates the CI JS deploy logic and
+- [ ] **`deploy.sh` (gitignored) mirrors `scripts/deploy-gh-pages.ts`**
+  - **Finding:** A local bash deploy script duplicates the CI TypeScript deploy logic and
     can drift.
   - **Reason deferred:** Gitignored local convenience file; low risk, out of scope.
   - **Suggested next step:** Document that `deploy.sh` is a local-only mirror, or
-    remove it in favor of the JS script.
+    remove it in favor of the TypeScript script.
 
 ---
 
@@ -150,7 +151,8 @@ is done, and add new findings under the matching priority group using the same
 
 - [x] Orphaned project images cleaned up: 8 unused screenshots moved out of the
   repo and the deployed `dist` (owner archived them elsewhere).
-- [x] Added PR CI workflow (`.github/workflows/ci.yml`): frozen install, lint, test, build.
+- [x] Added PR CI workflow (`.github/workflows/ci.yml`): frozen install, lint, typecheck,
+  test, build.
 - [x] `deploy.yml`: `bun ci` → `bun install --frozen-lockfile`.
 - [x] Router catch-all redirect to home (+ test); fixed stale lazy-load comment.
 - [x] Built-in minimal English i18n fallback when the primary message file fails (+ test).

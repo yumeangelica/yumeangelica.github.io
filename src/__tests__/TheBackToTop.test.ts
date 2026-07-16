@@ -1,21 +1,22 @@
 import { mount } from '@vue/test-utils'
 import TheBackToTop from 'components/TheBackToTop.vue'
+import { describe, expect, it, vi } from 'vitest'
 
 describe('TheBackToTop.vue', () => {
   const i18nMock = {
-    $t: (key) => {
-      const messages = {
+    $t: (key: string): string => {
+      const messages: Record<string, string> = {
         'backToTop.ariaLabel': 'Back to top',
-        'backToTop.title': 'Back to top'
+        'backToTop.title': 'Back to top',
       }
       return messages[key] || key
-    }
+    },
   }
 
-  const setScrollY = (value) => {
+  const setScrollY = (value: number): void => {
     Object.defineProperty(window, 'scrollY', {
       value,
-      configurable: true
+      configurable: true,
     })
   }
 
@@ -23,8 +24,8 @@ describe('TheBackToTop.vue', () => {
     vi.useFakeTimers()
     const wrapper = mount(TheBackToTop, {
       global: {
-        mocks: i18nMock
-      }
+        mocks: i18nMock,
+      },
     })
 
     expect(wrapper.find('button.back-to-top').exists()).toBe(false)
@@ -49,11 +50,13 @@ describe('TheBackToTop.vue', () => {
 
   it('scrolls to top on click', async () => {
     vi.useFakeTimers()
-    const scrollToSpy = vi.spyOn(window, 'scrollTo').mockImplementation(() => { })
+    const scrollToSpy = vi
+      .spyOn(window, 'scrollTo')
+      .mockImplementation(() => {})
     const wrapper = mount(TheBackToTop, {
       global: {
-        mocks: i18nMock
-      }
+        mocks: i18nMock,
+      },
     })
 
     setScrollY(350)
@@ -68,7 +71,7 @@ describe('TheBackToTop.vue', () => {
 
     expect(scrollToSpy).toHaveBeenCalledWith({
       top: 0,
-      behavior: 'smooth'
+      behavior: 'smooth',
     })
 
     scrollToSpy.mockRestore()

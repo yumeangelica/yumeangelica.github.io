@@ -1,11 +1,12 @@
-import { createRouter, createWebHistory } from 'vue-router'
 import PageHome from 'pages/PageHome.vue'
+import { createRouter, createWebHistory } from 'vue-router'
+
 const PageProjects = () => import('pages/PageProjects.vue')
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   scrollBehavior() {
-    return { top: 0 };
+    return { top: 0 }
   },
   routes: [
     {
@@ -14,10 +15,10 @@ const router = createRouter({
       meta: {
         seo: {
           title: 'seo.home.title',
-          description: 'seo.home.description'
-        }
+          description: 'seo.home.description',
+        },
       },
-      component: PageHome
+      component: PageHome,
     },
     {
       path: '/projects',
@@ -25,22 +26,22 @@ const router = createRouter({
       meta: {
         seo: {
           title: 'seo.projects.title',
-          description: 'seo.projects.description'
-        }
+          description: 'seo.projects.description',
+        },
       },
       /*
        Route-level code-splitting.
        This generates a separate chunk for PageProjects,
        which is lazy-loaded when the route is visited.
       */
-      component: PageProjects
+      component: PageProjects,
     },
     {
       // Catch-all: redirect unknown paths to home so no route renders an empty view.
       path: '/:pathMatch(.*)*',
-      redirect: { name: 'home' }
-    }
-  ]
+      redirect: '/',
+    },
+  ],
 })
 
 export default router

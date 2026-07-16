@@ -91,21 +91,69 @@
   </div>
 </template>
 
-<script>
-import TheProjectCard from '../components/TheProjectCard.vue';
-import { fetchData } from '../dataCache.js';
-import { scrollBehavior } from '../scroll';
+<script lang="ts">
+import { defineComponent } from 'vue'
+import TheProjectCard from '../components/TheProjectCard.vue'
+import { fetchData } from '../dataCache'
+import { scrollBehavior } from '../scroll'
+import type {
+  PortfolioProject,
+  ProjectSectionType,
+  ProjectType,
+  Technology,
+} from '../types/portfolio'
 
 // Project types shown as selectable type-filter buttons, in display order.
-const TYPE_FILTERS = ['frontend', 'backend', 'fullstack', 'cli'];
+const TYPE_FILTERS = [
+  'frontend',
+  'backend',
+  'fullstack',
+  'cli',
+] as const satisfies readonly ProjectType[]
 // Project sections in the order they are rendered on the page.
-const SECTION_TYPES = ['main', 'fullstack', 'frontend', 'backend', 'cli'];
+const SECTION_TYPES = [
+  'main',
+  'fullstack',
+  'frontend',
+  'backend',
+  'cli',
+] as const satisfies readonly ProjectSectionType[]
 // Section links in the floating quick-navigation menu, in menu order.
-const FLOATING_NAV_TYPES = ['main', 'frontend', 'backend', 'fullstack', 'cli'];
+const FLOATING_NAV_TYPES = [
+  'main',
+  'frontend',
+  'backend',
+  'fullstack',
+  'cli',
+] as const satisfies readonly ProjectSectionType[]
 
-export default {
+interface VisibleProjectSection {
+  type: ProjectSectionType
+  id: string
+  projects: PortfolioProject[]
+}
+
+interface PageProjectsState {
+  allProjects: PortfolioProject[]
+  frontendProjects: PortfolioProject[]
+  backendProjects: PortfolioProject[]
+  fullstackProjects: PortfolioProject[]
+  cliProjects: PortfolioProject[]
+  mainProjects: PortfolioProject[]
+  technologies: Technology[]
+  selectedTech: string[]
+  selectedTypes: ProjectType[]
+  fetchError: boolean
+  loading: boolean
+  showFloatingNav: boolean
+  isFloatingMenuOpen: boolean
+  isTechFiltersOpen: boolean
+  scrollTimeout: number | null
+}
+
+export default defineComponent({
   name: 'PageProjects',
-  data() {
+  data(): PageProjectsState {
     return {
       allProjects: [],
       frontendProjects: [],
@@ -128,206 +176,254 @@ export default {
     TheProjectCard,
   },
   computed: {
-    popularTechnologies() {
+    popularTechnologies(): Technology[] {
       // Main programming languages and frameworks to show in the filter
       const techNames = [
-        'Vue.js',      // Frontend #1
-        'React',       // Frontend #2
-        'Python',      // Backend language #1
-        'JavaScript',  // Frontend / Backend language
-        'TypeScript',  // Type-safe JavaScript
-        'Node.js',     // Backend runtime
-        'Express.js',  // Backend framework
-        'Django',      // Python framework
-        'MongoDB',     // Database #1
-        'SQLite',      // Database #2
-        'Docker',      // DevOps/Deployment
-        'PHP',          // Backend language #2
-        'Azure',        // Cloud platform
+        'Vue.js', // Frontend #1
+        'React', // Frontend #2
+        'Python', // Backend language #1
+        'JavaScript', // Frontend / Backend language
+        'TypeScript', // Type-safe JavaScript
+        'Node.js', // Backend runtime
+        'Express.js', // Backend framework
+        'Django', // Python framework
+        'MongoDB', // Database #1
+        'SQLite', // Database #2
+        'Docker', // DevOps/Deployment
+        'PHP', // Backend language #2
+        'Azure', // Cloud platform
         'Raspberry Pi', // Hardware projects
-      ];
-      const technologies = Array.isArray(this.technologies) ? this.technologies : [];
-      return technologies.filter(tech => techNames.includes(tech.title));
+      ]
+      const technologies = Array.isArray(this.technologies)
+        ? this.technologies
+        : []
+      return technologies.filter((tech) => techNames.includes(tech.title))
     },
-    typeFilters() {
-      return TYPE_FILTERS;
+    typeFilters(): readonly ProjectType[] {
+      return TYPE_FILTERS
     },
-    floatingNavTypes() {
-      return FLOATING_NAV_TYPES;
+    floatingNavTypes(): readonly ProjectSectionType[] {
+      return FLOATING_NAV_TYPES
     },
     // Projects for each section, filtered by the active type/tech selection.
-    filteredProjectsByType() {
+    filteredProjectsByType(): Record<ProjectSectionType, PortfolioProject[]> {
       return {
         main: this.filterProjects(this.mainProjects),
         fullstack: this.filterProjects(this.fullstackProjects),
         frontend: this.filterProjects(this.frontendProjects),
         backend: this.filterProjects(this.backendProjects),
         cli: this.filterProjects(this.cliProjects),
-      };
+      }
     },
     // Sections with at least one matching project, in render order.
-    visibleSections() {
-      return SECTION_TYPES
-        .map(type => ({ type, id: `${type}-projects`, projects: this.filteredProjectsByType[type] }))
-        .filter(section => section.projects.length > 0);
+    visibleSections(): VisibleProjectSection[] {
+      return SECTION_TYPES.map((type) => ({
+        type,
+        id: `${type}-projects`,
+        projects: this.filteredProjectsByType[type],
+      })).filter((section) => section.projects.length > 0)
     },
-    totalFilteredProjects() {
-      return Object.values(this.filteredProjectsByType).reduce((total, list) => total + list.length, 0);
+    totalFilteredProjects(): number {
+      return Object.values(this.filteredProjectsByType).reduce(
+        (total, list) => total + list.length,
+        0,
+      )
     },
-    resultsAnnouncement() {
+    resultsAnnouncement(): string {
       return this.totalFilteredProjects === 1
         ? this.$t('projects.filters.resultsFoundOne')
-        : this.$t('projects.filters.resultsFound', { count: this.totalFilteredProjects });
+        : this.$t('projects.filters.resultsFound', {
+            count: this.totalFilteredProjects,
+          })
     },
   },
   methods: {
     // Whether a given section type currently has any matching project.
-    hasVisibleProjects(type) {
-      return this.filteredProjectsByType[type].length > 0;
+    hasVisibleProjects(type: ProjectSectionType): boolean {
+      return this.filteredProjectsByType[type].length > 0
     },
     // Check if any project exists for the given type and selected techs
-    isTypeTechComboAvailable(type, techArr) {
-      const projects = Array.isArray(this.allProjects) ? this.allProjects : [];
-      const selectedTech = Array.isArray(techArr) ? techArr : [];
+    isTypeTechComboAvailable(
+      type: ProjectType,
+      techArr: readonly string[],
+    ): boolean {
+      const projects = Array.isArray(this.allProjects) ? this.allProjects : []
+      const selectedTech = Array.isArray(techArr) ? techArr : []
       // If no tech selected, just check for type
       if (selectedTech.length === 0) {
-        return projects.some(p => p.type === type);
+        return projects.some((p) => p.type === type)
       }
       // If techArr contains more than one tech, only allow if a project has ALL those techs
       // But if no project has all selected techs, disable
-      return projects.some(p => p.type === type && selectedTech.length > 0 && selectedTech.every(t => p.technologyTitles?.includes(t)));
+      return projects.some(
+        (p) =>
+          p.type === type &&
+          selectedTech.length > 0 &&
+          selectedTech.every((t) => p.technologyTitles?.includes(t)),
+      )
     },
     // Check if any project exists for the given tech and selected type
-    isTechTypeComboAvailable(tech, typeArr) {
-      const projects = Array.isArray(this.allProjects) ? this.allProjects : [];
-      const selectedTypes = Array.isArray(typeArr) ? typeArr : [];
+    // Check if any project exists for the given tech and selected types
+    isTechTypeComboAvailable(
+      tech: string,
+      typeArr: readonly ProjectType[],
+    ): boolean {
+      const projects = Array.isArray(this.allProjects) ? this.allProjects : []
+      const selectedTypes = Array.isArray(typeArr) ? typeArr : []
       // If tech is already selected, always allow to deselect
-      if (this.selectedTech.includes(tech)) return true;
+      if (this.selectedTech.includes(tech)) return true
 
       // If no type selected, check if any project has all selected techs + this tech
       if (selectedTypes.length === 0) {
-        const nextTechs = [...this.selectedTech, tech];
-        return projects.some(p => nextTechs.every(t => p.technologyTitles?.includes(t)));
+        const nextTechs = [...this.selectedTech, tech]
+        return projects.some((p) =>
+          nextTechs.every((t) => p.technologyTitles?.includes(t)),
+        )
       }
       // If type selected, check if any project matches type and all selected techs + this tech
-      const nextTechs = [...this.selectedTech, tech];
-      return projects.some(p => selectedTypes.includes(p.type) && nextTechs.every(t => p.technologyTitles?.includes(t)));
+      const nextTechs = [...this.selectedTech, tech]
+      return projects.some(
+        (p) =>
+          selectedTypes.includes(p.type) &&
+          nextTechs.every((t) => p.technologyTitles?.includes(t)),
+      )
     },
-    filterProjects(projects) {
-      const sourceProjects = Array.isArray(projects) ? projects : [];
-      const selectedTypes = Array.isArray(this.selectedTypes) ? this.selectedTypes : [];
-      const selectedTech = Array.isArray(this.selectedTech) ? this.selectedTech : [];
+    filterProjects(projects: readonly PortfolioProject[]): PortfolioProject[] {
+      const sourceProjects = Array.isArray(projects) ? projects : []
+      const selectedTypes = Array.isArray(this.selectedTypes)
+        ? this.selectedTypes
+        : []
+      const selectedTech = Array.isArray(this.selectedTech)
+        ? this.selectedTech
+        : []
       // Filter by type first
-      let filtered = sourceProjects;
+      let filtered = sourceProjects
       if (selectedTypes.length > 0) {
-        filtered = filtered.filter(project => selectedTypes.includes(project.type));
+        filtered = filtered.filter((project) =>
+          selectedTypes.includes(project.type),
+        )
       }
       // Then filter by tech
-      if (selectedTech.length === 0) return filtered;
-      return filtered.filter(project => {
-        if (!project.technologyTitles) return false;
-        return selectedTech.every(tech => project.technologyTitles.includes(tech));
-      });
+      if (selectedTech.length === 0) return filtered
+      return filtered.filter((project) => {
+        if (!project.technologyTitles) return false
+        return selectedTech.every((tech) =>
+          project.technologyTitles.includes(tech),
+        )
+      })
     },
-    toggleTechFilter(techName) {
+    toggleTechFilter(techName: string | null): void {
       if (techName === null) {
-        this.selectedTech = [];
-        return;
+        this.selectedTech = []
+        return
       }
       if (this.selectedTech.includes(techName)) {
         // If only one tech is selected and it's this one, deselect to All
         if (this.selectedTech.length === 1) {
-          this.selectedTech = [];
+          this.selectedTech = []
         } else {
-          this.selectedTech = this.selectedTech.filter(t => t !== techName);
+          this.selectedTech = this.selectedTech.filter((t) => t !== techName)
         }
       } else {
-        this.selectedTech = [...this.selectedTech, techName];
+        this.selectedTech = [...this.selectedTech, techName]
       }
     },
-    toggleTypeFilter(typeName) {
+    toggleTypeFilter(typeName: ProjectType | null): void {
       if (typeName === null) {
-        this.selectedTypes = [];
-        return;
+        this.selectedTypes = []
+        return
       }
-      if (this.selectedTypes.length === 1 && this.selectedTypes[0] === typeName) {
+      if (
+        this.selectedTypes.length === 1 &&
+        this.selectedTypes[0] === typeName
+      ) {
         // If only one type is selected and it's this one, deselect to All
-        this.selectedTypes = [];
-        return;
+        this.selectedTypes = []
+        return
       }
-      this.selectedTypes = [typeName];
+      this.selectedTypes = [typeName]
     },
-    scrollToSection(sectionId) {
+    scrollToSection(sectionId: string): void {
       // Special case for back to top - scroll to very top of page
       if (sectionId === 'back-to-top') {
         window.scrollTo({
           top: 0,
-          behavior: scrollBehavior()
-        });
-        this.isFloatingMenuOpen = false; // Close menu after navigation
-        return;
+          behavior: scrollBehavior(),
+        })
+        this.isFloatingMenuOpen = false // Close menu after navigation
+        return
       }
 
       // Regular section scrolling
-      const element = document.getElementById(sectionId);
+      const element = document.getElementById(sectionId)
       if (element) {
-        element.scrollIntoView({ behavior: scrollBehavior(), block: 'start' });
-        this.isFloatingMenuOpen = false; // Close menu after navigation
+        element.scrollIntoView({ behavior: scrollBehavior(), block: 'start' })
+        this.isFloatingMenuOpen = false // Close menu after navigation
       }
     },
-    toggleFloatingMenu() {
-      this.isFloatingMenuOpen = !this.isFloatingMenuOpen;
+    toggleFloatingMenu(): void {
+      this.isFloatingMenuOpen = !this.isFloatingMenuOpen
     },
     // Throttled scroll handler for better performance
-    handleScroll() {
-      if (this.scrollTimeout) return;
+    handleScroll(): void {
+      if (this.scrollTimeout) return
 
-      this.scrollTimeout = setTimeout(() => {
+      this.scrollTimeout = window.setTimeout(() => {
         // Show floating nav when scrolled down 200px
-        this.showFloatingNav = window.scrollY > 200;
+        this.showFloatingNav = window.scrollY > 200
 
         // Close floating menu when scrolling
         if (this.isFloatingMenuOpen) {
-          this.isFloatingMenuOpen = false;
+          this.isFloatingMenuOpen = false
         }
 
-        this.scrollTimeout = null;
-      }, 16); // ~60fps throttling
-    }
+        this.scrollTimeout = null
+      }, 16) // ~60fps throttling
+    },
   },
-  async created() { // When site is loaded, fetch data from data.json
+  async created() {
+    // When site is loaded, fetch data from data.json
     try {
-      const data = await fetchData();
-      const projects = Array.isArray(data?.projects) ? data.projects : [];
-      const technologies = Array.isArray(data?.technologies) ? data.technologies : [];
+      const data = await fetchData()
+      const projects = Array.isArray(data?.projects) ? data.projects : []
+      const technologyGroups = Array.isArray(data?.technologies)
+        ? data.technologies
+        : []
 
-      this.technologies = technologies.flatMap(group => Array.isArray(group?.items) ? group.items : []);
-      this.allProjects = projects;
-      this.mainProjects = projects.filter(p => p.isMain === true);
-      this.frontendProjects = projects.filter(p => p.type === 'frontend' && !p.isMain);
-      this.backendProjects = projects.filter(p => p.type === 'backend' && !p.isMain);
-      this.fullstackProjects = projects.filter(p => p.type === 'fullstack' && !p.isMain);
-      this.cliProjects = projects.filter(p => p.type === 'cli' && !p.isMain);
-      this.loading = false;
+      this.technologies = technologyGroups.flatMap((group) =>
+        Array.isArray(group?.items) ? group.items : [],
+      )
+      this.allProjects = projects
+      this.mainProjects = projects.filter((p) => p.isMain === true)
+      this.frontendProjects = projects.filter(
+        (p) => p.type === 'frontend' && !p.isMain,
+      )
+      this.backendProjects = projects.filter(
+        (p) => p.type === 'backend' && !p.isMain,
+      )
+      this.fullstackProjects = projects.filter(
+        (p) => p.type === 'fullstack' && !p.isMain,
+      )
+      this.cliProjects = projects.filter((p) => p.type === 'cli' && !p.isMain)
+      this.loading = false
     } catch (error) {
-      this.fetchError = true;
-      this.loading = false;
-      console.error('Error fetching data:', error);
+      this.fetchError = true
+      this.loading = false
+      console.error('Error fetching data:', error)
     }
   },
   mounted() {
     // Add scroll listener for floating navigation
-    window.addEventListener('scroll', this.handleScroll, { passive: true });
+    window.addEventListener('scroll', this.handleScroll, { passive: true })
   },
   beforeUnmount() {
     // Clean up scroll listener and timeout
-    window.removeEventListener('scroll', this.handleScroll);
+    window.removeEventListener('scroll', this.handleScroll)
     if (this.scrollTimeout) {
-      clearTimeout(this.scrollTimeout);
+      window.clearTimeout(this.scrollTimeout)
     }
-  }
-}
-
+  },
+})
 </script>
 
 

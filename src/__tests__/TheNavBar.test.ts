@@ -3,8 +3,8 @@ import TheNavBar from 'components/TheNavBar.vue'
 
 describe('TheNavBar.vue', () => {
   const i18nMock = {
-    $t: (key) => {
-      const messages = {
+    $t: (key: string): string => {
+      const messages: Record<string, string> = {
         'nav.ariaLabel': 'Main navigation',
         'nav.skipToContent': 'Skip to content',
         'nav.toggleAriaLabel': 'Toggle navigation',
@@ -12,26 +12,26 @@ describe('TheNavBar.vue', () => {
         'nav.projects': 'Projects',
         'nav.github': 'GitHub',
         'nav.linkedin': 'LinkedIn',
-        'common.externalLinkAriaLabel': '{label} (opens in new tab)'
+        'common.externalLinkAriaLabel': '{label} (opens in new tab)',
       }
       return messages[key] || key
     },
-    $tm: (key) => key
+    $tm: (key: string): string => key,
   }
 
   const routerStubs = {
     'router-link': {
       template: '<a @click="$emit(\'click\')"><slot /></a>',
-      props: ['to']
-    }
+      props: ['to'],
+    },
   }
 
   function createWrapper() {
     return mount(TheNavBar, {
       global: {
         mocks: i18nMock,
-        stubs: routerStubs
-      }
+        stubs: routerStubs,
+      },
     })
   }
 
@@ -72,7 +72,9 @@ describe('TheNavBar.vue', () => {
     expect(wrapper.find('.navbar-collapse').classes()).toContain('show')
 
     // Click a nav link
-    const homeLink = wrapper.findAll('a').find(a => a.text() === 'Home')
+    const homeLink = wrapper.findAll('a').find((a) => a.text() === 'Home')
+    expect(homeLink).toBeDefined()
+    if (!homeLink) throw new Error('Expected the home navigation link')
     await homeLink.trigger('click')
 
     expect(wrapper.find('.navbar-collapse').classes()).not.toContain('show')
@@ -90,7 +92,9 @@ describe('TheNavBar.vue', () => {
     const originalHandleResize = wrapper.vm.handleResize
     const handleResizeSpy = vi.spyOn(wrapper.vm, 'handleResize')
     window.removeEventListener('resize', originalHandleResize)
-    window.addEventListener('resize', wrapper.vm.handleResize, { passive: true })
+    window.addEventListener('resize', wrapper.vm.handleResize, {
+      passive: true,
+    })
 
     window.innerWidth = 500
     window.dispatchEvent(new Event('resize'))
@@ -134,7 +138,7 @@ describe('TheNavBar.vue', () => {
     const externalLinks = wrapper.findAll('a[target="_blank"]')
 
     expect(externalLinks.length).toBe(2)
-    externalLinks.forEach(link => {
+    externalLinks.forEach((link) => {
       expect(link.attributes('rel')).toBe('noopener')
     })
   })

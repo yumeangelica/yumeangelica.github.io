@@ -1,12 +1,28 @@
 /* Design tokens (theme palette + shared timing) */
 :root {
   /* Neutral */
-  --color-white: rgb(255, 255, 255); /* button/icon text on colored backgrounds */
+  --color-white: rgb(
+    255,
+    255,
+    255
+  ); /* button/icon text on colored backgrounds */
 
   /* Brand mauve/pink ramp */
-  --color-primary: rgb(178, 77, 137); /* main brand color: headings, links, focus outlines */
-  --color-primary-light: rgb(241, 199, 232); /* tints: nav background, borders, hover fills */
-  --color-primary-dark: rgb(95, 41, 74); /* deepest shade: emphasis text, mobile nav links, dark hovers */
+  --color-primary: rgb(
+    178,
+    77,
+    137
+  ); /* main brand color: headings, links, focus outlines */
+  --color-primary-light: rgb(
+    241,
+    199,
+    232
+  ); /* tints: nav background, borders, hover fills */
+  --color-primary-dark: rgb(
+    95,
+    41,
+    74
+  ); /* deepest shade: emphasis text, mobile nav links, dark hovers */
 
   /* Page surfaces and body text */
   --color-background: rgb(255, 250, 253); /* page background */
@@ -17,13 +33,31 @@
   /* Component-specific surfaces and accents */
   --color-nav-bg: var(--color-primary-light); /* navbar background */
   --color-card-bg: rgb(254, 239, 249); /* project-card background */
-  --color-card-heading: rgb(145, 52, 108); /* project-card title; darker than --color-primary for AA contrast on --color-card-bg */
+  --color-card-heading: rgb(
+    145,
+    52,
+    108
+  ); /* project-card title; darker than --color-primary for AA contrast on --color-card-bg */
   --color-button: rgb(148, 75, 118); /* project-card button background */
-  --color-button-hover: rgb(130, 62, 100); /* project-card button hover background */
+  --color-button-hover: rgb(
+    130,
+    62,
+    100
+  ); /* project-card button hover background */
 
   /* Derived tints — same palette, alpha/tint variants of the tokens above */
-  --color-primary-soft: rgba(241, 199, 232, 0.35); /* --color-primary-light at low alpha: section washes */
-  --color-border-soft: rgba(241, 199, 232, 0.65); /* --color-primary-light at 65% alpha: soft borders, photo ring */
+  --color-primary-soft: rgba(
+    241,
+    199,
+    232,
+    0.35
+  ); /* --color-primary-light at low alpha: section washes */
+  --color-border-soft: rgba(
+    241,
+    199,
+    232,
+    0.65
+  ); /* --color-primary-light at 65% alpha: soft borders, photo ring */
 
   /* Whisper surfaces — very pale pink and lilac card/menu backgrounds;
      used instead of pure white so every surface stays in the palette */
@@ -31,9 +65,12 @@
   --color-surface-lilac: rgb(247, 240, 252);
 
   /* Shadows — layered and plum-tinted (from --color-primary-dark rgb(95, 41, 74)) for a softer feel than grey */
-  --shadow-sm: 0 1px 2px rgba(95, 41, 74, 0.08), 0 2px 8px rgba(95, 41, 74, 0.08);
-  --shadow-md: 0 2px 4px rgba(95, 41, 74, 0.1), 0 6px 16px rgba(95, 41, 74, 0.12);
-  --shadow-lg: 0 4px 8px rgba(95, 41, 74, 0.1), 0 12px 28px rgba(95, 41, 74, 0.16);
+  --shadow-sm:
+    0 1px 2px rgba(95, 41, 74, 0.08), 0 2px 8px rgba(95, 41, 74, 0.08);
+  --shadow-md:
+    0 2px 4px rgba(95, 41, 74, 0.1), 0 6px 16px rgba(95, 41, 74, 0.12);
+  --shadow-lg:
+    0 4px 8px rgba(95, 41, 74, 0.1), 0 12px 28px rgba(95, 41, 74, 0.16);
 
   /* Radii */
   --radius-sm: 8px;
@@ -47,12 +84,11 @@
   --transition-medium: 0.35s; /* menu/tooltip reveals */
 }
 
-
 *,
 *::before,
 *::after {
   box-sizing: border-box;
   margin: 0;
-  font-family: 'Comfortaa', sans-serif;
+  font-family: "Comfortaa", sans-serif;
   font-weight: 400;
 }

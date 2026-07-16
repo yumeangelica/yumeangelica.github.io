@@ -9,10 +9,12 @@
  * Whether the user has asked the OS/browser to reduce motion.
  * @returns {boolean}
  */
-export function prefersReducedMotion() {
-  return typeof window !== 'undefined'
-    && typeof window.matchMedia === 'function'
-    && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+export function prefersReducedMotion(): boolean {
+  return (
+    typeof window !== 'undefined' &&
+    typeof window.matchMedia === 'function' &&
+    window.matchMedia('(prefers-reduced-motion: reduce)').matches
+  )
 }
 
 /**
@@ -20,6 +22,6 @@ export function prefersReducedMotion() {
  * prefers reduced motion, smooth otherwise.
  * @returns {'auto' | 'smooth'}
  */
-export function scrollBehavior() {
-  return prefersReducedMotion() ? 'auto' : 'smooth';
+export function scrollBehavior(): ScrollBehavior {
+  return prefersReducedMotion() ? 'auto' : 'smooth'
 }

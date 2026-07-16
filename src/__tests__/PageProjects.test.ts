@@ -1,25 +1,48 @@
-import { nextTick } from 'vue'
 import { mount } from '@vue/test-utils'
 import PageProjects from 'pages/PageProjects.vue'
-import { fetchData } from '../dataCache.js'
+import { nextTick } from 'vue'
+import { fetchData as fetchDataImport } from '../dataCache'
+import type { PortfolioData, PortfolioProject } from '../types/portfolio'
 
-vi.mock('../dataCache.js', () => ({
-  fetchData: vi.fn()
+vi.mock('../dataCache', () => ({
+  fetchData: vi.fn(),
 }))
 
+const fetchData = vi.mocked(fetchDataImport)
+
+const identityI18n = (key: string): string => key
+
 const i18nMocks = {
-  $t: (key) => key,
-  $tm: (key) => key
+  $t: identityI18n,
+  $tm: identityI18n,
 }
 
-const flushPromises = () => new Promise(resolve => setTimeout(resolve, 0))
+const flushPromises = (): Promise<void> =>
+  new Promise((resolve) => window.setTimeout(resolve, 0))
+
+function makeProject(
+  overrides: Partial<PortfolioProject> = {},
+): PortfolioProject {
+  return {
+    title: 'Project',
+    type: 'frontend',
+    isMain: false,
+    imageURL: '/assets/projects/project.webp',
+    imageWidth: 1000,
+    imageHeight: 515,
+    technologyTitles: [],
+    additionalInfo: [],
+    links: [],
+    ...overrides,
+  }
+}
 
 describe('PageProjects.vue', () => {
   beforeEach(() => {
     vi.clearAllMocks()
     fetchData.mockResolvedValue({
       technologies: [],
-      projects: []
+      projects: [],
     })
   })
 
@@ -28,9 +51,9 @@ describe('PageProjects.vue', () => {
       global: {
         mocks: i18nMocks,
         stubs: {
-          TheProjectCard: true
-        }
-      }
+          TheProjectCard: true,
+        },
+      },
     })
 
     await flushPromises()
@@ -50,17 +73,29 @@ describe('PageProjects.vue', () => {
       global: {
         mocks: i18nMocks,
         stubs: {
-          TheProjectCard: true
-        }
-      }
+          TheProjectCard: true,
+        },
+      },
     })
 
     await flushPromises()
 
     const projects = [
-      { title: 'Frontend Match', type: 'frontend', technologyTitles: ['Vue.js', 'TypeScript'] },
-      { title: 'Frontend Partial', type: 'frontend', technologyTitles: ['Vue.js'] },
-      { title: 'Backend Match', type: 'backend', technologyTitles: ['Vue.js', 'TypeScript'] }
+      makeProject({
+        title: 'Frontend Match',
+        type: 'frontend',
+        technologyTitles: ['Vue.js', 'TypeScript'],
+      }),
+      makeProject({
+        title: 'Frontend Partial',
+        type: 'frontend',
+        technologyTitles: ['Vue.js'],
+      }),
+      makeProject({
+        title: 'Backend Match',
+        type: 'backend',
+        technologyTitles: ['Vue.js', 'TypeScript'],
+      }),
     ]
 
     wrapper.vm.selectedTypes = ['frontend']
@@ -69,7 +104,7 @@ describe('PageProjects.vue', () => {
     const filtered = wrapper.vm.filterProjects(projects)
 
     expect(filtered).toHaveLength(1)
-    expect(filtered[0].title).toBe('Frontend Match')
+    expect(filtered[0]?.title).toBe('Frontend Match')
   })
 
   it('toggles the technology filter panel', async () => {
@@ -77,9 +112,9 @@ describe('PageProjects.vue', () => {
       global: {
         mocks: i18nMocks,
         stubs: {
-          TheProjectCard: true
-        }
-      }
+          TheProjectCard: true,
+        },
+      },
     })
 
     await flushPromises()
@@ -99,16 +134,16 @@ describe('PageProjects.vue', () => {
     Object.defineProperty(window, 'scrollY', {
       value: 250,
       writable: true,
-      configurable: true
+      configurable: true,
     })
 
     const wrapper = mount(PageProjects, {
       global: {
         mocks: i18nMocks,
         stubs: {
-          TheProjectCard: true
-        }
-      }
+          TheProjectCard: true,
+        },
+      },
     })
 
     await flushPromises()
@@ -126,14 +161,16 @@ describe('PageProjects.vue', () => {
   })
 
   it('scrolls to top and closes floating menu for back-to-top', async () => {
-    const scrollToSpy = vi.spyOn(window, 'scrollTo').mockImplementation(() => { })
+    const scrollToSpy = vi
+      .spyOn(window, 'scrollTo')
+      .mockImplementation(() => {})
     const wrapper = mount(PageProjects, {
       global: {
         mocks: i18nMocks,
         stubs: {
-          TheProjectCard: true
-        }
-      }
+          TheProjectCard: true,
+        },
+      },
     })
 
     await flushPromises()
@@ -143,7 +180,7 @@ describe('PageProjects.vue', () => {
 
     expect(scrollToSpy).toHaveBeenCalledWith({
       top: 0,
-      behavior: 'smooth'
+      behavior: 'smooth',
     })
     expect(wrapper.vm.isFloatingMenuOpen).toBe(false)
 
@@ -155,9 +192,9 @@ describe('PageProjects.vue', () => {
       global: {
         mocks: i18nMocks,
         stubs: {
-          TheProjectCard: true
-        }
-      }
+          TheProjectCard: true,
+        },
+      },
     })
 
     await flushPromises()
@@ -170,21 +207,24 @@ describe('PageProjects.vue', () => {
     wrapper.vm.isFloatingMenuOpen = true
     wrapper.vm.scrollToSection('frontend-projects')
 
-    expect(section.scrollIntoView).toHaveBeenCalledWith({ behavior: 'smooth', block: 'start' })
+    expect(section.scrollIntoView).toHaveBeenCalledWith({
+      behavior: 'smooth',
+      block: 'start',
+    })
     expect(wrapper.vm.isFloatingMenuOpen).toBe(false)
 
     section.remove()
   })
 
   it('defaults to empty data when fetchData resolves with missing fields', async () => {
-    fetchData.mockResolvedValueOnce({})
+    fetchData.mockResolvedValueOnce({} as PortfolioData)
     const wrapper = mount(PageProjects, {
       global: {
         mocks: i18nMocks,
         stubs: {
-          TheProjectCard: true
-        }
-      }
+          TheProjectCard: true,
+        },
+      },
     })
 
     await flushPromises()

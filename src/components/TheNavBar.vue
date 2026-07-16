@@ -31,43 +31,50 @@
 </template>
 
 
-<script>
-export default {
+<script lang="ts">
+import { defineComponent } from 'vue'
+
+interface NavBarState {
+  showNav: boolean
+  resizeTimeout: number | null
+}
+
+export default defineComponent({
   name: 'TheNavBar',
-  data() {
+  data(): NavBarState {
     return {
       showNav: false,
-      resizeTimeout: null
-    };
+      resizeTimeout: null,
+    }
   },
   methods: {
     toggleNav() {
-      this.showNav = !this.showNav;
+      this.showNav = !this.showNav
     },
     closeNav() {
-      this.showNav = false;
+      this.showNav = false
     },
     handleResize() {
       // Throttle resize events for better performance
-      if (this.resizeTimeout) return;
-      this.resizeTimeout = setTimeout(() => {
+      if (this.resizeTimeout) return
+      this.resizeTimeout = window.setTimeout(() => {
         if (window.innerWidth >= 425 && this.showNav) {
-          this.showNav = false;
+          this.showNav = false
         }
-        this.resizeTimeout = null;
-      }, 100); // Less frequent than scroll events
-    }
+        this.resizeTimeout = null
+      }, 100) // Less frequent than scroll events
+    },
   },
   mounted() {
-    window.addEventListener('resize', this.handleResize, { passive: true });
+    window.addEventListener('resize', this.handleResize, { passive: true })
   },
   beforeUnmount() {
-    window.removeEventListener('resize', this.handleResize);
+    window.removeEventListener('resize', this.handleResize)
     if (this.resizeTimeout) {
-      clearTimeout(this.resizeTimeout);
+      window.clearTimeout(this.resizeTimeout)
     }
-  }
-};
+  },
+})
 </script>
 
 

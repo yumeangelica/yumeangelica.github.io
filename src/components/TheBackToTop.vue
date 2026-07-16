@@ -6,45 +6,51 @@
   </Transition>
 </template>
 
-<script>
-import { scrollBehavior } from '../scroll';
+<script lang="ts">
+import { defineComponent } from 'vue'
+import { scrollBehavior } from '../scroll'
 
-export default {
+interface BackToTopState {
+  isVisible: boolean
+  scrollTimeout: number | null
+}
+
+export default defineComponent({
   name: 'TheBackToTop',
-  data() {
+  data(): BackToTopState {
     return {
       isVisible: false,
-      scrollTimeout: null
-    };
+      scrollTimeout: null,
+    }
   },
   methods: {
     handleScroll() {
       // Throttle scroll events for better performance
-      if (this.scrollTimeout) return;
+      if (this.scrollTimeout) return
 
-      this.scrollTimeout = setTimeout(() => {
+      this.scrollTimeout = window.setTimeout(() => {
         // Show the button when scrolled down more than 300px
-        this.isVisible = window.scrollY > 300;
-        this.scrollTimeout = null;
-      }, 16); // ~60fps
+        this.isVisible = window.scrollY > 300
+        this.scrollTimeout = null
+      }, 16) // ~60fps
     },
     scrollToTop() {
       window.scrollTo({
         top: 0,
-        behavior: scrollBehavior()
-      });
-    }
+        behavior: scrollBehavior(),
+      })
+    },
   },
   mounted() {
-    window.addEventListener('scroll', this.handleScroll, { passive: true });
+    window.addEventListener('scroll', this.handleScroll, { passive: true })
   },
   beforeUnmount() {
-    window.removeEventListener('scroll', this.handleScroll);
+    window.removeEventListener('scroll', this.handleScroll)
     if (this.scrollTimeout) {
-      clearTimeout(this.scrollTimeout);
+      window.clearTimeout(this.scrollTimeout)
     }
-  }
-};
+  },
+})
 </script>
 
 <style scoped>

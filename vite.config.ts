@@ -1,7 +1,7 @@
 import { fileURLToPath, URL } from 'node:url'
-import { browserslistToTargets } from 'lightningcss'
-import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
+import { browserslistToTargets } from 'lightningcss'
+import { defineConfig } from 'vitest/config'
 
 // Browser targets for Lightning CSS, aligned with the es2020 build target.
 const cssTargets = browserslistToTargets([
@@ -13,9 +13,7 @@ const cssTargets = browserslistToTargets([
 
 export default defineConfig({
   base: process.env.PUBLIC_URL || '/',
-  plugins: [
-    vue(),
-  ],
+  plugins: [vue()],
   css: {
     transformer: 'lightningcss',
     lightningcss: {
@@ -29,9 +27,9 @@ export default defineConfig({
   resolve: {
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url)),
-      "components": fileURLToPath(new URL('./src/components', import.meta.url)),
-      "pages": fileURLToPath(new URL('./src/pages', import.meta.url)),
-    }
+      components: fileURLToPath(new URL('./src/components', import.meta.url)),
+      pages: fileURLToPath(new URL('./src/pages', import.meta.url)),
+    },
   },
   build: {
     target: 'es2020',
@@ -51,21 +49,25 @@ export default defineConfig({
         },
         // Manual chunks for better code splitting
         manualChunks(id) {
-          if (id.includes('node_modules/vue') || id.includes('node_modules/vue-router')) {
+          if (
+            id.includes('node_modules/vue') ||
+            id.includes('node_modules/vue-router')
+          ) {
             return 'vendor'
           }
-        }
-      }
+          return undefined
+        },
+      },
     },
     // Enable more optimizations
     minify: 'terser',
     terserOptions: {
       compress: {
         drop_console: true,
-        drop_debugger: true
-      }
+        drop_debugger: true,
+      },
     },
     // Use Lightning CSS for faster, smaller CSS minification
-    cssMinify: 'lightningcss'
+    cssMinify: 'lightningcss',
   },
 })
