@@ -39,7 +39,7 @@
       </div>
 
       <div class="col-md-auto profile-col">
-        <img src="/assets/profile/angelica-profilepic.webp" class="img-responsive profilepic" :alt="$t('intro.profileImageAlt')" fetchpriority="high">
+        <img src="/assets/profile/angelica-profilepic.webp" class="img-responsive profilepic" :alt="$t('intro.profileImageAlt')" width="400" height="500" fetchpriority="high">
       </div>
     </div>
 
@@ -104,7 +104,7 @@
       <p>{{ $t('contact.linkedinPrompt') }}</p>
 
       <p class="introduction-highlights-paragraph">
-        <img class="contact-image" src="/assets/profile/angelica-contact.webp" :alt="$t('contact.imageAlt')" loading="lazy" />
+        <img class="contact-image" src="/assets/profile/angelica-contact.webp" :alt="$t('contact.imageAlt')" width="8072" height="767" loading="lazy" />
       </p>
 
       <p>{{ $t('contact.githubPrompt') }}</p>
@@ -132,42 +132,58 @@
   </template>
 </template>
 
-<script>
-import { fetchData } from '../dataCache.js';
+<script lang="ts">
+import { defineComponent } from 'vue'
+import { fetchData } from '../dataCache'
+import type { Technology } from '../types/portfolio'
 
-export default {
+interface CategorizedTechnologyGroup {
+  name: string
+  techs: readonly Technology[]
+}
+
+interface PageHomeState {
+  categorizedTechnologies: readonly CategorizedTechnologyGroup[]
+  isTooltipVisible: boolean
+  loading: boolean
+  fetchError: boolean
+}
+
+export default defineComponent({
   name: 'PageHome',
-  data() {
+  data(): PageHomeState {
     return {
       categorizedTechnologies: [],
       isTooltipVisible: false,
       loading: true,
-      fetchError: false
-    };
+      fetchError: false,
+    }
   },
   mounted() {
-    this.fetchTechnologies();
+    this.fetchTechnologies()
   },
   methods: {
-    async fetchTechnologies() {
+    async fetchTechnologies(): Promise<void> {
       try {
-        const data = await fetchData();
+        const data = await fetchData()
 
         this.categorizedTechnologies = Object.freeze(
-          data.technologies.map(group => Object.freeze({
-            name: group.category,
-            techs: Object.freeze(group.items.map(item => ({ ...item })))
-          }))
-        );
+          data.technologies.map((group) =>
+            Object.freeze({
+              name: group.category,
+              techs: Object.freeze(group.items.map((item) => ({ ...item }))),
+            }),
+          ),
+        )
       } catch (error) {
-        this.fetchError = true;
-        console.error("Error fetching data:", error);
+        this.fetchError = true
+        console.error('Error fetching data:', error)
       } finally {
-        this.loading = false;
+        this.loading = false
       }
-    }
-  }
-};
+    },
+  },
+})
 </script>
 
 <style scoped>
@@ -231,6 +247,7 @@ export default {
 .contact-image {
   max-width: 90%;
   width: 320px;
+  height: auto;
   border-radius: var(--radius-md);
   box-shadow: var(--shadow-sm);
 }
@@ -288,6 +305,7 @@ export default {
 .profilepic {
   display: block;
   width: 100%;
+  height: auto;
   max-width: 300px;
   margin: 10px 0 20px 35px;
   border: 2px solid var(--color-primary-light);

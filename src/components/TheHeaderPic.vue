@@ -3,10 +3,12 @@
   <div class="header-pic" aria-hidden="true"></div>
 </template>
 
-<script>
-export default {
-  name: 'TheHeaderPic'
-};
+<script lang="ts">
+import { defineComponent } from 'vue'
+
+export default defineComponent({
+  name: 'TheHeaderPic',
+})
 </script>
 
 <style>

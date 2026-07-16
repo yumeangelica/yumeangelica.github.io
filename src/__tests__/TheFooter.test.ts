@@ -1,9 +1,10 @@
 import { mount } from '@vue/test-utils'
 import TheFooter from 'components/TheFooter.vue'
+import type { TranslationParams } from '../i18n'
 
 describe('TheFooter.vue', () => {
   const i18nMock = {
-    $t: (key, params) => {
+    $t: (key: string, params: TranslationParams = {}): string => {
       if (key === 'footer.ariaLabel') {
         return 'Site footer'
       }
@@ -11,14 +12,14 @@ describe('TheFooter.vue', () => {
         return `Copyright ${params.year}`
       }
       return key
-    }
+    },
   }
 
   it('renders footer role, aria label, and current year', () => {
     const wrapper = mount(TheFooter, {
       global: {
-        mocks: i18nMock
-      }
+        mocks: i18nMock,
+      },
     })
 
     const footer = wrapper.get('footer')

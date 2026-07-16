@@ -16,20 +16,21 @@
   </div>
 </template>
 
-<script>
-import TheNavBar from 'components/TheNavBar.vue'
+<script lang="ts">
+import TheBackToTop from 'components/TheBackToTop.vue'
 import TheFooter from 'components/TheFooter.vue'
 import TheHeaderPic from 'components/TheHeaderPic.vue'
-import TheBackToTop from 'components/TheBackToTop.vue'
+import TheNavBar from 'components/TheNavBar.vue'
+import { defineComponent } from 'vue'
 import { updateSeo } from './seo'
 
-export default {
+export default defineComponent({
   name: 'App',
   components: {
     TheNavBar,
     TheFooter,
     TheHeaderPic,
-    TheBackToTop
+    TheBackToTop,
   },
   mounted() {
     this.updateSeo()
@@ -37,14 +38,14 @@ export default {
   watch: {
     $route() {
       this.updateSeo()
-    }
+    },
   },
   methods: {
     updateSeo() {
       updateSeo(this.$route, this.$t)
-    }
-  }
-}
+    },
+  },
+})
 </script>
 
 <style>

@@ -1,6 +1,14 @@
 import router from '../router'
 
 describe('router', () => {
+  beforeEach(() => {
+    vi.spyOn(window, 'scrollTo').mockImplementation(() => {})
+  })
+
+  afterEach(() => {
+    vi.restoreAllMocks()
+  })
+
   it('includes home and projects routes', () => {
     const routes = router.getRoutes()
 
@@ -12,14 +20,14 @@ describe('router', () => {
     expect(homeRoute?.meta).toMatchObject({
       seo: {
         title: 'seo.home.title',
-        description: 'seo.home.description'
-      }
+        description: 'seo.home.description',
+      },
     })
     expect(projectsRoute?.meta).toMatchObject({
       seo: {
         title: 'seo.projects.title',
-        description: 'seo.projects.description'
-      }
+        description: 'seo.projects.description',
+      },
     })
   })
 

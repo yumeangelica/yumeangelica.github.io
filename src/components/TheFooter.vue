@@ -2,15 +2,17 @@
   <footer role="contentinfo" :aria-label="$t('footer.ariaLabel')">{{ $t('footer.copyright', { year }) }}</footer>
 </template>
 
-<script>
-export default {
+<script lang="ts">
+import { defineComponent } from 'vue'
+
+export default defineComponent({
   name: 'TheFooter',
   data() {
     return {
-      year: new Date().getFullYear()
-    };
-  }
-};
+      year: new Date().getFullYear(),
+    }
+  },
+})
 </script>
 
 <style>

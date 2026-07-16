@@ -1,6 +1,6 @@
 # Angelica's Software Development Portfolio
 
-Personal software development portfolio built with Vue 3, Vue Router, Vite, Bun, Vitest, Biome, and GitHub Pages.
+Personal software development portfolio built with Vue 3, TypeScript, Vue Router, Vite, Bun, Vitest, Biome, and GitHub Pages.
 
 Live site: https://yumeangelica.github.io
 
@@ -18,7 +18,7 @@ The portfolio is intentionally public-safe. It should not contain employer-inter
 
 - Vue 3
 - Vue Router
-- JavaScript
+- TypeScript
 - Modern CSS
 - Vite
 - Lightning CSS for CSS transforms and minification
@@ -35,7 +35,8 @@ The portfolio is intentionally public-safe. It should not contain employer-inter
 
 - Vitest
 - Vue Test Utils
-- Biome linting and formatting
+- Biome linting, formatting, and import-order checks
+- Dual TypeScript checking: the TypeScript 7 native CLI checks application modules, Vite config, and Bun scripts, while TypeScript 6-backed `vue-tsc` checks Vue SFCs, templates, and tests
 - Content validation tests
 - SEO tests
 - Production build checks
@@ -43,7 +44,7 @@ The portfolio is intentionally public-safe. It should not contain employer-inter
 ### Delivery
 
 - Bun package manager
-- GitHub Actions CI for pull requests (lint, test, build)
+- GitHub Actions CI for pull requests (Biome check, typecheck, test, build)
 - GitHub Actions deployment to GitHub Pages on merge to `main`
 
 ## Getting started
@@ -64,9 +65,18 @@ Run checks:
 
 ```bash
 bun run lint
+bun run typecheck
 bun run test
 bun run build
 ```
+
+`bun run lint` performs a read-only Biome check covering lint rules, formatting, and
+import order. Run `bun run format` to apply Biome's safe fixes.
+
+`bun run typecheck` combines the latest TypeScript 7 CLI with the official
+TypeScript 6 compatibility boundary required by `vue-tsc`. TypeScript 7 checks
+ordinary `.ts` projects; `vue-tsc` retains TypeScript 6 only for Vue SFC and
+template-aware checking until Volar supports the TypeScript 7 API.
 
 Preview the production build:
 
@@ -117,22 +127,23 @@ Most public copy lives in:
 - `public/messages_en.json` for content, navigation, SEO, and labels, grouped by topic (`intro`, `journey`, `certifications`, `contact`, `projects`, ...)
 - `public/data.json` for project cards and technology metadata
 - `README.md` for repository-level explanation
-- `index.html` and `src/seo.js` for fallback SEO metadata
+- `index.html` and `src/seo.ts` for fallback SEO metadata
 
 After editing copy, run:
 
 ```bash
 bun run lint
+bun run typecheck
 bun run test
 bun run build
 ```
 
 ### Adding a new language
 
-The site uses a small custom i18n layer (`src/i18n.js`) that fetches `public/messages_<locale>.json` at startup. To add a locale:
+The site uses a small custom i18n layer (`src/i18n.ts`) that fetches `public/messages_<locale>.json` at startup. To add a locale:
 
 1. Copy `public/messages_en.json` to `public/messages_<locale>.json` (for example `messages_fi.json`) and translate the **values only** — keep the key structure and every `{placeholder}` name identical, so the same code resolves each key.
-2. Point the app at the new locale by passing it to `loadMessages('<locale>')` in `src/main.js`. The default is `DEFAULT_LOCALE` (`en`) from `src/i18n.js`; if a non-default locale fails to load, the app falls back to English automatically.
+2. Point the app at the new locale by passing it to `loadMessages('<locale>')` in `src/main.ts`. The default is `DEFAULT_LOCALE` (`en`) from `src/i18n.ts`; if a non-default locale fails to load, the app falls back to English automatically.
 3. Run the checks above. The content-quality tests verify that every translation key used in the components exists, which helps catch keys forgotten during translation.
 
 ## Release flow
@@ -143,17 +154,17 @@ Run release push scripts from a feature or release branch after committing your 
 bun run patch-push
 ```
 
-`patch-push`, `minor-push`, and `major-push` all use `scripts/release-push.js` with the matching semantic-version bump. The script:
+`patch-push`, `minor-push`, and `major-push` all use `scripts/release-push.ts` with the matching semantic-version bump. The script:
 
 - updates `package.json` version
-- runs `bun run lint`, `bun run test`, and `bun run build`
+- runs `bun run lint`, `bun run typecheck`, `bun run test`, and `bun run build`
 - restores the original version and stops if a local quality gate fails
 - commits the version bump with `Patch update`, `Minor update`, or `Major update`
 - pushes the current branch to `origin`
 - writes a ready-to-copy PR body to `.pr-description.md`
 - prints the GitHub compare URL for opening a pull request
 
-After the pull request is merged into `main`, `.github/workflows/deploy.yml` installs dependencies with Bun, builds the site, and runs `scripts/deploy-gh-pages.js`. The deploy helper publishes the built `dist` output to the `gh-pages` branch and creates a `v<version>` tag when that tag does not already exist.
+After the pull request is merged into `main`, `.github/workflows/deploy.yml` installs dependencies with Bun, type-checks and builds the site, and runs `scripts/deploy-gh-pages.ts`. The deploy helper publishes the built `dist` output to the `gh-pages` branch and creates a `v<version>` tag when that tag does not already exist.
 
 ## License
 

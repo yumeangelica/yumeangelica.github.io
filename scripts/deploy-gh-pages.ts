@@ -1,22 +1,43 @@
 #!/usr/bin/env bun
 import { $ } from 'bun'
 
+interface PackageJson {
+  version: string
+}
+
 const buildDir = 'dist'
 const releaseBranch = 'gh-pages'
-const packageJson = JSON.parse(await Bun.file('package.json').text())
-const version = packageJson.version
+const parsedPackageJson: unknown = JSON.parse(
+  await Bun.file('package.json').text(),
+)
 
-function fail(message) {
+if (!isPackageJson(parsedPackageJson) || !parsedPackageJson.version) {
+  fail('package.json must include a version before deploying.')
+}
+
+const version = parsedPackageJson.version
+
+function fail(message: string): never {
   console.error(`\n${message}`)
   process.exit(1)
 }
 
-async function runStep(label, command) {
+function isPackageJson(value: unknown): value is PackageJson {
+  return (
+    typeof value === 'object' &&
+    value !== null &&
+    !Array.isArray(value) &&
+    'version' in value &&
+    typeof value.version === 'string'
+  )
+}
+
+async function runStep(label: string, command: $.ShellPromise): Promise<void> {
   console.log(`\n> ${label}`)
   await command
 }
 
-async function tagExists(tagName) {
+async function tagExists(tagName: string): Promise<boolean> {
   try {
     await $`git rev-parse ${tagName}`.quiet()
     return true
@@ -32,12 +53,10 @@ async function tagExists(tagName) {
   }
 }
 
-if (!version) {
-  fail('package.json must include a version before deploying.')
-}
-
 if (!(await Bun.file(`${buildDir}/index.html`).exists())) {
-  fail(`Build output not found. Run "bun run build" before deploying ${buildDir}.`)
+  fail(
+    `Build output not found. Run "bun run build" before deploying ${buildDir}.`,
+  )
 }
 
 if (process.env.GITHUB_ACTIONS === 'true') {
@@ -55,7 +74,9 @@ await $`git update-index --refresh`
 const shortSha = (await $`git rev-parse --short HEAD`.text()).trim()
 const parentRef = `refs/remotes/origin/${releaseBranch}`
 const message = `Deploy ${shortSha} as version ${version}`
-const commit = (await $`git commit-tree -p ${parentRef} -m ${message} ${tree}`.text()).trim()
+const commit = (
+  await $`git commit-tree -p ${parentRef} -m ${message} ${tree}`.text()
+).trim()
 const localRef = `refs/heads/${releaseBranch}`
 
 await runStep('Update gh-pages ref', $`git update-ref ${localRef} ${commit}`)
@@ -66,7 +87,10 @@ const tagName = `v${version}`
 if (await tagExists(tagName)) {
   console.log(`\nTag ${tagName} already exists.`)
 } else {
-  await runStep('Create release tag', $`git tag -a ${tagName} -m ${`Release tag for version ${version}`} ${commit}`)
+  await runStep(
+    'Create release tag',
+    $`git tag -a ${tagName} -m ${`Release tag for version ${version}`} ${commit}`,
+  )
   await runStep('Push release tag', $`git push origin ${tagName}`)
 }
 

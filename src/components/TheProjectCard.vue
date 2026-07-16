@@ -35,53 +35,72 @@
 </template>
 
 
-<script>
+<script lang="ts">
+import type { PropType } from 'vue'
+import { defineComponent } from 'vue'
+import type { ProjectCardProject, Technology } from '../types/portfolio'
+
 // Icons beyond this count collapse into a "+N" chip so long stacks
 // (e.g. 16 technologies) don't overwhelm the card.
 const MAX_VISIBLE_TECH_ICONS = 8
 
-export default {
+export default defineComponent({
   name: 'TheProjectCard',
   props: {
-    project: { type: Object, required: true },
-    technologies: { type: Array, required: true }
+    project: {
+      type: Object as PropType<ProjectCardProject>,
+      required: true,
+    },
+    technologies: {
+      type: Array as PropType<readonly Technology[]>,
+      required: true,
+    },
   },
   computed: {
     projectTitle() {
-      return this.project?.title || '';
+      return this.project?.title || ''
     },
     additionalInfo() {
-      return Array.isArray(this.project?.additionalInfo) ? this.project.additionalInfo : [];
+      return Array.isArray(this.project?.additionalInfo)
+        ? this.project.additionalInfo
+        : []
     },
     // Content convention in data.json: first additionalInfo item is a
     // one-sentence summary, the rest are skill highlights.
     summary() {
-      return this.additionalInfo[0] || '';
+      return this.additionalInfo[0] || ''
     },
     highlights() {
-      return this.additionalInfo.slice(1);
+      return this.additionalInfo.slice(1)
     },
     links() {
-      return Array.isArray(this.project?.links) ? this.project.links : [];
+      return Array.isArray(this.project?.links) ? this.project.links : []
     },
     technologyTitles() {
-      return Array.isArray(this.project?.technologyTitles) ? this.project.technologyTitles : [];
+      return Array.isArray(this.project?.technologyTitles)
+        ? this.project.technologyTitles
+        : []
     },
     visibleTechs() {
-      return this.technologyTitles.slice(0, MAX_VISIBLE_TECH_ICONS);
+      return this.technologyTitles.slice(0, MAX_VISIBLE_TECH_ICONS)
     },
     extraTechs() {
-      return this.technologyTitles.slice(MAX_VISIBLE_TECH_ICONS);
-    }
+      return this.technologyTitles.slice(MAX_VISIBLE_TECH_ICONS)
+    },
   },
   methods: {
-    getTechIconUrl(techName) {
-      const technologies = Array.isArray(this.technologies) ? this.technologies : [];
-      const tech = technologies.find(t => t.title === techName);
-      return tech ? tech.url : "";
-    }
-  }
-};
+    /**
+     * @param {string} techName
+     */
+    getTechIconUrl(techName: string): string {
+      const technologies = Array.isArray(this.technologies)
+        ? this.technologies
+        : []
+      const tech = technologies.find((t) => t.title === techName)
+      return tech ? tech.url : ''
+    },
+  },
+})
 </script>
 
 

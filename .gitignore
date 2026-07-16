@@ -45,3 +45,5 @@ design/
 # Local-only AI agent guidance (not part of the published repo)
 AGENTS.md
 CLAUDE.md
+.codenyan/
+.ruff_cache/
