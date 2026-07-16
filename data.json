@@ -41,7 +41,7 @@
       "imageHeight": 1030,
       "technologyTitles": [
         "Vue.js",
-        "JavaScript",
+        "TypeScript",
         "CSS3",
         "HTML5",
         "Git",
@@ -55,7 +55,7 @@
       "additionalInfo": [
         "Public Vue 3 portfolio for selected software development projects and career background",
         "Accessible, mobile-first UI with skip link, keyboard focus styles, semantic sections, and responsive layout",
-        "Biome linting, Vitest component and content tests, and GitHub Actions deployment to GitHub Pages",
+        "Strict TypeScript checking, Biome quality checks, Vitest component and content tests, and GitHub Actions deployment to GitHub Pages",
         "Vite and Bun tooling with JSON-based content for UI text and project data"
       ],
       "links": [
