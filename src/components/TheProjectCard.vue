@@ -151,6 +151,7 @@ export default defineComponent({
   line-height: 1.65;
   color: var(--color-text);
   margin-bottom: 14px;
+  overflow-wrap: anywhere;
 }
 
 /* Skill highlights with small ♡ bullets */
@@ -197,6 +198,9 @@ export default defineComponent({
   letter-spacing: 0.07em;
   backdrop-filter: blur(4px);
   box-shadow: var(--shadow-sm);
+  max-width: calc(100% - 24px);
+  overflow-wrap: anywhere;
+  text-align: center;
 }
 
 .project-card {
@@ -213,7 +217,8 @@ export default defineComponent({
   transition: transform var(--transition-fast) ease, box-shadow var(--transition-fast) ease, border-color var(--transition-fast) ease;
   border: 1px solid var(--color-border-soft);
   flex: 1 1 calc(50% - 20px);
-  max-width: 500px;
+  max-width: min(500px, calc(100% - 20px));
+  min-width: 0;
 }
 
 @media (hover: hover) and (pointer: fine) {
@@ -253,6 +258,7 @@ export default defineComponent({
   flex-direction: column;
   justify-content: space-between;
   height: 100%;
+  min-width: 0;
   padding: 18px 20px 20px;
 }
 
@@ -295,6 +301,7 @@ export default defineComponent({
   touch-action: manipulation;
   transition: background-color var(--transition-fast) ease, color var(--transition-fast) ease, box-shadow var(--transition-fast) ease;
   font-size: 0.95rem;
+  overflow-wrap: anywhere;
 }
 
 /* External-link arrow: pseudo-content with empty alt so screen readers
@@ -320,7 +327,7 @@ export default defineComponent({
 
 @media (min-width: 1280px) {
   .project-card {
-    max-width: 540px;
+    max-width: min(540px, calc(100% - 20px));
   }
 }
 
@@ -342,6 +349,7 @@ export default defineComponent({
 
   .project-card {
     width: 100%;
+    max-width: 100%;
     margin: 10px 0;
   }
 

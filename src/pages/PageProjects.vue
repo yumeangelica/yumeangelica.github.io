@@ -11,12 +11,12 @@
           <span class="filter-label">{{ $t('projects.filters.typeLabel') }}</span>
           <div class="filter-row-inner filter-row-type" role="group" :aria-label="$t('projects.filters.typeGroupAriaLabel')">
             <button type="button" @click="toggleTypeFilter(null)" class="filter-btn filter-type" :class="{ active: selectedTypes.length === 0 }"
-              :aria-label="$t('projects.filters.allTypesAriaLabel')">
+              :aria-pressed="selectedTypes.length === 0" :aria-label="$t('projects.filters.allTypesAriaLabel')">
               {{ $t('projects.filters.allLabel') }}
             </button>
             <button type="button" v-for="type in typeFilters" :key="type" @click="toggleTypeFilter(type)" class="filter-btn filter-type"
               :class="{ active: selectedTypes.includes(type) }" :disabled="!isTypeTechComboAvailable(type, selectedTech)"
-              :aria-label="$t(`projects.filters.types.${type}.ariaLabel`)">
+              :aria-pressed="selectedTypes.includes(type)" :aria-label="$t(`projects.filters.types.${type}.ariaLabel`)">
               {{ $t(`projects.filters.types.${type}.label`) }}
             </button>
           </div>
@@ -31,13 +31,13 @@
           <div v-show="isTechFiltersOpen" id="technology-filters" class="filter-row-inner filter-row-tech" role="group"
             :aria-label="$t('projects.filters.techGroupAriaLabel')">
             <button type="button" @click="toggleTechFilter(null)" class="filter-btn tech-filter-btn tech-filter-all" :class="{ active: selectedTech.length === 0 }"
-              :aria-label="$t('projects.filters.allTechAriaLabel')">
+              :aria-pressed="selectedTech.length === 0" :aria-label="$t('projects.filters.allTechAriaLabel')">
               <span>{{ $t('projects.filters.allLabel') }}</span>
             </button>
             <button type="button" v-for="tech in popularTechnologies" :key="tech.title" @click="toggleTechFilter(tech.title)" class="filter-btn tech-filter-btn"
               :class="{ active: selectedTech.includes(tech.title) }" :disabled="!isTechTypeComboAvailable(tech.title, selectedTypes)"
-              :aria-label="$t('projects.filters.techAriaLabel', { title: tech.title })">
-              <img :src="tech.url" :alt="tech.title" :title="tech.title" class="tech-icon" />
+              :aria-pressed="selectedTech.includes(tech.title)" :aria-label="$t('projects.filters.techAriaLabel', { title: tech.title })">
+              <img :src="tech.url" alt="" :title="tech.title" class="tech-icon" aria-hidden="true" />
             </button>
           </div>
         </div>
@@ -71,12 +71,12 @@
       <div v-if="showFloatingNav" class="floating-nav" role="navigation" :aria-label="$t('projects.floatingNav.ariaLabel')"
         @keydown.esc="isFloatingMenuOpen = false">
         <button type="button" @click="toggleFloatingMenu" class="floating-nav-toggle" :aria-expanded="isFloatingMenuOpen"
-          :aria-label="$t('projects.floatingNav.toggleAriaLabel')">
+          aria-controls="floating-nav-menu" :aria-label="$t('projects.floatingNav.toggleAriaLabel')">
           <span class="nav-icon" :class="{ rotated: isFloatingMenuOpen }">☰</span>
         </button>
 
         <Transition name="slide-up">
-          <div v-if="isFloatingMenuOpen" class="floating-nav-menu">
+          <div v-if="isFloatingMenuOpen" id="floating-nav-menu" class="floating-nav-menu">
             <button type="button" @click="scrollToSection('back-to-top')" class="floating-nav-button">
               {{ $t('backToTop.title') }}
             </button>
@@ -413,6 +413,8 @@ export default defineComponent({
     }
   },
   mounted() {
+    // Synchronize restored/deep-scroll state before the next scroll event.
+    this.showFloatingNav = window.scrollY > 200
     // Add scroll listener for floating navigation
     window.addEventListener('scroll', this.handleScroll, { passive: true })
   },
@@ -431,7 +433,7 @@ export default defineComponent({
 <style scoped>
 /* Main page container */
 .projects-page {
-  padding-bottom: 50px;
+  padding-bottom: calc(50px + env(safe-area-inset-bottom, 0px));
 }
 
 /* Mobile-first filters: wrapping pill rows that fit any viewport width;
@@ -466,7 +468,7 @@ export default defineComponent({
   justify-content: center;
   gap: 8px;
   width: min(100%, 320px);
-  min-height: 44px;
+  min-height: var(--tap-target-size);
   padding: 8px 14px;
   color: var(--color-primary-dark);
   background:
@@ -537,8 +539,8 @@ export default defineComponent({
   font-size: 0.88rem;
   border-radius: var(--radius-pill);
   padding: 6px 12px;
-  min-width: 44px;
-  min-height: 44px;
+  min-width: var(--tap-target-size);
+  min-height: var(--tap-target-size);
   cursor: pointer;
   touch-action: manipulation;
   transition:
@@ -650,30 +652,28 @@ section h2::after {
 /* Project containers */
 .projects-container {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   flex-wrap: wrap;
   justify-content: center;
   gap: clamp(16px, 2.5vw, 24px);
-  align-items: stretch;
-  padding: 10px;
+  align-items: center;
+  padding: 0;
   margin-bottom: 30px;
 }
 
-
-/* Mobile and small tablet mode */
-@media (max-width: 768px) {
+@media (min-width: 769px) {
   .projects-container {
-    flex-direction: column;
-    align-items: center;
-    padding: 0;
+    flex-direction: row;
+    align-items: stretch;
+    padding: 10px;
   }
 }
 
 /* Floating navigation styles */
 .floating-nav {
   position: fixed;
-  bottom: 100px;
-  right: 30px;
+  bottom: calc(100px + env(safe-area-inset-bottom, 0px));
+  right: max(30px, env(safe-area-inset-right, 0px));
   z-index: 1000;
   display: flex;
   flex-direction: column;
@@ -693,17 +693,12 @@ section h2::after {
   align-items: center;
   justify-content: center;
   font-size: 1.2rem;
+  touch-action: manipulation;
   box-shadow: var(--shadow-md);
   transition:
     background-color var(--transition-fast) ease,
     box-shadow var(--transition-fast) ease,
     transform var(--transition-fast) ease;
-}
-
-.floating-nav-toggle:hover {
-  background-color: var(--color-primary-dark);
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-lg);
 }
 
 .floating-nav-toggle:focus-visible {
@@ -730,28 +725,46 @@ section h2::after {
   display: flex;
   flex-direction: column;
   gap: 5px;
-  min-width: 120px;
+  width: min(190px, calc(100vw - 20px));
+  max-width: calc(100vw - 20px);
+  max-height: calc(100vh - 180px);
+  max-height: calc(100dvh - 180px);
+  overflow-y: auto;
+  overscroll-behavior: contain;
   border: 1px solid var(--color-border-soft);
 }
 
 .floating-nav-button {
+  display: flex;
+  align-items: center;
+  min-width: var(--tap-target-size);
+  min-height: var(--tap-target-size);
   padding: 8px 12px;
   background-color: transparent;
   color: var(--color-text);
   border: none;
   border-radius: var(--radius-sm);
   cursor: pointer;
-  font-size: 0.9rem;
+  font-size: 0.875rem;
   text-align: left;
   transition:
     background-color var(--transition-fast) ease,
     color var(--transition-fast) ease;
-  white-space: nowrap;
+  white-space: normal;
+  overflow-wrap: anywhere;
 }
 
-.floating-nav-button:hover {
-  background-color: var(--color-primary-light);
-  color: var(--color-primary-dark);
+@media (hover: hover) and (pointer: fine) {
+  .floating-nav-toggle:hover {
+    background-color: var(--color-primary-dark);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+  }
+
+  .floating-nav-button:hover {
+    background-color: var(--color-primary-light);
+    color: var(--color-primary-dark);
+  }
 }
 
 .floating-nav-button:focus-visible {
@@ -762,8 +775,8 @@ section h2::after {
 /* Mobile adjustments for floating nav */
 @media (max-width: 768px) {
   .floating-nav {
-    bottom: 80px;
-    right: 20px;
+    bottom: calc(80px + env(safe-area-inset-bottom, 0px));
+    right: max(20px, env(safe-area-inset-right, 0px));
   }
 
   .floating-nav-toggle {
@@ -774,20 +787,18 @@ section h2::after {
 
   .floating-nav-menu {
     bottom: 55px;
-    min-width: 100px;
     padding: 8px;
   }
 
   .floating-nav-button {
-    padding: 6px 10px;
-    font-size: 0.8rem;
+    padding: 8px 10px;
   }
 }
 
 @media (max-width: 568px) {
   .floating-nav {
-    bottom: 74px;
-    right: 10px;
+    bottom: calc(74px + env(safe-area-inset-bottom, 0px));
+    right: max(10px, env(safe-area-inset-right, 0px));
   }
 
   .floating-nav-toggle {
@@ -798,14 +809,9 @@ section h2::after {
 
   .floating-nav-menu {
     bottom: 54px;
-    min-width: 90px;
     padding: 6px;
   }
 
-  .floating-nav-button {
-    padding: 5px 8px;
-    font-size: 0.75rem;
-  }
 }
 
 /* Transition animations */
@@ -827,13 +833,13 @@ section h2::after {
 .slide-up-enter-from,
 .slide-up-leave-to {
   opacity: 0;
-  transform: translateY(10px) scale(0.95);
+  transform: translateY(10px);
 }
 
 .slide-up-enter-to,
 .slide-up-leave-from {
   opacity: 1;
-  transform: translateY(0) scale(1);
+  transform: translateY(0);
 }
 
 .floating-nav-button.disabled,

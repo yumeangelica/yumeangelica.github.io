@@ -3,13 +3,22 @@ import vue from '@vitejs/plugin-vue'
 import { browserslistToTargets } from 'lightningcss'
 import { defineConfig } from 'vitest/config'
 
-// Browser targets for Lightning CSS, aligned with the es2020 build target.
+// Lightning CSS expects already-resolved browser/version entries rather than
+// Browserslist query expressions. Include the mobile engines explicitly.
 const cssTargets = browserslistToTargets([
-  'chrome >= 80',
-  'firefox >= 78',
-  'safari >= 14',
-  'edge >= 80',
+  'chrome 80',
+  'firefox 78',
+  'safari 14',
+  'ios_saf 14',
+  'edge 80',
+  'and_chr 80',
+  'and_ff 78',
+  'samsung 13',
 ])
+
+// Vite uses esbuild-style targets for JavaScript and final CSS minification.
+// Chrome covers Chromium-based Android/Samsung browsers; iOS is WebKit.
+const buildTargets = ['chrome80', 'firefox78', 'safari14', 'ios14', 'edge80']
 
 export default defineConfig({
   base: process.env.PUBLIC_URL || '/',
@@ -32,7 +41,8 @@ export default defineConfig({
     },
   },
   build: {
-    target: 'es2020',
+    target: buildTargets,
+    cssTarget: buildTargets,
     rollupOptions: {
       output: {
         chunkFileNames: 'js/[name]-[hash].js',

@@ -20,6 +20,24 @@ describe('TheBackToTop.vue', () => {
     })
   }
 
+  beforeEach(() => {
+    setScrollY(0)
+  })
+
+  it('is visible immediately when mounting into restored scroll position', async () => {
+    setScrollY(350)
+
+    const wrapper = mount(TheBackToTop, {
+      global: {
+        mocks: i18nMock,
+      },
+    })
+
+    await wrapper.vm.$nextTick()
+    expect(wrapper.find('button.back-to-top').exists()).toBe(true)
+    wrapper.unmount()
+  })
+
   it('toggles visibility when scrolling past 300px', async () => {
     vi.useFakeTimers()
     const wrapper = mount(TheBackToTop, {

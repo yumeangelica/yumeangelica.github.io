@@ -40,6 +40,11 @@ function makeProject(
 describe('PageProjects.vue', () => {
   beforeEach(() => {
     vi.clearAllMocks()
+    Object.defineProperty(window, 'scrollY', {
+      value: 0,
+      writable: true,
+      configurable: true,
+    })
     fetchData.mockResolvedValue({
       technologies: [],
       projects: [],
@@ -130,6 +135,62 @@ describe('PageProjects.vue', () => {
     expect(wrapper.vm.isTechFiltersOpen).toBe(false)
   })
 
+  it('exposes selected type and technology filters with aria-pressed', async () => {
+    fetchData.mockResolvedValueOnce({
+      technologies: [
+        {
+          category: 'Frontend',
+          items: [{ title: 'Vue.js', url: '/vue.svg' }],
+        },
+      ],
+      projects: [
+        makeProject({
+          technologyTitles: ['Vue.js'],
+        }),
+      ],
+    })
+
+    const wrapper = mount(PageProjects, {
+      global: {
+        mocks: i18nMocks,
+        stubs: {
+          TheProjectCard: true,
+        },
+      },
+    })
+
+    await flushPromises()
+
+    const allTypes = wrapper.find(
+      '[aria-label="projects.filters.allTypesAriaLabel"]',
+    )
+    const frontend = wrapper.find(
+      '[aria-label="projects.filters.types.frontend.ariaLabel"]',
+    )
+
+    expect(allTypes.attributes('aria-pressed')).toBe('true')
+    expect(frontend.attributes('aria-pressed')).toBe('false')
+
+    await frontend.trigger('click')
+
+    expect(allTypes.attributes('aria-pressed')).toBe('false')
+    expect(frontend.attributes('aria-pressed')).toBe('true')
+
+    await wrapper.find('.filter-panel-toggle').trigger('click')
+    const allTechnologies = wrapper.find(
+      '[aria-label="projects.filters.allTechAriaLabel"]',
+    )
+    const vue = wrapper.find('[aria-label="projects.filters.techAriaLabel"]')
+
+    expect(allTechnologies.attributes('aria-pressed')).toBe('true')
+    expect(vue.attributes('aria-pressed')).toBe('false')
+
+    await vue.trigger('click')
+
+    expect(allTechnologies.attributes('aria-pressed')).toBe('false')
+    expect(vue.attributes('aria-pressed')).toBe('true')
+  })
+
   it('shows floating nav and closes menu after throttled scroll', async () => {
     Object.defineProperty(window, 'scrollY', {
       value: 250,
@@ -147,6 +208,8 @@ describe('PageProjects.vue', () => {
     })
 
     await flushPromises()
+
+    expect(wrapper.vm.showFloatingNav).toBe(true)
 
     vi.useFakeTimers()
     wrapper.vm.isFloatingMenuOpen = true

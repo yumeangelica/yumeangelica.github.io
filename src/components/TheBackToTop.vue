@@ -42,6 +42,8 @@ export default defineComponent({
     },
   },
   mounted() {
+    // Synchronize restored/deep-scroll state before the next scroll event.
+    this.isVisible = window.scrollY > 300
     window.addEventListener('scroll', this.handleScroll, { passive: true })
   },
   beforeUnmount() {
@@ -56,8 +58,8 @@ export default defineComponent({
 <style scoped>
 .back-to-top {
   position: fixed;
-  bottom: 30px;
-  right: 30px;
+  bottom: calc(30px + env(safe-area-inset-bottom, 0px));
+  right: max(30px, env(safe-area-inset-right, 0px));
   width: 50px;
   height: 50px;
   background-color: var(--color-primary);
@@ -78,10 +80,12 @@ export default defineComponent({
   justify-content: center;
 }
 
-.back-to-top:hover {
-  background-color: var(--color-primary-dark);
-  transform: translateY(-2px);
-  box-shadow: 0 6px 16px rgba(95, 41, 74, 0.2);
+@media (hover: hover) and (pointer: fine) {
+  .back-to-top:hover {
+    background-color: var(--color-primary-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(95, 41, 74, 0.2);
+  }
 }
 
 .back-to-top:focus-visible {
@@ -104,8 +108,8 @@ export default defineComponent({
 /* Mobile styles */
 @media (max-width: 768px) {
   .back-to-top {
-    bottom: 20px;
-    right: 20px;
+    bottom: calc(20px + env(safe-area-inset-bottom, 0px));
+    right: max(20px, env(safe-area-inset-right, 0px));
     width: 45px;
     height: 45px;
     font-size: 18px;
@@ -115,8 +119,8 @@ export default defineComponent({
 /* Small mobile screens */
 @media (max-width: 568px) {
   .back-to-top {
-    bottom: 15px;
-    right: 10px;
+    bottom: calc(15px + env(safe-area-inset-bottom, 0px));
+    right: max(10px, env(safe-area-inset-right, 0px));
     width: 44px;
     height: 44px;
     font-size: 16px;

@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div class="app-shell">
     <header>
       <TheHeaderPic />
       <TheNavBar />
@@ -53,16 +53,29 @@ body {
   overflow-x: hidden;
 }
 
+.app-shell {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+@supports (height: 100svh) {
+  .app-shell {
+    min-height: 100svh;
+  }
+}
+
 .custom-container {
   max-width: 1400px;
+  min-width: 0;
   margin: 0 auto;
   /* Fluid gutter replaces the old per-breakpoint margin overrides */
   padding: 0 clamp(10px, 3vw, 25px);
 }
 
 main {
-  flex-grow: 1;
-  min-height: calc(90vh - 50px);
+  flex: 1 0 auto;
+  min-width: 0;
 }
 
 /* Add global focus styles for keyboard navigation */

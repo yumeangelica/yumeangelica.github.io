@@ -78,6 +78,9 @@
   --radius-lg: 20px;
   --radius-pill: 999px;
 
+  /* Interaction and responsive layout */
+  --tap-target-size: 44px;
+
   /* Motion */
   --transition-duration: 0.6s; /* shared transition timing across interactive elements */
   --transition-fast: 0.2s; /* hover/press microinteractions */
