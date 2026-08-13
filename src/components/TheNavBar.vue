@@ -58,7 +58,7 @@ export default defineComponent({
       // Throttle resize events for better performance
       if (this.resizeTimeout) return
       this.resizeTimeout = window.setTimeout(() => {
-        if (window.innerWidth >= 425 && this.showNav) {
+        if (window.innerWidth >= 768 && this.showNav) {
           this.showNav = false
         }
         this.resizeTimeout = null
@@ -83,7 +83,7 @@ export default defineComponent({
 .visually-hidden-focusable {
   color: var(--color-primary);
   border: none;
-  margin-left: 10px;
+  margin-left: max(10px, env(safe-area-inset-left, 0px));
 }
 
 .visually-hidden-focusable:focus,
@@ -176,63 +176,27 @@ nav {
   border-radius: 4px;
 }
 
-/* Styles for large screens (992px and up) */
-@media (min-width: 992px) {
+/* The shared navbar-expand-md breakpoint switches to the desktop row at 768px. */
+@media (min-width: 768px) {
   .navbar-nav {
     justify-content: center;
     width: 100%;
   }
 
   .nav-item {
-    margin: 0 7px;
-    font-size: 1.25rem;
+    margin: 0 clamp(3px, 1vw, 7px);
+    font-size: clamp(1rem, 2vw, 1.25rem);
   }
 }
 
-/* Styles for medium screens (425.1px to 991.9px) */
-@media (min-width: 425.1px) and (max-width: 991.9px) {
-  .navbar-nav {
-    flex-direction: row;
-    justify-content: center;
-    width: 100%;
-  }
-
-  .collapse:not(.show) {
-    display: flex !important;
-  }
-
-  .collapse {
-    position: static;
-    display: flex !important;
-    max-height: none;
-    width: 100%;
-    background: transparent;
-    box-shadow: none;
-    margin-left: 0;
-    padding-right: 0;
-    justify-content: center;
-  }
-
-  .navbar-nav .nav-item {
-    padding: 0 8px;
-    margin: 0 4px;
-    font-size: 1.15rem;
-  }
-
-  .navbar-toggler {
-    display: none;
-    /* Hide the toggler */
-  }
-}
-
-/* Mobile styles for small screens (max-width: 425px) */
-@media (max-width: 425px) {
+/* Phones and small tablets use the roomy collapsible menu. */
+@media (max-width: 767.98px) {
   .navbar-light .navbar-toggler {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    min-width: 44px;
-    min-height: 44px;
+    min-width: var(--tap-target-size);
+    min-height: var(--tap-target-size);
     touch-action: manipulation;
   }
 
@@ -243,7 +207,7 @@ nav {
     display: flex;
     align-items: center;
     justify-content: center;
-    min-height: 44px;
+    min-height: var(--tap-target-size);
     padding: 0.25rem 1rem;
   }
 
@@ -254,10 +218,15 @@ nav {
   .navbar-collapse {
     position: absolute;
     top: calc(100% + 12px);
-    right: 10px;
-    left: auto;
+    right: max(10px, env(safe-area-inset-right, 0px));
+    left: max(10px, env(safe-area-inset-left, 0px));
     transform: none;
-    max-width: calc(100vw - 20px);
+    width: auto;
+    max-width: none;
+    max-height: calc(100vh - 160px);
+    max-height: calc(100dvh - 160px);
+    overflow-y: auto;
+    overscroll-behavior: contain;
     background-color: var(--color-nav-bg);
     border: 1px solid var(--color-border-soft);
     border-radius: var(--radius-lg);
@@ -292,12 +261,12 @@ nav {
 @keyframes nav-menu-in {
   from {
     opacity: 0;
-    transform: translateY(-6px) scale(0.97);
+    transform: translateY(-6px);
   }
 
   to {
     opacity: 1;
-    transform: translateY(0) scale(1);
+    transform: translateY(0);
   }
 }
 </style>

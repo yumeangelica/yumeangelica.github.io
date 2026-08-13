@@ -132,8 +132,14 @@ button {
   --bs-gutter-x: 1.5rem;
   --bs-gutter-y: 0;
   width: 100%;
-  padding-right: calc(var(--bs-gutter-x) * 0.5);
-  padding-left: calc(var(--bs-gutter-x) * 0.5);
+  padding-right: max(
+    calc(var(--bs-gutter-x) * 0.5),
+    env(safe-area-inset-right, 0px)
+  );
+  padding-left: max(
+    calc(var(--bs-gutter-x) * 0.5),
+    env(safe-area-inset-left, 0px)
+  );
   margin-right: auto;
   margin-left: auto;
 }
@@ -319,7 +325,20 @@ body {
 
 #app {
   max-width: 100%;
+  min-height: 100vh;
   margin: 0 auto;
+}
+
+@supports (height: 100svh) {
+  body,
+  #app {
+    min-height: 100svh;
+  }
+}
+
+button,
+a[href] {
+  touch-action: manipulation;
 }
 
 /* Headers */

@@ -80,7 +80,7 @@ describe('TheNavBar.vue', () => {
     expect(wrapper.find('.navbar-collapse').classes()).not.toContain('show')
   })
 
-  it('closes navigation on resize when width is at least 425px', async () => {
+  it('closes navigation on resize when width reaches the 768px desktop breakpoint', async () => {
     vi.useFakeTimers()
     const originalWidth = window.innerWidth
     const wrapper = createWrapper()
@@ -96,7 +96,7 @@ describe('TheNavBar.vue', () => {
       passive: true,
     })
 
-    window.innerWidth = 500
+    window.innerWidth = 768
     window.dispatchEvent(new Event('resize'))
 
     expect(handleResizeSpy).toHaveBeenCalledTimes(1)

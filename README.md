@@ -2,7 +2,7 @@
 
 Personal software development portfolio built with Vue 3, TypeScript, Vue Router, Vite, Bun, Vitest, Biome, and GitHub Pages.
 
-Live site: https://yumeangelica.github.io
+Live site: [yumeangelica.github.io](https://yumeangelica.github.io)
 
 Status: Active public portfolio
 
@@ -94,17 +94,14 @@ Current accessibility considerations include:
 - Reduced-motion support via `prefers-reduced-motion`
 - Alt text for meaningful images, with decorative imagery hidden from assistive tech
 - "Opens in new tab" cues on external links
-- Responsive layout for smaller screens
+- Mobile-first layout with 44px touch targets, safe-area handling, and reduced-motion support
 - Component tests and content checks for selected UI behavior
 
 Theme colors were reviewed against WCAG 2.2 AA contrast targets; see
 `docs/audit-followups.md` for items still pending live verification.
 
-Known improvement areas:
-
-- Add a documented manual keyboard-navigation checklist
-- Run a browser-based axe / Lighthouse pass after visual updates
-- Add project-card content-length guidance for readability
+Open accessibility and performance work is tracked only in
+[`docs/audit-followups.md`](docs/audit-followups.md) to avoid duplicated lists drifting apart.
 
 ## Security, privacy, and public-safety notes
 
@@ -159,10 +156,12 @@ bun run patch-push
 - updates `package.json` version
 - runs `bun run lint`, `bun run typecheck`, `bun run test`, and `bun run build`
 - restores the original version and stops if a local quality gate fails
-- commits the version bump with `Patch update`, `Minor update`, or `Major update`
+- commits the version bump using the release script's managed message
 - pushes the current branch to `origin`
 - writes a ready-to-copy PR body to `.pr-description.md`
 - prints the GitHub compare URL for opening a pull request
+
+`.pr-description.md` is disposable generated output, not project documentation; regenerate it for the current branch instead of editing or preserving an old copy.
 
 After the pull request is merged into `main`, `.github/workflows/deploy.yml` installs dependencies with Bun, type-checks and builds the site, and runs `scripts/deploy-gh-pages.ts`. The deploy helper publishes the built `dist` output to the `gh-pages` branch and creates a `v<version>` tag when that tag does not already exist.
 
